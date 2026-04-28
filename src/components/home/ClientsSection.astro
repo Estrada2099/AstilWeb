@@ -2,7 +2,9 @@
 import { existsSync, readdirSync } from "node:fs";
 import { join, parse } from "node:path";
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 const clientsDir = join(process.cwd(), "public", "clientes");
 const allowedExtensions = new Set([".svg", ".png", ".jpg", ".jpeg", ".webp", ".avif"]);
 const logoFiles = existsSync(clientsDir)
