@@ -1,0 +1,230 @@
+---
+import { existsSync, readdirSync } from "node:fs";
+import { join, parse } from "node:path";
+
+const clientsDir = join(process.cwd(), "public", "clientes");
+const allowedExtensions = new Set([".svg", ".png", ".jpg", ".jpeg", ".webp", ".avif"]);
+const logoFiles = existsSync(clientsDir)
+  ? readdirSync(clientsDir)
+      .filter((file) => allowedExtensions.has(parse(file).ext.toLowerCase()))
+      .sort((a, b) => a.localeCompare(b))
+  : [];
+
+const fallbackClients = [
+  "Cliente destacado 1",
+  "Cliente destacado 2",
+  "Cliente destacado 3",
+  "Cliente destacado 4",
+  "Cliente destacado 5",
+  "Cliente destacado 6"
+];
+
+const clients =
+  logoFiles.length > 0
+    ? logoFiles.map((file) => ({
+        name: parse(file).name.replace(/[-_]/g, " "),
+        logo: `/clientes/${file}`
+      }))
+    : fallbackClients.map((name) => ({ name, logo: "" }));
+
+const carouselDuration = "42.8s";
+---
+
+<section class="section ab-clients" id="clientes">
+  <div class="section-inner">
+    <div class="ab-clients__heading">
+      <div>
+        <p class="eyebrow">Ellos confian en nosotros</p>
+        <h2>Empresas que respaldan su operacion con Astil Basculas.</h2>
+      </div>
+      <p>
+        Acompanamos operaciones industriales, comerciales y logisticas que necesitan equipos de
+        pesaje confiables, servicio oportuno y mediciones trazables.
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="ab-logo-marquee"
+    aria-label="Logos de clientes"
+    style="width:100%;overflow:hidden;padding:8px 0;"
+  >
+    <div
+      class="ab-logo-track"
+      style={`display:flex;width:max-content;gap:16px;animation:ab-logo-scroll ${carouselDuration} linear infinite;`}
+    >
+      <div class="ab-logo-group" style="display:flex;gap:16px;align-items:center;white-space:nowrap;">
+        {clients.map((client) => (
+          <div
+            class="ab-logo-card"
+            style="display:inline-grid;place-items:center;width:252px;height:124px;padding:22px;border:1px solid #d9e1ec;border-radius:8px;background:#f6f8fb;vertical-align:middle;"
+          >
+            {client.logo ? (
+              <img
+                src={client.logo}
+                alt={client.name}
+                loading="lazy"
+                style="width:184px;height:74px;object-fit:contain;filter:grayscale(1) saturate(0) opacity(.62);"
+              />
+            ) : (
+              <span style="color:#708090;font-size:.9rem;font-weight:800;text-align:center;">{client.name}</span>
+            )}
+          </div>
+        ))}
+      </div>
+      <div class="ab-logo-group" aria-hidden="true" style="display:flex;gap:16px;align-items:center;white-space:nowrap;">
+        {clients.map((client) => (
+          <div
+            class="ab-logo-card"
+            style="display:inline-grid;place-items:center;width:252px;height:124px;padding:22px;border:1px solid #d9e1ec;border-radius:8px;background:#f6f8fb;vertical-align:middle;"
+          >
+            {client.logo ? (
+              <img
+                src={client.logo}
+                alt=""
+                loading="lazy"
+                style="width:184px;height:74px;object-fit:contain;filter:grayscale(1) saturate(0) opacity(.62);"
+              />
+            ) : (
+              <span style="color:#708090;font-size:.9rem;font-weight:800;text-align:center;">{client.name}</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .ab-clients {
+    background: #ffffff;
+    border-top: 1px solid var(--line);
+    padding-block: clamp(58px, 7vw, 88px);
+  }
+
+  .ab-clients__heading {
+    display: grid;
+    justify-items: center;
+    gap: 16px;
+    margin-bottom: clamp(28px, 4vw, 44px);
+    text-align: center;
+  }
+
+  .ab-clients__heading h2 {
+    max-width: 820px;
+    margin-bottom: 0;
+    font-size: clamp(2rem, 3.2vw, 3.45rem);
+  }
+
+  .ab-clients__heading > p {
+    max-width: 720px;
+    margin-bottom: 0;
+    color: var(--muted);
+    font-size: 1.02rem;
+  }
+
+  .ab-logo-marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 8px 0;
+  }
+
+  .ab-logo-marquee::before,
+  .ab-logo-marquee::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    width: clamp(50px, 10vw, 150px);
+    pointer-events: none;
+  }
+
+  .ab-logo-marquee::before {
+    left: 0;
+    background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0));
+  }
+
+  .ab-logo-marquee::after {
+    right: 0;
+    background: linear-gradient(270deg, #ffffff, rgba(255, 255, 255, 0));
+  }
+
+  .ab-logo-track {
+    display: flex;
+    width: max-content;
+    gap: 16px;
+  }
+
+  .ab-logo-marquee:hover .ab-logo-track {
+    animation-play-state: paused;
+  }
+
+  .ab-logo-card:hover img {
+    filter: grayscale(0) saturate(1) opacity(1) !important;
+    transform: scale(1.04);
+  }
+
+  .ab-logo-card {
+    flex: 0 0 252px;
+    display: grid;
+    place-items: center;
+    width: 252px;
+    height: 124px;
+    padding: 22px;
+    border: 1px solid #d9e1ec;
+    border-radius: 8px;
+    background: #f6f8fb;
+  }
+
+  .ab-logo-card img {
+    width: 184px;
+    height: 74px;
+    object-fit: contain;
+    filter: grayscale(1) saturate(0) opacity(0.62);
+    transition:
+      filter 0.22s ease,
+      transform 0.22s ease;
+  }
+
+  .ab-logo-card:hover img {
+    filter: grayscale(0) saturate(1) opacity(1);
+    transform: scale(1.04);
+  }
+
+  .ab-logo-card span {
+    color: #708090;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-align: center;
+  }
+
+  @keyframes ab-logo-scroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-50% - 8px));
+    }
+  }
+
+  @media (max-width: 760px) {
+    .ab-clients__heading {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .ab-logo-card {
+      flex-basis: 180px;
+      width: 180px;
+      height: 92px;
+    }
+
+    .ab-logo-card img {
+      width: 126px;
+      height: 48px;
+    }
+  }
+</style>

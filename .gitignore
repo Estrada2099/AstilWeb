@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+
+# OS/editor files
+Thumbs.db
+.DS_Store
+.vscode/

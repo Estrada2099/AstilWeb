@@ -1,0 +1,16 @@
+---
+title: "Bascula industrial de ejemplo"
+headline: "Bascula industrial para operaciones de alto flujo"
+description: "Landing de ejemplo para mostrar como agregar productos futuros con contenido Markdown."
+category: "Pesaje industrial"
+features:
+  - "Capacidad y dimensiones configurables"
+  - "Integracion con procesos de almacen"
+  - "Servicio tecnico en sitio"
+cta: "Cotizar este producto"
+---
+
+## Como usar esta plantilla
+
+Duplica este archivo, cambia la extension a `.md` y actualiza el contenido. Astro generara una
+landing en `/productos/nombre-del-archivo/`.

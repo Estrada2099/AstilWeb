@@ -1,0 +1,182 @@
+---
+import { services } from "../../data/site";
+---
+
+<section class="section services" id="servicios">
+  <div class="section-inner">
+    <div class="section-heading">
+      <p class="eyebrow">Servicios</p>
+      <h2>Ocho frentes de servicio para sistemas de pesaje.</h2>
+      <p class="lead">
+        Servicio tecnico, cumplimiento, fabricacion y tecnologia conectados para que tu operacion
+        trabaje con datos confiables y equipos disponibles.
+      </p>
+    </div>
+    <div class="service-grid">
+      {services.map((service, index) => (
+        <article class="service-card" tabindex="0">
+          <div class="service-card__inner">
+            <div class="service-card__face service-card__front">
+              <div class="service-icon">
+                <img src={service.icon} alt="" loading="lazy" onerror="this.style.display='none'" />
+                <span>{String(index + 1).padStart(2, "0")}</span>
+              </div>
+              <h3>{service.title}</h3>
+            </div>
+            <div class="service-card__face service-card__back">
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{service.title}</h3>
+              <p>{service.text}</p>
+              {"href" in service && <a href={service.href}>Ver solucion</a>}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    background:
+      linear-gradient(180deg, #ffffff, #f6f8fb);
+  }
+
+  .section-heading {
+    margin-bottom: 34px;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .service-card {
+    min-height: 260px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    perspective: 1100px;
+    outline: none;
+  }
+
+  .service-card__inner {
+    position: relative;
+    width: 100%;
+    min-height: 260px;
+    transition: transform 0.68s ease;
+    transform-style: preserve-3d;
+  }
+
+  .service-card:hover .service-card__inner,
+  .service-card:focus-within .service-card__inner,
+  .service-card:focus .service-card__inner {
+    transform: rotateY(180deg);
+  }
+
+  .service-card__face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background:
+      radial-gradient(circle at top right, rgba(47, 125, 246, 0.1), transparent 34%),
+      #ffffff;
+    backface-visibility: hidden;
+    box-shadow: 0 10px 28px rgba(16, 24, 32, 0.06);
+  }
+
+  .service-card__front {
+    align-items: flex-start;
+  }
+
+  .service-card__front h3 {
+    max-width: 240px;
+    margin-bottom: 0;
+    font-size: 1.34rem;
+  }
+
+  .service-card__back {
+    background:
+      linear-gradient(145deg, rgba(212, 33, 46, 0.18), transparent 42%),
+      linear-gradient(135deg, #08111c, #122a44);
+    color: var(--white);
+    transform: rotateY(180deg);
+  }
+
+  .service-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 86px;
+    height: 86px;
+    margin-bottom: 24px;
+    border-radius: 50%;
+    background: #f2e7e8;
+    box-shadow: inset 0 0 0 1px rgba(212, 33, 46, 0.08);
+  }
+
+  .service-icon img {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+  }
+
+  .service-icon span,
+  .service-card__back > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #f2e7e8;
+    color: var(--red-dark);
+    font-weight: 900;
+  }
+
+  .service-icon span {
+    position: absolute;
+    right: -8px;
+    bottom: -8px;
+    width: 34px;
+    height: 34px;
+    font-size: 0.9rem;
+  }
+
+  .service-card__back h3 {
+    margin: 18px 0 10px;
+    color: var(--white);
+  }
+
+  .service-card__back p {
+    color: #dfe6ed;
+    font-size: 0.98rem;
+  }
+
+  .service-card__back a {
+    display: inline-flex;
+    margin-top: 10px;
+    color: #ffffff;
+    font-weight: 850;
+    text-decoration: none;
+  }
+
+  @media (max-width: 1100px) {
+    .service-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .service-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

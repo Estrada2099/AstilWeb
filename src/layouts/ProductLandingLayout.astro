@@ -1,0 +1,46 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  cta?: string;
+}
+
+const { title, description, cta = "Solicitar cotizacion" } = Astro.props;
+---
+
+<BaseLayout title={`${title} | Astil Basculas`} description={description}>
+  <section class="product-hero">
+    <div class="product-hero__content">
+      <p class="eyebrow">Landing de producto</p>
+      <h1>{title}</h1>
+      <p class="lead">{description}</p>
+      <div class="button-row">
+        <a class="button" href="/#contacto">{cta}</a>
+        <a class="button secondary" href="/">Ver empresa</a>
+      </div>
+    </div>
+  </section>
+  <slot />
+</BaseLayout>
+
+<style>
+  .product-hero {
+    padding: clamp(76px, 10vw, 132px) clamp(18px, 5vw, 72px);
+    background:
+      linear-gradient(115deg, rgba(16, 24, 32, 0.92), rgba(71, 101, 119, 0.78)),
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 86px),
+      #101820;
+    color: #ffffff;
+  }
+
+  .product-hero__content {
+    width: min(980px, 100%);
+    margin: 0 auto;
+  }
+
+  .lead {
+    color: #e8edf2;
+  }
+</style>

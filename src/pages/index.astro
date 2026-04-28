@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ClientsSection from "../components/home/ClientsSection.astro";
+import ContactSection from "../components/home/ContactSection.astro";
+import HeroSection from "../components/home/HeroSection.astro";
+import PexisaSection from "../components/home/PexisaSection.astro";
+import ServicesSection from "../components/home/ServicesSection.astro";
+import TrustSection from "../components/home/TrustSection.astro";
+import { homeSeo } from "../data/site";
+---
+
+<BaseLayout
+  title={homeSeo.title}
+  description={homeSeo.description}
+  keywords={homeSeo.keywords}
+>
+  <HeroSection />
+  <TrustSection />
+  <ServicesSection />
+  <PexisaSection />
+  <ClientsSection />
+  <ContactSection />
+</BaseLayout>
