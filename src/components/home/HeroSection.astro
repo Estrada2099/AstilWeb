@@ -1,8 +1,10 @@
 ---
 import { heroHighlights } from "../../data/site";
+
+const base = import.meta.env.BASE_URL;
 ---
 
-<section class="hero">
+<section class="hero" style={`--hero-image: url("${base}hero.png")`}>
   <div class="hero__overlay">
     <div class="hero__content">
       <p class="hero__tag">
@@ -47,7 +49,7 @@ import { heroHighlights } from "../../data/site";
     background:
       linear-gradient(90deg, rgba(6, 13, 23, 0.96) 0%, rgba(8, 17, 30, 0.9) 34%, rgba(8, 17, 30, 0.42) 68%, rgba(8, 17, 30, 0.76) 100%),
       linear-gradient(180deg, rgba(6, 13, 23, 0.1), rgba(6, 13, 23, 0.96)),
-      url("/hero.png"),
+      var(--hero-image),
       linear-gradient(120deg, #0b1728, #20364d);
     background-position: center;
     background-size: cover;

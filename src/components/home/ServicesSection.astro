@@ -1,5 +1,8 @@
 ---
 import { services } from "../../data/site";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
 ---
 
 <section class="section services" id="servicios">
@@ -18,7 +21,7 @@ import { services } from "../../data/site";
           <div class="service-card__inner">
             <div class="service-card__face service-card__front">
               <div class="service-icon">
-                <img src={service.icon} alt="" loading="lazy" onerror="this.style.display='none'" />
+                <img src={withBase(service.icon)} alt="" loading="lazy" onerror="this.style.display='none'" />
                 <span>{String(index + 1).padStart(2, "0")}</span>
               </div>
               <h3>{service.title}</h3>
@@ -27,7 +30,7 @@ import { services } from "../../data/site";
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h3>{service.title}</h3>
               <p>{service.text}</p>
-              {"href" in service && <a href={service.href}>Ver solucion</a>}
+              {"href" in service && <a href={withBase(service.href)}>Ver solucion</a>}
             </div>
           </div>
         </article>

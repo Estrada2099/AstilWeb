@@ -1,11 +1,15 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
 <header class="site-header">
-  <a class="brand" href="/" aria-label="Astil Basculas">
-    <img src="/astil-basculas-logo-horizontal.png" alt="Astil Basculas" />
+  <a class="brand" href={base} aria-label="Astil Basculas">
+    <img src={`${base}astil-basculas-logo-horizontal.png`} alt="Astil Basculas" />
   </a>
   <nav class="nav" aria-label="Navegacion principal">
-    <a href="/#confianza">Nosotros</a>
-    <a href="/#servicios">Servicios</a>
-    <a class="nav-cta" href="/#contacto">Contacto</a>
+    <a href={`${base}#confianza`}>Nosotros</a>
+    <a href={`${base}#servicios`}>Servicios</a>
+    <a class="nav-cta" href={`${base}#contacto`}>Contacto</a>
   </nav>
 </header>
 

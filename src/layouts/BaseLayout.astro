@@ -18,8 +18,10 @@ const {
   image = "/astil-basculas-logo-horizontal.png",
   canonical = Astro.url.pathname
 } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
 const canonicalUrl = new URL(canonical, Astro.site ?? Astro.url).toString();
-const imageUrl = new URL(image, Astro.site ?? Astro.url).toString();
+const imageUrl = new URL(image.startsWith("http") ? image : withBase(image), Astro.site ?? Astro.url).toString();
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -74,7 +76,7 @@ const structuredData = {
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#101820" />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="icon" href="/astil-basculas-logo-horizontal.png" />
+    <link rel="icon" href={withBase("/astil-basculas-logo-horizontal.png")} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_MX" />
     <meta property="og:title" content={title} />

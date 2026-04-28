@@ -2,6 +2,7 @@
 import { existsSync, readdirSync } from "node:fs";
 import { join, parse } from "node:path";
 
+const base = import.meta.env.BASE_URL;
 const clientsDir = join(process.cwd(), "public", "clientes");
 const allowedExtensions = new Set([".svg", ".png", ".jpg", ".jpeg", ".webp", ".avif"]);
 const logoFiles = existsSync(clientsDir)
@@ -23,7 +24,7 @@ const clients =
   logoFiles.length > 0
     ? logoFiles.map((file) => ({
         name: parse(file).name.replace(/[-_]/g, " "),
-        logo: `/clientes/${file}`
+        logo: `${base}clientes/${file}`
       }))
     : fallbackClients.map((name) => ({ name, logo: "" }));
 
