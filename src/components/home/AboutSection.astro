@@ -1,0 +1,287 @@
+<section class="section about" id="nosotros">
+  <div class="section-inner">
+    <div class="about__heading">
+      <div>
+        <p class="eyebrow">Nosotros</p>
+        <h2>Servicio técnico directo para empresas que no pueden detener su operación.</h2>
+      </div>
+      <p>
+        Astil Básculas acompaña a industria, comercio y operaciones logísticas con soluciones
+        de pesaje claras, reparables y medibles. Nuestro trabajo es reducir incertidumbre:
+        diagnosticar, orientar y resolver con criterio técnico.
+      </p>
+    </div>
+
+    <div class="about__cards" aria-label="Misión, visión y enfoque de Astil Básculas">
+      <article>
+        <div class="about__card-top">
+          <div class="about__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 3v18" />
+              <path d="M5 8h14" />
+              <path d="M7 8l-3 7h6L7 8z" />
+              <path d="M17 8l-3 7h6l-3-7z" />
+            </svg>
+          </div>
+          <span>01</span>
+        </div>
+        <h3>Misión</h3>
+        <p>
+          Mantener operativos los sistemas de pesaje de nuestros clientes con servicio en
+          sitio, comunicación clara y recomendaciones técnicas responsables.
+        </p>
+      </article>
+
+      <article>
+        <div class="about__card-top">
+          <div class="about__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 12s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z" />
+              <path d="M12 9.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z" />
+            </svg>
+          </div>
+          <span>02</span>
+        </div>
+        <h3>Visión</h3>
+        <p>
+          Ser un aliado técnico confiable para empresas que necesitan precisión,
+          continuidad y trazabilidad en sus procesos de pesaje.
+        </p>
+      </article>
+
+      <article>
+        <div class="about__card-top">
+          <div class="about__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 7h16" />
+              <path d="M4 12h10" />
+              <path d="M4 17h7" />
+              <path d="M16 15l2 2 4-5" />
+            </svg>
+          </div>
+          <span>03</span>
+        </div>
+        <h3>Cómo trabajamos</h3>
+        <p>
+          Evaluamos el uso real del equipo antes de recomendar una solución. Si reparar,
+          calibrar o sustituir no es lo correcto, lo decimos con claridad.
+        </p>
+      </article>
+    </div>
+
+    <div class="about__process" aria-label="Flujo de trabajo Astil Básculas">
+      <div class="about__process-heading">
+        <p class="eyebrow">Proceso</p>
+        <h3>De la revisión técnica a una recomendación clara.</h3>
+      </div>
+      <div class="about__steps">
+        <div>
+          <span>01</span>
+          <strong>Diagnóstico</strong>
+          <p>Entendemos el equipo, el uso real y la urgencia.</p>
+        </div>
+        <div>
+          <span>02</span>
+          <strong>Recomendación</strong>
+          <p>Explicamos la opción técnica más conveniente.</p>
+        </div>
+        <div>
+          <span>03</span>
+          <strong>Servicio</strong>
+          <p>Atendemos con enfoque en continuidad y evidencia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background:
+      linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
+    border-top: 1px solid rgba(174, 188, 204, 0.5);
+  }
+
+  .about__heading {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.7fr);
+    gap: clamp(24px, 5vw, 76px);
+    align-items: end;
+    margin-bottom: clamp(28px, 4vw, 46px);
+  }
+
+  .about__heading h2 {
+    max-width: 850px;
+    margin-bottom: 0;
+    font-size: clamp(2.15rem, 4.4vw, 4.65rem);
+    line-height: 0.98;
+  }
+
+  .about__heading > p {
+    position: relative;
+    max-width: 560px;
+    margin: 0;
+    padding-left: 22px;
+    border-left: 3px solid var(--red);
+    color: var(--muted);
+    font-size: 1.03rem;
+  }
+
+  .about__cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .about__cards article {
+    min-height: 250px;
+    padding: 24px;
+    border: 1px solid rgba(174, 188, 204, 0.58);
+    border-radius: 8px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98)),
+      #ffffff;
+    box-shadow: 0 16px 38px rgba(8, 17, 28, 0.07);
+  }
+
+  .about__card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .about__icon {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 8px;
+    background: #eef4ff;
+    color: var(--blue-dark);
+  }
+
+  .about__icon svg {
+    width: 30px;
+    height: 30px;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+  }
+
+  .about__cards span,
+  .about__steps span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 32px;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: #eef2f6;
+    color: var(--red-dark);
+    font-size: 0.82rem;
+    font-weight: 900;
+  }
+
+  .about__cards h3 {
+    margin-bottom: 12px;
+    font-size: 1.28rem;
+  }
+
+  .about__cards p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .about__process {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.38fr) minmax(0, 1fr);
+    gap: clamp(20px, 4vw, 44px);
+    align-items: stretch;
+    margin-top: 18px;
+    padding: 22px;
+    border: 1px solid rgba(174, 188, 204, 0.62);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.1), transparent 44%),
+      #ffffff;
+    box-shadow: 0 18px 44px rgba(8, 17, 28, 0.08);
+  }
+
+  .about__process-heading {
+    display: grid;
+    align-content: center;
+    padding-right: clamp(10px, 3vw, 28px);
+    border-right: 1px solid rgba(174, 188, 204, 0.52);
+  }
+
+  .about__process-heading h3 {
+    max-width: 300px;
+    margin: 0;
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+  }
+
+  .about__steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .about__steps div {
+    position: relative;
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    padding: 8px 20px;
+  }
+
+  .about__steps div + div {
+    border-left: 1px solid rgba(174, 188, 204, 0.52);
+  }
+
+  .about__steps strong {
+    color: var(--ink);
+    font-size: 1.02rem;
+  }
+
+  .about__steps p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.94rem;
+  }
+
+  @media (max-width: 980px) {
+    .about__heading,
+    .about__process {
+      grid-template-columns: 1fr;
+    }
+
+    .about__heading > p {
+      padding-left: 18px;
+    }
+
+    .about__cards,
+    .about__steps {
+      grid-template-columns: 1fr;
+    }
+
+    .about__process-heading {
+      padding-right: 0;
+      padding-bottom: 18px;
+      border-right: 0;
+      border-bottom: 1px solid rgba(174, 188, 204, 0.52);
+    }
+
+    .about__steps div {
+      padding: 18px 0;
+    }
+
+    .about__steps div + div {
+      border-left: 0;
+      border-top: 1px solid rgba(174, 188, 204, 0.52);
+    }
+  }
+</style>

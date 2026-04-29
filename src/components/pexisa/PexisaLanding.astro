@@ -1,0 +1,521 @@
+---
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const pexisaSlides = [
+  { image: `${base}Pexisa/1.png`, label: "Plataforma para operación industrial" },
+  { image: `${base}Pexisa/2.png`, label: "Pesaje de piso en almacén" },
+  { image: `${base}Pexisa/3.png`, label: "Indicadores para procesos de control" },
+  { image: `${base}Pexisa/4.png`, label: "Equipos fabricados para trabajo continuo" },
+  { image: `${base}Pexisa/5.png`, label: "Soluciones para carga y producción" },
+  { image: `${base}Pexisa/6.png`, label: "Diseño estructural reparable" },
+  { image: `${base}Pexisa/7.png`, label: "Pesaje industrial a largo plazo" }
+];
+
+const authorityPoints = [
+  "Operación continua",
+  "Estructura reforzada",
+  "Mantenimiento y refacciones"
+];
+
+const differentiators = [
+  {
+    title: "Precisión",
+    text: "Medición confiable incluso en operación continua."
+  },
+  {
+    title: "Durabilidad",
+    text: "Estructuras diseñadas para uso industrial intensivo."
+  },
+  {
+    title: "Reparabilidad",
+    text: "Equipos diseñados para mantenerse, no para desecharse."
+  }
+];
+
+const targetItems = [
+  "Empresas con procesos productivos activos",
+  "Operaciones que requieren control de peso confiable",
+  "Equipos de trabajo que necesitan herramientas que respondan todos los días"
+];
+---
+
+<section class="pexisa-page">
+  <section class="pexisa-hero" aria-label="Pexisa, equipos industriales">
+    <div class="pexisa-hero__carousel" aria-hidden="true">
+      {pexisaSlides.map((slide, index) => (
+        <img
+          src={slide.image}
+          alt=""
+          loading={index === 0 ? "eager" : "lazy"}
+          style={`--slide-index:${index};`}
+        />
+      ))}
+    </div>
+
+    <div class="pexisa-hero__overlay"></div>
+
+    <div class="pexisa-hero__content">
+      <p class="pexisa-hero__eyebrow">PEXISA — Equipos industriales</p>
+      <h1>
+        Nacimos industriales.<br />
+        Diseñamos para la industria.
+      </h1>
+      <p class="pexisa-hero__subtitle">
+        Equipos de pesaje precisos, duraderos y reparables, diseñados para operación real.
+      </p>
+
+      <div class="pexisa-hero__bullets" aria-label="Diferenciales de Pexisa">
+        {authorityPoints.map((point) => (
+          <span><i></i>{point}</span>
+        ))}
+      </div>
+
+      <a class="pexisa-hero__cta" href="#pexisa-equipos">Ver equipos industriales</a>
+    </div>
+  </section>
+
+  <div class="pexisa-page__inner">
+    <div class="pexisa-position" id="pexisa-equipos">
+      <div>
+        <p class="eyebrow">Fabricación industrial</p>
+        <h2>En PEXISA no fabricamos equipos para competir en precio.</h2>
+      </div>
+      <p>
+        Fabricamos equipos para operar todos los días, bajo condiciones reales de trabajo.
+        Cada báscula está diseñada para ofrecer estabilidad en la medición, resistencia
+        estructural y facilidad de mantenimiento a largo plazo.
+      </p>
+    </div>
+
+    <div class="pexisa-pillars" aria-label="Diferenciadores Pexisa">
+      {differentiators.map((item) => (
+        <article>
+          <span aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 3v18" />
+              <path d="M4 12h16" />
+              <path d="M6.5 6.5l11 11" />
+              <path d="M17.5 6.5l-11 11" />
+            </svg>
+          </span>
+          <h2>{item.title}</h2>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="pexisa-philosophy">
+      <p>
+        No buscamos ser la opción más económica. Buscamos ser la opción correcta para quien
+        entiende el costo de una mala medición.
+      </p>
+      <span>
+        Nuestros equipos están pensados para empresas que priorizan continuidad operativa,
+        control y confiabilidad en sus procesos.
+      </span>
+    </div>
+
+    <div class="pexisa-target">
+      <div>
+        <p class="eyebrow">Para quién es</p>
+        <h2>PEXISA es para empresas que valoran calidad industrial real.</h2>
+      </div>
+      <div>
+        <ul>
+          {targetItems.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+        <p>Si buscas precio, hay muchas opciones. Si buscas confiabilidad, estás en el lugar correcto.</p>
+      </div>
+    </div>
+
+    <div class="pexisa-cta">
+      <h2>Cotiza equipos industriales diseñados para durar.</h2>
+      <a class="button" href={`${base}#contacto`}>Solicitar información</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pexisa-page {
+    background:
+      linear-gradient(180deg, #f7f9fc 0%, #ffffff 42%, #eef3f8 100%);
+  }
+
+  .pexisa-page__inner {
+    width: min(1220px, calc(100% - clamp(36px, 8vw, 144px)));
+    margin: 0 auto;
+    padding: clamp(58px, 8vw, 104px) 0 clamp(66px, 9vw, 118px);
+  }
+
+  .pexisa-hero {
+    position: relative;
+    min-height: 720px;
+    overflow: hidden;
+    background: #030a12;
+    color: #ffffff;
+    isolation: isolate;
+  }
+
+  .pexisa-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.12;
+    pointer-events: none;
+    background:
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.12) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 4px);
+    mix-blend-mode: overlay;
+  }
+
+  .pexisa-hero__carousel {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .pexisa-hero__carousel img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 70% center;
+    opacity: 0;
+    filter: contrast(1.07) saturate(0.95) brightness(0.92);
+    transform: scale(1.02);
+    animation: pexisa-slide 42s infinite;
+    animation-delay: calc(var(--slide-index) * 6s);
+  }
+
+  .pexisa-hero__carousel img:first-child {
+    opacity: 1;
+  }
+
+  .pexisa-hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+      90deg,
+      rgba(3, 10, 18, 0.88) 0%,
+      rgba(3, 10, 18, 0.78) 35%,
+      rgba(3, 10, 18, 0.42) 55%,
+      rgba(3, 10, 18, 0.12) 75%,
+      transparent 100%
+    );
+  }
+
+  .pexisa-hero__content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 720px;
+    max-width: 600px;
+    padding-left: clamp(24px, 5vw, 80px);
+    padding-right: 24px;
+  }
+
+  .pexisa-hero__eyebrow {
+    margin-bottom: 28px;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .pexisa-hero__eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 56px;
+    height: 3px;
+    margin-right: 16px;
+    vertical-align: middle;
+    background: var(--red);
+  }
+
+  .pexisa-hero h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(3rem, 6vw, 6rem);
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: 0;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  }
+
+  .pexisa-hero__subtitle {
+    max-width: 560px;
+    margin-top: 28px;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: clamp(1.125rem, 1.6vw, 1.625rem);
+    line-height: 1.45;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.48);
+  }
+
+  .pexisa-hero__bullets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 28px;
+    margin-top: 34px;
+  }
+
+  .pexisa-hero__bullets span {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    font-size: 0.94rem;
+    font-weight: 800;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .pexisa-hero__bullets i {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--red);
+    box-shadow: 0 0 0 6px rgba(225, 29, 46, 0.16);
+  }
+
+  .pexisa-hero__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin-top: 38px;
+    padding: 14px 22px;
+    border-radius: 10px;
+    background: var(--red);
+    color: #ffffff;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 16px 36px rgba(212, 33, 46, 0.26);
+  }
+
+  .pexisa-position,
+  .pexisa-target {
+    display: grid;
+    grid-template-columns: minmax(0, 0.74fr) minmax(320px, 1fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: start;
+    margin-top: clamp(54px, 7vw, 92px);
+  }
+
+  .pexisa-position h2,
+  .pexisa-target h2 {
+    margin-bottom: 0;
+    font-size: clamp(1.8rem, 3vw, 3rem);
+    line-height: 1;
+  }
+
+  .pexisa-position > p {
+    margin: 0;
+    padding: 24px;
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    background: #ffffff;
+    color: #334153;
+    box-shadow: 0 16px 42px rgba(8, 17, 28, 0.08);
+  }
+
+  .pexisa-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: clamp(34px, 5vw, 58px);
+  }
+
+  .pexisa-pillars article {
+    min-height: 190px;
+    padding: 24px;
+    border: 1px solid rgba(174, 188, 204, 0.56);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 16px 36px rgba(8, 17, 28, 0.07);
+  }
+
+  .pexisa-pillars span {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 22px;
+    border-radius: 8px;
+    background: #eef4ff;
+    color: var(--blue-dark);
+  }
+
+  .pexisa-pillars svg {
+    width: 23px;
+    height: 23px;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-width: 1.8;
+  }
+
+  .pexisa-pillars h2 {
+    margin-bottom: 8px;
+    font-size: 1.18rem;
+  }
+
+  .pexisa-pillars p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .pexisa-philosophy {
+    margin-top: clamp(34px, 5vw, 62px);
+    padding: clamp(28px, 4vw, 46px);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(212, 33, 46, 0.16), transparent 38%),
+      linear-gradient(135deg, #101820, #1a2d42);
+    color: #ffffff;
+  }
+
+  .pexisa-philosophy p {
+    max-width: 980px;
+    margin-bottom: 14px;
+    color: #ffffff;
+    font-size: clamp(1.8rem, 3.4vw, 3.6rem);
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .pexisa-philosophy span {
+    display: block;
+    max-width: 740px;
+    color: #dfe7ef;
+    font-size: 1.04rem;
+  }
+
+  .pexisa-target ul {
+    display: grid;
+    gap: 12px;
+    margin: 0 0 22px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pexisa-target li {
+    position: relative;
+    padding: 15px 16px 15px 42px;
+    border: 1px solid rgba(174, 188, 204, 0.54);
+    border-radius: 8px;
+    background: #ffffff;
+    color: #334153;
+    font-weight: 750;
+  }
+
+  .pexisa-target li::before {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--red);
+  }
+
+  .pexisa-target p {
+    margin: 0;
+    color: var(--ink);
+    font-size: 1.12rem;
+    font-weight: 850;
+  }
+
+  .pexisa-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    margin-top: clamp(34px, 5vw, 62px);
+    padding: 26px;
+    border: 1px solid rgba(174, 188, 204, 0.6);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 18px 46px rgba(8, 17, 28, 0.08);
+  }
+
+  .pexisa-cta h2 {
+    margin: 0;
+    font-size: clamp(1.5rem, 2.4vw, 2.4rem);
+  }
+
+  .pexisa-cta .button {
+    flex: 0 0 auto;
+  }
+
+  @keyframes pexisa-slide {
+    0%,
+    13% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    16%,
+    100% {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+  }
+
+  @media (max-width: 980px) {
+    .pexisa-position,
+    .pexisa-target {
+      grid-template-columns: 1fr;
+    }
+
+    .pexisa-pillars {
+      grid-template-columns: 1fr;
+    }
+
+    .pexisa-cta {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .pexisa-hero {
+      min-height: auto;
+    }
+
+    .pexisa-hero__carousel {
+      position: relative;
+      height: 360px;
+    }
+
+    .pexisa-hero__carousel img {
+      object-position: center;
+    }
+
+    .pexisa-hero__overlay {
+      display: none;
+    }
+
+    .pexisa-hero__content {
+      min-height: auto;
+      max-width: none;
+      padding: 40px 24px 48px;
+      background: #030a12;
+    }
+
+    .pexisa-hero h1 {
+      font-size: 3rem;
+    }
+
+    .pexisa-hero__bullets {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+</style>

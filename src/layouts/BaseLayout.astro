@@ -14,7 +14,7 @@ interface Props {
 const {
   title,
   description,
-  keywords = "basculas industriales, sistemas de pesaje, mantenimiento de basculas, calibracion de basculas",
+  keywords = "básculas industriales, sistemas de pesaje, mantenimiento de básculas, calibración de básculas",
   image = "/astil-basculas-logo-horizontal.png",
   canonical = Astro.url.pathname
 } = Astro.props;
@@ -27,7 +27,7 @@ const imageUrl = new URL(image.startsWith("http") ? image : withBase(image), Ast
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "Astil Basculas",
+  name: "Astil Básculas",
   description,
   image: imageUrl,
   url: canonicalUrl,
@@ -37,7 +37,7 @@ const structuredData = {
     "@type": "PostalAddress",
     streetAddress: "Calle Miguel Negrete 527",
     addressLocality: "Texcoco de Mora",
-    addressRegion: "Estado de Mexico",
+    addressRegion: "Estado de México",
     postalCode: "56170",
     addressCountry: "MX"
   },
@@ -55,14 +55,14 @@ const structuredData = {
       closes: "14:00"
     }
   ],
-  areaServed: ["Texcoco", "Estado de Mexico", "Ciudad de Mexico"],
+  areaServed: ["Texcoco", "Estado de México", "Ciudad de México"],
   makesOffer: [
-    "Mantenimiento de basculas",
-    "Reparacion de basculas",
-    "Calibracion de basculas",
-    "Inspeccion de basculas",
-    "Venta de basculas industriales",
-    "Fabricacion de basculas",
+    "Mantenimiento de básculas",
+    "Reparación de básculas",
+    "Calibración de básculas",
+    "Inspección de básculas",
+    "Venta de básculas industriales",
+    "Fabricación de básculas",
     "Software para sistemas de pesaje"
   ]
 };

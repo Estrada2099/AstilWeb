@@ -1,8 +1,8 @@
 export const contact = {
-  address: "Calle Miguel Negrete 527, Las Americas, 56170 Texcoco de Mora, Mex.",
+  address: "Calle Miguel Negrete 527, Las Américas, 56170 Texcoco de Mora, Méx.",
   mapsUrl: "https://maps.app.goo.gl/tTFXmdQjTU849xeJ8",
   mapsEmbed:
-    "https://www.google.com/maps?q=Calle%20Miguel%20Negrete%20527%2C%20Las%20Americas%2C%2056170%20Texcoco%20de%20Mora%2C%20Mex.&output=embed",
+    "https://www.google.com/maps?q=Calle%20Miguel%20Negrete%20527%2C%20Las%20Americas%2C%2056170%20Texcoco%20de%20Mora%2C%20Méx.&output=embed",
   officePhone: "56 1186 2291",
   officePhoneHref: "tel:+525611862291",
   whatsapp: [
@@ -10,75 +10,76 @@ export const contact = {
     { label: "55 6206 9690", href: "https://wa.me/525562069690" }
   ],
   email: "contacto.basculas@gmail.com",
-  hours: ["Lunes a viernes de 8:30 am a 6:00 pm", "Sabado de 9:00 am a 2:00 pm"]
+  hours: ["Lunes a viernes de 8:30 am a 6:00 pm", "Sábado de 9:00 am a 2:00 pm"]
 };
 
 export const proof = [
-  { value: "2014", label: "fundacion de Astil Basculas" },
-  { value: "25+", label: "anos de experiencia acumulada" },
+  { value: "2014", label: "fundación de Astil Básculas" },
+  { value: "25+", label: "años de experiencia acumulada" },
   { value: "95%", label: "de servicios realizados en sitio" },
   { value: "24-48h", label: "rango habitual de respuesta" }
 ];
 
 export const heroHighlights = [
   {
-    title: "Prevencion que evita paros",
-    text: "Mantenimiento planeado para proteger la continuidad de tu operacion."
+    title: "Prevención que evita paros",
+    text: "Mantenimiento planeado para proteger la continuidad de tu operación."
   },
   {
     title: "Soluciones en sitio",
-    text: "Diagnostico y reparacion sin mover tus equipos cuando la falla lo permite."
+    text: "Diagnóstico y reparación sin mover tus equipos cuando la falla lo permite."
   },
   {
-    title: "Calibracion confiable",
+    title: "Calibración confiable",
     text: "Procesos respaldados por patrones y aliados acreditados."
   },
   {
-    title: "Equipo tecnico directo",
-    text: "Atencion sin burocracia para resolver con rapidez y claridad."
+    title: "Equipo técnico directo",
+    text: "Atención sin burocracia para resolver con rapidez y claridad."
   }
 ];
 
 export const services = [
   {
-    icon: "/iconos/mantenimiento.svg",
+    icon: "/iconos/mantenimeinto%20preventivo.svg",
     title: "Mantenimiento preventivo y correctivo",
-    text: "Planes adaptados al uso real del equipo para reducir fallas, preservar la precision y evitar paros imprevistos."
+    text: "Planes adaptados al uso real del equipo para reducir fallas, preservar la precisión y evitar paros imprevistos."
   },
   {
-    icon: "/iconos/reparacion.svg",
-    title: "Reparacion en sitio",
-    text: "Diagnostico y correccion directamente en las instalaciones del cliente para minimizar traslados, tiempos muertos y riesgos operativos."
+    icon: "/iconos/Reparacio%20en%20Sitio.svg",
+    title: "Reparación en sitio",
+    text: "Diagnóstico y corrección directamente en las instalaciones del cliente para minimizar traslados, tiempos muertos y riesgos operativos."
   },
   {
-    icon: "/iconos/calibracion.svg",
-    title: "Calibracion",
+    icon: "/iconos/Calibracion.svg",
+    title: "Calibración",
     text: "Procesos con patrones especializados y certificados mediante alianzas con laboratorios acreditados para operaciones reguladas."
   },
   {
-    icon: "/iconos/inspeccion.svg",
-    title: "Inspeccion",
-    text: "Verificacion para cumplimiento normativo y uso comercial, con enfoque en confianza, trazabilidad y continuidad de negocio."
+    icon: "/iconos/Inspeccion.svg",
+    title: "Inspección",
+    text: "Verificación para cumplimiento normativo y uso comercial, con enfoque en confianza, trazabilidad y continuidad de negocio."
   },
   {
-    icon: "/iconos/ajuste.svg",
+    icon: "/iconos/ajuste%20de%20peso.svg",
     title: "Ajuste de peso",
-    text: "Ajustes precisos con pesas patron calibradas para proteger transacciones, productividad y calidad del proceso."
+    text: "Ajustes precisos con pesas patrón calibradas para proteger transacciones, productividad y calidad del proceso."
   },
   {
-    icon: "/iconos/venta.svg",
+    icon: "/iconos/Venta.svg",
     title: "Venta de equipos",
-    text: "Asesoria para seleccionar basculas y sistemas de pesaje adecuados al presupuesto, aplicacion y condiciones de trabajo."
+    text: "Asesoría para seleccionar básculas y sistemas de pesaje adecuados al presupuesto, aplicación y condiciones de trabajo."
   },
   {
-    icon: "/iconos/fabricacion.svg",
-    title: "Fabricacion Pexisa",
-    text: "Basculas robustas, reparables y configurables para industria, con dimensiones y capacidades especiales cuando la operacion lo exige."
+    icon: "/iconos/Fabricacion.svg",
+    title: "Fabricación Pexisa",
+    text: "Básculas robustas, reparables y configurables para industria, con dimensiones y capacidades especiales cuando la operación lo exige.",
+    href: "/pexisa/"
   },
   {
-    icon: "/iconos/software.svg",
+    icon: "/iconos/Software.svg",
     title: "Software a la medida",
-    text: "Desarrollo de sistemas para pesaje, almacenes, entradas, salidas, produccion y logistica, conectados a las necesidades reales de cada empresa.",
+    text: "Desarrollo de sistemas para pesaje, almacenes, entradas, salidas, producción y logística, conectados a las necesidades reales de cada empresa.",
     href: "/productos/software-a-la-medida/"
   }
 ];
@@ -93,9 +94,9 @@ export const trustedClients = [
 ];
 
 export const homeSeo = {
-  title: "Basculas industriales en Texcoco y Estado de Mexico | Astil Basculas",
+  title: "Básculas industriales en Texcoco y Estado de México | Astil Básculas",
   description:
-    "Astil Basculas ofrece mantenimiento, reparacion, calibracion, inspeccion, venta, fabricacion y software para basculas industriales en Texcoco y Estado de Mexico.",
+    "Astil Básculas ofrece mantenimiento, reparación, calibración, inspección, venta, fabricación y software para básculas industriales en Texcoco y Estado de México.",
   keywords:
-    "basculas industriales, mantenimiento de basculas, calibracion de basculas, reparacion de basculas, venta de basculas, basculas en Texcoco, basculas Estado de Mexico, sistemas de pesaje"
+    "básculas industriales, mantenimiento de básculas, calibración de básculas, reparación de básculas, venta de básculas, básculas en Texcoco, básculas Estado de México, sistemas de pesaje"
 };
