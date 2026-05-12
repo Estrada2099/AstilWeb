@@ -11,6 +11,7 @@ const base = import.meta.env.BASE_URL.endsWith("/")
   <nav class="nav" aria-label="Navegación principal">
     <a href={`${base}#nosotros`}>Nosotros</a>
     <a href={`${base}#servicios`}>Servicios</a>
+    <a class="nav-section-cta" href={`${base}#alto-alcance`}>Alto alcance</a>
     <a class="nav-cta" href={`${base}#contacto`}>Contacto</a>
   </nav>
 </header>
@@ -62,9 +63,24 @@ const base = import.meta.env.BASE_URL.endsWith("/")
     color: #ffffff;
   }
 
+  .nav-section-cta {
+    min-height: 38px;
+    padding: 9px 14px;
+    border: 1px solid rgba(67, 95, 120, 0.22);
+    border-radius: 6px;
+    background: #eef4ff;
+    color: var(--blue-dark);
+  }
+
   .nav .nav-cta:hover {
     color: #ffffff;
     background: var(--red);
+  }
+
+  .nav .nav-section-cta:hover {
+    border-color: rgba(212, 33, 46, 0.32);
+    background: #ffffff;
+    color: var(--red);
   }
 
   @media (max-width: 760px) {

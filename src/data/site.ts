@@ -53,7 +53,8 @@ export const services = [
   {
     icon: "/iconos/Calibracion.svg",
     title: "Calibración",
-    text: "Procesos con patrones especializados y certificados mediante alianzas con laboratorios acreditados para operaciones reguladas."
+    text: "Procesos con patrones especializados y certificados mediante alianzas con laboratorios acreditados para operaciones reguladas.",
+    href: "/servicios/calibracion/"
   },
   {
     icon: "/iconos/Inspeccion.svg",
