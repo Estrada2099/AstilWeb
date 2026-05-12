@@ -15,14 +15,14 @@ const whatsappHref = `${contact.whatsapp[0].href}?text=${whatsappMessage}`;
 const seo = {
   title: "Básculas Camioneras | Servicio, Reparación y Calibración | Astil Básculas",
   description:
-    "Servicio integral para básculas camioneras en CDMX, Área Metropolitana y zona centro. Reparación en sitio, mantenimiento, calibración con laboratorio acreditado por ema, inspección, refacciones y software camionero.",
+    "Servicio integral para básculas camioneras en CDMX, Área Metropolitana y zona centro. Reparación, mantenimiento, calibración con laboratorio acreditado por ema, inspección, refacciones y software camionero.",
   keywords:
     "servicio para básculas camioneras, básculas camioneras en CDMX, reparación de básculas camioneras, mantenimiento de básculas camioneras, calibración de básculas camioneras, inspección de básculas camioneras, holograma PROFECO báscula camionera, refacciones para básculas camioneras, celdas de carga para báscula camionera, indicador de peso para báscula camionera, caja suma para báscula camionera, software para báscula camionera, sistema camionero para registro de pesajes, básculas de alto alcance, técnicos metrólogos para básculas camioneras, servicio en sitio para básculas camioneras, diagnóstico de básculas camioneras, básculas camioneras Estado de México, básculas camioneras en Texcoco, servicio de básculas camioneras zona centro"
 };
 
 const serviceCards = [
   {
-    title: "Reparación en sitio",
+    title: "Reparación",
     text: "Atendemos fallas eléctricas, electrónicas, mecánicas y de comunicación directamente en planta, patio, almacén, centro de distribución o zona de operación."
   },
   {
@@ -59,18 +59,6 @@ const problems = [
   "Pesajes inconsistentes",
   "Falta de mantenimiento",
   "Necesidad de calibración o inspección"
-];
-
-const repairItems = [
-  "Celdas de carga",
-  "Cajas suma",
-  "Indicadores de peso",
-  "Cableado",
-  "Conexiones",
-  "Estructura de pesaje",
-  "Señales de carga",
-  "Comunicación con software o periféricos",
-  "Condiciones generales de instalación"
 ];
 
 const diagnosisSteps = [
@@ -114,7 +102,7 @@ const zones = [
 const differentiators = [
   "Técnicos metrólogos especializados en básculas de alto alcance",
   "Diagnóstico antes de recomendar una solución",
-  "Reparación en sitio",
+  "Reparación",
   "Mantenimiento preventivo y correctivo",
   "Calibración con laboratorio acreditado por ema",
   "Apoyo para inspección y holograma PROFECO",
@@ -276,7 +264,7 @@ const breadcrumbSchema = {
             Básculas camioneras: servicio integral para pesaje de alto alcance
           </h1>
           <p class="lead">
-            Reparación en sitio, mantenimiento, calibración con laboratorio acreditado por ema,
+            Reparación, mantenimiento, calibración con laboratorio acreditado por ema,
             inspección, refacciones y software camionero para empresas que necesitan control,
             precisión y continuidad operativa.
           </p>
@@ -292,7 +280,7 @@ const breadcrumbSchema = {
             </a>
           </div>
           <span class="truck-hero__microcopy">
-            Atención en CDMX, Área Metropolitana, Megalópolis y proyectos foráneos bajo programación.
+            Atención en CDMX, Área Metropolitana, Estado de México, zona centro y proyectos foráneos bajo programación.
           </span>
         </div>
 
@@ -352,56 +340,6 @@ const breadcrumbSchema = {
         <ul>
           {problems.map((problem) => <li>{problem}</li>)}
         </ul>
-      </div>
-    </section>
-
-    <section class="section integrated-section">
-      <div class="section-inner section-heading">
-        <p class="eyebrow">Atención integral</p>
-        <h2>Reparación, mantenimiento, calibración e inspección en un solo proveedor</h2>
-        <p>
-          Una báscula camionera puede requerir más de un servicio para quedar en condiciones
-          adecuadas de operación. Por eso ofrecemos una atención integral, sin que tengas que
-          coordinar diferentes proveedores para cada parte del proceso.
-        </p>
-      </div>
-
-      <div class="section-inner integrated-grid">
-        <article>
-          <h3>Reparación en sitio</h3>
-          <p>
-            Atendemos fallas directamente en planta, patio, almacén, centro de distribución,
-            concretera o zona de operación. Antes de reemplazar componentes, revisamos el origen de
-            la falla para evitar gastos innecesarios.
-          </p>
-          <div class="chip-list">
-            {repairItems.map((item) => <span>{item}</span>)}
-          </div>
-        </article>
-        <article>
-          <h3>Mantenimiento preventivo y correctivo</h3>
-          <p>
-            El mantenimiento ayuda a reducir paros inesperados, errores de pesaje y desgaste
-            prematuro de componentes. Revisamos funcionamiento, conexiones, celdas, plataforma,
-            limpieza técnica, ajuste y recomendaciones para mejorar la operación.
-          </p>
-        </article>
-        <article>
-          <h3>Calibración con laboratorio acreditado por ema</h3>
-          <p>
-            Cuando la operación requiere evidencia metrológica, podemos coordinar la calibración de
-            la báscula camionera con laboratorio acreditado por ema para documentación útil en
-            control interno, auditorías, calidad y trazabilidad.
-          </p>
-        </article>
-        <article>
-          <h3>Inspección y apoyo para holograma PROFECO</h3>
-          <p>
-            Apoyamos el proceso de inspección o verificación cuando la báscula se utiliza en
-            transacciones comerciales y requiere holograma de PROFECO, según condiciones del equipo
-            y alcance aplicable.
-          </p>
-        </article>
       </div>
     </section>
 
@@ -502,7 +440,7 @@ const breadcrumbSchema = {
       <div class="section-inner coverage-grid">
         <div>
           <p class="eyebrow">Cobertura</p>
-          <h2>Atención en CDMX, Área Metropolitana, Megalópolis y proyectos foráneos</h2>
+          <h2>Atención en CDMX, Área Metropolitana y proyectos foráneos</h2>
           <p>
             Atención principal en CDMX, Área Metropolitana, Estado de México y zona centro.
             Proyectos foráneos bajo programación según ubicación, tipo de servicio, urgencia y
@@ -517,7 +455,7 @@ const breadcrumbSchema = {
 
     <section class="section why-section">
       <div class="section-inner why-grid">
-        <div>
+        <div class="why-panel">
           <p class="eyebrow">Diferenciadores</p>
           <h2>¿Por qué elegir Astil Básculas?</h2>
           <p>
@@ -528,9 +466,21 @@ const breadcrumbSchema = {
             No buscamos vender por vender. Buscamos entender qué necesita tu operación y ofrecer una
             solución adecuada para que tu báscula trabaje con precisión y respaldo técnico.
           </p>
+          <div class="why-panel__metrics" aria-label="Fortalezas de Astil Básculas">
+            <span>Diagnóstico</span>
+            <span>Servicio en sitio</span>
+            <span>Soporte técnico</span>
+          </div>
         </div>
-        <ul>
-          {differentiators.map((item) => <li>{item}</li>)}
+        <ul class="why-card-grid">
+          {
+            differentiators.map((item, index) => (
+              <li>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{item}</strong>
+              </li>
+            ))
+          }
         </ul>
       </div>
     </section>
@@ -740,7 +690,6 @@ const breadcrumbSchema = {
   }
 
   .truck-services,
-  .integrated-section,
   .sectors-section,
   .internal-links-section {
     background: #ffffff;
@@ -781,8 +730,7 @@ const breadcrumbSchema = {
     gap: 16px;
   }
 
-  .service-grid article,
-  .integrated-grid article {
+  .service-grid article {
     min-height: 230px;
     padding: 24px;
     border: 1px solid rgba(174, 188, 204, 0.58);
@@ -808,14 +756,12 @@ const breadcrumbSchema = {
     font-weight: 900;
   }
 
-  .service-grid h3,
-  .integrated-grid h3 {
+  .service-grid h3 {
     margin-bottom: 10px;
     font-size: 1.18rem;
   }
 
-  .service-grid p,
-  .integrated-grid p {
+  .service-grid p {
     margin-bottom: 0;
     color: var(--muted);
   }
@@ -854,7 +800,6 @@ const breadcrumbSchema = {
   }
 
   .problem-grid ul,
-  .why-grid ul,
   .final-truck-cta ul {
     display: grid;
     gap: 10px;
@@ -864,7 +809,6 @@ const breadcrumbSchema = {
   }
 
   .problem-grid li,
-  .why-grid li,
   .final-truck-cta li {
     position: relative;
     padding: 13px 14px 13px 38px;
@@ -876,7 +820,6 @@ const breadcrumbSchema = {
   }
 
   .problem-grid li::before,
-  .why-grid li::before,
   .final-truck-cta li::before {
     content: "";
     position: absolute;
@@ -888,13 +831,6 @@ const breadcrumbSchema = {
     background: var(--red);
   }
 
-  .integrated-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-  }
-
-  .chip-list,
   .parts-list,
   .software-feature-grid,
   .zone-list,
@@ -904,11 +840,6 @@ const breadcrumbSchema = {
     gap: 10px;
   }
 
-  .chip-list {
-    margin-top: 18px;
-  }
-
-  .chip-list span,
   .parts-list span,
   .software-feature-grid span,
   .zone-list span,
@@ -1058,7 +989,93 @@ const breadcrumbSchema = {
   }
 
   .why-grid {
+    grid-template-columns: minmax(330px, 0.68fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .why-panel {
+    display: grid;
+    align-content: start;
+    min-height: 100%;
+    padding: clamp(26px, 3vw, 34px);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(212, 33, 46, 0.16), transparent 42%),
+      linear-gradient(135deg, #101820, #1a2d42);
+    color: #ffffff;
+    box-shadow: 0 18px 46px rgba(8, 17, 28, 0.12);
+  }
+
+  .why-panel h2 {
+    margin-bottom: 18px;
+    color: #ffffff;
+    font-size: clamp(2rem, 3.6vw, 3.4rem);
+  }
+
+  .why-panel p {
+    color: #dfe6ed;
+  }
+
+  .why-panel__metrics {
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .why-panel__metrics span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 850;
+  }
+
+  .why-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .why-card-grid li {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 12px;
     align-items: start;
+    min-height: 104px;
+    padding: 18px;
+    border: 1px solid rgba(174, 188, 204, 0.58);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(8, 17, 28, 0.055);
+  }
+
+  .why-card-grid li span {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 30px;
+    border-radius: 999px;
+    background: #eef4ff;
+    color: var(--blue-dark);
+    font-size: 0.78rem;
+    font-weight: 900;
+  }
+
+  .why-card-grid li strong {
+    color: #26374d;
+    font-size: 0.96rem;
+    line-height: 1.3;
   }
 
   .sector-grid span {
@@ -1211,7 +1228,7 @@ const breadcrumbSchema = {
     }
 
     .service-grid,
-    .integrated-grid {
+    .why-card-grid {
       grid-template-columns: 1fr;
     }
 
