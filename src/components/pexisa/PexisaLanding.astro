@@ -36,7 +36,11 @@ const authorityPoints = [
 
 const equipmentTypes = [
   { name: "Básculas de Mesa", image: publicImage("Pexisa/BasculasMesa") },
-  { name: "Plataformas de Piso", image: publicImage("Pexisa/PlataformasPiso") },
+  {
+    name: "Plataformas de Piso",
+    image: publicImage("Pexisa/PlataformasPiso"),
+    href: "/basculas/bajo-perfil/"
+  },
   { name: "Indicadores de Peso", image: publicImage("Pexisa/IndicadoresPeso") },
   { name: "Celdas de Carga", image: publicImage("Pexisa/CeldasCarga") },
   { name: "Cajas Suma", image: publicImage("Pexisa/CajasSuma") }
@@ -112,15 +116,31 @@ const targetItems = [
 
       <div class="pexisa-equipment__grid">
         {equipmentTypes.map((item) => (
-          <article>
-            <div class="pexisa-equipment__media">
-              <img src={item.image} alt={item.name} loading="lazy" />
-            </div>
-            <div class="pexisa-equipment__content">
-              <span>Equipo industrial</span>
-              <h3>{item.name}</h3>
-            </div>
-          </article>
+          item.href ? (
+            <a
+              class="pexisa-equipment-card"
+              href={`${base}${item.href.replace(/^\//, "")}`}
+              aria-label={`Ver sección de ${item.name}`}
+            >
+              <div class="pexisa-equipment__media">
+                <img src={item.image} alt={item.name} loading="lazy" />
+              </div>
+              <div class="pexisa-equipment__content">
+                <span>Equipo industrial</span>
+                <h3>{item.name}</h3>
+              </div>
+            </a>
+          ) : (
+            <article class="pexisa-equipment-card">
+              <div class="pexisa-equipment__media">
+                <img src={item.image} alt={item.name} loading="lazy" />
+              </div>
+              <div class="pexisa-equipment__content">
+                <span>Equipo industrial</span>
+                <h3>{item.name}</h3>
+              </div>
+            </article>
+          )
         ))}
       </div>
     </div>
@@ -421,7 +441,7 @@ const targetItems = [
     margin: 0 auto;
   }
 
-  .pexisa-equipment__grid article {
+  .pexisa-equipment-card {
     display: flex;
     flex-direction: column;
     min-height: auto;
@@ -430,13 +450,15 @@ const targetItems = [
     border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: 22px;
     background: rgba(255, 255, 255, 0.85);
+    color: inherit;
+    text-decoration: none;
     box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
     transition:
       box-shadow 0.2s ease,
       transform 0.2s ease;
   }
 
-  .pexisa-equipment__grid article:hover {
+  .pexisa-equipment-card:hover {
     box-shadow: 0 26px 60px rgba(15, 23, 42, 0.14);
     transform: translateY(-6px);
   }

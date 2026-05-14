@@ -1,0 +1,41 @@
+---
+import LowProfileContent from "../../../../components/basculas/LowProfileContent.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Inicio",
+      item: new URL("/", Astro.site ?? Astro.url).toString()
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Básculas de bajo perfil",
+      item: new URL("/basculas/bajo-perfil/", Astro.site ?? Astro.url).toString()
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "¿Qué báscula necesito?",
+      item: new URL("/basculas/bajo-perfil/que-bascula-necesito/", Astro.site ?? Astro.url).toString()
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="¿Qué Báscula de Bajo Perfil Necesito? | Astil Básculas"
+  description="Guía para elegir una báscula de bajo perfil según capacidad, tarimas, ambiente, frecuencia de uso, material y necesidades de control."
+  keywords="qué báscula de bajo perfil necesito, elegir báscula de piso, báscula para tarimas, guía de básculas industriales"
+  image="/Pexisa/PlataformasPiso.png"
+  canonical="/basculas/bajo-perfil/que-bascula-necesito/"
+  footerContactHref="#cotizar-bajo-perfil"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <LowProfileContent view="guide" />
+</BaseLayout>

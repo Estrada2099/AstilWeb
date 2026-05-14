@@ -1,0 +1,77 @@
+---
+import LowProfileContent from "../../../components/basculas/LowProfileContent.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { contact } from "../../../data/site";
+import { lowProfileFaqs, lowProfileGeneralSeo, lowProfileLines } from "../../../data/lowProfileScales";
+
+const pageUrl = new URL("/basculas/bajo-perfil/", Astro.site ?? Astro.url).toString();
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Básculas de bajo perfil",
+  description: lowProfileGeneralSeo.description,
+  brand: {
+    "@type": "Brand",
+    name: "Astil Básculas"
+  },
+  category: "Básculas industriales de piso",
+  image: new URL("/Pexisa/PlataformasPiso.png", Astro.site ?? Astro.url).toString(),
+  url: pageUrl,
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "MXN",
+    availability: "https://schema.org/InStock",
+    offerCount: lowProfileLines.length,
+    seller: {
+      "@type": "LocalBusiness",
+      name: "Astil Básculas",
+      telephone: "+52 56 1186 2291",
+      email: contact.email
+    }
+  }
+};
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: lowProfileFaqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer
+    }
+  }))
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Inicio",
+      item: new URL("/", Astro.site ?? Astro.url).toString()
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Básculas de bajo perfil",
+      item: pageUrl
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title={lowProfileGeneralSeo.title}
+  description={lowProfileGeneralSeo.description}
+  keywords={lowProfileGeneralSeo.keywords}
+  image="/Pexisa/PlataformasPiso.png"
+  canonical="/basculas/bajo-perfil/"
+  footerContactHref="#cotizar-bajo-perfil"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <LowProfileContent view="landing" />
+</BaseLayout>

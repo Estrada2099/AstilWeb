@@ -1,0 +1,43 @@
+---
+import LowProfileContent from "../../../../components/basculas/LowProfileContent.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { contact } from "../../../../data/site";
+import { getLowProfileLine } from "../../../../data/lowProfileScales";
+
+const line = getLowProfileLine("comercial");
+if (!line) throw new Error("No existe la línea Comercial");
+const pageUrl = new URL("/basculas/bajo-perfil/comercial/", Astro.site ?? Astro.url).toString();
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: line.name,
+  description: line.seoDescription,
+  brand: { "@type": "Brand", name: "Astil Básculas" },
+  category: "Básculas de bajo perfil",
+  image: new URL("/Pexisa/PlataformasPiso.png", Astro.site ?? Astro.url).toString(),
+  url: pageUrl,
+  offers: {
+    "@type": "Offer",
+    priceCurrency: "MXN",
+    availability: "https://schema.org/InStock",
+    seller: {
+      "@type": "LocalBusiness",
+      name: "Astil Básculas",
+      telephone: "+52 56 1186 2291",
+      email: contact.email
+    }
+  }
+};
+---
+
+<BaseLayout
+  title={line.seoTitle}
+  description={line.seoDescription}
+  keywords="báscula de bajo perfil comercial, báscula de piso comercial, báscula para embarques"
+  image="/Pexisa/PlataformasPiso.png"
+  canonical="/basculas/bajo-perfil/comercial/"
+  footerContactHref="#cotizar-bajo-perfil"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <LowProfileContent view="product" productSlug="comercial" />
+</BaseLayout>

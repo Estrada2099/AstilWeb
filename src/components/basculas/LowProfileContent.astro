@@ -1,0 +1,1917 @@
+---
+import SmartImage from "../SmartImage.astro";
+import { contact } from "../../data/site";
+import {
+  getLowProfileLine,
+  lowProfileApplications,
+  lowProfileComparisonRows,
+  lowProfileDecisionPaths,
+  lowProfileFaqs,
+  lowProfileLines,
+  type LowProfileLine
+} from "../../data/lowProfileScales";
+
+interface Props {
+  view: "landing" | "product" | "comparator" | "guide";
+  productSlug?: LowProfileLine["slug"];
+}
+
+const { view, productSlug } = Astro.props;
+const currentLine = productSlug ? getLowProfileLine(productSlug) : undefined;
+if (view === "product" && !currentLine) {
+  throw new Error(`No existe la línea de bajo perfil: ${productSlug}`);
+}
+
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
+const quoteAnchor = "#cotizar-bajo-perfil";
+const comparatorHref = withBase("/basculas/bajo-perfil/comparador/");
+const guideHref = withBase("/basculas/bajo-perfil/que-bascula-necesito/");
+const landingHref = withBase("/basculas/bajo-perfil/");
+const selectedLine = currentLine ?? lowProfileLines[2];
+const whatsappMessage = encodeURIComponent(
+  currentLine?.whatsappIntent ??
+    "Hola, quiero cotizar una báscula de bajo perfil. Necesito asesoría para elegir capacidad, medidas y línea adecuada."
+);
+const whatsappHref = `${contact.whatsapp[0].href}?text=${whatsappMessage}`;
+const contactSubject =
+  view === "product"
+    ? `Solicitud ${selectedLine.name}`
+    : view === "comparator"
+      ? "Solicitud desde comparador de básculas de bajo perfil"
+      : view === "guide"
+        ? "Solicitud desde guía de selección de báscula de bajo perfil"
+        : "Solicitud desde landing de básculas de bajo perfil";
+const formIntro =
+  view === "guide"
+    ? "Comparte cómo será la operación y te ayudamos a definir línea, capacidad y configuración."
+    : view === "comparator"
+      ? "Si ya tienes dos opciones en mente, envíanos los datos de operación y te ayudamos a cerrar la decisión."
+      : "Cuéntanos qué necesitas pesar y te orientamos con una recomendación clara.";
+
+const quickMetrics = [
+  "Instalación sin obra civil en la mayoría de casos",
+  "Rampa para patín o carga rodada",
+  "Configuración por capacidad, medidas y ambiente"
+];
+
+const selectionFactors = [
+  "Peso máximo real por tarima o carga",
+  "Frecuencia diaria de pesaje",
+  "Ingreso con patín, carro o montacargas",
+  "Ambiente seco, húmedo, lavado o polvo",
+  "Necesidad de tickets, reportes o control digital"
+];
+
+const specialConfigPoints = [
+  "Plataforma en acero al carbón o acero inoxidable",
+  "Indicador digital comercial o industrial",
+  "Configuraciones para áreas secas, húmedas o de mayor exigencia",
+  "Selección de capacidad y medidas según la operación",
+  "Recomendación técnica antes de cotizar"
+];
+
+const lineHref = (slug: LowProfileLine["slug"]) => withBase(`/basculas/bajo-perfil/${slug}/`);
+const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[number]["key"]) => {
+  const value = line[key];
+  return Array.isArray(value) ? value.join(", ") : value;
+};
+---
+
+<article class="lp-page">
+  {view === "landing" && (
+    <>
+      <section class="lp-hero" aria-labelledby="lp-hero-title">
+        <div class="lp-hero__inner">
+          <div class="lp-hero__content">
+            <p class="eyebrow">Básculas de bajo perfil</p>
+            <h1 id="lp-hero-title">Básculas de piso para tarimas, almacén e industria</h1>
+            <p class="lead">
+              Plataformas de bajo perfil para pesar mercancía, tarimas, materia prima y producto
+              terminado con acceso cómodo, lectura confiable y asesoría técnica desde la selección.
+            </p>
+            <p>
+              Te ayudamos a elegir la línea adecuada según capacidad, frecuencia de uso, ambiente,
+              tipo de carga y nivel de control que necesita tu operación.
+            </p>
+            <div class="button-row">
+              <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">
+                Cotizar por WhatsApp
+              </a>
+              <a class="button secondary" href={quoteAnchor}>Solicitar asesoría</a>
+            </div>
+            <div class="lp-hero__proof" aria-label="Beneficios principales">
+              {quickMetrics.map((item) => <span>{item}</span>)}
+            </div>
+          </div>
+
+          <aside class="lp-hero__visual" aria-label="Báscula de bajo perfil para tarimas">
+            <SmartImage
+              name="Pexisa/PlataformasPiso"
+              alt="Báscula de bajo perfil para tarimas y pesaje industrial de piso"
+              loading="eager"
+              decoding="async"
+            />
+          </aside>
+        </div>
+      </section>
+
+      <nav class="lp-line-nav" aria-label="Líneas de básculas de bajo perfil">
+        <a href={landingHref}>General</a>
+        {lowProfileLines.map((line) => <a href={lineHref(line.slug)}>{line.shortName}</a>)}
+        <a href="#comparador-bajo-perfil">Comparador</a>
+        <a href="#seleccion-bajo-perfil">¿Qué báscula necesito?</a>
+      </nav>
+
+      <section class="section lp-lines" aria-labelledby="lp-lines-title">
+        <div class="section-inner lp-split-heading">
+          <div>
+            <p class="eyebrow">Líneas disponibles</p>
+            <h2 id="lp-lines-title">Elige por operación, no solo por precio</h2>
+          </div>
+          <p>
+            Una báscula de piso correcta reduce retrabajos, reclamos por diferencias de peso y
+            compras que se quedan cortas al primer cambio de operación.
+          </p>
+        </div>
+        <div class="section-inner lp-line-grid">
+          {lowProfileLines.map((line) => (
+            <article class="lp-line-card">
+              <span>{line.eyebrow}</span>
+              <h3>{line.name}</h3>
+              <p>{line.summary}</p>
+              <div class="lp-line-card__tags" aria-label={`Usos recomendados para ${line.name}`}>
+                {line.bestFor.slice(0, 3).map((item) => <small>{item}</small>)}
+              </div>
+              <a href={lineHref(line.slug)}>Ver línea {line.shortName}</a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section lp-applications">
+        <div class="section-inner lp-app-grid">
+          <div>
+            <p class="eyebrow">Aplicaciones</p>
+            <h2>Pesaje de piso para flujo real de trabajo</h2>
+            <p>
+              Las básculas de bajo perfil funcionan bien cuando la carga debe entrar rápido a la
+              plataforma, sin fosa, sin maniobras complejas y con operadores que necesitan una
+              lectura clara.
+            </p>
+          </div>
+          <div class="lp-chip-grid">
+            {lowProfileApplications.map((item) => <span>{item}</span>)}
+          </div>
+        </div>
+      </section>
+
+      <section class="section lp-selection" id="seleccion-bajo-perfil">
+        <div class="section-inner lp-split-heading">
+          <div>
+            <p class="eyebrow">Selección técnica</p>
+            <h2>Antes de cotizar conviene revisar cinco datos</h2>
+          </div>
+          <p>
+            Con esta información podemos evitar sobredimensionar el equipo o recomendar una línea
+            que no aguante el ambiente de trabajo.
+          </p>
+        </div>
+        <div class="section-inner lp-factor-grid">
+          {selectionFactors.map((factor, index) => (
+            <article>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{factor}</h3>
+            </article>
+          ))}
+        </div>
+        <div class="section-inner lp-inline-cta">
+          <p>Si no tienes esos datos claros, podemos ayudarte a definirlos con unas preguntas.</p>
+          <button
+            class="button"
+            type="button"
+            data-disclosure-trigger
+            data-target="guia-bajo-perfil"
+            data-open-label="Abrir guía de selección"
+            data-close-label="Ocultar guía de selección"
+            aria-controls="guia-bajo-perfil"
+            aria-expanded="false"
+          >
+            Abrir guía de selección
+          </button>
+        </div>
+        <div
+          class="section-inner lp-disclosure-panel lp-guide-panel"
+          id="guia-bajo-perfil"
+          data-disclosure-panel
+          hidden
+        >
+          <div class="lp-disclosure-heading">
+            <p class="eyebrow">Guía rápida</p>
+            <h3>Elige el escenario que más se parece a tu operación</h3>
+            <p>
+              Esta guía reduce opciones sin obligarte a salir de la página. La recomendación final
+              depende de capacidad, ambiente y viabilidad técnica.
+            </p>
+          </div>
+          <div class="lp-decision-grid">
+            {lowProfileDecisionPaths.map((path) => (
+              <article>
+                <h3>{path.title}</h3>
+                <p>{path.text}</p>
+                <a href={withBase(path.href)}>{path.label}</a>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="section lp-compare-preview" id="comparador-bajo-perfil">
+        <div class="section-inner lp-split-heading">
+          <div>
+            <p class="eyebrow">Comparador</p>
+            <h2>Compara Base, Comercial, Industrial, Pro e Inoxidable</h2>
+          </div>
+          <p>
+            Revisa de un vistazo qué línea conviene según ambiente, capacidad, nivel de inversión y
+            exigencia operativa.
+          </p>
+        </div>
+        <div class="section-inner lp-mini-compare">
+          {lowProfileLines.map((line) => (
+            <a href={lineHref(line.slug)}>
+              <strong>{line.shortName}</strong>
+              <span>{line.strength}</span>
+            </a>
+          ))}
+        </div>
+        <div class="section-inner lp-inline-cta">
+          <p>También puedes revisar la matriz completa para tomar una decisión más rápida.</p>
+          <button
+            class="button secondary"
+            type="button"
+            data-disclosure-trigger
+            data-target="comparador-matriz"
+            data-open-label="Ver comparador"
+            data-close-label="Ocultar comparador"
+            aria-controls="comparador-matriz"
+            aria-expanded="false"
+          >
+            Ver comparador
+          </button>
+        </div>
+        <div
+          class="section-inner lp-disclosure-panel lp-table-wrap"
+          id="comparador-matriz"
+          data-disclosure-panel
+          hidden
+          tabindex="0"
+          aria-label="Tabla comparativa de básculas de bajo perfil"
+        >
+          <table class="lp-comparison-table">
+            <thead>
+              <tr>
+                <th>Factor</th>
+                {lowProfileLines.map((line) => <th>{line.shortName}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {lowProfileComparisonRows.map((row) => (
+                <tr>
+                  <th>{row.label}</th>
+                  {lowProfileLines.map((line) => <td>{valueFor(line, row.key)}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </>
+  )}
+
+  {view === "product" && currentLine && (
+    <>
+      <section class="lp-hero lp-hero--product" aria-labelledby="lp-product-title">
+        <div class="lp-hero__inner">
+          <div class="lp-hero__content">
+            <p class="eyebrow">{currentLine.eyebrow}</p>
+            <h1 id="lp-product-title">{currentLine.headline}</h1>
+            <p class="lead">{currentLine.subheadline}</p>
+            <p>{currentLine.summary}</p>
+            <div class="button-row">
+              <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">
+                Cotizar {currentLine.shortName}
+              </a>
+              <a class="button secondary" href={quoteAnchor}>Solicitar asesoría</a>
+            </div>
+          </div>
+
+          <aside class="lp-product-panel" aria-label={`Resumen de ${currentLine.name}`}>
+            <SmartImage
+              name="Pexisa/PlataformasPiso"
+              alt={`${currentLine.name} para pesaje de piso`}
+              loading="eager"
+              decoding="async"
+            />
+            <dl>
+              <div>
+                <dt>Capacidades</dt>
+                <dd>{currentLine.capacities}</dd>
+              </div>
+              <div>
+                <dt>Ambiente</dt>
+                <dd>{currentLine.environment}</dd>
+              </div>
+              <div>
+                <dt>Material</dt>
+                <dd>{currentLine.material}</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <nav class="lp-line-nav" aria-label="Otras líneas de bajo perfil">
+        <a href={landingHref}>General</a>
+        {lowProfileLines.map((line) => (
+          <a class={line.slug === currentLine.slug ? "is-active" : ""} href={lineHref(line.slug)}>
+            {line.shortName}
+          </a>
+        ))}
+        <a href={comparatorHref}>Comparador</a>
+      </nav>
+
+      <section class="section lp-product-detail">
+        <div class="section-inner lp-product-grid">
+          <div>
+            <p class="eyebrow">Recomendada para</p>
+            <h2>{currentLine.name}</h2>
+            <p>
+              Esta línea funciona mejor cuando la operación coincide con estos escenarios de uso y
+              ambiente. Si tienes dudas entre dos líneas, revisamos tu caso antes de cotizar.
+            </p>
+            <div class="lp-chip-grid">
+              {currentLine.bestFor.map((item) => <span>{item}</span>)}
+            </div>
+          </div>
+          <div class="lp-spec-card">
+            <h3>Resumen técnico</h3>
+            <dl>
+              <div>
+                <dt>Plataforma</dt>
+                <dd>{currentLine.platform}</dd>
+              </div>
+              <div>
+                <dt>Fortaleza</dt>
+                <dd>{currentLine.strength}</dd>
+              </div>
+              <div>
+                <dt>Inversión</dt>
+                <dd>{currentLine.investment}</dd>
+              </div>
+              <div>
+                <dt>Respuesta</dt>
+                <dd>{currentLine.response}</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="section lp-included">
+        <div class="section-inner lp-three-column">
+          <div>
+            <p class="eyebrow">Qué incluye</p>
+            <h2>Configuración pensada para operar</h2>
+            <ul>
+              {currentLine.includes.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div>
+            <p class="eyebrow">Aplicaciones</p>
+            <h2>Casos de uso habituales</h2>
+            <ul>
+              {currentLine.applications.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div>
+            <p class="eyebrow">Evitar si</p>
+            <h2>Cuándo conviene otra línea</h2>
+            <ul>
+              {currentLine.notIdeal.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section lp-proof-section">
+        <div class="section-inner lp-proof-grid">
+          <div>
+            <p class="eyebrow">Por qué Astil</p>
+            <h2>No solo vendemos la plataforma: acompañamos la operación</h2>
+            <p>
+              Podemos apoyar con instalación, mantenimiento, reparación, calibración y revisión de
+              componentes para que el equipo siga siendo útil después de la compra.
+            </p>
+          </div>
+          <ul>
+            {currentLine.proofPoints.map((item) => <li>{item}</li>)}
+            <li>Atención por WhatsApp, llamada o formulario</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section lp-related">
+        <div class="section-inner lp-inline-cta">
+          <p>¿Quieres comparar esta línea contra las demás antes de decidir?</p>
+          <a class="button secondary" href={comparatorHref}>Comparar líneas</a>
+          <a class="button" href={guideHref}>Abrir guía</a>
+        </div>
+      </section>
+    </>
+  )}
+
+  {view === "comparator" && (
+    <>
+      <section class="lp-hero lp-hero--compact" aria-labelledby="lp-comparator-title">
+        <div class="lp-hero__inner">
+          <div class="lp-hero__content">
+            <p class="eyebrow">Comparador de líneas</p>
+            <h1 id="lp-comparator-title">Compara básculas de bajo perfil antes de cotizar</h1>
+            <p class="lead">
+              Revisa diferencias entre Base, Comercial, Industrial, Pro e Inoxidable para elegir
+              con más claridad según uso, ambiente, capacidad y nivel de control.
+            </p>
+            <div class="button-row">
+              <a class="button" href={quoteAnchor}>Solicitar recomendación</a>
+              <a class="button secondary" href={guideHref}>No sé cuál elegir</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section lp-comparator-section">
+        <div class="section-inner lp-table-wrap" tabindex="0" aria-label="Tabla comparativa de básculas de bajo perfil">
+          <table class="lp-comparison-table">
+            <thead>
+              <tr>
+                <th>Factor</th>
+                {lowProfileLines.map((line) => <th>{line.shortName}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {lowProfileComparisonRows.map((row) => (
+                <tr>
+                  <th>{row.label}</th>
+                  {lowProfileLines.map((line) => <td>{valueFor(line, row.key)}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section lp-lines lp-lines--recommendations">
+        <div class="section-inner lp-split-heading">
+          <div>
+            <p class="eyebrow">Recomendación rápida</p>
+            <h2>La mejor línea depende del riesgo operativo</h2>
+          </div>
+          <p>
+            Si el equipo trabaja poco, el costo pesa más. Si trabaja todos los días, conviene
+            priorizar resistencia, soporte y compatibilidad con el proceso.
+          </p>
+        </div>
+        <div class="section-inner lp-line-grid">
+          {lowProfileLines.map((line) => (
+            <article class="lp-line-card">
+              <span>{line.eyebrow}</span>
+              <h3>{line.shortName}</h3>
+              <p>{line.summary}</p>
+              <a href={lineHref(line.slug)}>Ver detalle</a>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
+  )}
+
+  {view === "guide" && (
+    <>
+      <section class="lp-hero lp-hero--compact" aria-labelledby="lp-guide-title">
+        <div class="lp-hero__inner">
+          <div class="lp-hero__content">
+            <p class="eyebrow">Guía de selección</p>
+            <h1 id="lp-guide-title">¿Qué báscula de bajo perfil necesito?</h1>
+            <p class="lead">
+              Responde mentalmente estas preguntas y ubica la línea que más se parece a tu
+              operación. Si hay duda, te asesoramos antes de comprar.
+            </p>
+            <div class="button-row">
+              <a class="button" href={quoteAnchor}>Pedir recomendación</a>
+              <a class="button secondary" href={comparatorHref}>Ver comparador</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section lp-guide-section">
+        <div class="section-inner lp-split-heading">
+          <div>
+            <p class="eyebrow">Rutas de decisión</p>
+            <h2>Elige el escenario que más se parece a tu operación</h2>
+          </div>
+          <p>
+            Esta guía no reemplaza una revisión técnica, pero ayuda a reducir opciones y llegar a
+            una cotización más precisa.
+          </p>
+        </div>
+        <div class="section-inner lp-decision-grid">
+          {lowProfileDecisionPaths.map((path) => (
+            <article>
+              <h3>{path.title}</h3>
+              <p>{path.text}</p>
+              <a href={withBase(path.href)}>{path.label}</a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section lp-selection">
+        <div class="section-inner lp-product-grid">
+          <div>
+            <p class="eyebrow">Checklist para cotizar</p>
+            <h2>Datos que aceleran una buena recomendación</h2>
+            <p>
+              No necesitas tener todo resuelto. Con estos puntos podemos orientar la selección y
+              detectar si requieres una configuración especial.
+            </p>
+          </div>
+          <ol class="lp-checklist">
+            {selectionFactors.map((factor) => <li>{factor}</li>)}
+            <li>Medidas aproximadas de la tarima o carga más grande</li>
+            <li>Ubicación de instalación y ciudad</li>
+          </ol>
+        </div>
+      </section>
+    </>
+  )}
+
+  <section class="section lp-contact-section" id="cotizar-bajo-perfil" aria-labelledby="lp-contact-title">
+    <div class="section-inner lp-contact-grid">
+      <div class="lp-contact-copy">
+        <p class="eyebrow">Cotización y asesoría</p>
+        <h2 id="lp-contact-title">Cuéntanos qué necesitas pesar</h2>
+        <p>{formIntro}</p>
+        <ul>
+          <li>Capacidad aproximada y dimensiones de carga</li>
+          <li>Uso diario, semanal o por turnos</li>
+          <li>Ambiente seco, húmedo, lavado o exterior techado</li>
+          <li>Si necesitas rampa, tickets, instalación o calibración</li>
+        </ul>
+        <div class="lp-direct-contact">
+          <a href={whatsappHref} target="_blank" rel="noreferrer">WhatsApp: {contact.whatsapp[0].label}</a>
+          <a href={contact.officePhoneHref}>Llamar: {contact.officePhone}</a>
+        </div>
+      </div>
+
+      <form
+        class="lp-contact-form"
+        data-low-profile-form
+        action="https://formspree.io/f/mojrzejq"
+        method="post"
+      >
+        <input type="hidden" name="_subject" value={contactSubject} />
+        <input type="hidden" name="origen" value={contactSubject} />
+        <input class="lp-form-honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+
+        <div class="lp-form-grid">
+          <label>
+            Nombre
+            <input type="text" name="nombre" autocomplete="name" required />
+          </label>
+          <label>
+            Empresa
+            <input type="text" name="empresa" autocomplete="organization" required />
+          </label>
+          <label>
+            Teléfono o WhatsApp
+            <input type="tel" name="telefono" autocomplete="tel" required />
+          </label>
+          <label>
+            Correo
+            <input type="email" name="email" autocomplete="email" />
+          </label>
+          <label>
+            Línea de interés
+            <select name="linea">
+              <option value="">No estoy seguro</option>
+              {lowProfileLines.map((line) => (
+                <option selected={currentLine?.slug === line.slug}>{line.name}</option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Ubicación
+            <input type="text" name="ubicacion" placeholder="Ciudad o zona de instalación" required />
+          </label>
+        </div>
+
+        <label>
+          Describe tu operación
+          <textarea
+            name="mensaje"
+            rows="5"
+            placeholder="Ejemplo: tarimas de 1.2 x 1.2 m, hasta 1.5 t, uso diario en almacén con patín hidráulico."
+            required
+          ></textarea>
+        </label>
+
+        <button class="button" type="submit">Enviar solicitud</button>
+        <p class="lp-form-status" data-low-profile-status aria-live="polite"></p>
+        <p class="lp-form-note">
+          También puedes escribir por WhatsApp si necesitas una respuesta rápida o si tienes fotos
+          del área donde se instalará la báscula.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <div class="lp-success-modal" data-low-profile-success hidden>
+    <div class="lp-success-modal__backdrop" data-low-profile-close></div>
+    <div
+      class="lp-success-modal__panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="lp-success-title"
+    >
+      <div class="lp-success-modal__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M20 6 9 17l-5-5" />
+        </svg>
+      </div>
+      <p class="lp-success-modal__eyebrow">Solicitud enviada</p>
+      <h2 id="lp-success-title">Gracias<span data-low-profile-name></span>.</h2>
+      <p>Recibimos tu información. Te contactaremos para revisar tu báscula de bajo perfil.</p>
+      <button class="lp-success-modal__button" type="button" data-low-profile-close>
+        Entendido
+      </button>
+    </div>
+  </div>
+
+  {view === "landing" && (
+    <>
+      <section class="section lp-custom-config" aria-labelledby="lp-custom-config-title">
+        <div class="section-inner lp-custom-config__grid">
+          <div class="lp-custom-config__copy">
+            <p class="eyebrow">Configuración especial</p>
+            <h2 id="lp-custom-config-title">¿Necesitas una configuración especial para tu báscula?</h2>
+            <p>
+              Nuestros equipos cuentan con configuraciones recomendadas para ofrecer un desempeño
+              óptimo, pero también podemos adaptar ciertas combinaciones según las necesidades de
+              tu operación.
+            </p>
+            <p>
+              Podemos ayudarte a elegir entre diferentes tipos de plataforma, materiales,
+              indicadores digitales de peso y configuraciones según el ambiente de trabajo,
+              capacidad requerida, frecuencia de uso y condiciones del área donde será instalada la
+              báscula.
+            </p>
+            <p class="lp-custom-config__close">
+              Si no estás seguro de qué configuración necesitas, podemos ayudarte a elegir la
+              opción más adecuada para tu proceso.
+            </p>
+            <div class="button-row">
+              <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">
+                Quiero contactar con un especialista
+              </a>
+              <a class="button secondary" href={quoteAnchor}>Solicitar recomendación técnica</a>
+            </div>
+          </div>
+
+          <aside class="lp-custom-config__card" aria-label="Opciones de configuración">
+            {specialConfigPoints.map((point, index) => (
+              <div>
+                <span aria-hidden="true">
+                  {
+                    index === 0 ? (
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M4 8h16v8H4z" />
+                        <path d="M7 16v3" />
+                        <path d="M17 16v3" />
+                      </svg>
+                    ) : index === 1 ? (
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <rect x="6" y="4" width="12" height="16" rx="2" />
+                        <path d="M9 8h6" />
+                        <path d="M9 12h2" />
+                        <path d="M13 12h2" />
+                        <path d="M9 16h6" />
+                      </svg>
+                    ) : index === 2 ? (
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 3v18" />
+                        <path d="M5 8h14" />
+                        <path d="M7 16h10" />
+                      </svg>
+                    ) : index === 3 ? (
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M4 6h16" />
+                        <path d="M7 6v12" />
+                        <path d="M17 6v12" />
+                        <path d="M4 18h16" />
+                      </svg>
+                    ) : (
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 3l7 4v5c0 4.5-2.8 7.8-7 9-4.2-1.2-7-4.5-7-9V7l7-4z" />
+                        <path d="M8.5 12.2l2.2 2.2 4.8-5" />
+                      </svg>
+                    )
+                  }
+                </span>
+                <strong>{point}</strong>
+              </div>
+            ))}
+          </aside>
+        </div>
+      </section>
+
+      <section class="section lp-faq-section">
+        <div class="section-inner lp-split-heading">
+          <div>
+            <p class="eyebrow">Preguntas frecuentes</p>
+            <h2>FAQ sobre básculas de bajo perfil</h2>
+          </div>
+          <p>Respuestas rápidas antes de cotizar una báscula de piso para tarimas.</p>
+        </div>
+        <div class="section-inner lp-faq-list">
+          {lowProfileFaqs.map((faq) => (
+            <details>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+    </>
+  )}
+</article>
+
+<script>
+  const forms = document.querySelectorAll("[data-low-profile-form]");
+  const modal = document.querySelector("[data-low-profile-success]");
+  const nameTarget = document.querySelector("[data-low-profile-name]");
+  const closeButtons = document.querySelectorAll("[data-low-profile-close]");
+
+  const openModal = (name: string) => {
+    if (!(modal instanceof HTMLElement)) return;
+    if (nameTarget instanceof HTMLElement) {
+      nameTarget.textContent = name ? `, ${name}` : "";
+    }
+    modal.hidden = false;
+    document.body.classList.add("modal-open");
+    modal.querySelector("button")?.focus();
+  };
+
+  const closeModal = () => {
+    if (!(modal instanceof HTMLElement)) return;
+    modal.hidden = true;
+    document.body.classList.remove("modal-open");
+  };
+
+  closeButtons.forEach((button) => button.addEventListener("click", closeModal));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeModal();
+  });
+
+  document.querySelectorAll("[data-disclosure-trigger]").forEach((trigger) => {
+    if (!(trigger instanceof HTMLButtonElement)) return;
+
+    trigger.addEventListener("click", () => {
+      const targetId = trigger.dataset.target;
+      if (!targetId) return;
+
+      const panel = document.getElementById(targetId);
+      if (!(panel instanceof HTMLElement)) return;
+
+      const willOpen = panel.hidden;
+      panel.hidden = !willOpen;
+      trigger.setAttribute("aria-expanded", String(willOpen));
+      trigger.textContent = willOpen
+        ? trigger.dataset.closeLabel || "Ocultar"
+        : trigger.dataset.openLabel || "Abrir";
+
+      if (willOpen) {
+        panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    });
+  });
+
+  forms.forEach((form) => {
+    if (!(form instanceof HTMLFormElement)) return;
+    const status = form.querySelector("[data-low-profile-status]");
+    const submitButton = form.querySelector("button[type='submit']");
+    const defaultButtonText = submitButton?.textContent ?? "Enviar solicitud";
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!(submitButton instanceof HTMLButtonElement) || !(status instanceof HTMLElement)) return;
+
+      status.textContent = "";
+      status.className = "lp-form-status";
+      submitButton.disabled = true;
+      submitButton.textContent = "Enviando...";
+
+      try {
+        const formData = new FormData(form);
+        const nombre = String(formData.get("nombre") ?? "").trim();
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json"
+          }
+        });
+
+        if (!response.ok) throw new Error("No se pudo enviar el formulario");
+
+        form.reset();
+        openModal(nombre);
+      } catch {
+        status.textContent =
+          "No pudimos enviar la solicitud. Intenta de nuevo o contáctanos por WhatsApp.";
+        status.classList.add("is-error");
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = defaultButtonText;
+      }
+    });
+  });
+</script>
+
+<style>
+  .lp-page {
+    background: #f4f7fb;
+  }
+
+  .lp-page .section {
+    padding-top: clamp(48px, 5.5vw, 82px);
+    padding-bottom: clamp(48px, 5.5vw, 82px);
+  }
+
+  .lp-hero {
+    padding: clamp(42px, 5.2vw, 74px) clamp(18px, 5vw, 72px);
+    background:
+      linear-gradient(115deg, rgba(8, 17, 28, 0.96), rgba(16, 32, 51, 0.92) 58%, rgba(26, 45, 66, 0.82)),
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 96px),
+      #101820;
+    color: #ffffff;
+  }
+
+  .lp-hero--product {
+    background:
+      radial-gradient(circle at 12% 18%, rgba(212, 33, 46, 0.22), transparent 28%),
+      linear-gradient(115deg, #08111c, #12243a 66%, #1a2d42);
+  }
+
+  .lp-hero--compact {
+    padding-bottom: clamp(60px, 8vw, 112px);
+  }
+
+  .lp-hero__inner,
+  .lp-product-grid,
+  .lp-proof-grid,
+  .lp-contact-grid,
+  .lp-app-grid,
+  .lp-split-heading,
+  .lp-three-column {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+    width: min(1180px, 100%);
+    margin: 0 auto;
+  }
+
+  .lp-hero__content > p:not(.eyebrow, .lead) {
+    max-width: 680px;
+    color: #c9d5e2;
+  }
+
+  .lp-hero h1 {
+    color: #ffffff;
+    max-width: 760px;
+    font-size: clamp(2.25rem, 4.15vw, 4.35rem);
+  }
+
+  .lp-hero .lead {
+    max-width: 640px;
+    color: #edf4fb;
+    font-size: clamp(1rem, 1.35vw, 1.18rem);
+  }
+
+  .lp-hero .button {
+    border-color: #2f7df6;
+    background: #2f7df6;
+    box-shadow: 0 14px 30px rgba(47, 125, 246, 0.24);
+  }
+
+  .lp-hero .button.secondary {
+    border-color: rgba(255, 255, 255, 0.34);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    box-shadow: none;
+  }
+
+  button.button {
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .lp-hero__proof {
+    display: grid;
+    gap: 9px;
+    max-width: 620px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .lp-hero__proof span {
+    position: relative;
+    padding-left: 22px;
+    color: #ffffff;
+    font-weight: 780;
+  }
+
+  .lp-hero__proof span::before,
+  .lp-contact-copy li::before,
+  .lp-three-column li::before,
+  .lp-proof-grid li::before,
+  .lp-checklist li::before {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: var(--red);
+  }
+
+  .lp-hero__proof span::before {
+    left: 0;
+    top: 8px;
+  }
+
+  .lp-hero__visual,
+  .lp-product-panel {
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.14), transparent 42%),
+      rgba(255, 255, 255, 0.07);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+  }
+
+  .lp-hero__visual {
+    display: grid;
+    align-self: center;
+    justify-self: end;
+    place-items: center;
+    width: min(760px, 100%);
+    aspect-ratio: 1.42;
+    min-height: 340px;
+    padding: clamp(14px, 2.2vw, 26px);
+  }
+
+  .lp-hero__visual :global(picture),
+  .lp-product-panel :global(picture) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .lp-hero__visual img,
+  .lp-product-panel img {
+    width: 100%;
+    height: 100%;
+    max-height: 430px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @media (min-width: 1041px) {
+    .lp-hero__inner {
+      width: min(1320px, 100%);
+      grid-template-columns: minmax(0, 0.78fr) minmax(520px, 0.95fr);
+      gap: clamp(34px, 4.5vw, 64px);
+      align-items: center;
+    }
+
+    .lp-hero__content > p:not(.eyebrow, .lead) {
+      max-width: 620px;
+      margin-bottom: 0.85rem;
+      font-size: 0.98rem;
+    }
+
+    .lp-hero .button-row {
+      margin-top: 18px;
+    }
+
+    .lp-hero__visual {
+      transform: translate(42px, -30px);
+    }
+  }
+
+  .lp-product-panel {
+    display: grid;
+    gap: 16px;
+    padding: clamp(18px, 3vw, 28px);
+  }
+
+  .lp-product-panel dl,
+  .lp-spec-card dl,
+  .lp-line-card dl {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+  }
+
+  .lp-product-panel dl {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lp-product-panel dt,
+  .lp-spec-card dt,
+  .lp-line-card dt {
+    color: #8fa0b4;
+    font-size: 0.76rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .lp-product-panel dd,
+  .lp-spec-card dd,
+  .lp-line-card dd {
+    margin: 3px 0 0;
+    color: #ffffff;
+    font-weight: 780;
+    line-height: 1.35;
+  }
+
+  .lp-line-nav {
+    position: sticky;
+    top: 72px;
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 12px clamp(18px, 5vw, 72px);
+    border-bottom: 1px solid rgba(174, 188, 204, 0.5);
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(14px);
+    white-space: nowrap;
+  }
+
+  .lp-line-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 8px 12px;
+    border: 1px solid rgba(67, 95, 120, 0.2);
+    border-radius: 999px;
+    background: #ffffff;
+    color: #334153;
+    font-size: 0.9rem;
+    font-weight: 850;
+    text-decoration: none;
+  }
+
+  .lp-line-nav a:hover,
+  .lp-line-nav .is-active {
+    border-color: rgba(212, 33, 46, 0.4);
+    color: var(--red);
+  }
+
+  .lp-lines,
+  .lp-contact-section,
+  .lp-related {
+    background: #ffffff;
+  }
+
+  .lp-applications,
+  .lp-selection,
+  .lp-faq-section,
+  .lp-comparator-section,
+  .lp-guide-section {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.36)),
+      repeating-linear-gradient(90deg, rgba(67, 95, 120, 0.07) 0 1px, transparent 1px 96px),
+      #eef3f8;
+  }
+
+  .lp-included,
+  .lp-proof-section,
+  .lp-product-detail {
+    background: #f7f9fc;
+  }
+
+  .lp-custom-config {
+    background:
+      linear-gradient(135deg, rgba(212, 33, 46, 0.16), transparent 38%),
+      linear-gradient(135deg, #101820, #1a2d42);
+    color: #ffffff;
+  }
+
+  .lp-split-heading {
+    margin-bottom: 30px;
+    align-items: end;
+  }
+
+  .lp-split-heading h2,
+  .lp-app-grid h2,
+  .lp-product-grid h2,
+  .lp-proof-grid h2,
+  .lp-contact-copy h2 {
+    margin-bottom: 0;
+    color: var(--ink);
+    font-size: clamp(2rem, 4vw, 3.7rem);
+  }
+
+  .lp-split-heading > p,
+  .lp-app-grid p,
+  .lp-product-grid p,
+  .lp-proof-grid p,
+  .lp-contact-copy p {
+    color: var(--muted);
+  }
+
+  .lp-lines .lp-split-heading {
+    align-items: center;
+    padding: clamp(20px, 3vw, 28px);
+    border: 1px solid rgba(174, 188, 204, 0.56);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.08), transparent 36%),
+      #f8fafc;
+  }
+
+  .lp-lines .lp-split-heading h2 {
+    max-width: 680px;
+    font-size: clamp(2rem, 4vw, 3.9rem);
+  }
+
+  .lp-line-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .lp-line-card,
+  .lp-factor-grid article,
+  .lp-spec-card,
+  .lp-decision-grid article {
+    border: 1px solid rgba(174, 188, 204, 0.58);
+    border-radius: 8px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98)),
+      #ffffff;
+    box-shadow: 0 14px 32px rgba(8, 17, 28, 0.06);
+  }
+
+  .lp-line-card {
+    position: relative;
+    display: grid;
+    grid-column: span 2;
+    gap: 12px;
+    align-content: start;
+    min-height: 280px;
+    padding: 22px;
+    overflow: hidden;
+  }
+
+  .lp-line-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 4px;
+    background: linear-gradient(90deg, var(--red), var(--steel), var(--blue-dark));
+  }
+
+  .lp-line-card:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+
+  .lp-line-card:nth-child(5) {
+    grid-column: 4 / span 2;
+  }
+
+  .lp-line-card > span {
+    color: var(--red);
+    font-size: 0.74rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .lp-line-card h3 {
+    margin: 0;
+    font-size: clamp(1.18rem, 1.5vw, 1.42rem);
+    line-height: 1.08;
+  }
+
+  .lp-line-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.96rem;
+  }
+
+  .lp-line-card dd {
+    color: #334153;
+    font-size: 0.9rem;
+  }
+
+  .lp-line-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 2px;
+  }
+
+  .lp-line-card__tags small {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 6px 9px;
+    border: 1px solid rgba(67, 95, 120, 0.18);
+    border-radius: 999px;
+    background: #eef4ff;
+    color: var(--blue-dark);
+    font-size: 0.78rem;
+    font-weight: 850;
+  }
+
+  .lp-line-card a,
+  .lp-decision-grid a,
+  .lp-mini-compare a {
+    color: var(--blue-dark);
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .lp-line-card a:hover,
+  .lp-decision-grid a:hover {
+    color: var(--red);
+  }
+
+  .lp-chip-grid,
+  .lp-mini-compare {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .lp-chip-grid span,
+  .lp-mini-compare a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 8px 12px;
+    border: 1px solid rgba(67, 95, 120, 0.2);
+    border-radius: 999px;
+    background: #ffffff;
+    color: #334153;
+    font-size: 0.92rem;
+    font-weight: 850;
+  }
+
+  .lp-factor-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .lp-factor-grid article {
+    padding: 20px;
+  }
+
+  .lp-factor-grid span {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 32px;
+    margin-bottom: 18px;
+    border-radius: 999px;
+    background: #eef4ff;
+    color: var(--blue-dark);
+    font-weight: 900;
+  }
+
+  .lp-factor-grid h3 {
+    margin: 0;
+    font-size: 1.02rem;
+  }
+
+  .lp-inline-cta {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 22px;
+    padding: 22px;
+    border: 1px solid rgba(174, 188, 204, 0.6);
+    border-radius: 8px;
+    background: #f8fafc;
+  }
+
+  .lp-disclosure-panel {
+    margin-top: 16px;
+    padding: clamp(18px, 3vw, 26px);
+    border: 1px solid rgba(174, 188, 204, 0.64);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 18px 42px rgba(8, 17, 28, 0.08);
+  }
+
+  .lp-disclosure-panel[hidden] {
+    display: none;
+  }
+
+  .lp-disclosure-heading {
+    max-width: 780px;
+    margin-bottom: 20px;
+  }
+
+  .lp-disclosure-heading h3 {
+    margin-bottom: 8px;
+    font-size: clamp(1.45rem, 2.4vw, 2.25rem);
+  }
+
+  .lp-disclosure-heading p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .lp-inline-cta p {
+    max-width: 720px;
+    margin: 0;
+    color: var(--muted);
+    font-weight: 780;
+  }
+
+  .lp-mini-compare {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .lp-mini-compare a {
+    align-items: flex-start;
+    flex-direction: column;
+    min-height: 108px;
+    border-radius: 8px;
+  }
+
+  .lp-mini-compare strong {
+    color: var(--ink);
+    font-size: 1.08rem;
+  }
+
+  .lp-mini-compare span {
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .lp-spec-card {
+    padding: clamp(22px, 3vw, 30px);
+  }
+
+  .lp-spec-card h3 {
+    margin-bottom: 18px;
+    font-size: 1.35rem;
+  }
+
+  .lp-spec-card dt {
+    color: var(--red);
+  }
+
+  .lp-spec-card dd {
+    color: #334153;
+  }
+
+  .lp-three-column {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .lp-three-column > div {
+    min-height: 100%;
+    padding: 24px;
+    border: 1px solid rgba(174, 188, 204, 0.58);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 14px 32px rgba(8, 17, 28, 0.06);
+  }
+
+  .lp-three-column h2 {
+    font-size: clamp(1.45rem, 2vw, 2rem);
+  }
+
+  .lp-three-column ul,
+  .lp-proof-grid ul,
+  .lp-contact-copy ul,
+  .lp-checklist {
+    display: grid;
+    gap: 10px;
+    margin: 18px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .lp-three-column li,
+  .lp-proof-grid li,
+  .lp-contact-copy li,
+  .lp-checklist li {
+    position: relative;
+    padding-left: 28px;
+    color: #334153;
+    font-weight: 760;
+  }
+
+  .lp-three-column li::before,
+  .lp-proof-grid li::before,
+  .lp-contact-copy li::before,
+  .lp-checklist li::before {
+    left: 0;
+    top: 8px;
+  }
+
+  .lp-proof-grid {
+    align-items: center;
+  }
+
+  .lp-proof-grid ul {
+    margin: 0;
+    padding: 24px;
+    border: 1px solid rgba(174, 188, 204, 0.58);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 14px 32px rgba(8, 17, 28, 0.06);
+  }
+
+  .lp-table-wrap {
+    overflow-x: auto;
+    border: 1px solid rgba(174, 188, 204, 0.66);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 18px 42px rgba(8, 17, 28, 0.08);
+  }
+
+  .lp-disclosure-panel.lp-table-wrap {
+    padding: 0;
+  }
+
+  .lp-comparison-table {
+    width: 100%;
+    min-width: 980px;
+    border-collapse: collapse;
+  }
+
+  .lp-comparison-table th,
+  .lp-comparison-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(174, 188, 204, 0.44);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .lp-comparison-table thead th {
+    background: #101820;
+    color: #ffffff;
+  }
+
+  .lp-comparison-table tbody th {
+    width: 170px;
+    color: var(--ink);
+    font-weight: 900;
+  }
+
+  .lp-comparison-table td {
+    color: #405063;
+    font-size: 0.94rem;
+  }
+
+  .lp-decision-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .lp-decision-grid article {
+    display: grid;
+    align-content: start;
+    gap: 12px;
+    padding: 22px;
+  }
+
+  .lp-decision-grid h3,
+  .lp-decision-grid p {
+    margin: 0;
+  }
+
+  .lp-decision-grid p {
+    color: var(--muted);
+  }
+
+  .lp-contact-grid {
+    align-items: start;
+  }
+
+  .lp-contact-copy {
+    position: sticky;
+    top: 120px;
+  }
+
+  .lp-direct-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .lp-direct-contact a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 9px 12px;
+    border-radius: 999px;
+    background: #eef4ff;
+    color: var(--blue-dark);
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .lp-contact-form {
+    display: grid;
+    gap: 18px;
+    padding: clamp(22px, 3vw, 30px);
+    border: 1px solid rgba(174, 188, 204, 0.64);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 18px 42px rgba(8, 17, 28, 0.08);
+  }
+
+  .lp-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .lp-contact-form label {
+    display: grid;
+    gap: 8px;
+    color: #26374d;
+    font-size: 0.92rem;
+    font-weight: 900;
+  }
+
+  .lp-contact-form input,
+  .lp-contact-form select,
+  .lp-contact-form textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid rgba(119, 139, 160, 0.46);
+    border-radius: 8px;
+    background: #f8fafc;
+    color: var(--ink);
+    font: inherit;
+    font-weight: 650;
+    outline: none;
+  }
+
+  .lp-contact-form textarea {
+    min-height: 132px;
+    resize: vertical;
+  }
+
+  .lp-contact-form input:focus,
+  .lp-contact-form select:focus,
+  .lp-contact-form textarea:focus {
+    border-color: #2f7df6;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(47, 125, 246, 0.12);
+  }
+
+  .lp-contact-form .button {
+    justify-self: start;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .lp-contact-form button:disabled {
+    cursor: wait;
+    opacity: 0.72;
+  }
+
+  .lp-form-status {
+    display: none;
+    margin: 0;
+    padding: 11px 13px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .lp-form-status.is-error {
+    display: block;
+    border: 1px solid #efd0d4;
+    background: #fff7f7;
+    color: var(--red-dark);
+  }
+
+  .lp-form-note {
+    max-width: 680px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.94rem;
+  }
+
+  .lp-form-honeypot {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .lp-success-modal[hidden] {
+    display: none;
+  }
+
+  :global(body.modal-open) {
+    overflow: hidden;
+  }
+
+  .lp-success-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: grid;
+    place-items: center;
+    padding: 18px;
+  }
+
+  .lp-success-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 17, 28, 0.68);
+    backdrop-filter: blur(8px);
+  }
+
+  .lp-success-modal__panel {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    width: min(430px, 100%);
+    padding: 30px;
+    border: 1px solid rgba(215, 222, 232, 0.9);
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--ink);
+    text-align: center;
+    box-shadow: 0 28px 80px rgba(8, 17, 28, 0.28);
+  }
+
+  .lp-success-modal__icon {
+    display: grid;
+    place-items: center;
+    width: 68px;
+    height: 68px;
+    margin-bottom: 16px;
+    border-radius: 999px;
+    background: #e8f5f1;
+    color: #137462;
+  }
+
+  .lp-success-modal__icon svg {
+    width: 34px;
+    height: 34px;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2.5;
+  }
+
+  .lp-success-modal__eyebrow {
+    margin-bottom: 8px;
+    color: var(--red);
+    font-size: 0.74rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .lp-success-modal h2 {
+    margin-bottom: 10px;
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+  }
+
+  .lp-success-modal__panel > p:last-of-type {
+    max-width: 330px;
+    margin-bottom: 20px;
+    color: var(--muted);
+    font-size: 0.98rem;
+  }
+
+  .lp-success-modal__button {
+    min-height: 42px;
+    padding: 10px 18px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--ink);
+    color: #ffffff;
+    font: inherit;
+    font-weight: 850;
+    cursor: pointer;
+  }
+
+  .lp-success-modal__button:hover {
+    background: var(--red);
+  }
+
+  .lp-faq-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .lp-faq-list details {
+    border: 1px solid rgba(174, 188, 204, 0.64);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 10px 24px rgba(8, 17, 28, 0.05);
+  }
+
+  .lp-faq-list summary {
+    cursor: pointer;
+    padding: 18px 20px;
+    color: var(--ink);
+    font-weight: 900;
+  }
+
+  .lp-faq-list p {
+    margin: 0;
+    padding: 0 20px 20px;
+    color: var(--muted);
+  }
+
+  .lp-custom-config__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.72fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+  }
+
+  .lp-custom-config__copy h2 {
+    max-width: 760px;
+    color: #ffffff;
+    font-size: clamp(2rem, 4vw, 3.8rem);
+  }
+
+  .lp-custom-config__copy p {
+    max-width: 760px;
+    color: #dfe6ed;
+  }
+
+  .lp-custom-config__copy .eyebrow {
+    color: #ffffff;
+  }
+
+  .lp-custom-config__close {
+    font-weight: 820;
+  }
+
+  .lp-custom-config .button {
+    border-color: #2f7df6;
+    background: #2f7df6;
+    color: #ffffff;
+    box-shadow: 0 14px 30px rgba(47, 125, 246, 0.22);
+  }
+
+  .lp-custom-config .button.secondary {
+    border-color: rgba(255, 255, 255, 0.34);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    box-shadow: none;
+  }
+
+  .lp-custom-config__card {
+    display: grid;
+    gap: 12px;
+    padding: clamp(20px, 3vw, 28px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.16), transparent 42%),
+      rgba(255, 255, 255, 0.07);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+  }
+
+  .lp-custom-config__card div {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 12px;
+    align-items: center;
+    padding: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .lp-custom-config__card span {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--blue-dark);
+  }
+
+  .lp-custom-config__card svg {
+    width: 21px;
+    height: 21px;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.9;
+  }
+
+  .lp-custom-config__card strong {
+    color: #ffffff;
+    line-height: 1.25;
+  }
+
+  @media (max-width: 1120px) {
+    .lp-line-grid,
+    .lp-factor-grid,
+    .lp-mini-compare,
+    .lp-decision-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .lp-line-card,
+    .lp-line-card:nth-child(4),
+    .lp-line-card:nth-child(5) {
+      grid-column: auto;
+    }
+
+    .lp-hero__inner,
+    .lp-product-grid,
+    .lp-proof-grid,
+    .lp-contact-grid,
+    .lp-app-grid,
+    .lp-split-heading,
+    .lp-three-column,
+    .lp-custom-config__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .lp-contact-copy {
+      position: static;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .lp-line-nav {
+      position: static;
+    }
+
+    .lp-hero {
+      padding-top: 46px;
+    }
+
+    .lp-hero h1 {
+      font-size: 2.08rem;
+    }
+
+    .lp-hero__visual {
+      min-height: 260px;
+    }
+
+    .lp-product-panel dl,
+    .lp-line-grid,
+    .lp-factor-grid,
+    .lp-form-grid,
+    .lp-mini-compare,
+    .lp-decision-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .lp-inline-cta {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>
