@@ -212,10 +212,14 @@ const heroImage = existsSync(join(publicDir, "hero.webp")) ? "hero.webp" : "hero
   @media (max-width: 640px) {
     .hero {
       min-height: auto;
+      max-height: none;
     }
 
     .hero__overlay {
-      padding-top: 46px;
+      row-gap: 28px;
+      max-height: none;
+      padding-top: 38px;
+      padding-bottom: 30px;
     }
 
     .hero-highlights {
