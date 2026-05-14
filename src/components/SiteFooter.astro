@@ -129,13 +129,33 @@ const { contactHref = `${base}#contacto` } = Astro.props;
     min-width: 0;
   }
 
-  .footer-brand :global(picture),
-  .footer-brand :global(img) {
-    display: block;
-    width: min(270px, 100%);
+  .footer-brand {
+    display: grid;
+    align-content: start;
+    justify-items: start;
   }
 
-  .footer-brand :global(img) {
+  .footer-brand picture {
+    display: block;
+    width: min(300px, 100%);
+    margin-bottom: 18px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  .footer-brand picture img,
+  .footer-brand > img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+
+  .footer-brand > img {
+    width: min(300px, 100%);
     margin-bottom: 18px;
     padding: 10px 12px;
     border-radius: 8px;
