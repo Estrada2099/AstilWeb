@@ -1,0 +1,68 @@
+---
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+interface Props {
+  name: string;
+  alt: string;
+  fallbackExt?: string;
+  loading?: "eager" | "lazy";
+  decoding?: "async" | "sync" | "auto";
+  class?: string;
+  pictureClass?: string;
+  width?: number | string;
+  height?: number | string;
+}
+
+const {
+  name,
+  alt,
+  fallbackExt = "png",
+  loading = "lazy",
+  decoding = "async",
+  class: className,
+  pictureClass,
+  ...attrs
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
+const publicDir = fileURLToPath(new URL("../../public/", import.meta.url));
+const normalizedName = name
+  .replace(/^\/+/, "")
+  .replace(/\.(avif|webp|png|jpe?g)$/i, "");
+const cleanFallbackExt = fallbackExt.replace(/^\./, "");
+const webpPath = `${normalizedName}.webp`;
+const fallbackPath = `${normalizedName}.${cleanFallbackExt}`;
+const hasWebp = existsSync(join(publicDir, webpPath));
+const hasFallback = existsSync(join(publicDir, fallbackPath));
+const imgPath = hasFallback ? fallbackPath : hasWebp ? webpPath : fallbackPath;
+---
+
+{
+  hasWebp && hasFallback ? (
+    <picture class={pictureClass}>
+      <source srcset={withBase(webpPath)} type="image/webp" />
+      <img
+        src={withBase(imgPath)}
+        alt={alt}
+        loading={loading}
+        decoding={decoding}
+        class={className}
+        {...attrs}
+      />
+    </picture>
+  ) : (
+    <img
+      src={withBase(imgPath)}
+      alt={alt}
+      loading={loading}
+      decoding={decoding}
+      class={className}
+      {...attrs}
+    />
+  )
+}

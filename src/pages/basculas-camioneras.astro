@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import SmartImage from "../components/SmartImage.astro";
 import { contact } from "../data/site";
 
 const base = import.meta.env.BASE_URL.endsWith("/")
@@ -11,6 +12,7 @@ const whatsappMessage = encodeURIComponent(
   "Hola, necesito servicio para una báscula camionera. Quiero solicitar diagnóstico y puedo compartir ubicación, falla y capacidad del equipo."
 );
 const whatsappHref = `${contact.whatsapp[0].href}?text=${whatsappMessage}`;
+const landingFormHref = "#formulario-camioneras";
 
 const seo = {
   title: "Básculas Camioneras | Servicio, Reparación y Calibración | Astil Básculas",
@@ -150,7 +152,7 @@ const internalLinks = [
   { label: "Calibración de básculas", href: withBase("/servicios/calibracion/") },
   { label: "Servicios", href: homeAnchor("servicios") },
   { label: "Software a la medida", href: withBase("/productos/software-a-la-medida/") },
-  { label: "Contacto", href: homeAnchor("contacto") }
+  { label: "Contacto", href: landingFormHref }
 ];
 
 const faqs = [
@@ -268,6 +270,7 @@ const breadcrumbSchema = {
   description={seo.description}
   keywords={seo.keywords}
   canonical="/basculas-camioneras/"
+  footerContactHref={landingFormHref}
 >
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
@@ -292,7 +295,7 @@ const breadcrumbSchema = {
             entradas y salidas.
           </p>
           <div class="button-row">
-            <a class="button" href={homeAnchor("contacto")}>Solicitar diagnóstico</a>
+            <a class="button" href={landingFormHref}>Solicitar diagnóstico</a>
             <a class="button secondary" href={whatsappHref} target="_blank" rel="noreferrer">
               Hablar por WhatsApp
             </a>
@@ -306,8 +309,8 @@ const breadcrumbSchema = {
           class="truck-hero__visual"
           aria-label="Báscula camionera industrial para pesaje de camiones en planta de operación"
         >
-          <img
-            src={withBase("/hero-camionera.png")}
+          <SmartImage
+            name="hero-camionera"
             alt="Báscula camionera industrial para pesaje de camiones en planta de operación"
             loading="eager"
             decoding="async"
@@ -377,7 +380,7 @@ const breadcrumbSchema = {
 
       <div class="section-inner service-cta">
         <p>Respuesta para empresas con operación de pesaje. Revisamos tu caso antes de recomendar una solución.</p>
-        <a class="button" href={homeAnchor("contacto")}>Agendar revisión en sitio</a>
+        <a class="button" href={landingFormHref}>Agendar revisión en sitio</a>
       </div>
     </section>
 
@@ -459,7 +462,7 @@ const breadcrumbSchema = {
             generar tickets y consultar reportes para una administración más clara del pesaje.
           </p>
           <div class="button-row">
-            <a class="button" href={homeAnchor("contacto")}>Conocer software camionero</a>
+            <a class="button" href={landingFormHref}>Conocer software camionero</a>
             <a class="button secondary" href={whatsappHref} target="_blank" rel="noreferrer">
               Hablar por WhatsApp
             </a>
@@ -470,18 +473,12 @@ const breadcrumbSchema = {
           class="software-mockup"
           aria-label="Software camionero para registro de entradas, salidas y reportes de báscula camionera"
         >
-          <!-- Futuro: reemplazar este mockup por captura real del software camionero cuando esté disponible. -->
-          <div class="mockup-top">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="mockup-body">
-            <strong>Panel de pesajes</strong>
-            <div class="mockup-row"><span>Entrada</span><b>38,420 kg</b></div>
-            <div class="mockup-row"><span>Salida</span><b>12,180 kg</b></div>
-            <div class="mockup-row"><span>Ticket</span><b>Generado</b></div>
-          </div>
+          <SmartImage
+            name="software-camionero"
+            alt="Software camionero para registro de entradas, salidas y reportes de báscula camionera"
+            loading="lazy"
+            decoding="async"
+          />
         </aside>
       </div>
 
@@ -580,7 +577,7 @@ const breadcrumbSchema = {
             <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">
               Solicitar diagnóstico por WhatsApp
             </a>
-            <a class="button secondary" href={homeAnchor("contacto")}>
+            <a class="button secondary" href={landingFormHref}>
               Cotizar servicio para báscula camionera
             </a>
           </div>
@@ -597,6 +594,120 @@ const breadcrumbSchema = {
         </aside>
       </div>
     </section>
+
+    <section
+      class="section truck-contact-section"
+      id="formulario-camioneras"
+      aria-labelledby="truck-contact-title"
+    >
+      <div class="section-inner truck-contact-grid">
+        <div class="truck-contact-copy">
+          <p class="eyebrow">Formulario especializado</p>
+          <h2 id="truck-contact-title">Cuéntanos qué necesita tu báscula camionera</h2>
+          <p>
+            Este formulario llega con el contexto de la landing de básculas camioneras para que
+            podamos revisar tu caso con mayor precisión desde el primer contacto.
+          </p>
+          <ul>
+            <li>Diagnóstico, reparación, mantenimiento o calibración</li>
+            <li>Refacciones, instalación de componentes o revisión técnica</li>
+            <li>Software camionero para control de entradas y salidas</li>
+          </ul>
+        </div>
+
+        <form
+          class="truck-contact-form"
+          data-contact-form
+          action="https://formspree.io/f/mojrzejq"
+          method="post"
+        >
+          <input type="hidden" name="_subject" value="Solicitud desde landing de básculas camioneras" />
+          <input type="hidden" name="origen" value="Landing Básculas Camioneras" />
+          <input class="form-honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+
+          <div class="form-grid">
+            <label>
+              Nombre
+              <input type="text" name="nombre" autocomplete="name" required />
+            </label>
+            <label>
+              Empresa
+              <input type="text" name="empresa" autocomplete="organization" required />
+            </label>
+            <label>
+              Teléfono o WhatsApp
+              <input type="tel" name="telefono" autocomplete="tel" required />
+            </label>
+            <label>
+              Correo
+              <input type="email" name="email" autocomplete="email" />
+            </label>
+            <label>
+              Ubicación de la báscula
+              <input
+                type="text"
+                name="ubicacion"
+                placeholder="CDMX, Estado de México, Querétaro..."
+                required
+              />
+            </label>
+            <label>
+              Servicio de interés
+              <select name="servicio" required>
+                <option value="">Selecciona una opción</option>
+                <option>Diagnóstico técnico</option>
+                <option>Reparación</option>
+                <option>Mantenimiento</option>
+                <option>Calibración</option>
+                <option>Inspección u holograma PROFECO</option>
+                <option>Refacciones</option>
+                <option>Software camionero</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Describe la falla, capacidad del equipo o necesidad operativa
+            <textarea
+              name="mensaje"
+              rows="5"
+              placeholder="Ejemplo: báscula camionera de 80 t con lecturas inestables en patio de carga."
+              required
+            ></textarea>
+          </label>
+
+          <button class="button" type="submit">Enviar solicitud</button>
+          <p class="form-status" data-form-status aria-live="polite"></p>
+          <p class="form-note">
+            Respuesta orientada a empresas con operación de pesaje. También puedes escribirnos por
+            WhatsApp si tu caso requiere atención inmediata.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <div class="success-modal" data-success-modal hidden>
+      <div class="success-modal__backdrop" data-success-close></div>
+      <div
+        class="success-modal__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="truck-success-modal-title"
+      >
+        <div class="success-modal__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </div>
+        <p class="success-modal__eyebrow">Solicitud enviada</p>
+        <h2 id="truck-success-modal-title">Gracias<span data-success-name></span>.</h2>
+        <p>
+          Recibimos tu información. Te contactaremos lo antes posible para revisar tu báscula
+          camionera.
+        </p>
+        <button class="success-modal__button" type="button" data-success-close>Entendido</button>
+      </div>
+    </div>
 
     <section class="section faq-section">
       <div class="section-inner split-heading">
@@ -619,11 +730,90 @@ const breadcrumbSchema = {
       </div>
     </section>
   </article>
+<script>
+  const form = document.querySelector("[data-contact-form]");
+  const status = document.querySelector("[data-form-status]");
+  const successModal = document.querySelector("[data-success-modal]");
+  const successName = document.querySelector("[data-success-name]");
+  const successCloseButtons = document.querySelectorAll("[data-success-close]");
+
+  if (form instanceof HTMLFormElement && status instanceof HTMLElement) {
+    const submitButton = form.querySelector('button[type="submit"]');
+    const defaultButtonText = submitButton?.textContent ?? "Enviar solicitud";
+    const openSuccessModal = (nombre) => {
+      if (!(successModal instanceof HTMLElement)) return;
+
+      if (successName instanceof HTMLElement) {
+        successName.textContent = nombre ? `, ${nombre}` : "";
+      }
+
+      successModal.hidden = false;
+      document.body.classList.add("modal-open");
+      successModal.querySelector("button")?.focus();
+    };
+
+    const closeSuccessModal = () => {
+      if (!(successModal instanceof HTMLElement)) return;
+      successModal.hidden = true;
+      document.body.classList.remove("modal-open");
+    };
+
+    successCloseButtons.forEach((button) => {
+      button.addEventListener("click", closeSuccessModal);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeSuccessModal();
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!(submitButton instanceof HTMLButtonElement)) return;
+
+      status.textContent = "";
+      status.className = "form-status";
+      submitButton.disabled = true;
+      submitButton.textContent = "Enviando...";
+
+      try {
+        const formData = new FormData(form);
+        const nombre = String(formData.get("nombre") ?? "").trim();
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json"
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error("No se pudo enviar el formulario");
+        }
+
+        form.reset();
+        openSuccessModal(nombre);
+      } catch {
+        status.textContent =
+          "No pudimos enviar la solicitud. Intenta de nuevo o contáctanos por WhatsApp.";
+        status.classList.add("is-error");
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = defaultButtonText;
+      }
+    });
+  }
+</script>
 </BaseLayout>
 
 <style>
   .truck-page {
     background: #f4f7fb;
+  }
+
+  .truck-page .section {
+    padding-top: clamp(46px, 5.2vw, 76px);
+    padding-bottom: clamp(46px, 5.2vw, 76px);
   }
 
   .truck-hero {
@@ -733,15 +923,44 @@ const breadcrumbSchema = {
     filter: saturate(0.96) contrast(1.04);
   }
 
+  .truck-hero__visual :global(picture),
+  .software-mockup :global(picture) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
   .truck-services,
   .sectors-section,
   .internal-links-section {
     background: #ffffff;
   }
 
+  .coverage-section {
+    padding-bottom: clamp(42px, 4vw, 58px);
+  }
+
+  .why-section {
+    padding-top: clamp(44px, 5vw, 66px);
+  }
+
+  .sectors-section {
+    padding-top: clamp(44px, 5vw, 66px);
+    padding-bottom: clamp(34px, 4vw, 54px);
+  }
+
+  .internal-links-section {
+    padding-top: clamp(28px, 3.5vw, 44px);
+    padding-bottom: clamp(44px, 5vw, 64px);
+  }
+
   .split-heading,
   .section-heading {
     margin-bottom: 32px;
+  }
+
+  .sectors-section .section-heading {
+    margin-bottom: 24px;
   }
 
   .split-heading h2,
@@ -1036,6 +1255,12 @@ const breadcrumbSchema = {
     color: #dfe6ed;
   }
 
+  .software-grid {
+    grid-template-columns: minmax(0, 0.95fr) minmax(560px, 1fr);
+    align-items: center;
+    gap: clamp(44px, 5vw, 72px);
+  }
+
   .software-section .button {
     border-color: #ffffff;
     background: #ffffff;
@@ -1050,45 +1275,12 @@ const breadcrumbSchema = {
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
   }
 
-  .mockup-top {
-    display: flex;
-    gap: 8px;
-    padding: 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  }
-
-  .mockup-top span {
-    width: 11px;
-    height: 11px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.45);
-  }
-
-  .mockup-body {
-    display: grid;
-    gap: 12px;
-    padding: 22px;
-  }
-
-  .mockup-body strong {
-    margin-bottom: 8px;
-    color: #ffffff;
-    font-size: 1.2rem;
-  }
-
-  .mockup-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.08);
-    color: #dfe6ed;
-  }
-
-  .mockup-row b {
-    color: #ffffff;
+  .software-mockup img {
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    object-fit: cover;
+    object-position: center;
   }
 
   .software-feature-grid {
@@ -1247,6 +1439,268 @@ const breadcrumbSchema = {
     color: var(--red);
   }
 
+  .truck-contact-section {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.9)),
+      repeating-linear-gradient(90deg, rgba(67, 95, 120, 0.06) 0 1px, transparent 1px 96px),
+      #f4f7fb;
+  }
+
+  .truck-contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(420px, 1fr);
+    gap: clamp(28px, 5vw, 58px);
+    align-items: start;
+  }
+
+  .truck-contact-copy {
+    position: sticky;
+    top: 96px;
+  }
+
+  .truck-contact-copy h2 {
+    max-width: 640px;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+  }
+
+  .truck-contact-copy p {
+    max-width: 620px;
+    color: var(--muted);
+  }
+
+  .truck-contact-copy ul {
+    display: grid;
+    gap: 10px;
+    margin: 26px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .truck-contact-copy li {
+    position: relative;
+    padding: 13px 14px 13px 38px;
+    border: 1px solid rgba(174, 188, 204, 0.6);
+    border-radius: 8px;
+    background: #ffffff;
+    color: #334153;
+    font-weight: 800;
+    box-shadow: 0 10px 24px rgba(8, 17, 28, 0.045);
+  }
+
+  .truck-contact-copy li::before {
+    content: "";
+    position: absolute;
+    top: 19px;
+    left: 16px;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--red);
+  }
+
+  .truck-contact-form {
+    display: grid;
+    gap: 18px;
+    padding: clamp(22px, 3vw, 30px);
+    border: 1px solid rgba(174, 188, 204, 0.64);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 18px 42px rgba(8, 17, 28, 0.08);
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .truck-contact-form label {
+    display: grid;
+    gap: 8px;
+    color: #26374d;
+    font-size: 0.92rem;
+    font-weight: 900;
+  }
+
+  .truck-contact-form input,
+  .truck-contact-form select,
+  .truck-contact-form textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid rgba(119, 139, 160, 0.46);
+    border-radius: 8px;
+    background: #f8fafc;
+    color: var(--ink);
+    font: inherit;
+    font-weight: 650;
+    outline: none;
+    transition:
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      background 180ms ease;
+  }
+
+  .truck-contact-form textarea {
+    min-height: 132px;
+    resize: vertical;
+  }
+
+  .truck-contact-form input:focus,
+  .truck-contact-form select:focus,
+  .truck-contact-form textarea:focus {
+    border-color: #2f7df6;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(47, 125, 246, 0.12);
+  }
+
+  .truck-contact-form .button {
+    justify-self: start;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .truck-contact-form button:disabled {
+    cursor: wait;
+    opacity: 0.72;
+  }
+
+  .form-status {
+    display: none;
+    margin: 0;
+    padding: 11px 13px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .form-status.is-success,
+  .form-status.is-error {
+    display: block;
+  }
+
+  .form-status.is-success {
+    border: 1px solid #cddfd9;
+    background: #f3faf7;
+    color: #155c4c;
+  }
+
+  .form-status.is-error {
+    border: 1px solid #efd0d4;
+    background: #fff7f7;
+    color: var(--red-dark);
+  }
+
+  .form-note {
+    max-width: 680px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.94rem;
+  }
+
+  .form-honeypot {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .success-modal[hidden] {
+    display: none;
+  }
+
+  :global(body.modal-open) {
+    overflow: hidden;
+  }
+
+  .success-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: grid;
+    place-items: center;
+    padding: 18px;
+  }
+
+  .success-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 17, 28, 0.68);
+    backdrop-filter: blur(8px);
+  }
+
+  .success-modal__panel {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    width: min(430px, 100%);
+    padding: 30px;
+    border: 1px solid rgba(215, 222, 232, 0.9);
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--ink);
+    text-align: center;
+    box-shadow: 0 28px 80px rgba(8, 17, 28, 0.28);
+  }
+
+  .success-modal__icon {
+    display: grid;
+    place-items: center;
+    width: 68px;
+    height: 68px;
+    margin-bottom: 16px;
+    border-radius: 999px;
+    background: #e8f5f1;
+    color: #137462;
+  }
+
+  .success-modal__icon svg {
+    width: 34px;
+    height: 34px;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2.5;
+  }
+
+  .success-modal__eyebrow {
+    margin-bottom: 8px;
+    color: var(--red);
+    font-size: 0.74rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .success-modal h2 {
+    margin-bottom: 10px;
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+  }
+
+  .success-modal__panel > p:last-of-type {
+    max-width: 330px;
+    margin-bottom: 20px;
+    color: var(--muted);
+    font-size: 0.98rem;
+  }
+
+  .success-modal__button {
+    min-height: 42px;
+    padding: 10px 18px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--ink);
+    color: #ffffff;
+    font: inherit;
+    font-weight: 850;
+    cursor: pointer;
+  }
+
+  .success-modal__button:hover {
+    background: var(--red);
+  }
+
   .final-truck-cta {
     padding: 72px clamp(18px, 5vw, 72px) 78px;
     background:
@@ -1330,9 +1784,14 @@ const breadcrumbSchema = {
     .coverage-grid,
     .why-grid,
     .problem-grid,
+    .truck-contact-grid,
     .final-truck-cta__inner,
     .internal-links {
       grid-template-columns: 1fr;
+    }
+
+    .truck-contact-copy {
+      position: static;
     }
 
     .truck-hero__inner {
@@ -1361,6 +1820,7 @@ const breadcrumbSchema = {
 
     .service-grid,
     .service-related-block,
+    .form-grid,
     .why-card-grid {
       grid-template-columns: 1fr;
     }

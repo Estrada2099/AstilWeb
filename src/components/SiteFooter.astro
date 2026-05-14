@@ -1,9 +1,15 @@
 ---
+import SmartImage from "./SmartImage.astro";
 import { contact } from "../data/site";
+
+interface Props {
+  contactHref?: string;
+}
 
 const base = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
+const { contactHref = `${base}#contacto` } = Astro.props;
 ---
 
 <footer class="site-footer">
@@ -12,12 +18,12 @@ const base = import.meta.env.BASE_URL.endsWith("/")
       <div>
         <h2>Cuéntanos qué báscula necesitas atender y te orientamos con la mejor solución.</h2>
       </div>
-      <a href={`${base}#contacto`}>Contáctanos</a>
+      <a href={contactHref}>Contáctanos</a>
     </section>
 
     <div class="footer-main">
       <div class="footer-brand">
-        <img src={`${base}astil-basculas-logo-horizontal.png`} alt="Astil Básculas" />
+        <SmartImage name="astil-basculas-logo-horizontal" alt="Astil Básculas" loading="lazy" />
         <p>
           Soluciones integrales en sistemas de pesaje para industria, comercio y operaciones
           logísticas.
@@ -28,7 +34,7 @@ const base = import.meta.env.BASE_URL.endsWith("/")
         <strong>Secciones</strong>
         <a href={`${base}#nosotros`}>Nosotros</a>
         <a href={`${base}#servicios`}>Servicios</a>
-        <a href={`${base}#contacto`}>Contacto</a>
+        <a href={contactHref}>Contacto</a>
       </nav>
 
       <div class="footer-column">
@@ -123,8 +129,13 @@ const base = import.meta.env.BASE_URL.endsWith("/")
     min-width: 0;
   }
 
-  .footer-brand img {
+  .footer-brand :global(picture),
+  .footer-brand :global(img) {
+    display: block;
     width: min(270px, 100%);
+  }
+
+  .footer-brand :global(img) {
     margin-bottom: 18px;
     padding: 10px 12px;
     border-radius: 8px;

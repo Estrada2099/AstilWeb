@@ -1,17 +1,28 @@
 ---
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
+
 const base = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
+const publicDir = fileURLToPath(new URL("../../../public/", import.meta.url));
+const publicImage = (name: string, fallbackExt = "png") => {
+  const cleanName = name.replace(/^\/+/, "").replace(/\.(avif|webp|png|jpe?g)$/i, "");
+  const webpPath = `${cleanName}.webp`;
+  const fallbackPath = `${cleanName}.${fallbackExt.replace(/^\./, "")}`;
+  return `${base}${existsSync(join(publicDir, webpPath)) ? webpPath : fallbackPath}`;
+};
 
 const pexisaSlides = [
-  { image: `${base}Pexisa/1.png`, label: "Plataforma para operación industrial" },
-  { image: `${base}Pexisa/2.png`, label: "Pesaje de piso en almacén" },
-  { image: `${base}Pexisa/3.png`, label: "Indicadores para procesos de control" },
-  { image: `${base}Pexisa/4.png`, label: "Equipos fabricados para trabajo continuo" },
-  { image: `${base}Pexisa/5.png`, label: "Soluciones para carga y producción" },
-  { image: `${base}Pexisa/6.png`, label: "Diseño estructural reparable" },
-  { image: `${base}Pexisa/7.png`, label: "Pesaje industrial a largo plazo" },
-  { image: `${base}Pexisa/8.png`, label: "Equipos configurados para procesos reales" }
+  { image: publicImage("Pexisa/1"), label: "Plataforma para operación industrial" },
+  { image: publicImage("Pexisa/2"), label: "Pesaje de piso en almacén" },
+  { image: publicImage("Pexisa/3"), label: "Indicadores para procesos de control" },
+  { image: publicImage("Pexisa/4"), label: "Equipos fabricados para trabajo continuo" },
+  { image: publicImage("Pexisa/5"), label: "Soluciones para carga y producción" },
+  { image: publicImage("Pexisa/6"), label: "Diseño estructural reparable" },
+  { image: publicImage("Pexisa/7"), label: "Pesaje industrial a largo plazo" },
+  { image: publicImage("Pexisa/8"), label: "Equipos configurados para procesos reales" }
 ];
 
 const slideDurationSeconds = 6;
@@ -24,11 +35,11 @@ const authorityPoints = [
 ];
 
 const equipmentTypes = [
-  { name: "Básculas de Mesa", image: `${base}Pexisa/BasculasMesa.png` },
-  { name: "Plataformas de Piso", image: `${base}Pexisa/PlataformasPiso.png` },
-  { name: "Indicadores de Peso", image: `${base}Pexisa/IndicadoresPeso.png` },
-  { name: "Celdas de Carga", image: `${base}Pexisa/CeldasCarga.png` },
-  { name: "Cajas Suma", image: `${base}Pexisa/CajasSuma.png` }
+  { name: "Básculas de Mesa", image: publicImage("Pexisa/BasculasMesa") },
+  { name: "Plataformas de Piso", image: publicImage("Pexisa/PlataformasPiso") },
+  { name: "Indicadores de Peso", image: publicImage("Pexisa/IndicadoresPeso") },
+  { name: "Celdas de Carga", image: publicImage("Pexisa/CeldasCarga") },
+  { name: "Cajas Suma", image: publicImage("Pexisa/CajasSuma") }
 ];
 
 const differentiators = [
@@ -198,6 +209,7 @@ const targetItems = [
     background: #030a12;
     color: #ffffff;
     isolation: isolate;
+    --pexisa-copy-zone: 40%;
   }
 
   .pexisa-hero::after {
@@ -225,7 +237,7 @@ const targetItems = [
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 70% center;
+    object-position: 76% center;
     opacity: 0;
     filter: contrast(1.07) saturate(0.95) brightness(0.92);
     transform: scale(1);
@@ -243,10 +255,10 @@ const targetItems = [
     z-index: 2;
     background: linear-gradient(
       90deg,
-      rgba(3, 10, 18, 0.88) 0%,
-      rgba(3, 10, 18, 0.78) 35%,
-      rgba(3, 10, 18, 0.42) 55%,
-      rgba(3, 10, 18, 0.12) 75%,
+      rgba(3, 10, 18, 0.9) 0%,
+      rgba(3, 10, 18, 0.84) 38%,
+      rgba(3, 10, 18, 0.48) 52%,
+      rgba(3, 10, 18, 0.14) 70%,
       transparent 100%
     );
   }
@@ -257,8 +269,11 @@ const targetItems = [
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-sizing: border-box;
     min-height: 82vh;
     max-height: 88vh;
+    width: var(--pexisa-copy-zone);
+    min-width: 430px;
     max-width: 560px;
     padding-left: clamp(24px, 5vw, 80px);
     padding-right: 24px;
@@ -270,11 +285,31 @@ const targetItems = [
     margin: 0;
     color: #ffffff;
     max-width: 620px;
-    font-size: clamp(2.8rem, 4.6vw, 5rem);
+    font-size: clamp(2.75rem, 4.25vw, 4.75rem);
     font-weight: 800;
     line-height: 0.95;
     letter-spacing: 0;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  }
+
+  @media (min-width: 981px) and (max-width: 1380px) {
+    .pexisa-hero {
+      --pexisa-copy-zone: 40%;
+    }
+
+    .pexisa-hero__content {
+      min-width: 410px;
+      max-width: 520px;
+      padding-left: clamp(28px, 4.8vw, 68px);
+    }
+
+    .pexisa-hero h1 {
+      font-size: clamp(2.6rem, 4.1vw, 4.35rem);
+    }
+
+    .pexisa-hero__subtitle {
+      max-width: 460px;
+    }
   }
 
   .pexisa-hero__subtitle {
