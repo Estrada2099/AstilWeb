@@ -3,8 +3,6 @@ import SmartImage from "../SmartImage.astro";
 import { contact } from "../../data/site";
 import {
   getLowProfileLine,
-  lowProfileApplications,
-  lowProfileComparisonRows,
   lowProfileDecisionPaths,
   lowProfileFaqs,
   lowProfileLines,
@@ -65,6 +63,273 @@ const selectionFactors = [
   "Necesidad de tickets, reportes o control digital"
 ];
 
+const applicationCards = [
+  {
+    title: "Almacenes",
+    text: "Pesaje de mercancía en recepción, salida o control interno."
+  },
+  {
+    title: "Centros de distribución",
+    text: "Flujo constante de productos, tarimas y movimientos diarios."
+  },
+  {
+    title: "Recibo de mercancía",
+    text: "Verificación rápida de peso al recibir producto o materia prima."
+  },
+  {
+    title: "Embarques",
+    text: "Control de peso antes de salida, envío o entrega."
+  },
+  {
+    title: "Producción",
+    text: "Pesaje de insumos, producto terminado o procesos internos."
+  },
+  {
+    title: "Industria alimentaria",
+    text: "Ambientes donde importa la limpieza, control y resistencia."
+  },
+  {
+    title: "Comercio mayorista",
+    text: "Operaciones con volumen, carga frecuente y atención rápida."
+  },
+  {
+    title: "Procesos con tarimas",
+    text: "Uso con patín hidráulico, carros o movimientos sobre plataforma."
+  }
+];
+
+const selectionChecklist = [
+  {
+    title: "Peso máximo real por carga",
+    text: "Define la capacidad necesaria considerando el peso total de la tarima, producto o contenedor."
+  },
+  {
+    title: "Frecuencia diaria de pesaje",
+    text: "No es lo mismo pesar algunas veces al día que operar durante varios turnos."
+  },
+  {
+    title: "Ingreso con patín o montacargas",
+    text: "El tipo de acceso influye en la estructura, resistencia y dimensiones de la plataforma."
+  },
+  {
+    title: "Ambiente de trabajo",
+    text: "Considerar humedad, lavado, polvo, corrosión, temperatura o limpieza frecuente."
+  },
+  {
+    title: "Necesidad de tickets o control digital",
+    text: "Definir si se requiere indicador básico, impresión, reportes, usuarios o integración."
+  }
+];
+
+const guideCards = [
+  {
+    label: "Uso moderado",
+    title: "Quiero una opción funcional para almacén",
+    text: "Empieza por la línea Base si el uso será moderado, en interior y con cargas controladas.",
+    href: "/basculas/bajo-perfil/base/",
+    cta: "Ver línea Base"
+  },
+  {
+    label: "Flujo diario",
+    title: "Peso todos los días en recibo o embarques",
+    text: "La línea Comercial suele ser el punto medio para flujo diario, almacén y operación con tarimas.",
+    href: "/basculas/bajo-perfil/comercial/",
+    cta: "Ver línea Comercial"
+  },
+  {
+    label: "Trabajo pesado",
+    title: "Tengo uso pesado o turnos largos",
+    text: "La línea Industrial es mejor cuando hay tráfico constante, carga pesada y necesidad de continuidad.",
+    href: "/basculas/bajo-perfil/industrial/",
+    cta: "Ver línea Industrial"
+  },
+  {
+    label: "Control digital",
+    title: "Necesito tickets, registros o integración",
+    text: "La línea Pro permite configurar indicadores, periféricos y opciones de control documental.",
+    href: "/basculas/bajo-perfil/pro/",
+    cta: "Ver línea Pro"
+  },
+  {
+    label: "Ambiente sanitario",
+    title: "Hay humedad, lavado o proceso sanitario",
+    text: "La línea Inoxidable es la ruta correcta cuando el ambiente exige resistencia y limpieza frecuente.",
+    href: "/basculas/bajo-perfil/inoxidable/",
+    cta: "Ver línea Inoxidable"
+  }
+];
+
+const technicalSummaryCards = [
+  {
+    slug: "base",
+    name: "Base",
+    application: "Entrada funcional para almacén",
+    text: "Recomendada para operación sencilla, carga controlada y procesos de almacén que necesitan una solución práctica.",
+    recommendation: "Conviene Base si buscas una solución sencilla para almacén, recibo o carga controlada."
+  },
+  {
+    slug: "comercial",
+    name: "Comercial",
+    application: "Uso diario con varias medidas",
+    text: "Buena opción para flujo diario, recibo, embarques y operaciones que necesitan más flexibilidad de medidas.",
+    recommendation: "Conviene Comercial si necesitas uso diario, varias medidas y una buena relación costo-beneficio."
+  },
+  {
+    slug: "industrial",
+    name: "Industrial",
+    application: "Mayor resistencia para operación continua",
+    text: "Pensada para trabajo exigente, uso frecuente y operaciones donde la instalación requiere mayor robustez.",
+    recommendation: "Conviene Industrial si tendrás uso frecuente, carga pesada o instalación más exigente."
+  },
+  {
+    slug: "pro",
+    name: "Industrial Pro",
+    application: "Mayor capacidad y configuración robusta",
+    text: "Adecuada cuando se requiere mayor capacidad, configuración robusta y componentes pensados para control operativo.",
+    recommendation: "Conviene Industrial Pro si necesitas mayor capacidad, cable blindado y configuración más robusta."
+  },
+  {
+    slug: "inoxidable",
+    name: "Inoxidable",
+    application: "Para humedad, lavado o proceso sanitario",
+    text: "Diseñada para ambientes con humedad, limpieza frecuente, corrosión o exigencias de proceso sanitario.",
+    recommendation: "Conviene Inoxidable si el ambiente exige resistencia a humedad, lavado o proceso sanitario."
+  }
+] as const;
+
+const technicalComparisonRows = [
+  {
+    label: "Medidas disponibles",
+    values: {
+      base: "120 × 120 cm",
+      comercial: "90 × 90 / 120 × 120 / 150 × 150 cm",
+      industrial: "90 × 90 / 120 × 120 / 150 × 150 cm",
+      pro: "100 × 100 / 120 × 120 / 150 × 150 cm",
+      inoxidable: "100 × 100 / 120 × 120 / 150 × 150 cm"
+    }
+  },
+  {
+    label: "Capacidades",
+    values: {
+      base: "1,500 kg",
+      comercial: "1,000 / 2,000 / 3,000 kg",
+      industrial: "1,000 / 2,000 / 3,000 kg",
+      pro: "1,200 / 3,000 / 4,000 kg",
+      inoxidable: "1,000 / 2,000 / 3,000 kg"
+    }
+  },
+  {
+    label: "Material",
+    values: {
+      base: "Acero al carbón",
+      comercial: "Acero al carbón",
+      industrial: "Acero al carbón de uso industrial",
+      pro: "Acero al carbón de uso industrial",
+      inoxidable: "Acero inoxidable"
+    }
+  },
+  {
+    label: "Indicador de peso",
+    values: {
+      base: "Línea comercial, solo peso",
+      comercial: "Línea comercial",
+      industrial: "Línea industrial en plástico ABS",
+      pro: "Línea industrial en plástico ABS",
+      inoxidable: "Línea industrial en acero inoxidable"
+    }
+  },
+  {
+    label: "Alimentación",
+    values: {
+      base: "Cargador",
+      comercial: "Cargador",
+      industrial: "Según configuración",
+      pro: "Cable",
+      inoxidable: "Cargador"
+    }
+  },
+  {
+    label: "Cable",
+    values: {
+      base: "Cable estándar de 5 m",
+      comercial: "Cable estándar de 5 m",
+      industrial: "Según configuración",
+      pro: "Cable blindado de 5 m",
+      inoxidable: "Cable de 5 m"
+    }
+  },
+  {
+    label: "Rampas",
+    values: {
+      base: "Compatible con rampas",
+      comercial: "Compatible con rampas",
+      industrial: "Compatible con rampas",
+      pro: "Compatible con rampas",
+      inoxidable: "Compatible con rampas"
+    }
+  },
+  {
+    label: "Instalación en fosa",
+    values: {
+      base: "No recomendada para fosa",
+      comercial: "Compatible con instalación en fosa",
+      industrial: "Compatible con instalación en fosa",
+      pro: "Compatible con instalación en fosa",
+      inoxidable: "Compatible con instalación en fosa"
+    }
+  },
+  {
+    label: "Sensores / celdas",
+    values: {
+      base: "Celdas en acero al carbón",
+      comercial: "Celdas en acero al carbón",
+      industrial: "Celdas en acero al carbón",
+      pro: "Celdas en acero al carbón",
+      inoxidable: "Sensores en acero inoxidable"
+    }
+  }
+] as const;
+
+const directComparisonRows = [
+  ...technicalComparisonRows,
+  {
+    label: "Mejor escenario de uso",
+    values: {
+      base: "Almacén, recibo y operación moderada",
+      comercial: "Uso diario, recibo y embarques",
+      industrial: "Uso frecuente, carga pesada o instalación exigente",
+      pro: "Mayor capacidad, control y configuración robusta",
+      inoxidable: "Humedad, lavado o proceso sanitario"
+    }
+  }
+] as const;
+
+const comparisonRecommendations: Record<string, string> = {
+  "base|comercial":
+    "La línea Base conviene para operación sencilla y carga controlada. La línea Comercial es mejor si necesitas más medidas, mayor rango de capacidad y uso diario.",
+  "base|industrial":
+    "La línea Base funciona para almacén y operación moderada. La línea Industrial conviene cuando hay mayor exigencia, uso frecuente o instalación en fosa.",
+  "comercial|pro":
+    "La línea Comercial cubre operación diaria con buena relación costo-beneficio. La Industrial Pro conviene cuando necesitas mayor capacidad, cable blindado y configuración más robusta.",
+  "pro|inoxidable":
+    "Industrial Pro es mejor para capacidad y configuración robusta. Inoxidable conviene cuando el ambiente exige resistencia a humedad, lavado o proceso sanitario."
+};
+
+const quickComparisonData = {
+  lines: Object.fromEntries(
+    technicalSummaryCards.map((line) => [
+      line.slug,
+      {
+        name: line.name,
+        application: line.application,
+        recommendation: line.recommendation
+      }
+    ])
+  ),
+  rows: directComparisonRows,
+  recommendations: comparisonRecommendations
+};
+
 const specialConfigPoints = [
   "Plataforma en acero al carbón o acero inoxidable",
   "Indicador digital comercial o industrial",
@@ -73,28 +338,84 @@ const specialConfigPoints = [
   "Recomendación técnica antes de cotizar"
 ];
 
+const selectionCards: Array<{
+  slug: LowProfileLine["slug"];
+  eyebrow: string;
+  title: string;
+  text: string;
+  chips: string[];
+  cta: string;
+  image?: string;
+}> = [
+  {
+    slug: "base",
+    eyebrow: "Entrada confiable",
+    title: "Báscula de Bajo Perfil Base",
+    text: "Para operaciones moderadas que buscan una solución funcional, accesible y confiable para almacén, recibo o embarques ligeros.",
+    chips: ["Almacén", "Recibo", "Embarques ligeros"],
+    cta: "Ver línea Base",
+    image: "base"
+  },
+  {
+    slug: "comercial",
+    eyebrow: "Operación diaria",
+    title: "Báscula de Bajo Perfil Comercial",
+    text: "Equilibra costo, robustez y facilidad de uso para comercio mayorista, centros de distribución y áreas de embarque.",
+    chips: ["Comercio mayorista", "CEDIS", "Almacén"],
+    cta: "Ver línea Comercial",
+    image: "comercial"
+  },
+  {
+    slug: "industrial",
+    eyebrow: "Trabajo pesado",
+    title: "Báscula de Bajo Perfil Industrial",
+    text: "Recomendada para uso intenso, turnos largos, movimientos frecuentes y operación con patín o montacargas.",
+    chips: ["Producción", "Logística", "Industria"],
+    cta: "Ver línea Industrial",
+    image: "industrial"
+  },
+  {
+    slug: "pro",
+    eyebrow: "Mayor configuración",
+    title: "Báscula de Bajo Perfil Pro",
+    text: "Ideal cuando el pesaje requiere reportes, tickets, control de entradas y salidas, usuarios o documentación operativa.",
+    chips: ["Control operativo", "Trazabilidad", "Reportes"],
+    cta: "Ver línea Pro",
+    image: "industrial_pro"
+  },
+  {
+    slug: "inoxidable",
+    eyebrow: "Industria alimenticia",
+    title: "Báscula de Bajo Perfil Inoxidable",
+    text: "Recomendada para ambientes con humedad, limpieza frecuente, corrosión o mayores exigencias sanitarias.",
+    chips: ["Alimentos", "Humedad", "Lavado"],
+    cta: "Ver línea Inoxidable",
+    image: "inoxidable"
+  }
+];
+
 const lineHref = (slug: LowProfileLine["slug"]) => withBase(`/basculas/bajo-perfil/${slug}/`);
-const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[number]["key"]) => {
-  const value = line[key];
-  return Array.isArray(value) ? value.join(", ") : value;
-};
 ---
 
 <article class="lp-page">
   {view === "landing" && (
     <>
-      <section class="lp-hero" aria-labelledby="lp-hero-title">
+      <section
+        class="lp-hero lp-hero--background"
+        aria-labelledby="lp-hero-title"
+        style={`--lp-hero-image: url("${withBase("/plataforma_2.webp")}")`}
+      >
         <div class="lp-hero__inner">
           <div class="lp-hero__content">
             <p class="eyebrow">Básculas de bajo perfil</p>
-            <h1 id="lp-hero-title">Básculas de piso para tarimas, almacén e industria</h1>
+            <h1 id="lp-hero-title">Básculas de piso para uso industrial y comercial</h1>
             <p class="lead">
-              Plataformas de bajo perfil para pesar mercancía, tarimas, materia prima y producto
-              terminado con acceso cómodo, lectura confiable y asesoría técnica desde la selección.
+              Plataformas de bajo perfil diseñadas para pesar tarimas, mercancía, materia prima,
+              insumos y producto terminado de forma práctica, cómoda y confiable.
             </p>
             <p>
-              Te ayudamos a elegir la línea adecuada según capacidad, frecuencia de uso, ambiente,
-              tipo de carga y nivel de control que necesita tu operación.
+              Te ayudamos a elegir la opción más conveniente según capacidad, frecuencia de uso,
+              tipo de carga, condiciones del área y necesidades de tu negocio.
             </p>
             <div class="button-row">
               <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">
@@ -107,99 +428,196 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
             </div>
           </div>
 
-          <aside class="lp-hero__visual" aria-label="Báscula de bajo perfil para tarimas">
-            <SmartImage
-              name="Pexisa/PlataformasPiso"
-              alt="Báscula de bajo perfil para tarimas y pesaje industrial de piso"
-              loading="eager"
-              decoding="async"
-            />
-          </aside>
+          <span class="lp-hero__visual" aria-hidden="true"></span>
         </div>
       </section>
 
-      <nav class="lp-line-nav" aria-label="Líneas de básculas de bajo perfil">
-        <a href={landingHref}>General</a>
-        {lowProfileLines.map((line) => <a href={lineHref(line.slug)}>{line.shortName}</a>)}
-        <a href="#comparador-bajo-perfil">Comparador</a>
-        <a href="#seleccion-bajo-perfil">¿Qué báscula necesito?</a>
-      </nav>
-
-      <section class="section lp-lines" aria-labelledby="lp-lines-title">
+      <section class="section lp-lines lp-lines--selector" aria-labelledby="lp-lines-title">
         <div class="section-inner lp-split-heading">
           <div>
             <p class="eyebrow">Líneas disponibles</p>
             <h2 id="lp-lines-title">Elige por operación, no solo por precio</h2>
           </div>
           <p>
-            Una báscula de piso correcta reduce retrabajos, reclamos por diferencias de peso y
-            compras que se quedan cortas al primer cambio de operación.
+            La báscula correcta depende del flujo de trabajo, el ambiente de operación, la
+            frecuencia de uso y el nivel de control que necesita tu empresa.
           </p>
         </div>
         <div class="section-inner lp-line-grid">
-          {lowProfileLines.map((line) => (
-            <article class="lp-line-card">
-              <span>{line.eyebrow}</span>
-              <h3>{line.name}</h3>
-              <p>{line.summary}</p>
-              <div class="lp-line-card__tags" aria-label={`Usos recomendados para ${line.name}`}>
-                {line.bestFor.slice(0, 3).map((item) => <small>{item}</small>)}
+          {selectionCards.map((card) => (
+            <article class={`lp-line-card lp-line-card--${card.slug}`}>
+              <div class="lp-line-card__content">
+                <div class="lp-line-card__top">
+                  <span class="lp-line-card__icon" aria-hidden="true">
+                    {
+                      card.slug === "base" ? (
+                        <svg viewBox="0 0 24 24" fill="none">
+                          <path d="M4 9h16v8H4z" />
+                          <path d="M7 17v2" />
+                          <path d="M17 17v2" />
+                        </svg>
+                      ) : card.slug === "comercial" ? (
+                        <svg viewBox="0 0 24 24" fill="none">
+                          <path d="M3 7h18" />
+                          <path d="M6 7v12" />
+                          <path d="M18 7v12" />
+                          <path d="M4 13h16" />
+                        </svg>
+                      ) : card.slug === "industrial" ? (
+                        <svg viewBox="0 0 24 24" fill="none">
+                          <path d="M5 18h14" />
+                          <path d="M7 18V8l5-3 5 3v10" />
+                          <path d="M10 18v-6h4v6" />
+                        </svg>
+                      ) : card.slug === "pro" ? (
+                        <svg viewBox="0 0 24 24" fill="none">
+                          <rect x="5" y="4" width="14" height="16" rx="2" />
+                          <path d="M8 8h8" />
+                          <path d="M8 12h3" />
+                          <path d="M13 12h3" />
+                          <path d="M8 16h8" />
+                        </svg>
+                      ) : (
+                        <svg viewBox="0 0 24 24" fill="none">
+                          <path d="M12 3v18" />
+                          <path d="M5 8h14" />
+                          <path d="M7 16h10" />
+                        </svg>
+                      )
+                    }
+                  </span>
+                  <span class="lp-line-card__eyebrow">{card.eyebrow}</span>
+                </div>
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+                <div class="lp-line-card__tags" aria-label={`Aplicaciones de ${card.title}`}>
+                  {card.chips.map((item) => <small>{item}</small>)}
+                </div>
+                <a class="lp-line-card__cta" href={lineHref(card.slug)}>{card.cta} <span aria-hidden="true">→</span></a>
               </div>
-              <a href={lineHref(line.slug)}>Ver línea {line.shortName}</a>
+              <div class="lp-line-card__visual" aria-hidden="true">
+                {card.image ? (
+                  <img
+                    src={withBase(`/Bajo-Perfil/${card.image}.webp`)}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <span></span>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+        <div class="section-inner lp-line-help">
+          <div>
+            <h3>¿No sabes qué línea elegir?</h3>
+            <p>
+              Te ayudamos a seleccionar la báscula correcta según capacidad, medidas, ambiente de
+              trabajo y tipo de operación.
+            </p>
+          </div>
+          <a href={quoteAnchor}>Solicitar asesoría <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="section lp-applications lp-decision-flow">
+        <div class="section-inner lp-decision-heading">
+          <div>
+            <p class="eyebrow">Aplicaciones</p>
+            <h2>Pesaje de piso para operaciones reales de trabajo</h2>
+          </div>
+          <p>
+            Las básculas de bajo perfil ayudan cuando la carga debe pesarse rápido, sin fosa, con
+            acceso sencillo y lectura clara para el operador.
+          </p>
+        </div>
+        <div class="section-inner lp-application-grid">
+          {applicationCards.map((item, index) => (
+            <article>
+              <span class="lp-card-icon" aria-hidden="true">
+                {index % 4 === 0 && (
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 20V8l8-4 8 4v12" />
+                    <path d="M8 20v-8h8v8" />
+                    <path d="M4 20h16" />
+                  </svg>
+                )}
+                {index % 4 === 1 && (
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M3 17h18" />
+                    <path d="M6 17V7h12v10" />
+                    <path d="M8 10h8" />
+                    <path d="M8 13h8" />
+                  </svg>
+                )}
+                {index % 4 === 2 && (
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M5 19h14" />
+                    <path d="M7 19V6h10v13" />
+                    <path d="M9 9h6" />
+                    <path d="M9 13h6" />
+                  </svg>
+                )}
+                {index % 4 === 3 && (
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 7h11v10H4z" />
+                    <path d="M15 10h3l2 3v4h-5" />
+                    <path d="M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                    <path d="M18 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                  </svg>
+                )}
+              </span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section class="section lp-applications">
-        <div class="section-inner lp-app-grid">
-          <div>
-            <p class="eyebrow">Aplicaciones</p>
-            <h2>Pesaje de piso para flujo real de trabajo</h2>
-            <p>
-              Las básculas de bajo perfil funcionan bien cuando la carga debe entrar rápido a la
-              plataforma, sin fosa, sin maniobras complejas y con operadores que necesitan una
-              lectura clara.
-            </p>
-          </div>
-          <div class="lp-chip-grid">
-            {lowProfileApplications.map((item) => <span>{item}</span>)}
-          </div>
-        </div>
-      </section>
-
-      <section class="section lp-selection" id="seleccion-bajo-perfil">
-        <div class="section-inner lp-split-heading">
+      <section class="section lp-selection lp-decision-flow" id="seleccion-bajo-perfil">
+        <div class="section-inner lp-decision-heading">
           <div>
             <p class="eyebrow">Selección técnica</p>
-            <h2>Antes de cotizar conviene revisar cinco datos</h2>
+            <h2>Antes de cotizar, revisa estos 5 datos</h2>
           </div>
           <p>
-            Con esta información podemos evitar sobredimensionar el equipo o recomendar una línea
-            que no aguante el ambiente de trabajo.
+            Con esta información podemos recomendar una línea adecuada, evitar sobredimensionar el
+            equipo y reducir errores por ambiente, carga o frecuencia de uso.
           </p>
         </div>
         <div class="section-inner lp-factor-grid">
-          {selectionFactors.map((factor, index) => (
+          {selectionChecklist.map((factor, index) => (
             <article>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <h3>{factor}</h3>
+              <div class="lp-factor-card__top">
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <i class="lp-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12h14" />
+                    <path d="M7 8h10" />
+                    <path d="M9 16h6" />
+                  </svg>
+                </i>
+              </div>
+              <h3>{factor.title}</h3>
+              <p>{factor.text}</p>
             </article>
           ))}
         </div>
-        <div class="section-inner lp-inline-cta">
-          <p>Si no tienes esos datos claros, podemos ayudarte a definirlos con unas preguntas.</p>
+        <div class="section-inner lp-inline-cta lp-selection-cta">
+          <p>¿No tienes estos datos claros? Podemos ayudarte a definirlos con unas preguntas.</p>
           <button
             class="button"
             type="button"
             data-disclosure-trigger
             data-target="guia-bajo-perfil"
-            data-open-label="Abrir guía de selección"
+            data-open-label="Abrir guía de selección →"
             data-close-label="Ocultar guía de selección"
             aria-controls="guia-bajo-perfil"
             aria-expanded="false"
           >
-            Abrir guía de selección
+            Abrir guía de selección →
           </button>
         </div>
         <div
@@ -212,80 +630,181 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
             <p class="eyebrow">Guía rápida</p>
             <h3>Elige el escenario que más se parece a tu operación</h3>
             <p>
-              Esta guía reduce opciones sin obligarte a salir de la página. La recomendación final
-              depende de capacidad, ambiente y viabilidad técnica.
+              Esta guía te ayuda a reducir opciones sin salir de la página. La recomendación final
+              depende de capacidad, medidas, ambiente y viabilidad técnica.
             </p>
           </div>
           <div class="lp-decision-grid">
-            {lowProfileDecisionPaths.map((path) => (
+            {guideCards.map((path) => (
               <article>
+                <div class="lp-decision-card__top">
+                  <span class="lp-card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14" />
+                      <path d="m13 6 6 6-6 6" />
+                    </svg>
+                  </span>
+                  <small>{path.label}</small>
+                </div>
                 <h3>{path.title}</h3>
                 <p>{path.text}</p>
-                <a href={withBase(path.href)}>{path.label}</a>
+                <a href={withBase(path.href)}>{path.cta} <span aria-hidden="true">→</span></a>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section class="section lp-compare-preview" id="comparador-bajo-perfil">
-        <div class="section-inner lp-split-heading">
+      <section class="section lp-compare-preview lp-technical-matrix" id="comparador-bajo-perfil">
+        <div class="section-inner lp-technical-heading">
           <div>
-            <p class="eyebrow">Comparador</p>
-            <h2>Compara Base, Comercial, Industrial, Pro e Inoxidable</h2>
+            <p class="eyebrow">Tabla comparativa</p>
+            <h2>Compara las líneas de básculas de bajo perfil</h2>
           </div>
           <p>
-            Revisa de un vistazo qué línea conviene según ambiente, capacidad, nivel de inversión y
-            exigencia operativa.
+            Selecciona dos líneas y revisa sus diferencias principales antes de cotizar. Esto ayuda
+            a elegir mejor según capacidad, instalación, ambiente y nivel de operación.
           </p>
         </div>
-        <div class="section-inner lp-mini-compare">
-          {lowProfileLines.map((line) => (
-            <a href={lineHref(line.slug)}>
-              <strong>{line.shortName}</strong>
-              <span>{line.strength}</span>
-            </a>
+        <div class="section-inner lp-technical-summary">
+          {technicalSummaryCards.map((line) => (
+            <article class={`lp-technical-summary__card lp-technical-summary__card--${line.slug}`}>
+              <strong>{line.name}</strong>
+              <h3>{line.application}</h3>
+              <p>{line.text}</p>
+              <a href="#comparador-rapido" data-compare-preset={line.slug}>
+                Comparar esta línea <span aria-hidden="true">→</span>
+              </a>
+            </article>
           ))}
         </div>
-        <div class="section-inner lp-inline-cta">
-          <p>También puedes revisar la matriz completa para tomar una decisión más rápida.</p>
-          <button
-            class="button secondary"
-            type="button"
-            data-disclosure-trigger
-            data-target="comparador-matriz"
-            data-open-label="Ver comparador"
-            data-close-label="Ocultar comparador"
-            aria-controls="comparador-matriz"
-            aria-expanded="false"
-          >
-            Ver comparador
-          </button>
+
+        <div class="section-inner lp-technical-open">
+          <p>Elige cómo quieres revisar las diferencias: compara dos líneas o abre la tabla completa.</p>
+          <div class="lp-technical-open__actions">
+            <button
+              class="button"
+              type="button"
+              data-disclosure-trigger
+              data-target="comparador-rapido"
+              data-hide-target="matriz-tecnica-completa"
+              data-open-label="Comparar dos líneas"
+              data-close-label="Ocultar comparación"
+              aria-controls="comparador-rapido"
+              aria-expanded="false"
+            >
+              Comparar dos líneas
+            </button>
+            <button
+              class="button secondary"
+              type="button"
+              data-disclosure-trigger
+              data-target="matriz-tecnica-completa"
+              data-hide-target="comparador-rapido"
+              data-open-label="Ver tabla comparativa completa"
+              data-close-label="Ocultar tabla comparativa"
+              aria-controls="matriz-tecnica-completa"
+              aria-expanded="false"
+            >
+              Ver tabla comparativa completa
+            </button>
+          </div>
         </div>
+
         <div
-          class="section-inner lp-disclosure-panel lp-table-wrap"
-          id="comparador-matriz"
+          class="section-inner lp-quick-compare"
+          id="comparador-rapido"
+          data-line-comparator
           data-disclosure-panel
           hidden
-          tabindex="0"
-          aria-label="Tabla comparativa de básculas de bajo perfil"
         >
-          <table class="lp-comparison-table">
-            <thead>
-              <tr>
-                <th>Factor</th>
-                {lowProfileLines.map((line) => <th>{line.shortName}</th>)}
-              </tr>
-            </thead>
-            <tbody>
-              {lowProfileComparisonRows.map((row) => (
+          <div class="lp-quick-compare__heading">
+            <div>
+              <p class="eyebrow">Comparador rápido de líneas</p>
+              <h3>Elige dos líneas para revisar diferencias clave</h3>
+            </div>
+            <p>Compara lo importante sin recorrer toda la tabla técnica completa.</p>
+          </div>
+
+          <div class="lp-quick-compare__controls">
+            <label>
+              Primera línea
+              <select data-compare-select="a">
+                {technicalSummaryCards.map((line) => (
+                  <option value={line.slug} selected={line.slug === "base"}>{line.name}</option>
+                ))}
+              </select>
+            </label>
+            <label>
+              Comparar contra
+              <select data-compare-select="b">
+                {technicalSummaryCards.map((line) => (
+                  <option value={line.slug} selected={line.slug === "industrial"}>{line.name}</option>
+                ))}
+              </select>
+            </label>
+          </div>
+
+          <h4 class="lp-quick-compare__title" data-compare-title>Base vs Industrial</h4>
+          <div class="lp-quick-compare__grid">
+            {directComparisonRows.map((row) => (
+              <article class={row.values.base !== row.values.industrial ? "is-different" : ""} data-compare-row>
+                <strong>{row.label}</strong>
+                <div>
+                  <span data-compare-line="a">Base</span>
+                  <p data-compare-value="a">{row.values.base}</p>
+                </div>
+                <div>
+                  <span data-compare-line="b">Industrial</span>
+                  <p data-compare-value="b">{row.values.industrial}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div class="lp-quick-compare__result">
+            <strong>Recomendación rápida</strong>
+            <p data-compare-recommendation>
+              La línea Base funciona para almacén y operación moderada. La línea Industrial
+              conviene cuando hay mayor exigencia, uso frecuente o instalación en fosa.
+            </p>
+          </div>
+
+          <div class="lp-quick-compare__actions">
+            <a class="button" href={quoteAnchor}>Solicitar recomendación para mi operación</a>
+          </div>
+        </div>
+
+        <div
+          class="section-inner lp-technical-full"
+          id="matriz-tecnica-completa"
+          data-disclosure-panel
+          hidden
+        >
+          <div
+            class="lp-table-wrap lp-technical-table"
+            tabindex="0"
+            aria-label="Tabla comparativa de básculas de bajo perfil"
+          >
+            <table class="lp-comparison-table">
+              <thead>
                 <tr>
-                  <th>{row.label}</th>
-                  {lowProfileLines.map((line) => <td>{valueFor(line, row.key)}</td>)}
+                  <th>Factor</th>
+                  {technicalSummaryCards.map((line) => <th>{line.name}</th>)}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {technicalComparisonRows.map((row) => (
+                  <tr>
+                    <th>{row.label}</th>
+                    {technicalSummaryCards.map((line) => (
+                      <td>{row.values[line.slug]}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
     </>
@@ -332,16 +851,6 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
           </aside>
         </div>
       </section>
-
-      <nav class="lp-line-nav" aria-label="Otras líneas de bajo perfil">
-        <a href={landingHref}>General</a>
-        {lowProfileLines.map((line) => (
-          <a class={line.slug === currentLine.slug ? "is-active" : ""} href={lineHref(line.slug)}>
-            {line.shortName}
-          </a>
-        ))}
-        <a href={comparatorHref}>Comparador</a>
-      </nav>
 
       <section class="section lp-product-detail">
         <div class="section-inner lp-product-grid">
@@ -438,61 +947,156 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
       <section class="lp-hero lp-hero--compact" aria-labelledby="lp-comparator-title">
         <div class="lp-hero__inner">
           <div class="lp-hero__content">
-            <p class="eyebrow">Comparador de líneas</p>
-            <h1 id="lp-comparator-title">Compara básculas de bajo perfil antes de cotizar</h1>
+            <p class="eyebrow">Tabla comparativa</p>
+            <h1 id="lp-comparator-title">Compara las líneas de básculas de bajo perfil</h1>
             <p class="lead">
-              Revisa diferencias entre Base, Comercial, Industrial, Pro e Inoxidable para elegir
-              con más claridad según uso, ambiente, capacidad y nivel de control.
+              Revisa medidas, capacidades, indicador, alimentación e instalación para elegir con
+              más claridad antes de cotizar.
             </p>
             <div class="button-row">
-              <a class="button" href={quoteAnchor}>Solicitar recomendación</a>
+              <a class="button" href={quoteAnchor}>Solicitar recomendación según mi operación</a>
               <a class="button secondary" href={guideHref}>No sé cuál elegir</a>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section lp-comparator-section">
-        <div class="section-inner lp-table-wrap" tabindex="0" aria-label="Tabla comparativa de básculas de bajo perfil">
-          <table class="lp-comparison-table">
-            <thead>
-              <tr>
-                <th>Factor</th>
-                {lowProfileLines.map((line) => <th>{line.shortName}</th>)}
-              </tr>
-            </thead>
-            <tbody>
-              {lowProfileComparisonRows.map((row) => (
-                <tr>
-                  <th>{row.label}</th>
-                  {lowProfileLines.map((line) => <td>{valueFor(line, row.key)}</td>)}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="section lp-lines lp-lines--recommendations">
-        <div class="section-inner lp-split-heading">
-          <div>
-            <p class="eyebrow">Recomendación rápida</p>
-            <h2>La mejor línea depende del riesgo operativo</h2>
-          </div>
-          <p>
-            Si el equipo trabaja poco, el costo pesa más. Si trabaja todos los días, conviene
-            priorizar resistencia, soporte y compatibilidad con el proceso.
-          </p>
-        </div>
-        <div class="section-inner lp-line-grid">
-          {lowProfileLines.map((line) => (
-            <article class="lp-line-card">
-              <span>{line.eyebrow}</span>
-              <h3>{line.shortName}</h3>
-              <p>{line.summary}</p>
-              <a href={lineHref(line.slug)}>Ver detalle</a>
+      <section class="section lp-comparator-section lp-technical-matrix">
+        <div class="section-inner lp-technical-summary">
+          {technicalSummaryCards.map((line) => (
+            <article class={`lp-technical-summary__card lp-technical-summary__card--${line.slug}`}>
+              <strong>{line.name}</strong>
+              <h3>{line.application}</h3>
+              <p>{line.text}</p>
+              <a href="#comparador-rapido" data-compare-preset={line.slug}>
+                Comparar esta línea <span aria-hidden="true">→</span>
+              </a>
             </article>
           ))}
+        </div>
+
+        <div class="section-inner lp-technical-open">
+          <p>Elige cómo quieres revisar las diferencias: compara dos líneas o abre la tabla completa.</p>
+          <div class="lp-technical-open__actions">
+            <button
+              class="button"
+              type="button"
+              data-disclosure-trigger
+              data-target="comparador-rapido"
+              data-hide-target="matriz-tecnica-completa"
+              data-open-label="Comparar dos líneas"
+              data-close-label="Ocultar comparación"
+              aria-controls="comparador-rapido"
+              aria-expanded="false"
+            >
+              Comparar dos líneas
+            </button>
+            <button
+              class="button secondary"
+              type="button"
+              data-disclosure-trigger
+              data-target="matriz-tecnica-completa"
+              data-hide-target="comparador-rapido"
+              data-open-label="Ver tabla comparativa completa"
+              data-close-label="Ocultar tabla comparativa"
+              aria-controls="matriz-tecnica-completa"
+              aria-expanded="false"
+            >
+              Ver tabla comparativa completa
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="section-inner lp-quick-compare"
+          id="comparador-rapido"
+          data-line-comparator
+          data-disclosure-panel
+          hidden
+        >
+          <div class="lp-quick-compare__heading">
+            <div>
+              <p class="eyebrow">Comparador rápido de líneas</p>
+              <h3>Elige dos líneas para revisar diferencias clave</h3>
+            </div>
+            <p>Compara lo importante sin recorrer toda la tabla técnica completa.</p>
+          </div>
+
+          <div class="lp-quick-compare__controls">
+            <label>
+              Primera línea
+              <select data-compare-select="a">
+                {technicalSummaryCards.map((line) => (
+                  <option value={line.slug} selected={line.slug === "base"}>{line.name}</option>
+                ))}
+              </select>
+            </label>
+            <label>
+              Comparar contra
+              <select data-compare-select="b">
+                {technicalSummaryCards.map((line) => (
+                  <option value={line.slug} selected={line.slug === "industrial"}>{line.name}</option>
+                ))}
+              </select>
+            </label>
+          </div>
+
+          <h4 class="lp-quick-compare__title" data-compare-title>Base vs Industrial</h4>
+          <div class="lp-quick-compare__grid">
+            {directComparisonRows.map((row) => (
+              <article class={row.values.base !== row.values.industrial ? "is-different" : ""} data-compare-row>
+                <strong>{row.label}</strong>
+                <div>
+                  <span data-compare-line="a">Base</span>
+                  <p data-compare-value="a">{row.values.base}</p>
+                </div>
+                <div>
+                  <span data-compare-line="b">Industrial</span>
+                  <p data-compare-value="b">{row.values.industrial}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div class="lp-quick-compare__result">
+            <strong>Recomendación rápida</strong>
+            <p data-compare-recommendation>
+              La línea Base funciona para almacén y operación moderada. La línea Industrial
+              conviene cuando hay mayor exigencia, uso frecuente o instalación en fosa.
+            </p>
+          </div>
+
+          <div class="lp-quick-compare__actions">
+            <a class="button" href={quoteAnchor}>Solicitar recomendación para mi operación</a>
+          </div>
+        </div>
+
+        <div
+          class="section-inner lp-technical-full"
+          id="matriz-tecnica-completa"
+          data-disclosure-panel
+          hidden
+        >
+          <div class="lp-table-wrap lp-technical-table" tabindex="0" aria-label="Tabla comparativa de básculas de bajo perfil">
+            <table class="lp-comparison-table">
+              <thead>
+                <tr>
+                  <th>Factor</th>
+                  {technicalSummaryCards.map((line) => <th>{line.name}</th>)}
+                </tr>
+              </thead>
+              <tbody>
+                {technicalComparisonRows.map((row) => (
+                  <tr>
+                    <th>{row.label}</th>
+                    {technicalSummaryCards.map((line) => (
+                      <td>{row.values[line.slug]}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
     </>
@@ -759,6 +1363,8 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
   )}
 </article>
 
+<script type="application/json" id="lp-comparison-data" set:html={JSON.stringify(quickComparisonData)} />
+
 <script>
   const forms = document.querySelectorAll("[data-low-profile-form]");
   const modal = document.querySelector("[data-low-profile-success]");
@@ -786,6 +1392,119 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
     if (event.key === "Escape") closeModal();
   });
 
+  const comparisonSource = document.getElementById("lp-comparison-data");
+  const comparisonData =
+    comparisonSource?.textContent ? JSON.parse(comparisonSource.textContent) : null;
+
+  const getRecommendationKey = (a: string, b: string) => [a, b].sort().join("|");
+
+  const setDisclosureTriggerState = (targetId: string, isOpen: boolean) => {
+    document.querySelectorAll(`[data-disclosure-trigger][data-target="${targetId}"]`).forEach((item) => {
+      if (!(item instanceof HTMLButtonElement)) return;
+      item.setAttribute("aria-expanded", String(isOpen));
+      item.textContent = isOpen
+        ? item.dataset.closeLabel || "Ocultar"
+        : item.dataset.openLabel || "Abrir";
+    });
+  };
+
+  const renderLineComparator = (comparator: Element) => {
+    if (!comparisonData) return;
+
+    const selectA = comparator.querySelector("[data-compare-select='a']");
+    const selectB = comparator.querySelector("[data-compare-select='b']");
+    if (!(selectA instanceof HTMLSelectElement) || !(selectB instanceof HTMLSelectElement)) return;
+
+    const slugs = Object.keys(comparisonData.lines);
+    const ensureDifferent = (changed: HTMLSelectElement) => {
+      if (selectA.value !== selectB.value) return;
+      const fallback = slugs.find((slug) => slug !== changed.value);
+      if (!fallback) return;
+      if (changed === selectA) selectB.value = fallback;
+      else selectA.value = fallback;
+    };
+
+    const render = () => {
+      const slugA = selectA.value;
+      const slugB = selectB.value;
+      const lineA = comparisonData.lines[slugA];
+      const lineB = comparisonData.lines[slugB];
+      if (!lineA || !lineB) return;
+
+      const title = comparator.querySelector("[data-compare-title]");
+      if (title instanceof HTMLElement) title.textContent = `${lineA.name} vs ${lineB.name}`;
+
+      comparator.querySelectorAll("[data-compare-row]").forEach((row, index) => {
+        if (!(row instanceof HTMLElement)) return;
+        const factor = comparisonData.rows[index];
+        if (!factor) return;
+
+        const valueA = factor.values[slugA] || "";
+        const valueB = factor.values[slugB] || "";
+        row.classList.toggle("is-different", valueA !== valueB);
+
+        const labelA = row.querySelector("[data-compare-line='a']");
+        const labelB = row.querySelector("[data-compare-line='b']");
+        const outputA = row.querySelector("[data-compare-value='a']");
+        const outputB = row.querySelector("[data-compare-value='b']");
+        if (labelA instanceof HTMLElement) labelA.textContent = lineA.name;
+        if (labelB instanceof HTMLElement) labelB.textContent = lineB.name;
+        if (outputA instanceof HTMLElement) outputA.textContent = valueA;
+        if (outputB instanceof HTMLElement) outputB.textContent = valueB;
+      });
+
+      const recommendation = comparator.querySelector("[data-compare-recommendation]");
+      const recommendationText =
+        comparisonData.recommendations[getRecommendationKey(slugA, slugB)] ||
+        `${lineA.recommendation} ${lineB.recommendation}`;
+      if (recommendation instanceof HTMLElement) recommendation.textContent = recommendationText;
+    };
+
+    selectA.addEventListener("change", () => {
+      ensureDifferent(selectA);
+      render();
+    });
+    selectB.addEventListener("change", () => {
+      ensureDifferent(selectB);
+      render();
+    });
+    render();
+  };
+
+  document.querySelectorAll("[data-line-comparator]").forEach(renderLineComparator);
+
+  document.querySelectorAll("[data-compare-preset]").forEach((trigger) => {
+    if (!(trigger instanceof HTMLAnchorElement)) return;
+
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      const slug = trigger.dataset.comparePreset;
+      const comparator = document.querySelector("[data-line-comparator]");
+      const selectA = comparator?.querySelector("[data-compare-select='a']");
+      const selectB = comparator?.querySelector("[data-compare-select='b']");
+      if (!slug || !(selectA instanceof HTMLSelectElement) || !(selectB instanceof HTMLSelectElement)) return;
+
+      if (comparator instanceof HTMLElement) {
+        comparator.hidden = false;
+        setDisclosureTriggerState("comparador-rapido", true);
+
+        const table = document.getElementById("matriz-tecnica-completa");
+        if (table instanceof HTMLElement) {
+          table.hidden = true;
+          setDisclosureTriggerState("matriz-tecnica-completa", false);
+        }
+      }
+
+      selectA.value = slug;
+      if (selectB.value === slug) {
+        const option = Array.from(selectB.options).find((item) => item.value !== slug);
+        if (option) selectB.value = option.value;
+      }
+      selectA.dispatchEvent(new Event("change", { bubbles: true }));
+      comparator?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
   document.querySelectorAll("[data-disclosure-trigger]").forEach((trigger) => {
     if (!(trigger instanceof HTMLButtonElement)) return;
 
@@ -797,11 +1516,17 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
       if (!(panel instanceof HTMLElement)) return;
 
       const willOpen = panel.hidden;
+      const hideTargetId = trigger.dataset.hideTarget;
+      if (willOpen && hideTargetId) {
+        const hidePanel = document.getElementById(hideTargetId);
+        if (hidePanel instanceof HTMLElement) {
+          hidePanel.hidden = true;
+          setDisclosureTriggerState(hideTargetId, false);
+        }
+      }
+
       panel.hidden = !willOpen;
-      trigger.setAttribute("aria-expanded", String(willOpen));
-      trigger.textContent = willOpen
-        ? trigger.dataset.closeLabel || "Ocultar"
-        : trigger.dataset.openLabel || "Abrir";
+      setDisclosureTriggerState(targetId, willOpen);
 
       if (willOpen) {
         panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -868,6 +1593,17 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
       repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 96px),
       #101820;
     color: #ffffff;
+  }
+
+  .lp-hero--background {
+    background:
+      linear-gradient(90deg, rgba(8, 17, 28, 0.96) 0%, rgba(8, 17, 28, 0.88) 40%, rgba(8, 17, 28, 0.46) 72%, rgba(8, 17, 28, 0.18) 100%),
+      linear-gradient(180deg, rgba(8, 17, 28, 0.2), rgba(8, 17, 28, 0.82)),
+      var(--lp-hero-image),
+      linear-gradient(135deg, #101820, #1a2d42);
+    background-position: center, center, right center, center;
+    background-size: cover, cover, cover, cover;
+    background-repeat: no-repeat;
   }
 
   .lp-hero--product {
@@ -975,6 +1711,10 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
   }
 
+  .lp-hero--background .lp-hero__visual {
+    display: none;
+  }
+
   .lp-hero__visual {
     display: grid;
     align-self: center;
@@ -1008,6 +1748,11 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
       grid-template-columns: minmax(0, 0.78fr) minmax(520px, 0.95fr);
       gap: clamp(34px, 4.5vw, 64px);
       align-items: center;
+    }
+
+    .lp-hero--background .lp-hero__inner {
+      grid-template-columns: minmax(0, 0.72fr) minmax(420px, 1fr);
+      min-height: 520px;
     }
 
     .lp-hero__content > p:not(.eyebrow, .lead) {
@@ -1103,6 +1848,7 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
 
   .lp-applications,
   .lp-selection,
+  .lp-compare-preview,
   .lp-faq-section,
   .lp-comparator-section,
   .lp-guide-section {
@@ -1148,9 +1894,37 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
     color: var(--muted);
   }
 
-  .lp-lines .lp-split-heading {
+  .lp-decision-flow {
+    padding-block: clamp(42px, 5vw, 68px);
+  }
+
+  .lp-decision-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.58fr);
+    gap: clamp(18px, 4vw, 56px);
+    align-items: end;
+    margin-bottom: clamp(18px, 2.8vw, 28px);
+  }
+
+  .lp-decision-heading h2 {
+    max-width: 760px;
+    margin-bottom: 0;
+    color: var(--ink);
+    font-size: clamp(1.85rem, 3.1vw, 3.1rem);
+    line-height: 1;
+  }
+
+  .lp-decision-heading > p {
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(0.96rem, 1.15vw, 1.05rem);
+    line-height: 1.45;
+  }
+
+  .lp-lines--selector .lp-split-heading {
     align-items: center;
-    padding: clamp(20px, 3vw, 28px);
+    margin-bottom: clamp(18px, 3vw, 28px);
+    padding: clamp(18px, 3vw, 24px);
     border: 1px solid rgba(174, 188, 204, 0.56);
     border-radius: 8px;
     background:
@@ -1158,15 +1932,21 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
       #f8fafc;
   }
 
-  .lp-lines .lp-split-heading h2 {
+  .lp-lines--selector .lp-split-heading h2 {
     max-width: 680px;
-    font-size: clamp(2rem, 4vw, 3.9rem);
+    font-size: clamp(1.75rem, 3.2vw, 3rem);
+  }
+
+  .lp-lines--selector .lp-split-heading > p {
+    max-width: 560px;
+    font-size: clamp(0.95rem, 1.2vw, 1.03rem);
+    line-height: 1.45;
   }
 
   .lp-line-grid {
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
   }
 
   .lp-line-card,
@@ -1184,47 +1964,86 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
   .lp-line-card {
     position: relative;
     display: grid;
-    grid-column: span 2;
-    gap: 12px;
-    align-content: start;
-    min-height: 280px;
-    padding: 22px;
+    grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.98fr);
+    gap: clamp(14px, 1.6vw, 18px);
+    align-items: stretch;
+    min-height: 300px;
+    padding: clamp(18px, 2.4vw, 24px);
     overflow: hidden;
+    transition:
+      box-shadow 180ms ease,
+      transform 180ms ease;
   }
 
   .lp-line-card::before {
     content: "";
     position: absolute;
-    inset: 0 0 auto;
-    height: 4px;
-    background: linear-gradient(90deg, var(--red), var(--steel), var(--blue-dark));
+    inset: 18px auto 18px 0;
+    width: 4px;
+    border-radius: 999px;
+    background: var(--red);
   }
 
-  .lp-line-card:nth-child(4) {
-    grid-column: 2 / span 2;
+  .lp-line-card:hover {
+    box-shadow: 0 18px 42px rgba(8, 17, 28, 0.1);
+    transform: translateY(-2px);
   }
 
-  .lp-line-card:nth-child(5) {
-    grid-column: 4 / span 2;
+  .lp-line-card__content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    align-content: start;
+    gap: 8px;
+    min-width: 0;
   }
 
-  .lp-line-card > span {
+  .lp-line-card__top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .lp-line-card__icon {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: #eef4ff;
+    color: var(--blue-dark);
+  }
+
+  .lp-line-card__icon svg {
+    width: 19px;
+    height: 19px;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+  }
+
+  .lp-line-card__eyebrow {
     color: var(--red);
-    font-size: 0.74rem;
+    font-size: 0.7rem;
     font-weight: 900;
     text-transform: uppercase;
   }
 
   .lp-line-card h3 {
     margin: 0;
-    font-size: clamp(1.18rem, 1.5vw, 1.42rem);
-    line-height: 1.08;
+    color: var(--ink);
+    max-width: 25rem;
+    font-size: clamp(1.16rem, 1.42vw, 1.38rem);
+    line-height: 1.06;
   }
 
   .lp-line-card p {
+    max-width: 26rem;
     margin: 0;
     color: var(--muted);
-    font-size: 0.96rem;
+    font-size: 0.92rem;
+    line-height: 1.38;
   }
 
   .lp-line-card dd {
@@ -1235,21 +2054,183 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
   .lp-line-card__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 2px;
+    gap: 7px;
+    margin-top: 0;
   }
 
   .lp-line-card__tags small {
     display: inline-flex;
     align-items: center;
-    min-height: 30px;
-    padding: 6px 9px;
+    min-height: 28px;
+    padding: 5px 9px;
     border: 1px solid rgba(67, 95, 120, 0.18);
     border-radius: 999px;
     background: #eef4ff;
     color: var(--blue-dark);
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 850;
+  }
+
+  .lp-line-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    min-height: 38px;
+    margin-top: 0;
+    padding: 8px 12px;
+    border: 1px solid rgba(47, 125, 246, 0.22);
+    border-radius: 6px;
+    background: #ffffff;
+    color: var(--blue-dark);
+    box-shadow: 0 10px 24px rgba(47, 125, 246, 0.08);
+  }
+
+  .lp-line-card__cta:hover {
+    border-color: var(--red);
+    background: #fff7f8;
+    color: var(--red);
+  }
+
+  .lp-line-card__visual {
+    position: relative;
+    z-index: 0;
+    display: grid;
+    place-items: center;
+    align-self: center;
+    justify-self: stretch;
+    width: 100%;
+    min-height: 285px;
+    aspect-ratio: 16 / 12.2;
+    min-height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(245, 247, 250, 0.96)),
+      repeating-linear-gradient(90deg, rgba(67, 95, 120, 0.06) 0 1px, transparent 1px 42px),
+      #f8fafc;
+    box-shadow: inset 0 0 0 1px rgba(174, 188, 204, 0.32);
+  }
+
+  .lp-line-card__visual img {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
+    object-position: center 68%;
+    filter: saturate(0.98) contrast(1.02);
+  }
+
+  .lp-line-card--industrial .lp-line-card__visual img {
+    height: calc(100% + 44px);
+    object-fit: cover;
+    object-position: center bottom;
+    transform: translateY(-34px);
+  }
+
+  .lp-line-card--inoxidable .lp-line-card__visual img {
+    height: calc(100% + 36px);
+    transform: translateY(-30px);
+  }
+
+  .lp-line-card__visual span {
+    position: absolute;
+    right: 24px;
+    bottom: 36px;
+    width: 136px;
+    height: 58px;
+    border-radius: 5px 5px 12px 12px;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 42%),
+      #1a2d42;
+    box-shadow:
+      0 18px 28px rgba(8, 17, 28, 0.16),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+    transform: skewX(-12deg) rotate(-3deg);
+  }
+
+  .lp-line-card__visual span::before,
+  .lp-line-card__visual span::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    width: 20px;
+    height: 10px;
+    border-radius: 0 0 4px 4px;
+    background: #101820;
+  }
+
+  .lp-line-card__visual span::before {
+    left: 14px;
+  }
+
+  .lp-line-card__visual span::after {
+    right: 14px;
+  }
+
+  .lp-line-card--base .lp-line-card__visual span,
+  .lp-line-card--comercial .lp-line-card__visual span {
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 42%),
+      #2f7df6;
+  }
+
+  .lp-line-card--industrial .lp-line-card__visual span {
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 42%),
+      #26374d;
+  }
+
+  .lp-line-card--pro .lp-line-card__visual span {
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent 42%),
+      #173e79;
+  }
+
+  .lp-line-card--inoxidable .lp-line-card__visual span {
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.42), transparent 42%),
+      #9aa8b8;
+  }
+
+  .lp-line-help {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding: clamp(18px, 2.5vw, 24px);
+    border: 1px solid rgba(174, 188, 204, 0.62);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.08), transparent 42%),
+      #f8fafc;
+  }
+
+  .lp-line-help h3 {
+    margin-bottom: 6px;
+    font-size: clamp(1.25rem, 2vw, 1.65rem);
+  }
+
+  .lp-line-help p {
+    max-width: 720px;
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .lp-line-help a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    background: var(--ink);
+    color: #ffffff;
+    font-weight: 900;
+    text-decoration: none;
+    white-space: nowrap;
   }
 
   .lp-line-card a,
@@ -1286,31 +2267,119 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
     font-weight: 850;
   }
 
+  .lp-application-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .lp-application-grid article {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 8px 12px;
+    align-items: start;
+    padding: 16px;
+    border: 1px solid rgba(174, 188, 204, 0.58);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.06), transparent 54%),
+      #ffffff;
+    box-shadow: 0 12px 28px rgba(8, 17, 28, 0.05);
+  }
+
+  .lp-card-icon {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #eef4ff;
+    color: var(--blue-dark);
+  }
+
+  .lp-card-icon svg {
+    width: 19px;
+    height: 19px;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+  }
+
+  .lp-application-grid h3 {
+    margin: 0;
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.12;
+  }
+
+  .lp-application-grid p {
+    grid-column: 2;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.35;
+  }
+
   .lp-factor-grid {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 14px;
+    gap: 12px;
   }
 
   .lp-factor-grid article {
-    padding: 20px;
+    position: relative;
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    padding: 18px;
+    overflow: hidden;
+  }
+
+  .lp-factor-grid article::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--blue-dark));
+  }
+
+  .lp-factor-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
   }
 
   .lp-factor-grid span {
     display: inline-grid;
     place-items: center;
-    width: 44px;
-    height: 32px;
-    margin-bottom: 18px;
+    min-width: 42px;
+    height: 30px;
+    padding-inline: 12px;
     border-radius: 999px;
     background: #eef4ff;
     color: var(--blue-dark);
     font-weight: 900;
   }
 
+  .lp-factor-grid .lp-card-icon {
+    width: 34px;
+    height: 34px;
+    font-style: normal;
+  }
+
   .lp-factor-grid h3 {
     margin: 0;
-    font-size: 1.02rem;
+    font-size: 0.98rem;
+    line-height: 1.14;
+  }
+
+  .lp-factor-grid p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.86rem;
+    line-height: 1.36;
   }
 
   .lp-inline-cta {
@@ -1323,6 +2392,16 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
     border: 1px solid rgba(174, 188, 204, 0.6);
     border-radius: 8px;
     background: #f8fafc;
+  }
+
+  .lp-selection-cta {
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.12), transparent 44%),
+      #ffffff;
+  }
+
+  .lp-selection-cta .button {
+    white-space: nowrap;
   }
 
   .lp-disclosure-panel {
@@ -1460,6 +2539,292 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
     box-shadow: 0 14px 32px rgba(8, 17, 28, 0.06);
   }
 
+  .lp-technical-matrix {
+    padding-block: clamp(42px, 5vw, 68px);
+  }
+
+  .lp-technical-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 0.78fr) minmax(320px, 0.52fr);
+    gap: clamp(18px, 4vw, 56px);
+    align-items: end;
+    margin-bottom: 20px;
+  }
+
+  .lp-technical-heading h2 {
+    max-width: 760px;
+    margin-bottom: 0;
+    color: var(--ink);
+    font-size: clamp(1.75rem, 3vw, 2.8rem);
+    line-height: 1.03;
+  }
+
+  .lp-technical-heading > p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  .lp-technical-summary {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .lp-technical-summary__card {
+    position: relative;
+    display: grid;
+    align-content: start;
+    gap: 9px;
+    min-height: 230px;
+    padding: 16px;
+    border: 1px solid rgba(174, 188, 204, 0.58);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.08), transparent 48%),
+      #ffffff;
+    box-shadow: 0 12px 28px rgba(8, 17, 28, 0.05);
+  }
+
+  .lp-technical-summary__card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: var(--blue-dark);
+  }
+
+  .lp-technical-summary__card--base::before {
+    background: linear-gradient(90deg, var(--red), var(--blue-dark));
+  }
+
+  .lp-technical-summary__card--pro::before,
+  .lp-technical-summary__card--inoxidable::before {
+    background: linear-gradient(90deg, var(--red), var(--blue));
+  }
+
+  .lp-technical-summary__card > strong {
+    color: var(--red);
+    font-size: 0.76rem;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .lp-technical-summary__card h3 {
+    margin: 0;
+    color: var(--ink);
+    font-size: 1.02rem;
+    line-height: 1.15;
+  }
+
+  .lp-technical-summary__card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.86rem;
+    line-height: 1.36;
+  }
+
+  .lp-technical-summary__card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    min-height: 34px;
+    margin-top: auto;
+    padding: 7px 10px;
+    border-radius: 6px;
+    background: var(--ink);
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .lp-technical-summary__card a:hover {
+    background: var(--blue);
+  }
+
+  .lp-quick-compare {
+    display: grid;
+    gap: 18px;
+    padding: clamp(18px, 3vw, 26px);
+    border: 1px solid rgba(174, 188, 204, 0.66);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.1), transparent 42%),
+      #ffffff;
+    box-shadow: 0 18px 42px rgba(8, 17, 28, 0.08);
+  }
+
+  .lp-quick-compare[hidden] {
+    display: none;
+  }
+
+  .lp-technical-open {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding: 18px;
+    border: 1px solid rgba(174, 188, 204, 0.62);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(8, 17, 28, 0.05);
+  }
+
+  .lp-technical-open p {
+    max-width: 720px;
+    margin: 0;
+    color: var(--muted);
+    font-weight: 780;
+  }
+
+  .lp-technical-open__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  .lp-quick-compare__heading {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(260px, 0.46fr);
+    gap: 18px;
+    align-items: end;
+  }
+
+  .lp-quick-compare__heading h3 {
+    margin: 0;
+    color: var(--ink);
+    font-size: clamp(1.35rem, 2.1vw, 2rem);
+    line-height: 1.08;
+  }
+
+  .lp-quick-compare__heading p,
+  .lp-quick-compare__result p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .lp-quick-compare__controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .lp-quick-compare__controls label {
+    display: grid;
+    gap: 7px;
+    color: var(--ink);
+    font-size: 0.86rem;
+    font-weight: 900;
+  }
+
+  .lp-quick-compare__controls select {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 12px;
+    border: 1px solid rgba(67, 95, 120, 0.22);
+    border-radius: 8px;
+    background: #ffffff;
+    color: #26374d;
+    font: inherit;
+    font-weight: 850;
+  }
+
+  .lp-quick-compare__title {
+    margin: 0;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: #101820;
+    color: #ffffff;
+    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+    line-height: 1.1;
+  }
+
+  .lp-quick-compare__grid {
+    display: grid;
+    gap: 10px;
+  }
+
+  .lp-quick-compare__grid article {
+    display: grid;
+    grid-template-columns: minmax(160px, 0.48fr) repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    align-items: stretch;
+    padding: 12px;
+    border: 1px solid rgba(174, 188, 204, 0.5);
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  .lp-quick-compare__grid article.is-different {
+    border-left: 4px solid rgba(212, 33, 46, 0.78);
+    background:
+      linear-gradient(90deg, rgba(212, 33, 46, 0.045), transparent 46%),
+      #ffffff;
+  }
+
+  .lp-quick-compare__grid article > strong {
+    color: var(--ink);
+    font-size: 0.9rem;
+    line-height: 1.25;
+  }
+
+  .lp-quick-compare__grid article div {
+    display: grid;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 7px;
+    background: #f8fafc;
+  }
+
+  .lp-quick-compare__grid article span {
+    color: var(--blue-dark);
+    font-size: 0.76rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .lp-quick-compare__grid article p {
+    margin: 0;
+    color: #405063;
+    font-size: 0.9rem;
+    line-height: 1.32;
+  }
+
+  .lp-quick-compare__result {
+    display: grid;
+    gap: 7px;
+    padding: 16px;
+    border: 1px solid rgba(47, 125, 246, 0.22);
+    border-radius: 8px;
+    background: #eef4ff;
+  }
+
+  .lp-quick-compare__result strong {
+    color: var(--ink);
+    font-size: 1rem;
+  }
+
+  .lp-quick-compare__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .lp-technical-full {
+    margin-top: 16px;
+  }
+
+  .lp-technical-full[hidden] {
+    display: none;
+  }
+
   .lp-table-wrap {
     overflow-x: auto;
     border: 1px solid rgba(174, 188, 204, 0.66);
@@ -1475,44 +2840,115 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
   .lp-comparison-table {
     width: 100%;
     min-width: 980px;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
   }
 
   .lp-comparison-table th,
   .lp-comparison-table td {
-    padding: 16px;
+    padding: 14px 13px;
     border-bottom: 1px solid rgba(174, 188, 204, 0.44);
     text-align: left;
-    vertical-align: top;
+    vertical-align: middle;
   }
 
   .lp-comparison-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     background: #101820;
     color: #ffffff;
+    font-size: 0.86rem;
+    line-height: 1.15;
   }
 
   .lp-comparison-table tbody th {
     width: 170px;
+    background: #ffffff;
     color: var(--ink);
     font-weight: 900;
   }
 
+  .lp-comparison-table tbody tr:nth-child(even) th,
+  .lp-comparison-table tbody tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+
+  .lp-comparison-table tbody tr:hover th,
+  .lp-comparison-table tbody tr:hover td {
+    background: #eef4ff;
+  }
+
   .lp-comparison-table td {
     color: #405063;
-    font-size: 0.94rem;
+    font-size: 0.88rem;
+    line-height: 1.32;
+  }
+
+  .lp-technical-mobile {
+    display: none;
+  }
+
+  .lp-technical-cta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding: 20px;
+    border: 1px solid rgba(174, 188, 204, 0.62);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.1), transparent 46%),
+      #ffffff;
+    box-shadow: 0 12px 28px rgba(8, 17, 28, 0.05);
+  }
+
+  .lp-technical-cta p {
+    max-width: 720px;
+    margin: 0;
+    color: var(--muted);
+    font-weight: 780;
   }
 
   .lp-decision-grid {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 14px;
+    gap: 12px;
   }
 
   .lp-decision-grid article {
     display: grid;
     align-content: start;
-    gap: 12px;
-    padding: 22px;
+    gap: 10px;
+    padding: 18px;
+    transition:
+      box-shadow 180ms ease,
+      transform 180ms ease;
+  }
+
+  .lp-decision-grid article:hover {
+    box-shadow: 0 18px 40px rgba(8, 17, 28, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .lp-decision-card__top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .lp-decision-card__top .lp-card-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .lp-decision-card__top small {
+    color: var(--red);
+    font-size: 0.72rem;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
   }
 
   .lp-decision-grid h3,
@@ -1520,8 +2956,38 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
     margin: 0;
   }
 
+  .lp-decision-grid h3 {
+    color: var(--ink);
+    font-size: 1.02rem;
+    line-height: 1.16;
+  }
+
   .lp-decision-grid p {
     color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .lp-decision-grid a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: fit-content;
+    min-height: 38px;
+    margin-top: 2px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: #eef4ff;
+    color: var(--blue-dark);
+    font-size: 0.9rem;
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .lp-decision-grid a:hover {
+    background: var(--blue);
+    color: #ffffff;
   }
 
   .lp-contact-grid {
@@ -1857,7 +3323,9 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
     .lp-line-grid,
     .lp-factor-grid,
     .lp-mini-compare,
-    .lp-decision-grid {
+    .lp-decision-grid,
+    .lp-application-grid,
+    .lp-technical-summary {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -1872,6 +3340,8 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
     .lp-proof-grid,
     .lp-contact-grid,
     .lp-app-grid,
+    .lp-decision-heading,
+    .lp-technical-heading,
     .lp-split-heading,
     .lp-three-column,
     .lp-custom-config__grid {
@@ -1892,6 +3362,15 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
       padding-top: 46px;
     }
 
+    .lp-hero--background {
+      background:
+        linear-gradient(180deg, rgba(8, 17, 28, 0.94) 0%, rgba(8, 17, 28, 0.82) 54%, rgba(8, 17, 28, 0.92) 100%),
+        var(--lp-hero-image),
+        linear-gradient(135deg, #101820, #1a2d42);
+      background-position: center, center;
+      background-size: cover, cover;
+    }
+
     .lp-hero h1 {
       font-size: 2.08rem;
     }
@@ -1905,8 +3384,271 @@ const valueFor = (line: LowProfileLine, key: (typeof lowProfileComparisonRows)[n
     .lp-factor-grid,
     .lp-form-grid,
     .lp-mini-compare,
-    .lp-decision-grid {
+    .lp-decision-grid,
+    .lp-application-grid,
+    .lp-technical-summary {
       grid-template-columns: 1fr;
+    }
+
+    .lp-technical-matrix {
+      padding-block: 38px;
+    }
+
+    .lp-technical-heading {
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .lp-technical-heading h2 {
+      font-size: 1.72rem;
+      line-height: 1.03;
+    }
+
+    .lp-technical-heading > p {
+      font-size: 0.94rem;
+      line-height: 1.4;
+    }
+
+    .lp-technical-summary__card {
+      min-height: 0;
+    }
+
+    .lp-quick-compare {
+      gap: 14px;
+      padding: 16px;
+    }
+
+    .lp-technical-open {
+      align-items: stretch;
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px;
+    }
+
+    .lp-technical-open .button {
+      width: 100%;
+    }
+
+    .lp-technical-open__actions {
+      width: 100%;
+    }
+
+    .lp-quick-compare__heading,
+    .lp-quick-compare__controls {
+      grid-template-columns: 1fr;
+    }
+
+    .lp-quick-compare__heading h3 {
+      font-size: 1.28rem;
+    }
+
+    .lp-quick-compare__title {
+      font-size: 1.05rem;
+    }
+
+    .lp-quick-compare__grid article {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 12px;
+    }
+
+    .lp-quick-compare__grid article > strong {
+      padding-bottom: 2px;
+      color: var(--red);
+    }
+
+    .lp-quick-compare__grid article div {
+      padding: 9px;
+    }
+
+    .lp-quick-compare__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .lp-quick-compare__actions .button {
+      width: 100%;
+    }
+
+    .lp-technical-full .lp-comparison-table {
+      min-width: 920px;
+    }
+
+    .lp-decision-flow {
+      padding-block: 38px;
+    }
+
+    .lp-decision-heading {
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .lp-decision-heading h2 {
+      font-size: 1.72rem;
+      line-height: 1.02;
+    }
+
+    .lp-decision-heading > p {
+      font-size: 0.94rem;
+      line-height: 1.4;
+    }
+
+    .lp-application-grid article {
+      padding: 14px;
+    }
+
+    .lp-factor-grid article,
+    .lp-decision-grid article {
+      padding: 16px;
+    }
+
+    .lp-decision-grid article:hover {
+      transform: none;
+    }
+
+    .lp-selection-cta .button,
+    .lp-decision-grid a {
+      width: 100%;
+    }
+
+    .lp-lines--selector .lp-split-heading {
+      gap: 10px;
+      margin-bottom: 16px;
+      padding: 16px;
+    }
+
+    .lp-lines--selector .lp-split-heading h2 {
+      font-size: 1.72rem;
+      line-height: 1;
+    }
+
+    .lp-lines--selector .lp-split-heading > p {
+      font-size: 0.94rem;
+      line-height: 1.4;
+    }
+
+    .lp-line-grid {
+      gap: 12px;
+    }
+
+    .lp-line-card {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      min-height: 0;
+      padding: 16px;
+      transform: none;
+    }
+
+    .lp-line-card__visual {
+      grid-row: 1;
+      width: 100%;
+      min-height: clamp(220px, 48vw, 250px);
+      aspect-ratio: 16 / 9.8;
+      align-self: stretch;
+      justify-self: stretch;
+      order: -1;
+    }
+
+    .lp-line-card__content {
+      grid-row: 2;
+      gap: 8px;
+    }
+
+    .lp-line-card:hover {
+      transform: none;
+    }
+
+    .lp-line-card::before {
+      inset: 14px auto 14px 0;
+      width: 3px;
+    }
+
+    .lp-line-card__content {
+      gap: 9px;
+    }
+
+    .lp-line-card__top {
+      gap: 8px;
+    }
+
+    .lp-line-card__icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    .lp-line-card__icon svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .lp-line-card__eyebrow {
+      font-size: 0.68rem;
+    }
+
+    .lp-line-card h3 {
+      font-size: 1.16rem;
+      line-height: 1.08;
+      max-width: none;
+    }
+
+    .lp-line-card p {
+      max-width: none;
+      font-size: 0.9rem;
+      line-height: 1.34;
+    }
+
+    .lp-line-card__tags {
+      gap: 6px;
+      overflow: hidden;
+    }
+
+    .lp-line-card__tags small {
+      min-height: 25px;
+      padding: 4px 7px;
+      font-size: 0.7rem;
+      white-space: nowrap;
+    }
+
+    .lp-line-card__cta {
+      min-height: 34px;
+      margin-top: 0;
+      padding: 7px 10px;
+      font-size: 0.86rem;
+    }
+
+    .lp-line-card__visual span {
+      right: 20px;
+      bottom: 28px;
+      width: 112px;
+      height: 48px;
+    }
+
+    .lp-line-card__visual span::before,
+    .lp-line-card__visual span::after {
+      bottom: -8px;
+      width: 15px;
+      height: 8px;
+    }
+
+    .lp-line-help {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 12px;
+      padding: 16px;
+    }
+
+    .lp-line-help h3 {
+      font-size: 1.24rem;
+    }
+
+    .lp-line-help p {
+      font-size: 0.94rem;
+      line-height: 1.4;
+    }
+
+    .lp-line-help a {
+      width: 100%;
     }
 
     .lp-inline-cta {
