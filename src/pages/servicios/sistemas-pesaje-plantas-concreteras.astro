@@ -17,7 +17,7 @@ const whatsappHref = `${contact.whatsapp[0].href}?text=${whatsappMessage}`;
 const seo = {
   title: "Servicio de Básculas para Plantas Concreteras | Astil Básculas",
   description:
-    "Servicio técnico para sistemas de pesaje en plantas concreteras: reparación, mantenimiento, calibración coordinada con laboratorio acreditado por EMA, pruebas metrológicas, refacciones e instalación de componentes. Atención en CDMX, Estado de México y zona centro.",
+    "Servicio técnico para sistemas de pesaje en plantas concreteras: reparación, mantenimiento, calibración coordinada, pruebas metrológicas, refacciones e instalación de componentes. Atención frecuente en zona centro y servicios foráneos en México bajo programación.",
   keywords:
     "servicio de básculas para plantas concreteras, mantenimiento de básculas para plantas de concreto, reparación de sistemas de pesaje para concreteras, calibración de básculas para concreteras, sistemas de pesaje para concreto, pesaje en plantas concreteras, básculas para agregados, básculas para cemento, sistemas de pesaje para aditivos, mantenimiento de dosificadoras de concreto, reparación de básculas industriales en CDMX, servicio de básculas en Estado de México, sistemas de pesaje industrial en México"
 };
@@ -141,6 +141,7 @@ const applications = [
 ];
 
 const zones = [
+  "Base de atención frecuente",
   "CDMX",
   "Área Metropolitana",
   "Estado de México",
@@ -148,7 +149,8 @@ const zones = [
   "Puebla",
   "Hidalgo",
   "Zona centro",
-  "Proyectos foráneos bajo programación"
+  "Servicio foráneo bajo programación",
+  "Otros estados previa revisión técnica"
 ];
 
 const diagnosisCards = [
@@ -237,7 +239,7 @@ const faqs = [
   {
     question: "¿Atienden plantas concreteras fuera de CDMX?",
     answer:
-      "Sí. Atendemos proyectos en CDMX, Área Metropolitana, Estado de México, Querétaro, Puebla, Hidalgo y zona centro. También podemos atender proyectos foráneos bajo programación, según el alcance del servicio y la ubicación."
+      "Sí. Nuestra atención frecuente se concentra en CDMX, Área Metropolitana, Estado de México, Querétaro, Puebla, Hidalgo y zona centro, pero no estamos limitados a esas zonas. También podemos programar servicio foráneo en otros estados de México, según el alcance del servicio, ubicación y condiciones del equipo."
   },
   {
     question: "¿Pueden instalar refacciones que ya compró el cliente?",
@@ -277,7 +279,15 @@ const serviceSchema = {
       addressCountry: "MX"
     }
   },
-  areaServed: ["CDMX", "Estado de México", "Querétaro", "Puebla", "Hidalgo", "Zona centro"],
+  areaServed: [
+    "CDMX",
+    "Estado de México",
+    "Querétaro",
+    "Puebla",
+    "Hidalgo",
+    "Zona centro",
+    "México bajo programación"
+  ],
   url: pageUrl
 };
 const faqSchema = {
@@ -350,7 +360,7 @@ const breadcrumbSchema = {
             <a class="button secondary" href={landingFormHref}>Cotizar servicio para mi planta</a>
           </div>
           <span class="concrete-hero__microcopy">
-            Atención en CDMX, Área Metropolitana, Estado de México, Querétaro, Puebla, Hidalgo y zona centro.
+            Atención frecuente en zona centro. También programamos servicios foráneos en otros estados de México según alcance y ubicación.
           </span>
         </div>
 
@@ -470,14 +480,15 @@ const breadcrumbSchema = {
       <div class="section-inner coverage-grid">
         <div>
           <p class="eyebrow">Cobertura</p>
-          <h2>Cobertura de servicio para plantas concreteras</h2>
+          <h2>Atención local y foránea para plantas concreteras</h2>
           <p>
-            Atendemos proyectos en CDMX, Área Metropolitana, Estado de México, Querétaro, Puebla,
-            Hidalgo y zona centro del país.
+            Nuestra atención frecuente se concentra en CDMX, Área Metropolitana, Estado de México,
+            Querétaro, Puebla, Hidalgo y zona centro del país.
           </p>
           <p>
-            También podemos atender proyectos foráneos bajo programación, de acuerdo con el tipo de
-            servicio requerido, ubicación, condiciones del equipo y alcance técnico solicitado.
+            No estamos limitados a esas zonas: también podemos programar servicio foráneo en otros
+            estados de México, de acuerdo con el tipo de servicio requerido, ubicación, condiciones
+            del equipo y alcance técnico solicitado.
           </p>
         </div>
         <div class="chip-list">
@@ -574,7 +585,7 @@ const breadcrumbSchema = {
             </label>
             <label>
               Ciudad / Estado
-              <input type="text" name="ubicacion" placeholder="CDMX, Estado de México, Querétaro..." required />
+              <input type="text" name="ubicacion" placeholder="Ciudad y estado donde está la planta" required />
             </label>
             <label>
               Tipo de planta o proceso
