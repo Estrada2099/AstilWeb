@@ -14,11 +14,11 @@ const whatsappMessage = encodeURIComponent(
 const whatsappHref = `${contact.whatsapp[0].href}?text=${whatsappMessage}`;
 const imageSlots = {
   hero: "/Bajo-Perfil/base/Baper-hero",
-  heroPlatform: "/Bajo-Perfil/base",
-  indicator: "/Pexisa/IndicadoresPeso",
+  heroPlatform: "/Bajo-Perfil/base/base-producto",
+  indicator: "/Bajo-Perfil/base/ipes-producto",
   surfaceDetail: "/Bajo-Perfil/base/base-beneficios",
   useIdeal: "/Bajo-Perfil/base/base-uso-ideal",
-  application: "/Pexisa/PlataformasPiso",
+  application: "/Bajo-Perfil/base/entrega2",
   bundle: "/Bajo-Perfil/base"
 };
 
@@ -117,24 +117,13 @@ const idealUses = [
     text: "Apoyo para entradas, salidas y carga controlada."
   },
   {
-    title: "Pesaje básico",
-    text: "Operación sencilla con indicador de solo peso."
+    title: "Embarques ligeros",
+    text: "Apoyo para revisar carga antes de salida o entrega."
   },
   {
     title: "Control de peso no intensivo",
     text: "Procesos internos con uso moderado y ambiente controlado."
   }
-];
-
-const productFeatures = [
-  "Plataforma de 120 × 120 cm",
-  "Altura de 11 cm",
-  "Capacidad máxima de 1,500 kg",
-  "Fabricación en acero al carbón",
-  "Superficie antiderrapante",
-  "4 celdas tipo Shearbeam",
-  "Cable de conexión de 5 metros",
-  "Compatible con rampa"
 ];
 
 const platformSpecs = [
@@ -166,38 +155,6 @@ const indicatorSpecs = [
   ["Conectividad", "N/A"]
 ];
 
-const includes = [
-  "Plataforma de bajo perfil 120 × 120 cm",
-  "Capacidad máxima de 1,500 kg",
-  "Superficie antiderrapante",
-  "4 celdas tipo Shearbeam en acero al carbón",
-  "Cable de conexión de 5 metros",
-  "Indicador IPES de solo peso",
-  "Cargador 6V",
-  "Pila recargable de hasta 100 horas",
-  "Compatibilidad con rampa"
-];
-
-const platformHighlights = [
-  "120 x 120 cm",
-  "1,500 kg",
-  "11 cm de altura",
-  "Acero al carbon",
-  "Superficie antiderrapante",
-  "4 celdas Shearbeam",
-  "Compatible con rampa"
-];
-
-const indicatorHighlights = [
-  "Linea comercial",
-  "Solo peso",
-  "Estructura plastica",
-  "Cargador 6V",
-  "Pila recargable hasta 100 horas",
-  "Sin conectividad RS232",
-  "Sin soporte para mesa o pared"
-];
-
 const goodFit = [
   "Necesitas una báscula funcional para almacén o recibo.",
   "Tu operación es moderada.",
@@ -205,15 +162,16 @@ const goodFit = [
   "Trabajas con carga controlada.",
   "Necesitas una plataforma de 120 × 120 cm.",
   "No necesitas conectividad a PC o impresora.",
-  "Buscas indicador sencillo de solo peso."
+  "No necesitas instalación en fosa."
 ];
 
 const considerOther = [
   "Necesitas uso intensivo durante varios turnos.",
   "Necesitas instalación en fosa.",
-  "Requieres conexión RS232 a PC o impresor térmico.",
+  "Requieres conectividad RS232.",
   "Trabajas en humedad, lavado o ambiente sanitario.",
-  "Necesitas capacidades superiores o configuraciones especiales."
+  "Necesitas mayor capacidad.",
+  "Requieres una configuración más robusta."
 ];
 
 const faqs = [
@@ -523,12 +481,12 @@ const breadcrumbSchema = {
     <div class="section-inner base-split-heading base-use-heading">
       <div>
         <p class="eyebrow">Uso ideal</p>
-        <h2>Ideal para pesaje básico en operación moderada</h2>
+        <h2>Ideal para operaciones de pesaje básico y uso moderado</h2>
       </div>
       <p>
-        La Báscula de Bajo Perfil Base BAPER-12 es una solución funcional para empresas y negocios
-        que necesitan pesar productos, materiales o mercancía en procesos de almacén, recibo y
-        control interno no intensivo.
+        La Báscula BAPER-12 es recomendable cuando necesitas pesar mercancía, productos o
+        materiales en procesos internos de control, sin requerir conectividad avanzada o instalación
+        en fosa.
       </p>
     </div>
     <div class="section-inner base-application-media">
@@ -560,78 +518,37 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <section class="section base-product-section">
-    <div class="section-inner base-product">
-      <div class="base-product__image">
-        <SmartImage
-          name={imageSlots.heroPlatform}
-          fallbackExt="webp"
-          alt="Plataforma de acero al carbón de la Báscula de Bajo Perfil Base"
-          width="1400"
-          height="1000"
-        />
-      </div>
-      <div class="base-product__content">
-        <p class="eyebrow">Conoce el equipo</p>
-        <h2>Conoce la Báscula de Bajo Perfil Base BAPER-12</h2>
-        <ul class="base-check-list">
-          {productFeatures.map((feature) => <li>{feature}</li>)}
-        </ul>
-      </div>
-    </div>
-  </section>
-
   <section class="section base-includes-section">
     <div class="section-inner base-includes-shell">
-      <div class="base-includes-copy">
-        <p class="eyebrow">Configuración incluida</p>
-        <h2>Qué incluye la Báscula BAPER-12</h2>
+      <div class="base-includes-head">
+        <p class="eyebrow">Producto y configuración incluida</p>
+        <h2>Producto y configuración incluida</h2>
         <p>
-          Esta configuración integra la plataforma, el indicador y los componentes principales
-          necesarios para operación de pesaje básico en almacén, recibo y uso moderado.
+          La Báscula BAPER-12 integra plataforma de bajo perfil, indicador IPES y componentes
+          principales para operación de pesaje básico.
         </p>
+      </div>
+      <div class="base-includes-summary-wrap">
         <div class="base-includes-summary">
-          <strong>Configuración lista para operación básica</strong>
+          <strong>Configuración oficial del equipo</strong>
           <ul>
-            <li>Plataforma 120 × 120 cm</li>
-            <li>Indicador IPES incluido</li>
-            <li>Pila hasta 100 horas</li>
+            <li>
+              <strong>120 × 120 cm</strong>
+              <span>Plataforma</span>
+            </li>
+            <li>
+              <strong>1,500 kg</strong>
+              <span>Capacidad</span>
+            </li>
+            <li>
+              <strong>IPES</strong>
+              <span>Indicador incluido</span>
+            </li>
+            <li>
+              <strong>Hasta 100 horas</strong>
+              <span>Pila recargable</span>
+            </li>
           </ul>
-        </div>
-        <div class="base-includes-mini">
-          <article>
-            <span class="base-include-mini-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M4 16h16" />
-                <path d="M6 16V9h12v7" />
-                <path d="M8 9l4-4 4 4" />
-              </svg>
-            </span>
-            <div>
-              <h3>Plataforma incluida</h3>
-              <p>
-                Base de bajo perfil de 120 × 120 cm, capacidad de 1,500 kg, superficie
-                antiderrapante y 4 celdas tipo Shearbeam en acero al carbón.
-              </p>
-            </div>
-          </article>
-          <article>
-            <span class="base-include-mini-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <rect x="7" y="4" width="10" height="16" rx="2" />
-                <path d="M10 8h4" />
-                <path d="M10 12h4" />
-                <path d="M10 16h4" />
-              </svg>
-            </span>
-            <div>
-              <h3>Indicador incluido</h3>
-              <p>
-                Indicador IPES de solo peso, con cargador 6V y pila recargable de hasta 100 horas de
-                uso continuo.
-              </p>
-            </div>
-          </article>
         </div>
         <div class="button-row">
           <a class="button" href={whatsappHref}>Solicita cotización por WhatsApp</a>
@@ -639,250 +556,91 @@ const breadcrumbSchema = {
         </div>
       </div>
       <div class="base-includes-visual-stack">
-        <div class="base-includes-platform">
-          <SmartImage
-            name={imageSlots.heroPlatform}
-            fallbackExt="webp"
-            alt="Plataforma de bajo perfil BAPER-12 incluida en la configuración"
-            width="1400"
-            height="900"
-          />
-        </div>
-        <div class="base-includes-indicator">
-          <SmartImage
-            name={imageSlots.indicator}
-            fallbackExt="png"
-            alt="Indicador IPES incluido con la Báscula BAPER-12"
-            width="900"
-            height="700"
-          />
-          <div>
-            <strong>Indicador IPES</strong>
-            <span>Comercial · solo peso</span>
-          </div>
+        <div class="base-includes-visual-frame">
+          <article class="base-includes-platform">
+            <SmartImage
+              name={imageSlots.heroPlatform}
+              fallbackExt="webp"
+              alt="Plataforma de bajo perfil BAPER-12"
+              class="base-image-slot base-image-slot--platform"
+              width="1400"
+              height="1050"
+            />
+            <div class="base-includes-visual-copy">
+              <strong>Plataforma / equipo</strong>
+              <span>Base de bajo perfil con superficie antiderrapante y estructura para operación moderada.</span>
+            </div>
+          </article>
+          <article class="base-includes-indicator">
+            <SmartImage
+              name={imageSlots.indicator}
+              fallbackExt="webp"
+              alt="Indicador IPES para la BAPER-12"
+              class="base-image-slot base-image-slot--indicator"
+              width="900"
+              height="900"
+            />
+            <div class="base-includes-visual-copy">
+              <strong>Indicador IPES</strong>
+              <span>Indicador comercial de solo peso con pila recargable.</span>
+            </div>
+          </article>
         </div>
       </div>
     </div>
-    <div class="section-inner base-include-categories">
-      <article class="base-include-category">
-        <div class="base-include-category__head">
-          <span class="base-include-mini-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M4 16h16" />
-              <path d="M6 16V9h12v7" />
-            </svg>
-          </span>
-          <div>
-            <h3>Plataforma</h3>
-            <p>Estructura, capacidad y acceso.</p>
-          </div>
+    <div class="section-inner base-includes-tech">
+      <div class="base-split-heading base-includes-tech__heading">
+        <div>
+          <p class="eyebrow">Especificaciones técnicas</p>
+          <h3>Plataforma e indicador digital</h3>
         </div>
-        <div class="base-include-items">
-          <p>
-            <span class="base-include-item-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M4 16h16" /><path d="M6 16V9h12v7" /></svg>
-            </span>
-            Plataforma de bajo perfil 120 × 120 cm
-          </p>
-          <p>
-            <span class="base-include-item-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M12 4v3" /><path d="M7 7h10" /><path d="M8 7l-3 6h6L8 7Z" /><path d="M16 7l-3 6h6l-3-6Z" /><path d="M12 7v12" /></svg>
-            </span>
-            Capacidad máxima de 1,500 kg
-          </p>
-          <p>
-            <span class="base-include-item-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M5 8h14" /><path d="M5 12h14" /><path d="M5 16h14" /><path d="M8 6v12" /><path d="M16 6v12" /></svg>
-            </span>
-            Superficie antiderrapante
-          </p>
-          <p>
-            <span class="base-include-item-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="5" width="14" height="14" rx="2" /><path d="M9 9h6v6H9z" /></svg>
-            </span>
-            4 celdas tipo Shearbeam en acero al carbón
-          </p>
-          <p>
-            <span class="base-include-item-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M4 18h16" /><path d="M5 18 17 8h2v10" /></svg>
-            </span>
-            Compatibilidad con rampa
-          </p>
-        </div>
-      </article>
-      <article class="base-include-category">
-        <div class="base-include-category__head">
-          <span class="base-include-mini-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <rect x="7" y="4" width="10" height="16" rx="2" />
-              <path d="M10 8h4" />
-              <path d="M10 12h4" />
-            </svg>
-          </span>
-          <div>
-            <h3>Indicador</h3>
-            <p>Lectura de peso y energía.</p>
-          </div>
-        </div>
-        <div class="base-include-items">
-          <p>
-            <span class="base-include-item-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><rect x="7" y="4" width="10" height="16" rx="2" /><path d="M10 9h4" /><path d="M10 13h4" /></svg>
-            </span>
-            Indicador IPES de solo peso
-          </p>
-          <p>
-            <span class="base-include-item-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14" /><path d="M8 8h8" /><path d="M8 16h8" /></svg>
-            </span>
-            Línea comercial
-          </p>
-          <p>
-            <span class="base-include-item-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M8 4v5" /><path d="M16 4v5" /><path d="M7 9h10v4a5 5 0 0 1-10 0V9Z" /><path d="M12 18v3" /></svg>
-            </span>
-            Cargador 6V
-          </p>
-          <p>
-            <span class="base-include-item-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="7" width="15" height="10" rx="2" /><path d="M21 11v2" /><path d="m10 15 2-3H9l2-3" /></svg>
-            </span>
-            Pila recargable hasta 100 horas
-          </p>
-        </div>
-      </article>
-      <article class="base-include-category base-include-category--compact">
-        <div class="base-include-category__head">
-          <span class="base-include-mini-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M6 12c2.2-3.2 4.4-3.2 6.6 0s4.4 3.2 6.4 0" />
-              <path d="M4 17h16" />
-            </svg>
-          </span>
-          <div>
-            <h3>Integración / conexión</h3>
-            <p>Conexión entre plataforma e indicador.</p>
-          </div>
-        </div>
-        <div class="base-include-items">
-          <p>
-            <span class="base-include-item-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M6 12c2.2-3.2 4.4-3.2 6.6 0s4.4 3.2 6.4 0" /><path d="M4 17h16" /></svg>
-            </span>
-            Cable de conexión de 5 metros
-          </p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section base-parts-section">
-    <div class="section-inner base-split-heading">
-      <div>
-        <p class="eyebrow">Plataforma + indicador</p>
-        <h2>Plataforma e indicador incluidos</h2>
+        <p>
+          Consulta las características de la plataforma y del indicador digital incluidos en esta
+          configuración.
+        </p>
       </div>
-      <p>
-        La Báscula BAPER-12 integra una plataforma de bajo perfil con indicador IPES comercial para
-        operación sencilla de solo peso.
-      </p>
-    </div>
-    <div class="section-inner base-parts-grid">
-      <article class="base-part-card base-part-card--platform">
-        <div class="base-part-card__image">
-          <SmartImage
-            name={imageSlots.heroPlatform}
-            fallbackExt="webp"
-            alt="Plataforma BAPER-12 de bajo perfil en acero al carbón"
-            width="1400"
-            height="1000"
-          />
-        </div>
-        <div class="base-part-card__content">
-          <p class="eyebrow">Plataforma BAPER-12</p>
-          <h3>Base estructural para pesaje moderado</h3>
-          <ul>
-            {platformHighlights.map((item) => <li>{item}</li>)}
-          </ul>
-        </div>
-      </article>
-      <article class="base-part-card base-part-card--indicator">
-        <div class="base-part-card__image">
-          <SmartImage
-            name={imageSlots.indicator}
-            fallbackExt="png"
-            alt="Indicador digital IPES comercial incluido con la Báscula BAPER-12"
-            width="900"
-            height="700"
-          />
-        </div>
-        <div class="base-part-card__content">
-          <p class="eyebrow">Indicador IPES</p>
-          <h3>Lectura de peso clara para operación sencilla</h3>
-          <ul>
-            {indicatorHighlights.map((item) => <li>{item}</li>)}
-          </ul>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section base-specs">
-    <div class="section-inner base-split-heading">
-      <div>
-        <p class="eyebrow">Especificaciones técnicas</p>
-        <h2>Plataforma e indicador digital</h2>
+      <div class="base-spec-grid">
+        <details class="base-spec-card">
+          <summary>
+            <div class="base-spec-card__heading">
+              <span>01</span>
+              <div>
+                <h3>Plataforma / Equipo</h3>
+                <p>Bajo perfil, acero al carbón y superficie antiderrapante.</p>
+              </div>
+            </div>
+            <span class="base-spec-toggle">Ver especificaciones de plataforma</span>
+          </summary>
+          <dl class="base-spec-list">
+            {platformSpecs.map(([label, value]) => (
+              <div>
+                <dt>{label}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </details>
+        <details class="base-spec-card">
+          <summary>
+            <div class="base-spec-card__heading">
+              <span>02</span>
+              <div>
+                <h3>Indicador digital</h3>
+                <p>IPES comercial, solo peso, con pila recargable.</p>
+              </div>
+            </div>
+            <span class="base-spec-toggle">Ver especificaciones del indicador</span>
+          </summary>
+          <dl class="base-spec-list">
+            {indicatorSpecs.map(([label, value]) => (
+              <div>
+                <dt>{label}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </details>
       </div>
-      <p>
-        La información técnica se separa por equipo e indicador para revisar capacidades,
-        componentes y limitaciones sin depender de una tabla pesada en celular.
-      </p>
-    </div>
-    <div class="section-inner base-spec-grid">
-      <details class="base-spec-card">
-        <summary>
-          <div class="base-spec-card__heading">
-            <span>01</span>
-            <div>
-              <h3>Plataforma / Equipo</h3>
-              <p>Bajo perfil, acero al carbón y superficie antiderrapante.</p>
-            </div>
-          </div>
-          <span class="base-spec-toggle">Ver especificaciones de plataforma</span>
-        </summary>
-        <dl class="base-spec-list">
-          {platformSpecs.map(([label, value]) => (
-            <div>
-              <dt>{label}</dt>
-              <dd>{value}</dd>
-            </div>
-          ))}
-        </dl>
-      </details>
-      <details class="base-spec-card">
-        <summary>
-          <div class="base-spec-card__heading">
-            <span>02</span>
-            <div>
-              <h3>Indicador digital</h3>
-              <p>IPES comercial, solo peso, con pila recargable.</p>
-            </div>
-          </div>
-          <span class="base-spec-toggle">Ver especificaciones del indicador</span>
-        </summary>
-        <dl class="base-spec-list">
-          {indicatorSpecs.map(([label, value]) => (
-            <div>
-              <dt>{label}</dt>
-              <dd>{value}</dd>
-            </div>
-          ))}
-        </dl>
-      </details>
-    </div>
-    <div class="section-inner base-spec-cta">
-      <a class="button" href={fichaHref} download>Descargar ficha técnica PDF</a>
-      <a class="button secondary" href={whatsappHref}>Solicita cotización por WhatsApp</a>
     </div>
   </section>
 
@@ -939,10 +697,12 @@ const breadcrumbSchema = {
       <div class="base-delivery__visual">
         <SmartImage
           name={imageSlots.application}
-          fallbackExt="png"
+          fallbackExt="webp"
           alt="Entrega y operación local de báscula de piso en CDMX y Estado de México"
+          class="base-delivery__image"
+          pictureClass="base-delivery__picture"
           width="1200"
-          height="800"
+          height="750"
         />
       </div>
     </div>
@@ -1175,13 +935,6 @@ const breadcrumbSchema = {
     box-shadow: 0 34px 88px rgba(0, 0, 0, 0.34);
   }
 
-  .base-product__image img {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-    object-fit: cover;
-  }
-
   .base-trust {
     padding: clamp(54px, 7vw, 96px) clamp(18px, 5vw, 72px);
     background:
@@ -1219,8 +972,7 @@ const breadcrumbSchema = {
   }
 
   .base-media-card,
-  .base-application-media,
-  .base-includes-visual {
+  .base-application-media {
     padding: 12px;
     border: 1px solid rgba(174, 188, 204, 0.66);
     border-radius: 8px;
@@ -1229,8 +981,7 @@ const breadcrumbSchema = {
   }
 
   .base-media-card img,
-  .base-application-media img,
-  .base-includes-visual img {
+  .base-application-media img {
     width: 100%;
     border-radius: 6px;
     object-fit: cover;
@@ -1250,7 +1001,6 @@ const breadcrumbSchema = {
 
   .base-trust article,
   .base-use-grid article,
-  .base-include-grid article,
   .base-line-list article {
     border: 1px solid rgba(174, 188, 204, 0.72);
     border-radius: 8px;
@@ -1307,7 +1057,6 @@ const breadcrumbSchema = {
 
   .base-trust p,
   .base-use-grid p,
-  .base-include-grid p,
   .base-line-list p {
     margin: 0;
     color: var(--muted);
@@ -1407,31 +1156,6 @@ const breadcrumbSchema = {
     margin-top: 18px;
   }
 
-  .base-product-section {
-    background: #ffffff;
-  }
-
-  .base-product {
-    display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.64fr);
-    gap: clamp(22px, 5vw, 58px);
-    align-items: center;
-  }
-
-  .base-product__image {
-    padding: clamp(14px, 2.4vw, 26px);
-    border: 1px solid rgba(174, 188, 204, 0.68);
-    border-radius: 8px;
-    background:
-      linear-gradient(135deg, rgba(47, 125, 246, 0.08), transparent 48%),
-      #f8fafc;
-    box-shadow: var(--shadow);
-  }
-
-  .base-product__content h2 {
-    margin-bottom: 22px;
-  }
-
   .base-includes-section {
     background:
       linear-gradient(135deg, rgba(47, 125, 246, 0.08), transparent 42%),
@@ -1441,32 +1165,40 @@ const breadcrumbSchema = {
 
   .base-includes-shell {
     display: grid;
-    grid-template-columns: minmax(0, 0.82fr) minmax(380px, 0.68fr);
-    gap: clamp(22px, 5vw, 58px);
-    align-items: center;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    align-items: start;
     margin-bottom: 22px;
   }
 
-  .base-includes-copy {
+  .base-includes-head {
     display: grid;
-    gap: 18px;
-    align-content: center;
+    gap: 14px;
+    align-content: start;
+    max-width: 860px;
   }
 
-  .base-includes-copy h2 {
+  .base-includes-head h2 {
     margin-bottom: 0;
-    font-size: clamp(2rem, 4vw, 3.9rem);
+    max-width: 760px;
+    font-size: clamp(2rem, 3.6vw, 3.35rem);
   }
 
-  .base-includes-copy > p {
-    max-width: 720px;
+  .base-includes-head > p {
+    max-width: 760px;
     margin: 0;
     color: var(--muted);
     font-size: 1.04rem;
   }
 
+  .base-includes-summary-wrap {
+    display: grid;
+    gap: 14px;
+    max-width: 980px;
+  }
+
   .base-includes-summary {
-    padding: 18px;
+    padding: 18px 18px 16px;
     border: 1px solid rgba(16, 24, 32, 0.12);
     border-left: 4px solid var(--red);
     border-radius: 8px;
@@ -1483,299 +1215,128 @@ const breadcrumbSchema = {
 
   .base-includes-summary ul {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
   .base-includes-summary li {
-    padding: 9px 10px;
+    display: grid;
+    gap: 4px;
+    align-content: start;
+    min-height: 82px;
+    padding: 12px 12px 12px;
     border-radius: 8px;
     background: #f4f7fb;
-    color: #314154;
-    font-size: 0.86rem;
-    font-weight: 850;
-    line-height: 1.25;
   }
 
-  .base-includes-mini {
-    display: grid;
-    gap: 12px;
-  }
-
-  .base-includes-mini article,
-  .base-include-category {
-    border: 1px solid rgba(174, 188, 204, 0.72);
-    border-radius: 8px;
-    background: #ffffff;
-    box-shadow: 0 14px 34px rgba(8, 17, 28, 0.05);
-  }
-
-  .base-includes-mini article {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 12px;
-    padding: 16px;
-  }
-
-  .base-includes-mini h3,
-  .base-include-category h3 {
-    margin: 0 0 5px;
+  .base-includes-summary li strong {
+    color: var(--ink);
     font-size: 1rem;
+    font-weight: 950;
+    line-height: 1.1;
   }
 
-  .base-includes-mini p,
-  .base-include-category p {
-    margin: 0;
-    color: var(--muted);
-    line-height: 1.45;
-  }
-
-  .base-include-mini-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 8px;
-    background: #eef4ff;
-    color: var(--blue-dark);
-  }
-
-  .base-include-mini-icon svg {
-    width: 23px;
-    height: 23px;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+  .base-includes-summary li span {
+    color: #5a6a7b;
+    font-size: 0.76rem;
+    font-weight: 850;
+    line-height: 1.2;
+    text-transform: uppercase;
   }
 
   .base-includes-visual-stack {
-    position: relative;
-    min-height: 470px;
+    display: block;
   }
 
-  .base-includes-platform {
+  .base-includes-visual-frame {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: 18px;
+    align-items: stretch;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .base-includes-platform,
+  .base-includes-indicator {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-content: stretch;
+    height: 100%;
     padding: 14px;
     border: 1px solid rgba(174, 188, 204, 0.66);
     border-radius: 8px;
     background:
-      linear-gradient(135deg, rgba(16, 24, 32, 0.08), rgba(47, 125, 246, 0.08)),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98)),
       #ffffff;
-    box-shadow: 0 26px 64px rgba(8, 17, 28, 0.12);
+    box-shadow: 0 18px 44px rgba(8, 17, 28, 0.08);
   }
 
-  .base-includes-platform img {
+  .base-includes-platform {
+    align-self: start;
+  }
+
+  .base-image-slot {
+    display: block;
     width: 100%;
-    aspect-ratio: 14 / 9;
+    height: 100%;
     border-radius: 6px;
+    border: 1px solid rgba(174, 188, 204, 0.72);
     object-fit: cover;
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.08), rgba(16, 24, 32, 0.05)),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(244, 247, 251, 0.95));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65);
+  }
+
+  .base-image-slot--platform {
+    min-height: 0;
   }
 
   .base-includes-indicator {
-    position: absolute;
-    right: 18px;
-    bottom: 18px;
-    display: grid;
-    grid-template-columns: 112px 1fr;
-    gap: 12px;
-    align-items: center;
-    width: min(360px, 78%);
-    padding: 12px;
-    border: 1px solid rgba(174, 188, 204, 0.72);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.94);
-    box-shadow: 0 20px 52px rgba(8, 17, 28, 0.18);
+    align-self: start;
   }
 
-  .base-includes-indicator img {
-    width: 100%;
-    aspect-ratio: 1.16;
-    border-radius: 6px;
-    object-fit: cover;
-    background: #f4f7fb;
+  .base-image-slot--indicator {
+    aspect-ratio: 3 / 2;
+    min-height: 0;
   }
 
-  .base-includes-indicator strong {
+  .base-includes-visual-copy strong {
     display: block;
     color: var(--ink);
-    font-size: 1rem;
+    font-size: 1.02rem;
   }
 
-  .base-includes-indicator span {
+  .base-includes-visual-copy span {
     color: var(--muted);
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     font-weight: 850;
   }
 
-  .base-include-categories {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr) minmax(260px, 0.58fr);
-    gap: 14px;
+  .base-includes-summary-wrap .button-row {
+    margin-top: 0;
   }
 
-  .base-include-category {
-    padding: 18px;
+  .base-includes-tech {
+    margin-top: 28px;
   }
 
-  .base-include-category__head {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 12px;
-    align-items: start;
-    padding-bottom: 14px;
-    border-bottom: 1px solid rgba(174, 188, 204, 0.54);
+  .base-includes-tech__heading {
+    margin-bottom: 18px;
   }
 
-  .base-include-items {
-    display: grid;
-    gap: 8px;
-    margin-top: 14px;
-  }
-
-  .base-include-items p {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 9px;
-    align-items: center;
-    min-height: 48px;
-    padding: 9px 10px;
-    border-radius: 8px;
-    background: #f8fafc;
-    color: #314154;
-    font-size: 0.9rem;
-    font-weight: 820;
-  }
-
-  .base-include-item-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 7px;
-    background: #eef4ff;
-    color: var(--blue-dark);
-  }
-
-  .base-include-item-icon svg {
-    width: 17px;
-    height: 17px;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .base-includes-hero {
-    display: grid;
-    grid-template-columns: minmax(0, 0.72fr) minmax(330px, 0.68fr);
-    gap: clamp(22px, 5vw, 58px);
-    align-items: center;
-    margin-bottom: 22px;
-  }
-
-  .base-includes-hero h2 {
-    margin-bottom: 14px;
-    font-size: clamp(1.9rem, 4vw, 3.8rem);
-  }
-
-  .base-includes-hero p {
-    max-width: 660px;
-    margin-bottom: 22px;
-    color: var(--muted);
-  }
-
-  .base-includes-visual img {
-    aspect-ratio: 14 / 9;
-  }
-
-  .base-parts-section {
-    background: #ffffff;
-  }
-
-  .base-parts-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-  }
-
-  .base-part-card {
-    display: grid;
-    grid-template-columns: minmax(0, 0.82fr) minmax(260px, 0.72fr);
-    gap: clamp(16px, 3vw, 28px);
-    align-items: center;
-    min-height: 420px;
-    padding: clamp(16px, 2.8vw, 28px);
-    border: 1px solid rgba(174, 188, 204, 0.72);
-    border-radius: 8px;
-    background:
-      linear-gradient(135deg, rgba(47, 125, 246, 0.08), transparent 54%),
-      #f8fafc;
-    box-shadow: 0 18px 44px rgba(8, 17, 28, 0.07);
-  }
-
-  .base-part-card--indicator {
-    background:
-      linear-gradient(135deg, rgba(212, 33, 46, 0.08), transparent 52%),
-      #f8fafc;
-  }
-
-  .base-part-card__image {
-    min-width: 0;
-    padding: 12px;
-    border: 1px solid rgba(174, 188, 204, 0.6);
-    border-radius: 8px;
-    background: #ffffff;
-  }
-
-  .base-part-card__image img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    border-radius: 6px;
-    object-fit: cover;
-  }
-
-  .base-part-card__content h3 {
-    margin: 0 0 14px;
-    font-size: clamp(1.35rem, 2vw, 1.9rem);
-    line-height: 1.08;
-  }
-
-  .base-part-card__content ul {
-    display: grid;
-    gap: 8px;
+  .base-includes-tech__heading h3 {
     margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .base-part-card__content li {
-    position: relative;
-    padding-left: 18px;
-    color: #314154;
-    font-weight: 800;
-    line-height: 1.25;
-  }
-
-  .base-part-card__content li::before {
-    content: "";
-    position: absolute;
-    top: 0.55em;
-    left: 0;
-    width: 7px;
-    height: 7px;
-    border-radius: 999px;
-    background: var(--blue-dark);
-  }
-
-  .base-specs {
-    background:
-      linear-gradient(180deg, #f4f7fb, #ffffff),
-      #ffffff;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.02;
   }
 
   .base-spec-grid {
@@ -1916,20 +1477,6 @@ const breadcrumbSchema = {
     background: var(--red);
   }
 
-  .base-include-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .base-include-grid article {
-    display: grid;
-    gap: 10px;
-    align-items: start;
-    padding: 16px;
-    box-shadow: 0 12px 28px rgba(8, 17, 28, 0.05);
-  }
-
   .base-guidance {
     background:
       linear-gradient(135deg, rgba(16, 24, 32, 0.96), rgba(27, 48, 69, 0.94)),
@@ -1984,7 +1531,7 @@ const breadcrumbSchema = {
   }
 
   .base-delivery {
-    padding: clamp(54px, 7vw, 96px) clamp(18px, 5vw, 72px);
+    padding: clamp(18px, 2.4vw, 30px) clamp(18px, 4vw, 56px);
     background:
       linear-gradient(135deg, rgba(212, 33, 46, 0.12), transparent 44%),
       #f4f7fb;
@@ -1992,50 +1539,68 @@ const breadcrumbSchema = {
 
   .base-delivery__inner {
     display: grid;
-    grid-template-columns: minmax(0, 0.78fr) minmax(320px, 0.56fr);
-    gap: clamp(18px, 4vw, 34px);
+    grid-template-columns: minmax(0, 1fr) minmax(460px, 520px);
+    gap: 34px;
     align-items: center;
-    padding: clamp(22px, 4vw, 38px);
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 26px 24px 26px 38px;
     border: 1px solid rgba(174, 188, 204, 0.72);
     border-radius: 8px;
     background: #ffffff;
-    box-shadow: 0 20px 50px rgba(8, 17, 28, 0.08);
+    box-shadow: 0 16px 36px rgba(8, 17, 28, 0.07);
   }
 
   .base-delivery__copy {
     min-width: 0;
+    max-width: 620px;
   }
 
   .base-delivery__icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 64px;
-    height: 64px;
+    width: 42px;
+    height: 42px;
     border-radius: 8px;
     background: #101820;
     color: #ffffff;
   }
 
   .base-delivery__icon svg {
-    width: 32px;
-    height: 32px;
+    width: 21px;
+    height: 21px;
   }
 
   .base-delivery__visual {
-    padding: 12px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    padding: 6px;
     border: 1px solid rgba(174, 188, 204, 0.66);
     border-radius: 8px;
     background:
       linear-gradient(135deg, rgba(47, 125, 246, 0.08), transparent 48%),
       #f8fafc;
+    max-width: 520px;
+    justify-self: end;
+    overflow: hidden;
   }
 
-  .base-delivery__visual img {
-    width: 100%;
-    aspect-ratio: 3 / 2;
+  :global(.base-delivery__picture),
+  :global(.base-delivery__image),
+  .base-delivery__visual :global(picture),
+  .base-delivery__visual :global(img) {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  :global(.base-delivery__image),
+  .base-delivery__visual :global(img) {
     border-radius: 6px;
     object-fit: cover;
+    object-position: center;
   }
 
   .base-delivery h2,
@@ -2043,9 +1608,17 @@ const breadcrumbSchema = {
     max-width: 860px;
   }
 
+  .base-delivery h2 {
+    font-size: clamp(1.45rem, 2.35vw, 2.35rem);
+    line-height: 1.02;
+    max-width: 500px;
+    margin-bottom: 8px;
+  }
+
   .base-delivery p {
-    max-width: 860px;
-    margin-bottom: 14px;
+    max-width: 540px;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
   }
 
   .base-download {
@@ -2125,27 +1698,43 @@ const breadcrumbSchema = {
   }
 
   .base-final__inner {
+    display: grid;
+    justify-items: center;
+    max-width: 1080px;
     text-align: center;
   }
 
+  .base-final h2 {
+    max-width: 980px;
+    margin-right: auto;
+    margin-left: auto;
+    text-wrap: balance;
+  }
+
   .base-final__inner p {
-    max-width: 680px;
+    max-width: 720px;
     margin-right: auto;
     margin-left: auto;
     color: #dfe6ed;
+    text-align: center;
   }
 
   .base-final .button-row {
     justify-content: center;
+    margin-top: 22px;
+  }
+
+  .base-final .button-row .button:first-child {
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 10px;
+    background: #2f7df6;
+    box-shadow: 0 14px 30px rgba(47, 125, 246, 0.28);
   }
 
   @media (max-width: 980px) {
     .base-hero__inner,
     .base-benefits-layout,
-    .base-product,
     .base-includes-shell,
-    .base-includes-hero,
-    .base-part-card,
     .base-delivery__inner,
     .base-split-heading,
     .base-download__box {
@@ -2163,10 +1752,7 @@ const breadcrumbSchema = {
     }
 
     .base-trust__grid,
-    .base-include-categories,
-    .base-parts-grid,
-    .base-spec-grid,
-    .base-include-grid {
+    .base-spec-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
@@ -2174,15 +1760,52 @@ const breadcrumbSchema = {
   @media (max-width: 760px) {
     .base-hero {
       padding-top: 32px;
+      overflow: hidden;
+    }
+
+    .base-hero__inner {
+      gap: 16px;
+    }
+
+    .base-hero__copy {
+      display: contents;
+    }
+
+    .base-hero__copy,
+    .base-hero__visual {
+      min-width: 0;
+    }
+
+    .base-hero .eyebrow {
+      order: 1;
     }
 
     .base-hero h1 {
-      font-size: 2.1rem;
-      line-height: 1.02;
+      order: 2;
+      font-size: clamp(2rem, 10vw, 2.8rem);
+      line-height: 1.04;
+      overflow-wrap: anywhere;
     }
 
     .base-hero__subheadline {
+      order: 3;
       font-size: 1.06rem;
+    }
+
+    .base-hero .lead {
+      order: 4;
+    }
+
+    .base-hero__visual {
+      order: 6;
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .base-hero-product {
+      width: 100%;
+      margin-left: 0;
+      transform: none;
     }
 
     .base-hero-product img {
@@ -2194,17 +1817,48 @@ const breadcrumbSchema = {
     .base-facts {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      order: 5;
+      margin-top: 6px;
     }
 
     .base-facts article {
-      min-height: 68px;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 8px;
+      min-height: 78px;
       padding: 10px;
+    }
+
+    .base-fact-icon {
+      width: 34px;
+      height: 34px;
+      flex-basis: 34px;
+    }
+
+    .base-fact-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .base-facts strong {
+      display: block;
+      font-size: clamp(0.98rem, 4.4vw, 1.2rem);
+      overflow-wrap: anywhere;
+    }
+
+    .base-facts article div {
+      min-width: 0;
+    }
+
+    .base-facts article div span {
+      display: block;
+      font-size: 0.66rem;
+      overflow-wrap: anywhere;
     }
 
     .base-hero .button-row,
     .base-benefits-media .button,
-    .base-includes-copy .button-row,
-    .base-includes-hero .button,
+    .base-includes-summary-wrap .button-row,
     .base-download__actions,
     .base-final .button-row {
       display: grid;
@@ -2212,35 +1866,38 @@ const breadcrumbSchema = {
     }
 
     .base-hero .button-row {
-      display: flex;
-      flex-wrap: nowrap;
-      grid-template-columns: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      order: 7;
+      margin-top: 4px;
     }
 
     .base-hero .button,
     .base-benefits-media .button,
     .base-includes-copy .button,
-    .base-includes-hero .button,
     .base-download .button,
     .base-final .button {
       width: 100%;
     }
 
     .base-hero .button {
-      width: auto;
+      width: 100%;
       min-width: 0;
       padding-right: 12px;
       padding-left: 12px;
-      font-size: 0.82rem;
-      white-space: nowrap;
+      font-size: 0.9rem;
+      white-space: normal;
+    }
+
+    .base-microcopy {
+      order: 8;
+      margin-top: 0;
     }
 
     .base-trust__grid,
     .base-use-grid,
-    .base-include-categories,
-    .base-parts-grid,
     .base-spec-grid,
-    .base-include-grid,
     .base-choice-grid {
       grid-template-columns: 1fr;
     }
@@ -2272,16 +1929,36 @@ const breadcrumbSchema = {
       grid-template-columns: 1fr;
     }
 
-    .base-includes-visual-stack {
+    .base-includes-shell {
+      gap: 16px;
+    }
+
+    .base-includes-head {
+      max-width: 100%;
+    }
+
+    .base-includes-visual-frame {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .base-image-slot--platform {
+      aspect-ratio: 4 / 3;
       min-height: 0;
     }
 
     .base-includes-indicator {
-      position: relative;
-      right: auto;
-      bottom: auto;
       width: 100%;
-      margin-top: 12px;
+      justify-self: stretch;
+    }
+
+    .base-image-slot--indicator {
+      aspect-ratio: 1 / 1;
+      min-height: 0;
+    }
+
+    .base-includes-summary-wrap .button-row {
+      grid-template-columns: 1fr;
     }
 
     .base-spec-list div {
