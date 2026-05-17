@@ -7,123 +7,188 @@ const base = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
+
 const fichaHref = withBase("/downloads/FHT-BAPER-12.pdf");
-const whatsappMessage = encodeURIComponent(
-  "Hola, quiero cotizar la Báscula de Bajo Perfil Base BAPER-12 de 120 x 120 cm y 1,500 kg. Estoy en CDMX o Estado de México y quiero confirmar disponibilidad."
+const quoteMessage = encodeURIComponent(
+  "Hola, quiero cotizar la Báscula de Bajo Perfil Base BAPER-12 de 120 x 120 cm y 1,500 kg. Me gustaría confirmar si es adecuada para mi operación."
 );
-const whatsappHref = `${contact.whatsapp[0].href}?text=${whatsappMessage}`;
-const imageSlots = {
+const fitMessage = encodeURIComponent(
+  "Hola, quiero saber si la Báscula de Bajo Perfil Base BAPER-12 es adecuada para mi operación."
+);
+const whatsappHref = `${contact.whatsapp[0].href}?text=${quoteMessage}`;
+const whatsappFitHref = `${contact.whatsapp[0].href}?text=${fitMessage}`;
+
+const images = {
   hero: "/Bajo-Perfil/base/Baper-hero",
-  heroPlatform: "/Bajo-Perfil/base/base-producto",
-  indicator: "/Bajo-Perfil/base/ipes-producto",
-  surfaceDetail: "/Bajo-Perfil/base/base-beneficios",
-  useIdeal: "/Bajo-Perfil/base/base-uso-ideal",
-  application: "/Bajo-Perfil/base/entrega2",
-  bundle: "/Bajo-Perfil/base"
+  product: "/Bajo-Perfil/base/base-producto",
+  benefits: "/Bajo-Perfil/base/base-beneficios",
+  benefitsDesktop: "/Bajo-Perfil/base/base-beneficios2",
+  use: "/Bajo-Perfil/base/base-uso-ideal",
+  delivery: "/Bajo-Perfil/base/entrega2",
+  indicator: "/Bajo-Perfil/base/ipes-producto"
 };
 
 const seo = {
-  title: "Báscula de Bajo Perfil Base BAPER-12 120x120 cm 1500 kg | Entrega en CDMX y Estado de México",
+  title: "Báscula de Bajo Perfil 120x120 cm 1500 kg | CDMX y Estado de México",
   description:
-    "Báscula de bajo perfil Base BAPER-12 de 120 x 120 cm, altura de 11 cm y capacidad de 1,500 kg. Ideal para almacén, recibo y uso moderado. Entrega en CDMX y Estado de México sin cargo adicional.",
+    "Báscula de bajo perfil BAPER-12 de 120 x 120 cm y 1,500 kg para almacén, recibo, recicladoras y carga controlada. Entrega en CDMX y Estado de México.",
   keywords:
-    "BAPER-12, báscula de bajo perfil, báscula de piso, báscula industrial de piso, báscula 120 x 120 cm, báscula de 1500 kg, báscula para almacén, báscula para recibo de mercancía, báscula para embarques, báscula industrial en CDMX, báscula de piso en Estado de México"
+    "báscula de bajo perfil, báscula de piso, báscula 1500 kg, báscula 120 x 120 cm, báscula para almacén, báscula para recicladora, báscula para recibo de mercancía, báscula para uso moderado, báscula en CDMX, báscula en Estado de México, venta de básculas en CDMX, venta de básculas en Estado de México"
 };
 
-const quickFacts = [
-  { value: "1,500 kg", label: "Capacidad máxima" },
-  { value: "120 × 120 cm", label: "Plataforma" },
-  { value: "11 cm", label: "Altura" },
-  { value: "Acero al carbón", label: "Material" },
-  { value: "Compatible", label: "Rampa" },
-  { value: "100 horas", label: "Pila recargable" }
+const heroBullets = [
+  "Capacidad 1,500 kg",
+  "Plataforma 120 × 120 cm",
+  "Altura 11 cm",
+  "Indicador IPES incluido",
+  "Compatible con rampa",
+  "Entrega local sin cargo adicional"
 ];
 
-const trustItems = [
+const trustBadges = [
+  "Entrega en CDMX y Estado de México",
+  "Asesoría antes de comprar",
+  "Servicio técnico disponible",
+  "Refacciones e instalación",
+  "Atención por WhatsApp",
+  "Tienda física en Texcoco"
+];
+
+const supportCards = [
   {
-    title: "Diseño de bajo perfil",
-    text: "Facilita operaciones de pesaje básico sin instalación compleja."
+    icon: "guide",
+    title: "Asesoría para elegir correctamente",
+    text: "Te ayudamos a confirmar si esta configuración cubre tu operación o si necesitas una línea superior."
   },
   {
-    title: "Superficie antiderrapante",
-    text: "Ayuda a mejorar seguridad y estabilidad durante la carga."
+    icon: "delivery",
+    title: "Entrega local",
+    text: "Atendemos entregas en CDMX, Estado de México y zona metropolitana."
   },
   {
-    title: "Capacidad de 1,500 kg",
-    text: "Adecuada para carga controlada en almacén, recibo y distribución."
+    icon: "support",
+    title: "Soporte técnico",
+    text: "Contamos con experiencia en mantenimiento, reparación y diagnóstico de sistemas de pesaje."
   },
   {
-    title: "Compatible con rampa",
-    text: "Permite facilitar carga y descarga con una configuración adecuada."
-  },
-  {
-    title: "Indicador IPES incluido",
-    text: "Indicador comercial de solo peso, práctico para operación sencilla."
-  },
-  {
-    title: "Pila hasta 100 horas",
-    text: "Indicador con batería recargable para uso continuo."
+    icon: "solution",
+    title: "Solución integral",
+    text: "Podemos apoyar con rampas, refacciones, instalación y servicios posteriores."
   }
 ];
 
-const benefitCards = [
+const benefits = [
   {
+    icon: "profile",
+    label: "Acceso práctico",
     title: "Diseño de bajo perfil",
-    badge: "Acceso más práctico",
-    text: "Facilita operaciones de pesaje básico sin instalación compleja."
+    text: "Facilita la carga y descarga sin requerir instalación compleja."
   },
   {
-    title: "Superficie antiderrapante",
-    badge: "Mayor estabilidad",
-    text: "Ayuda a mejorar seguridad y control durante la carga."
+    icon: "platform",
+    label: "120 × 120 cm",
+    title: "Plataforma 120 × 120 cm",
+    text: "Medida práctica para tarimas, mercancía, tambos, cajas y carga controlada."
   },
   {
+    icon: "capacity",
+    label: "1,500 kg",
     title: "Capacidad de 1,500 kg",
-    badge: "Carga controlada",
-    text: "Adecuada para almacén, recibo y pequeños procesos de distribución."
+    text: "Adecuada para almacén, recibo, recicladoras y operaciones de uso moderado."
   },
   {
-    title: "Compatible con rampa",
-    badge: "Carga y descarga",
-    text: "Permite facilitar el acceso de mercancía con una configuración adecuada."
+    icon: "surface",
+    label: "Antiderrapante",
+    title: "Superficie antiderrapante",
+    text: "Ayuda a mantener mayor control durante maniobras de carga."
   },
   {
+    icon: "indicator",
+    label: "IPES",
     title: "Indicador IPES incluido",
-    badge: "Solo peso",
-    text: "Indicador comercial práctico para operación sencilla y lectura clara."
+    text: "Lectura clara y operación sencilla para pesaje básico."
   },
   {
-    title: "Pila recargable",
-    badge: "Hasta 100 horas",
-    text: "Autonomía para uso continuo con indicador recargable."
+    icon: "ramp",
+    label: "Adaptable",
+    title: "Compatible con rampa",
+    text: "Permite adaptar el acceso de acuerdo con el flujo de operación."
   }
 ];
 
 const idealUses = [
+  { title: "Almacenes", icon: "warehouse" },
+  { title: "Recibo de mercancía", icon: "packageCheck" },
+  { title: "Recicladoras", icon: "recycle" },
+  { title: "Centros de distribución", icon: "network" },
+  { title: "Embarques ligeros", icon: "truck" },
+  { title: "Carga controlada", icon: "gauge" },
+  { title: "Pequeños negocios con uso básico", icon: "store" },
+  { title: "Materiales y productos en tarima", icon: "pallet" }
+];
+
+const includes = [
   {
-    title: "Almacenes",
-    text: "Pesaje funcional para control interno y movimientos de mercancía."
+    title: "Plataforma de bajo perfil",
+    image: images.product,
+    alt: "Báscula BAPER-12 de 1500 kg con indicador digital incluido",
+    items: [
+      "Medida: 120 × 120 cm",
+      "Capacidad: 1,500 kg",
+      "Material: acero al carbón",
+      "Superficie antiderrapante",
+      "Altura aproximada: 11 cm"
+    ]
   },
   {
-    title: "Recibo de mercancía",
-    text: "Verifica entradas de producto sin complicar la operación diaria."
-  },
-  {
-    title: "Recicladoras",
-    text: "Pesaje básico para materiales y control interno no intensivo."
-  },
-  {
-    title: "Pequeños negocios de distribución",
-    text: "Apoyo para entradas, salidas y carga controlada."
-  },
-  {
-    title: "Embarques ligeros",
-    text: "Apoyo para revisar carga antes de salida o entrega."
-  },
-  {
-    title: "Control de peso no intensivo",
-    text: "Procesos internos con uso moderado y ambiente controlado."
+    title: "Indicador digital IPES",
+    image: images.indicator,
+    alt: "Indicador digital IPES incluido en báscula de bajo perfil",
+    items: [
+      "Indicador de solo peso",
+      "Pila recargable",
+      "Hasta 100 horas de uso continuo",
+      "Operación sencilla"
+    ]
   }
+];
+
+const goodFit = [
+  "Necesitas una báscula funcional para almacén o recibo.",
+  "Tu operación es moderada.",
+  "Buscas una solución práctica.",
+  "Trabajas con carga controlada.",
+  "Necesitas plataforma de 120 × 120 cm.",
+  "No necesitas conexión a PC o impresora.",
+  "No necesitas instalación en fosa."
+];
+
+const otherLine = [
+  "Tu operación trabaja varios turnos.",
+  "Necesitas uso intensivo.",
+  "Requieres instalación en fosa.",
+  "Necesitas conectividad RS232.",
+  "Quieres conexión a PC o impresora térmica.",
+  "Trabajas en humedad, lavado o ambiente sanitario.",
+  "Necesitas mayor capacidad.",
+  "Buscas una configuración más robusta."
+];
+
+const zones = [
+  "Texcoco",
+  "Ecatepec",
+  "Nezahualcóyotl",
+  "Chimalhuacán",
+  "Iztapalapa",
+  "Gustavo A. Madero",
+  "Tlalnepantla",
+  "Naucalpan",
+  "Cuautitlán",
+  "Tultitlán",
+  "Coacalco",
+  "Los Reyes",
+  "Chalco",
+  "Zona metropolitana"
 ];
 
 const platformSpecs = [
@@ -133,7 +198,7 @@ const platformSpecs = [
   ["Capacidad máxima", "1,500 kg"],
   ["Dimensiones de plataforma", "120 × 120 cm"],
   ["Altura", "11 cm"],
-  ["Material de fabricación", "Acero al carbón"],
+  ["Material", "Acero al carbón"],
   ["Superficie", "Antiderrapante"],
   ["Diseño", "Bajo perfil"],
   ["Cable de conexión", "5 metros"],
@@ -153,25 +218,6 @@ const indicatorSpecs = [
   ["Pila", "Recargable, hasta 100 horas de uso continuo"],
   ["Fijación", "Sin soporte para mesa o pared"],
   ["Conectividad", "N/A"]
-];
-
-const goodFit = [
-  "Necesitas una báscula funcional para almacén o recibo.",
-  "Tu operación es moderada.",
-  "Buscas una solución práctica y accesible.",
-  "Trabajas con carga controlada.",
-  "Necesitas una plataforma de 120 × 120 cm.",
-  "No necesitas conectividad a PC o impresora.",
-  "No necesitas instalación en fosa."
-];
-
-const considerOther = [
-  "Necesitas uso intensivo durante varios turnos.",
-  "Necesitas instalación en fosa.",
-  "Requieres conectividad RS232.",
-  "Trabajas en humedad, lavado o ambiente sanitario.",
-  "Necesitas mayor capacidad.",
-  "Requieres una configuración más robusta."
 ];
 
 const faqs = [
@@ -211,48 +257,67 @@ const faqs = [
   {
     question: "¿Tiene conexión a PC o impresora?",
     answer:
-      "No, la línea Base no incluye conectividad. Si se requiere conexión a PC o impresor térmico, conviene revisar líneas superiores."
+      "No, la línea Base no incluye conectividad. Si se requiere conexión a PC o impresora térmica, conviene revisar líneas superiores."
   },
   {
     question: "¿Hacen entrega en CDMX y Estado de México?",
-    answer: "Sí, la entrega en CDMX y Estado de México se realiza sin cargo adicional."
+    answer:
+      "Sí, atendemos entregas en CDMX, Estado de México y zona metropolitana para empresas, almacenes, comercios y recicladoras."
+  },
+  {
+    question: "¿Esta báscula sirve para recicladoras?",
+    answer:
+      "Sí, puede utilizarse en recicladoras para pesaje básico y control interno de materiales, siempre que la operación sea moderada y no requiera uso intensivo durante varios turnos."
+  },
+  {
+    question: "¿Sirve para pesar tarimas?",
+    answer:
+      "Sí, la plataforma de 120 × 120 cm permite trabajar con tarimas y carga controlada, considerando la capacidad máxima de 1,500 kg."
+  },
+  {
+    question: "¿Puedo pedir asesoría antes de comprar?",
+    answer:
+      "Sí, podemos ayudarte por WhatsApp a confirmar si esta línea es adecuada para tu operación o si te conviene una configuración superior."
+  },
+  {
+    question: "¿La entrega incluye instalación?",
+    answer:
+      "Confirmar según la operación, ubicación y condiciones del sitio. Se puede orientar al cliente sobre ubicación, rampas y condiciones recomendadas."
+  },
+  {
+    question: "¿Qué pasa si necesito conexión a PC o impresora?",
+    answer:
+      "La línea Base no incluye conectividad. Si necesitas conexión a PC, impresora o sistema, conviene revisar una línea superior."
   }
 ];
 
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "Báscula de Bajo Perfil Base BAPER-12",
-  description: seo.description,
+  name: "Báscula de Bajo Perfil Base BAPER-12 120 x 120 cm 1500 kg",
   brand: {
     "@type": "Brand",
     name: "Astil Básculas"
   },
-  category: "Báscula industrial de piso",
-  image: new URL("/Bajo-Perfil/base.webp", Astro.site ?? Astro.url).toString(),
+  model: "BAPER-12",
+  sku: "BAPER-12",
+  category: "Básculas de bajo perfil",
+  material: "Acero al carbón",
+  description:
+    "Báscula de bajo perfil de 120 x 120 cm con capacidad de 1500 kg, plataforma de acero al carbón, superficie antiderrapante e indicador digital incluido.",
+  image: [
+    new URL("/Bajo-Perfil/base/Baper-hero.webp", Astro.site ?? Astro.url).toString(),
+    new URL("/Bajo-Perfil/base/base-producto.webp", Astro.site ?? Astro.url).toString()
+  ],
   url: new URL("/basculas/bajo-perfil/base/", Astro.site ?? Astro.url).toString(),
   additionalProperty: [
-    { "@type": "PropertyValue", name: "Modelo", value: "BAPER-12" },
-    { "@type": "PropertyValue", name: "Medida", value: "120 × 120 cm" },
-    { "@type": "PropertyValue", name: "Capacidad", value: "1,500 kg" },
+    { "@type": "PropertyValue", name: "Capacidad máxima", value: "1500 kg" },
+    { "@type": "PropertyValue", name: "Dimensiones de plataforma", value: "120 x 120 cm" },
     { "@type": "PropertyValue", name: "Altura", value: "11 cm" },
-    { "@type": "PropertyValue", name: "Material", value: "Acero al carbón" },
-    { "@type": "PropertyValue", name: "Superficie", value: "Antiderrapante" },
-    { "@type": "PropertyValue", name: "Indicador", value: "IPES, comercial, solo peso" },
-    { "@type": "PropertyValue", name: "Pila", value: "Recargable, hasta 100 horas" }
-  ],
-  offers: {
-    "@type": "Offer",
-    priceCurrency: "MXN",
-    availability: "https://schema.org/InStock",
-    areaServed: ["CDMX", "Estado de México"],
-    seller: {
-      "@type": "LocalBusiness",
-      name: "Astil Básculas",
-      telephone: "+52 56 1186 2291",
-      email: contact.email
-    }
-  }
+    { "@type": "PropertyValue", name: "Indicador incluido", value: "IPES" },
+    { "@type": "PropertyValue", name: "Cable de conexión", value: "5 metros" },
+    { "@type": "PropertyValue", name: "Compatible con rampa", value: "Sí" }
+  ]
 };
 
 const faqSchema = {
@@ -281,6 +346,12 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       position: 2,
+      name: "Básculas de bajo perfil",
+      item: new URL("/basculas/bajo-perfil/", Astro.site ?? Astro.url).toString()
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
       name: "Báscula de Bajo Perfil Base BAPER-12",
       item: new URL("/basculas/bajo-perfil/base/", Astro.site ?? Astro.url).toString()
     }
@@ -292,31 +363,176 @@ const breadcrumbSchema = {
   title={seo.title}
   description={seo.description}
   keywords={seo.keywords}
-  image="/Bajo-Perfil/base.webp"
+  image="/Bajo-Perfil/base/Baper-hero.webp"
   canonical="/basculas/bajo-perfil/base/"
   footerContactHref="#cotizar-base"
 >
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
-  <section class="base-hero">
-    <div class="base-hero__inner">
-      <div class="base-hero__copy">
-        <p class="eyebrow">Báscula de Bajo Perfil Base · BAPER-12</p>
-        <h1>Báscula de Bajo Perfil Base 120 × 120 cm</h1>
-        <p class="base-hero__subheadline">
-          Capacidad de 1,500 kg para almacén, recibo y operación moderada
+  <section class="baper-hero">
+    <div class="baper-wrap baper-hero__grid">
+      <div class="baper-hero__copy">
+        <p class="eyebrow">Báscula de Bajo Perfil · Línea Base · BAPER-12</p>
+        <h1>Báscula de bajo perfil 120 × 120 cm para almacén, recibo y uso moderado</h1>
+        <p class="baper-lead">
+          Modelo BAPER-12 con capacidad de 1,500 kg, plataforma antiderrapante de acero al
+          carbón e indicador digital incluido. Entrega en CDMX y Estado de México.
         </p>
-        <p class="lead">
-          Una solución funcional para pesar mercancía, tarimas y carga controlada en procesos de
-          almacén, recibo, recicladoras y pequeños negocios de distribución.
+        <ul class="baper-quick-list" aria-label="Datos principales de la Báscula BAPER-12">
+          {heroBullets.map((item) => <li>{item}</li>)}
+        </ul>
+        <div class="baper-actions">
+          <a class="button baper-button--whatsapp" href={whatsappHref}>Cotizar por WhatsApp</a>
+          <a class="button secondary" href={fichaHref} download>Descargar ficha técnica</a>
+        </div>
+        <p class="baper-microcopy">
+          Te ayudamos a confirmar si esta línea es adecuada para tu operación antes de comprar.
         </p>
-        <div class="base-facts" aria-label="Datos rápidos de la báscula">
-          {quickFacts.map((fact, index) => (
-            <article>
-              <span class="base-fact-icon" aria-hidden="true">
-                {index === 0 && (
+      </div>
+      <div class="baper-hero__media" aria-label="Báscula de bajo perfil BAPER-12">
+        <SmartImage
+          name={images.hero}
+          fallbackExt="webp"
+          alt="Báscula de bajo perfil 120 x 120 cm para almacén en CDMX y Estado de México"
+          loading="eager"
+          width="1600"
+          height="900"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-strip" aria-label="Compra con respaldo de especialistas en pesaje">
+    <div class="baper-wrap">
+      <p class="trust-strip__title">Compra con respaldo de especialistas en pesaje</p>
+      <div class="trust-strip__scroller">
+        {trustBadges.map((item) => (
+          <article>
+            <span aria-hidden="true">✓</span>
+            <strong>{item}</strong>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section support-section">
+    <div class="baper-wrap support-shell">
+      <div class="support-copy">
+        <p class="eyebrow">Respaldo técnico Astil Básculas</p>
+        <h2>Más que una báscula: compra con respaldo técnico</h2>
+        <p>
+          En Astil Básculas no solo vendemos el equipo. Te orientamos para confirmar si la línea
+          Base es adecuada para tu operación, resolvemos dudas técnicas y contamos con servicio,
+          mantenimiento, refacciones e instalación cuando tu empresa lo requiera.
+        </p>
+        <div class="baper-actions">
+          <a class="button baper-button--whatsapp" href={whatsappFitHref}>
+            Quiero asesoría por WhatsApp
+          </a>
+        </div>
+        <p class="baper-microcopy">
+          Te ayudamos a confirmar si esta línea es adecuada para tu operación antes de cotizar.
+        </p>
+      </div>
+      <div class="support-grid">
+        {supportCards.map((card) => (
+          <article class="info-card">
+            <span class="card-icon" aria-hidden="true">
+              {card.icon === "guide" && (
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M8 6h13" />
+                  <path d="M8 12h13" />
+                  <path d="M8 18h13" />
+                  <path d="m3 6 1.3 1.3L6.8 4.8" />
+                  <path d="m3 12 1.3 1.3 2.5-2.5" />
+                  <path d="m3 18 1.3 1.3 2.5-2.5" />
+                </svg>
+              )}
+              {card.icon === "delivery" && (
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M3 7h11v10H3z" />
+                  <path d="M14 10h4l3 3v4h-7z" />
+                  <path d="M7 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                  <path d="M18 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                </svg>
+              )}
+              {card.icon === "support" && (
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M14.7 6.3a4 4 0 0 0-5.1 5.1l-5.4 5.4a2 2 0 0 0 2.8 2.8l5.4-5.4a4 4 0 0 0 5.1-5.1l-2.9 2.9-2.6-2.6z" />
+                </svg>
+              )}
+              {card.icon === "solution" && (
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3 4 7l8 4 8-4z" />
+                  <path d="m4 12 8 4 8-4" />
+                  <path d="m4 17 8 4 8-4" />
+                </svg>
+              )}
+            </span>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section benefits-section">
+    <div class="baper-wrap benefits-layout">
+      <div class="baper-section-head">
+        <p class="eyebrow">Beneficios principales</p>
+        <h2>Beneficios de la Báscula de Bajo Perfil Base</h2>
+        <p>
+          Características pensadas para operaciones que necesitan pesar carga de forma práctica,
+          clara y sin configuraciones avanzadas.
+        </p>
+      </div>
+      <div class="benefits-media">
+        <SmartImage
+          name={images.use}
+          fallbackExt="webp"
+          alt="Báscula de bajo perfil en uso para almacén y recibo"
+          width="1200"
+          height="800"
+          class="benefits-media__mobile"
+          pictureClass="benefits-media__mobile-picture"
+        />
+        <SmartImage
+          name={images.benefitsDesktop}
+          fallbackExt="webp"
+          alt="Báscula de bajo perfil con carga controlada e indicador digital"
+          width="1200"
+          height="800"
+          class="benefits-media__desktop"
+          pictureClass="benefits-media__desktop-picture"
+        />
+      </div>
+      <div class="benefit-grid">
+        {benefits.map((card) => (
+          <article class="info-card benefit-card">
+            <div class="benefit-card__top">
+              <span class="card-icon benefit-card__icon" aria-hidden="true">
+                {card.icon === "profile" && (
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 17h16" />
+                    <path d="M6 17v-5h12v5" />
+                    <path d="M8 12V9h8v3" />
+                    <path d="M4 20h16" />
+                  </svg>
+                )}
+                {card.icon === "platform" && (
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <rect x="5" y="5" width="14" height="14" rx="1.5" />
+                    <path d="M9 3h6" />
+                    <path d="M9 21h6" />
+                    <path d="M3 9v6" />
+                    <path d="M21 9v6" />
+                  </svg>
+                )}
+                {card.icon === "capacity" && (
                   <svg viewBox="0 0 24 24" fill="none">
                     <path d="M12 4v3" />
                     <path d="M7 7h10" />
@@ -326,32 +542,29 @@ const breadcrumbSchema = {
                     <path d="M8 20h8" />
                   </svg>
                 )}
-                {index === 1 && (
+                {card.icon === "surface" && (
                   <svg viewBox="0 0 24 24" fill="none">
-                    <rect x="5" y="5" width="14" height="14" rx="1.5" />
-                    <path d="M9 3h6" />
-                    <path d="M9 21h6" />
-                    <path d="M3 9v6" />
-                    <path d="M21 9v6" />
+                    <path d="M4 18h16" />
+                    <path d="M7 15h2" />
+                    <path d="M11 15h2" />
+                    <path d="M15 15h2" />
+                    <path d="M6 12h2" />
+                    <path d="M10 12h2" />
+                    <path d="M14 12h2" />
+                    <path d="M18 12h1" />
                   </svg>
                 )}
-                {index === 2 && (
+                {card.icon === "indicator" && (
                   <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M12 4v16" />
-                    <path d="m8 8 4-4 4 4" />
-                    <path d="m8 16 4 4 4-4" />
-                    <path d="M5 4h4" />
-                    <path d="M5 20h4" />
+                    <rect x="4" y="5" width="16" height="12" rx="2" />
+                    <path d="M7 9h10" />
+                    <path d="M8 13h2" />
+                    <path d="M12 13h2" />
+                    <path d="M16 13h1" />
+                    <path d="M10 20h4" />
                   </svg>
                 )}
-                {index === 3 && (
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M12 3 5 6v6c0 4.4 2.8 7.2 7 9 4.2-1.8 7-4.6 7-9V6l-7-3Z" />
-                    <path d="M9 12h6" />
-                    <path d="M10 15h4" />
-                  </svg>
-                )}
-                {index === 4 && (
+                {card.icon === "ramp" && (
                   <svg viewBox="0 0 24 24" fill="none">
                     <path d="M4 18h16" />
                     <path d="M5 18 17 8h2v10" />
@@ -359,259 +572,188 @@ const breadcrumbSchema = {
                     <path d="M12 18v-6" />
                   </svg>
                 )}
-                {index === 5 && (
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <rect x="4" y="7" width="15" height="10" rx="2" />
-                    <path d="M21 11v2" />
-                    <path d="m10 15 2-3H9l2-3" />
-                  </svg>
-                )}
               </span>
-              <div>
-                <strong>{fact.value}</strong>
-                <span>{fact.label}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-        <div class="button-row">
-          <a class="button" href={whatsappHref}>Solicita cotización por WhatsApp</a>
-          <a class="button secondary base-button--light" href={fichaHref} download>
-            Descargar ficha técnica
-          </a>
-        </div>
-        <p class="base-microcopy">Entregas en CDMX y Estado de México sin cargo adicional.</p>
-      </div>
-      <div class="base-hero__visual" aria-label="Composición visual de Báscula de Bajo Perfil Base">
-        <div class="base-hero-product">
-          <SmartImage
-            name={imageSlots.hero}
-            fallbackExt="webp"
-            alt="Báscula de Bajo Perfil Base BAPER-12 de 120 x 120 cm"
-            loading="eager"
-            width="1600"
-            height="900"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="base-trust" aria-label="Beneficios rápidos">
-    <div class="section-inner base-benefits-layout">
-      <div class="base-benefits-media">
-        <div class="base-trust__heading">
-          <p class="eyebrow">Beneficios</p>
-          <h2>Por qué elegir la Báscula Base</h2>
-          <p>
-            Una solución práctica para operaciones de pesaje básico que necesitan funcionalidad,
-            seguridad y uso sencillo en almacén, recibo o carga controlada.
-          </p>
-        </div>
-        <div class="base-media-card">
-          <SmartImage
-            name={imageSlots.surfaceDetail}
-            fallbackExt="webp"
-            alt="Detalle visual de superficie antiderrapante para báscula de bajo perfil"
-            width="1200"
-            height="800"
-          />
-        </div>
-        <a class="button" href={whatsappHref}>Solicita cotización por WhatsApp</a>
-      </div>
-      <div class="base-trust__grid">
-        {benefitCards.map((item, index) => (
-          <article>
-            <span class="base-benefit-icon" aria-hidden="true">
-              {index === 0 && (
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M4 17h16" />
-                  <path d="M6 17v-5h12v5" />
-                  <path d="M8 12V9h8v3" />
-                </svg>
-              )}
-              {index === 1 && (
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M12 3 5 6v6c0 4.4 2.8 7.2 7 9 4.2-1.8 7-4.6 7-9V6l-7-3Z" />
-                  <path d="m9 12 2 2 4-5" />
-                </svg>
-              )}
-              {index === 2 && (
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M12 4v3" />
-                  <path d="M7 7h10" />
-                  <path d="M8 7l-3 6h6L8 7Z" />
-                  <path d="M16 7l-3 6h6l-3-6Z" />
-                  <path d="M12 7v12" />
-                </svg>
-              )}
-              {index === 3 && (
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M4 18h16" />
-                  <path d="M5 18 17 8h2v10" />
-                  <path d="m13 8 4-4 4 4" />
-                </svg>
-              )}
-              {index === 4 && (
-                <svg viewBox="0 0 24 24" fill="none">
-                  <rect x="5" y="4" width="14" height="14" rx="2" />
-                  <path d="M8 9h8" />
-                  <path d="M9 14h6" />
-                  <path d="M10 21h4" />
-                </svg>
-              )}
-              {index === 5 && (
-                <svg viewBox="0 0 24 24" fill="none">
-                  <rect x="4" y="7" width="15" height="10" rx="2" />
-                  <path d="M21 11v2" />
-                  <path d="m10 15 2-3H9l2-3" />
-                </svg>
-              )}
-            </span>
-            <span class="base-benefit-badge">{item.badge}</span>
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
+              <span class="benefit-card__label">{card.label}</span>
+            </div>
+            <div class="benefit-card__body">
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </div>
+            <span class="benefit-card__accent" aria-hidden="true"></span>
           </article>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section base-section">
-    <div class="section-inner base-split-heading base-use-heading">
-      <div>
-        <p class="eyebrow">Uso ideal</p>
-        <h2>Ideal para operaciones de pesaje básico y uso moderado</h2>
+  <section class="section use-section">
+    <div class="baper-wrap use-shell">
+      <div class="use-copy">
+        <div class="baper-section-head">
+          <p class="eyebrow">Ideal para</p>
+          <h2>Ideal para operaciones que necesitan pesar carga de forma práctica</h2>
+          <p>
+            La BAPER-12 está pensada para negocios y empresas que necesitan controlar peso en
+            procesos internos sin requerir conectividad avanzada o instalación en fosa.
+          </p>
+        </div>
+        <div class="use-grid">
+          {idealUses.map((item) => (
+            <article>
+              <span aria-hidden="true">
+                {item.icon === "warehouse" && (
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M3 20V9l9-5 9 5v11" />
+                    <path d="M7 20v-8h10v8" />
+                    <path d="M7 15h10" />
+                    <path d="M10 12v8" />
+                    <path d="M14 12v8" />
+                  </svg>
+                )}
+                {item.icon === "packageCheck" && (
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="m3 7 9-4 9 4-9 4z" />
+                    <path d="M3 7v10l9 4 9-4V7" />
+                    <path d="M12 11v10" />
+                    <path d="m8 15 2 2 4-5" />
+                  </svg>
+                )}
+                {item.icon === "recycle" && (
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="m7 19-3-5 3-5" />
+                    <path d="M4 14h8" />
+                    <path d="m17 5 3 5-3 5" />
+                    <path d="M20 10h-8" />
+                    <path d="m8 5 4-2 4 2" />
+                    <path d="m16 19-4 2-4-2" />
+                  </svg>
+                )}
+                {item.icon === "network" && (
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="4" width="7" height="6" rx="1" />
+                    <rect x="14" y="4" width="7" height="6" rx="1" />
+                    <rect x="8.5" y="14" width="7" height="6" rx="1" />
+                    <path d="M10 7h4" />
+                    <path d="M7 10l3 4" />
+                    <path d="M17 10l-3 4" />
+                  </svg>
+                )}
+                {item.icon === "truck" && (
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M3 7h11v10H3z" />
+                    <path d="M14 10h4l3 3v4h-7z" />
+                    <path d="M7 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                    <path d="M18 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                  </svg>
+                )}
+                {item.icon === "gauge" && (
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 14a8 8 0 0 1 16 0" />
+                    <path d="M12 14 16 9" />
+                    <path d="M6 18h12" />
+                    <path d="M7 14h1" />
+                    <path d="M16 14h1" />
+                  </svg>
+                )}
+                {item.icon === "store" && (
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 10h16" />
+                    <path d="M5 10l1-5h12l1 5" />
+                    <path d="M6 10v10h12V10" />
+                    <path d="M9 20v-6h6v6" />
+                  </svg>
+                )}
+                {item.icon === "pallet" && (
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <rect x="5" y="4" width="14" height="10" rx="1.5" />
+                    <path d="M4 18h16" />
+                    <path d="M6 14v4" />
+                    <path d="M12 14v4" />
+                    <path d="M18 14v4" />
+                  </svg>
+                )}
+              </span>
+              <strong>{item.title}</strong>
+            </article>
+          ))}
+        </div>
+        <a class="use-link" href={whatsappFitHref}>Confirmar si aplica a mi operación</a>
       </div>
-      <p>
-        La Báscula BAPER-12 es recomendable cuando necesitas pesar mercancía, productos o
-        materiales en procesos internos de control, sin requerir conectividad avanzada o instalación
-        en fosa.
-      </p>
-    </div>
-    <div class="section-inner base-application-media">
-      <SmartImage
-        name={imageSlots.useIdeal}
-        fallbackExt="webp"
-        alt="Aplicación de báscula de bajo perfil en almacén y recibo"
-        width="1600"
-        height="1000"
-      />
-    </div>
-    <div class="section-inner base-use-grid">
-      {idealUses.map((item) => (
-        <article>
-          <span class="base-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M4 8h16v10H4z" />
-              <path d="M7 8V5h10v3" />
-              <path d="M8 13h8" />
-            </svg>
-          </span>
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
-        </article>
-      ))}
-    </div>
-    <div class="section-inner base-use-cta">
-      <a class="button" href={whatsappHref}>Solicita cotización por WhatsApp</a>
+      <div class="use-media">
+        <SmartImage
+          name={images.use}
+          fallbackExt="webp"
+          alt="Báscula de bajo perfil en uso con carga para almacén y recibo"
+          width="1600"
+          height="1000"
+        />
+      </div>
     </div>
   </section>
 
-  <section class="section base-includes-section">
-    <div class="section-inner base-includes-shell">
-      <div class="base-includes-head">
-        <p class="eyebrow">Producto y configuración incluida</p>
-        <h2>Producto y configuración incluida</h2>
+  <section class="section includes-section">
+    <div class="baper-wrap">
+      <div class="baper-section-head">
+        <p class="eyebrow">Equipo completo</p>
+        <h2>Qué incluye la Báscula BAPER-12</h2>
         <p>
-          La Báscula BAPER-12 integra plataforma de bajo perfil, indicador IPES y componentes
-          principales para operación de pesaje básico.
+          La configuración integra plataforma, indicador digital y cable de conexión para operación
+          básica en almacén, recibo y carga controlada.
         </p>
       </div>
-      <div class="base-includes-summary-wrap">
-        <div class="base-includes-summary">
-          <strong>Configuración oficial del equipo</strong>
-          <ul>
-            <li>
-              <strong>120 × 120 cm</strong>
-              <span>Plataforma</span>
-            </li>
-            <li>
-              <strong>1,500 kg</strong>
-              <span>Capacidad</span>
-            </li>
-            <li>
-              <strong>IPES</strong>
-              <span>Indicador incluido</span>
-            </li>
-            <li>
-              <strong>Hasta 100 horas</strong>
-              <span>Pila recargable</span>
-            </li>
-          </ul>
-        </div>
-        <div class="button-row">
-          <a class="button" href={whatsappHref}>Solicita cotización por WhatsApp</a>
-          <a class="button secondary" href={fichaHref} download>Descargar ficha técnica</a>
-        </div>
-      </div>
-      <div class="base-includes-visual-stack">
-        <div class="base-includes-visual-frame">
-          <article class="base-includes-platform">
+      <div class="include-grid">
+        {includes.map((item) => (
+          <article class="include-card">
             <SmartImage
-              name={imageSlots.heroPlatform}
+              name={item.image}
               fallbackExt="webp"
-              alt="Plataforma de bajo perfil BAPER-12"
-              class="base-image-slot base-image-slot--platform"
-              width="1400"
-              height="1050"
-            />
-            <div class="base-includes-visual-copy">
-              <strong>Plataforma / equipo</strong>
-              <span>Base de bajo perfil con superficie antiderrapante y estructura para operación moderada.</span>
-            </div>
-          </article>
-          <article class="base-includes-indicator">
-            <SmartImage
-              name={imageSlots.indicator}
-              fallbackExt="webp"
-              alt="Indicador IPES para la BAPER-12"
-              class="base-image-slot base-image-slot--indicator"
+              alt={item.alt}
               width="900"
-              height="900"
+              height="620"
             />
-            <div class="base-includes-visual-copy">
-              <strong>Indicador IPES</strong>
-              <span>Indicador comercial de solo peso con pila recargable.</span>
+            <div>
+              <h3>{item.title}</h3>
+              <ul>
+                {item.items.map((detail) => <li>{detail}</li>)}
+              </ul>
             </div>
           </article>
-        </div>
+        ))}
       </div>
     </div>
-    <div class="section-inner base-includes-tech">
-      <div class="base-split-heading base-includes-tech__heading">
-        <div>
-          <p class="eyebrow">Especificaciones técnicas</p>
-          <h3>Plataforma e indicador digital</h3>
-        </div>
+  </section>
+
+  <section class="section specs-section">
+    <div class="baper-wrap">
+      <div class="baper-section-head">
+        <h2>Especificaciones técnicas</h2>
         <p>
-          Consulta las características de la plataforma y del indicador digital incluidos en esta
-          configuración.
+          Revisa la plataforma y el indicador por separado para validar medidas, capacidad,
+          componentes y límites de conectividad.
         </p>
       </div>
-      <div class="base-spec-grid">
-        <details class="base-spec-card">
+      <div class="spec-grid">
+        <details class="spec-card" open>
           <summary>
-            <div class="base-spec-card__heading">
-              <span>01</span>
-              <div>
-                <h3>Plataforma / Equipo</h3>
-                <p>Bajo perfil, acero al carbón y superficie antiderrapante.</p>
-              </div>
-            </div>
-            <span class="base-spec-toggle">Ver especificaciones de plataforma</span>
+            <span class="spec-toggle spec-toggle--show">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Ver especificaciones
+            </span>
+            <span class="spec-toggle spec-toggle--hide">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 3l18 18" />
+                <path d="M10.6 10.6A3 3 0 0 0 13.4 13.4" />
+                <path d="M9.9 5.2A10.7 10.7 0 0 1 12 5c6.5 0 10 7 10 7a17.2 17.2 0 0 1-3.2 4.2" />
+                <path d="M6.6 6.6C3.7 8.5 2 12 2 12s3.5 7 10 7a10 10 0 0 0 4.4-1" />
+              </svg>
+              Ocultar especificaciones
+            </span>
+            <h3>Plataforma / Equipo</h3>
           </summary>
-          <dl class="base-spec-list">
+          <dl>
             {platformSpecs.map(([label, value]) => (
               <div>
                 <dt>{label}</dt>
@@ -620,18 +762,27 @@ const breadcrumbSchema = {
             ))}
           </dl>
         </details>
-        <details class="base-spec-card">
+        <details class="spec-card" open>
           <summary>
-            <div class="base-spec-card__heading">
-              <span>02</span>
-              <div>
-                <h3>Indicador digital</h3>
-                <p>IPES comercial, solo peso, con pila recargable.</p>
-              </div>
-            </div>
-            <span class="base-spec-toggle">Ver especificaciones del indicador</span>
+            <span class="spec-toggle spec-toggle--show">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Ver especificaciones
+            </span>
+            <span class="spec-toggle spec-toggle--hide">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 3l18 18" />
+                <path d="M10.6 10.6A3 3 0 0 0 13.4 13.4" />
+                <path d="M9.9 5.2A10.7 10.7 0 0 1 12 5c6.5 0 10 7 10 7a17.2 17.2 0 0 1-3.2 4.2" />
+                <path d="M6.6 6.6C3.7 8.5 2 12 2 12s3.5 7 10 7a10 10 0 0 0 4.4-1" />
+              </svg>
+              Ocultar especificaciones
+            </span>
+            <h3>Indicador digital</h3>
           </summary>
-          <dl class="base-spec-list">
+          <dl>
             {indicatorSpecs.map(([label, value]) => (
               <div>
                 <dt>{label}</dt>
@@ -641,1352 +792,1310 @@ const breadcrumbSchema = {
           </dl>
         </details>
       </div>
+      <p class="spec-links">
+        Si tu operación requiere sistemas, impresión o registro de datos, solicita orientación en <a
+          href={withBase("/#contacto")}
+        >
+          contacto
+        </a> para revisar qué línea te conviene.
+      </p>
     </div>
   </section>
 
-  <section class="section base-guidance">
-    <div class="section-inner">
-      <div class="base-guidance__heading">
-        <p class="eyebrow">Elección correcta</p>
-        <h2>Cuándo elegir la Báscula de Bajo Perfil Base</h2>
+  <section class="section fit-section">
+    <div class="baper-wrap">
+      <div class="baper-section-head">
+        <p class="eyebrow">Ayuda para elegir</p>
+        <h2>¿La línea Base es la opción correcta para tu operación?</h2>
         <p>
-          Esta línea es ideal si buscas una báscula funcional para almacén, recibo, carga controlada
-          y operación de uso moderado.
+          Esta comparación ayuda a decidir con claridad cuándo la línea Base cubre la necesidad y
+          cuándo conviene revisar una configuración superior.
         </p>
       </div>
-      <div class="base-choice-grid">
-        <article class="base-choice-grid__yes">
-          <h3>Sí te conviene si</h3>
-          <ul class="base-check-list">
-            {goodFit.map((item) => <li>{item}</li>)}
-          </ul>
+      <div class="fit-grid">
+        <article class="fit-card fit-card--yes">
+          <h3>Sí te conviene si:</h3>
+          <ul>{goodFit.map((item) => <li>{item}</li>)}</ul>
         </article>
-        <article class="base-choice-grid__muted">
-          <h3>Considera otra línea si</h3>
-          <ul class="base-check-list">
-            {considerOther.map((item) => <li>{item}</li>)}
-          </ul>
+        <article class="fit-card fit-card--other">
+          <h3>Considera otra línea si:</h3>
+          <ul>{otherLine.map((item) => <li>{item}</li>)}</ul>
         </article>
       </div>
-      <div class="button-row base-centered-action">
-        <a class="button secondary" href={withBase("/basculas/bajo-perfil/#seleccion-bajo-perfil")}>
+      <p class="fit-links">
+        También puedes revisar la página principal de <a href={withBase("/basculas/bajo-perfil/")}>
+          básculas de bajo perfil
+        </a>, comparar otras líneas como <a href={withBase("/basculas/bajo-perfil/comercial/")}>
+          Comercial
+        </a> o <a href={withBase("/basculas/bajo-perfil/inoxidable/")}>Inoxidable</a>, y pedir apoyo
+        de <a href={withBase("/#servicios")}>servicio técnico, mantenimiento y reparación</a>.
+      </p>
+      <div class="baper-actions">
+        <a class="button baper-button--whatsapp" href={whatsappFitHref}>
           Ayúdame a elegir la línea correcta
         </a>
       </div>
     </div>
   </section>
 
-  <section class="base-delivery">
-    <div class="section-inner base-delivery__inner">
-      <div class="base-delivery__copy">
-        <div class="base-delivery__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M12 21s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12Z" />
-            <path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-          </svg>
-        </div>
+  <section class="section delivery-section">
+    <div class="baper-wrap delivery-layout">
+      <div>
         <p class="eyebrow">Entrega local</p>
-        <h2>Entrega en CDMX y Estado de México sin cargo adicional</h2>
+        <h2>Báscula de bajo perfil con entrega en CDMX y Estado de México</h2>
         <p>
-          Recibe tu Báscula BAPER-12 directamente en tu empresa, almacén, comercio o zona de
-          operación. También podemos orientarte sobre ubicación, rampas y condiciones recomendadas
-          antes de instalar el equipo.
+          Entregamos la Báscula BAPER-12 directamente en empresas, almacenes, comercios,
+          recicladoras y zonas de operación en CDMX, Estado de México y zona metropolitana.
         </p>
-        <a class="button" href={whatsappHref}>Solicita cotización por WhatsApp</a>
+        <ul class="zone-list">
+          {zones.map((zone) => <li>{zone}</li>)}
+        </ul>
+        <div class="store-card">
+          <strong>También puedes visitarnos en nuestra tienda en Texcoco.</strong>
+          <span>{contact.address}</span>
+          <a class="button secondary" href={contact.mapsUrl} target="_blank" rel="noreferrer">
+            Ver ubicación
+          </a>
+        </div>
       </div>
-      <div class="base-delivery__visual">
+      <div class="delivery-media">
         <SmartImage
-          name={imageSlots.application}
+          name={images.delivery}
           fallbackExt="webp"
-          alt="Entrega y operación local de báscula de piso en CDMX y Estado de México"
-          class="base-delivery__image"
-          pictureClass="base-delivery__picture"
-          width="1200"
-          height="750"
+          alt="Entrega de báscula de piso en Estado de México"
+          width="1400"
+          height="900"
         />
       </div>
     </div>
   </section>
 
-  <section class="section base-download">
-    <div class="section-inner base-download__box">
+  <section class="section download-section">
+    <div class="baper-wrap download-card">
+      <div class="pdf-icon" aria-hidden="true">PDF</div>
       <div>
         <p class="eyebrow">Ficha técnica</p>
         <h2>Descarga la ficha técnica de la Báscula BAPER-12</h2>
         <p>
-          Consulta la información técnica del equipo, medidas, capacidad, beneficios, aplicaciones y
-          especificaciones del indicador antes de solicitar tu cotización.
+          Consulta medidas, capacidad, componentes incluidos y especificaciones del indicador antes
+          de solicitar tu cotización.
+        </p>
+        <p class="baper-microcopy">
+          Útil para compras, mantenimiento, almacén o autorización interna.
         </p>
       </div>
-      <div class="base-download__actions">
+      <div class="download-actions">
         <a class="button" href={fichaHref} download>Descargar ficha técnica PDF</a>
-        <a class="button secondary" href={whatsappHref}>Solicita cotización por WhatsApp</a>
+        <a class="button secondary" href={whatsappHref}>Cotizar por WhatsApp</a>
       </div>
     </div>
   </section>
 
-  <section class="section base-faq">
-    <div class="section-inner base-split-heading">
-      <div>
-        <p class="eyebrow">Preguntas frecuentes</p>
-        <h2>FAQ de la Báscula de Bajo Perfil Base BAPER-12</h2>
+  <section class="section faq-section">
+    <div class="baper-wrap">
+      <div class="baper-section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>Preguntas frecuentes</h2>
+        <p>
+          Respuestas rápidas para confirmar capacidad, dimensiones, usos recomendados, entrega y
+          configuración antes de cotizar.
+        </p>
       </div>
-      <p>
-        Respuestas rápidas para saber si esta báscula de piso en Estado de México y CDMX encaja con
-        tu operación antes de cotizar.
-      </p>
-    </div>
-    <div class="section-inner base-faq__list">
-      {faqs.map((faq) => (
-        <details>
-          <summary>{faq.question}</summary>
-          <p>{faq.answer}</p>
-        </details>
-      ))}
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
     </div>
   </section>
 
-  <section class="base-final" id="cotizar-base">
-    <div class="section-inner base-final__inner">
-      <p class="eyebrow">Cotización</p>
-      <h2>Cotiza tu Báscula de Bajo Perfil Base BAPER-12</h2>
+  <section class="final-cta" id="cotizar-base">
+    <div class="baper-wrap final-cta__inner">
+      <h2>¿Quieres confirmar si esta báscula es adecuada para tu operación?</h2>
       <p>
-        Solicita información, confirma disponibilidad y recibe asesoría para saber si esta báscula es
-        adecuada para tu operación.
+        Escríbenos por WhatsApp y te ayudamos a revisar capacidad, medida, uso recomendado, entrega
+        y configuración antes de cotizar.
       </p>
-      <div class="button-row">
-        <a class="button" href={whatsappHref}>Solicita cotización por WhatsApp</a>
-        <a class="button secondary base-button--light" href={fichaHref} download>
-          Descargar ficha técnica
+      <div class="baper-actions">
+        <a class="button baper-button--whatsapp" href={whatsappHref}>Cotizar por WhatsApp</a>
+        <a class="button secondary" href={fichaHref} download>Descargar ficha técnica</a>
+        <a class="button secondary" href={contact.mapsUrl} target="_blank" rel="noreferrer">
+          Ver ubicación
         </a>
       </div>
-      <p class="base-microcopy">Entrega en CDMX y Estado de México sin cargo adicional.</p>
     </div>
   </section>
+
+  <div class="mobile-sticky-cta" aria-label="Accesos rápidos">
+    <a class="button baper-button--whatsapp" href={whatsappHref}>Cotizar por WhatsApp</a>
+    <a class="button secondary" href={fichaHref} download>Ficha técnica</a>
+  </div>
 </BaseLayout>
 
 <style>
-  .base-hero {
-    padding: clamp(34px, 6vw, 74px) clamp(18px, 5vw, 72px);
-    background:
-      radial-gradient(circle at 78% 20%, rgba(47, 125, 246, 0.18), transparent 34%),
-      linear-gradient(115deg, rgba(8, 17, 28, 0.99), rgba(18, 38, 58, 0.96)),
-      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 92px),
-      #101820;
-    color: #ffffff;
+  :global(body) {
+    background: #f4f7fb;
   }
 
-  .base-hero__inner {
-    display: grid;
-    grid-template-columns: minmax(0, 0.74fr) minmax(560px, 1.08fr);
-    gap: clamp(24px, 3.6vw, 52px);
-    align-items: start;
-    width: min(1340px, 100%);
+  .baper-wrap {
+    width: min(1180px, calc(100% - 36px));
     margin: 0 auto;
   }
 
-  .base-hero h1 {
-    max-width: 680px;
-    margin-bottom: 12px;
-    font-size: clamp(2.05rem, 4vw, 4.15rem);
-    line-height: 0.98;
+  .baper-hero {
+    padding: 30px 0 34px;
+    background:
+      linear-gradient(180deg, rgba(244, 247, 251, 0.96), rgba(255, 255, 255, 0.98)),
+      #f4f7fb;
   }
 
-  .base-hero__subheadline {
-    max-width: 660px;
-    margin: 0 0 16px;
-    color: #ffffff;
-    font-size: clamp(1.12rem, 2.1vw, 1.55rem);
-    font-weight: 900;
+  .baper-hero__grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .baper-hero__copy {
+    display: grid;
+    gap: 14px;
+  }
+
+  .baper-hero h1 {
+    max-width: 860px;
+    margin: 0;
+    font-size: clamp(2.15rem, 10vw, 3.65rem);
+    line-height: 1.02;
+  }
+
+  .baper-lead {
+    max-width: 690px;
+    margin: 0;
+    color: #384553;
+    font-size: 1.06rem;
+    line-height: 1.48;
+  }
+
+  .baper-quick-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+    margin: 4px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .baper-quick-list li,
+  .trust-strip article,
+  .use-grid article,
+  .zone-list li {
+    border: 1px solid rgba(174, 188, 204, 0.75);
+    border-radius: 8px;
+    background: #ffffff;
+    color: #172536;
+    font-weight: 850;
+  }
+
+  .baper-quick-list li {
+    min-height: 48px;
+    padding: 10px 11px;
+    font-size: 0.87rem;
     line-height: 1.2;
   }
 
-  .base-hero .lead {
-    max-width: 660px;
-    color: #e8edf2;
-    font-size: clamp(1rem, 1.55vw, 1.18rem);
-    line-height: 1.55;
-  }
-
-  .base-facts {
+  .baper-actions {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
-    margin-top: 24px;
+    margin-top: 4px;
   }
 
-  .base-facts article {
+  .baper-actions .button {
+    width: 100%;
+    min-height: 50px;
+    text-align: center;
+  }
+
+  .baper-button--whatsapp {
+    border-color: #128c5a;
+    background: linear-gradient(135deg, #128c5a, #0f6f49);
+    color: #ffffff;
+    box-shadow: 0 12px 24px rgba(18, 140, 90, 0.22);
+  }
+
+  .baper-microcopy {
+    margin: 0;
+    color: #5b6878;
+    font-size: 0.92rem;
+  }
+
+  .baper-hero__media {
+    overflow: hidden;
+    border: 1px solid rgba(174, 188, 204, 0.75);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 18px 42px rgba(8, 17, 28, 0.09);
+  }
+
+  .baper-hero__media img,
+  .benefits-media img,
+  .use-media img,
+  .delivery-media img,
+  .include-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .baper-hero__media img {
+    aspect-ratio: 16 / 10;
+    object-position: center 54%;
+  }
+
+  .trust-strip {
+    padding: 14px 0;
+    background: #101820;
+    color: #ffffff;
+  }
+
+  .trust-strip__title {
+    margin: 0 0 10px;
+    color: #dfe6ed;
+    font-size: 0.88rem;
+    font-weight: 850;
+  }
+
+  .trust-strip__scroller {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(178px, 1fr);
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+  }
+
+  .trust-strip article {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
-    min-height: 72px;
-    padding: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 8px;
-    background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.045)),
-      rgba(255, 255, 255, 0.06);
+    min-height: 54px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
   }
 
-  .base-fact-icon {
+  .trust-strip span,
+  .card-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    flex: 0 0 36px;
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    width: 28px;
+    height: 28px;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.9);
-  }
-
-  .base-fact-icon svg {
-    width: 20px;
-    height: 20px;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .base-facts strong {
-    color: #ffffff;
-    font-size: 1.06rem;
+    background: #eef4ff;
+    color: #173e79;
     font-weight: 950;
-    line-height: 1.1;
   }
 
-  .base-facts article div span {
-    color: rgba(232, 237, 242, 0.78);
-    font-size: 0.74rem;
-    font-weight: 850;
+  .trust-strip strong {
+    font-size: 0.82rem;
     line-height: 1.2;
-    text-transform: uppercase;
   }
 
-  .base-button--light {
-    border-color: rgba(255, 255, 255, 0.48);
-    background: transparent;
-    color: #ffffff;
+  .section {
+    padding: 54px 0;
   }
 
-  .base-hero .button-row .button:first-child {
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    background: linear-gradient(180deg, #2f7df6, #0f5ed8);
-    color: #ffffff;
-    box-shadow:
-      0 14px 34px rgba(47, 125, 246, 0.28),
-      inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  }
-
-  .base-hero .button-row .button:first-child:hover {
-    border-color: rgba(255, 255, 255, 0.42);
-    background: linear-gradient(180deg, #3b86ff, #1268ec);
-  }
-
-  .base-hero .button-row {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: start;
-    gap: 10px;
-  }
-
-  .base-hero .button-row .button {
-    width: auto;
-    min-width: 0;
-    padding: 12px 18px;
-    white-space: nowrap;
-  }
-
-  .base-microcopy {
-    margin: 12px 0 0;
-    color: #dfe6ed;
-    font-size: 0.94rem;
-    font-weight: 760;
-  }
-
-  .base-hero__visual {
-    position: relative;
-    min-height: 0;
-    align-self: start;
-    transform: translate(clamp(-48px, -2.8vw, -28px), clamp(44px, 4vw, 74px));
-  }
-
-  .base-hero-product {
-    position: relative;
-    width: 100%;
-    margin-left: auto;
-    overflow: hidden;
-    border-radius: 8px;
-    transform: translateX(65px);
-  }
-
-  .base-hero-product img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    height: clamp(390px, 34vw, 560px);
-    min-height: 0;
-    border-radius: 8px;
-    object-fit: cover;
-    object-position: center 52%;
-    box-shadow: 0 34px 88px rgba(0, 0, 0, 0.34);
-  }
-
-  .base-trust {
-    padding: clamp(54px, 7vw, 96px) clamp(18px, 5vw, 72px);
-    background:
-      linear-gradient(135deg, rgba(47, 125, 246, 0.1), transparent 42%),
-      #f4f7fb;
-    border-bottom: 1px solid rgba(174, 188, 204, 0.66);
-  }
-
-  .base-benefits-layout {
-    display: grid;
-    grid-template-columns: minmax(470px, 0.76fr) minmax(0, 0.9fr);
-    gap: clamp(24px, 4vw, 50px);
-    align-items: center;
-  }
-
-  .base-benefits-media {
-    display: grid;
-    gap: 14px;
-    align-content: center;
-  }
-
-  .base-trust__heading {
-    margin-bottom: 0;
-  }
-
-  .base-trust__heading h2 {
-    max-width: 760px;
-    margin-bottom: 12px;
-    font-size: clamp(1.8rem, 3.2vw, 3.2rem);
-  }
-
-  .base-trust__heading p {
-    margin: 0;
-    color: var(--muted);
-  }
-
-  .base-media-card,
-  .base-application-media {
-    padding: 12px;
-    border: 1px solid rgba(174, 188, 204, 0.66);
-    border-radius: 8px;
+  .download-section {
     background: #ffffff;
-    box-shadow: 0 18px 42px rgba(8, 17, 28, 0.08);
   }
 
-  .base-media-card img,
-  .base-application-media img {
-    width: 100%;
-    border-radius: 6px;
-    object-fit: cover;
+  .support-section {
+    padding: 46px 0;
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.08), rgba(255, 255, 255, 0.78) 48%),
+      #f4f7fb;
   }
 
-  .base-media-card img {
-    aspect-ratio: 16 / 11;
-    height: auto;
-    object-position: center center;
+  .benefits-section,
+  .delivery-section,
+  .faq-section {
+    background: #f4f7fb;
   }
 
-  .base-trust__grid {
+  .use-section,
+  .includes-section,
+  .specs-section {
+    background: #ffffff;
+  }
+
+  .includes-section {
+    padding-bottom: 24px;
+  }
+
+  .specs-section {
+    padding-top: 24px;
+  }
+
+  .baper-section-head {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    max-width: 790px;
+    margin-bottom: 20px;
+  }
+
+  .baper-section-head h2,
+  .final-cta h2 {
+    margin: 0;
+    font-size: clamp(1.8rem, 7vw, 3rem);
+    line-height: 1.05;
+  }
+
+  .baper-section-head p:not(.eyebrow),
+  .final-cta p,
+  .delivery-section p,
+  .download-card p,
+  .spec-links,
+  .fit-links {
+    margin: 0;
+    color: #546172;
+    font-size: 1rem;
+  }
+
+  .support-grid,
+  .benefit-grid,
+  .include-grid,
+  .fit-grid,
+  .spec-grid {
+    display: grid;
     gap: 12px;
   }
 
-  .base-trust article,
-  .base-use-grid article,
-  .base-line-list article {
+  .spec-grid {
+    align-items: start;
+  }
+
+  .support-shell {
+    display: grid;
+    gap: 18px;
+    padding: 20px;
     border: 1px solid rgba(174, 188, 204, 0.72);
     border-radius: 8px;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 18px 44px rgba(8, 17, 28, 0.08);
   }
 
-  .base-trust article {
+  .support-copy {
     display: grid;
-    gap: 10px;
+    gap: 12px;
     align-content: start;
-    min-height: 190px;
-    padding: clamp(16px, 2vw, 22px);
-    box-shadow: 0 12px 30px rgba(8, 17, 28, 0.06);
   }
 
-  .base-benefit-icon,
-  .base-include-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 8px;
-    background: #eef4ff;
-    color: var(--blue-dark);
-  }
-
-  .base-benefit-icon svg,
-  .base-include-icon svg {
-    width: 22px;
-    height: 22px;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .base-trust h3 {
+  .support-copy h2 {
+    max-width: 540px;
     margin: 0;
-    font-size: 1.04rem;
-    line-height: 1.15;
+    font-size: clamp(2.1rem, 8vw, 2.65rem);
+    line-height: 1.08;
+    letter-spacing: 0;
   }
 
-  .base-benefit-badge {
-    width: fit-content;
-    padding: 5px 9px;
-    border-radius: 999px;
-    background: #f4f7fb;
-    color: var(--blue-dark);
-    font-size: 0.76rem;
-    font-weight: 950;
-    line-height: 1;
-  }
-
-  .base-trust p,
-  .base-use-grid p,
-  .base-line-list p {
+  .support-copy > p:not(.eyebrow) {
+    max-width: 570px;
     margin: 0;
-    color: var(--muted);
+    color: #4c5b6c;
+    font-size: 0.98rem;
   }
 
-  .base-section {
-    background:
-      linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(255, 255, 255, 0.96)),
-      #ffffff;
+  .support-copy .baper-actions {
+    margin-top: 4px;
   }
 
-  .base-section--compact {
-    padding-top: clamp(48px, 6vw, 78px);
+  .support-copy .baper-microcopy {
+    max-width: 420px;
+    color: #657386;
   }
 
-  .base-split-heading {
-    display: grid;
-    grid-template-columns: minmax(0, 0.82fr) minmax(280px, 0.48fr);
-    gap: clamp(18px, 4vw, 48px);
-    align-items: end;
-    margin-bottom: clamp(24px, 4vw, 40px);
-  }
-
-  .base-use-heading {
-    align-items: center;
-    margin-bottom: clamp(28px, 4.4vw, 48px);
-  }
-
-  .base-split-heading h2,
-  .base-guidance h2,
-  .base-delivery h2,
-  .base-download h2,
-  .base-final h2 {
-    font-size: clamp(1.9rem, 4vw, 3.8rem);
-  }
-
-  .base-split-heading > p,
-  .base-guidance__heading > p,
-  .base-delivery p,
-  .base-download p,
-  .base-final p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 1.02rem;
-  }
-
-  .base-use-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-  }
-
-  .base-use-grid article {
-    display: grid;
-    gap: 10px;
-    padding: 18px;
-    min-height: 170px;
-    box-shadow: 0 14px 34px rgba(8, 17, 28, 0.05);
-  }
-
-  .base-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 8px;
-    background: #eef4ff;
-    color: var(--blue-dark);
-  }
-
-  .base-icon svg,
-  .base-delivery__icon svg {
-    width: 22px;
-    height: 22px;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .base-use-grid h3 {
-    margin: 0;
-  }
-
-  .base-application-media {
-    margin-bottom: 16px;
-  }
-
-  .base-application-media img {
-    height: clamp(360px, 34vw, 500px);
-    max-height: none;
-    object-position: center 78%;
-  }
-
-  .base-use-cta {
-    margin-top: 18px;
-  }
-
-  .base-includes-section {
-    background:
-      linear-gradient(135deg, rgba(47, 125, 246, 0.08), transparent 42%),
-      linear-gradient(180deg, #ffffff, #f4f7fb),
-      #ffffff;
-  }
-
-  .base-includes-shell {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 22px;
-    align-items: start;
-    margin-bottom: 22px;
-  }
-
-  .base-includes-head {
-    display: grid;
-    gap: 14px;
-    align-content: start;
-    max-width: 860px;
-  }
-
-  .base-includes-head h2 {
-    margin-bottom: 0;
-    max-width: 760px;
-    font-size: clamp(2rem, 3.6vw, 3.35rem);
-  }
-
-  .base-includes-head > p {
-    max-width: 760px;
-    margin: 0;
-    color: var(--muted);
-    font-size: 1.04rem;
-  }
-
-  .base-includes-summary-wrap {
-    display: grid;
-    gap: 14px;
-    max-width: 980px;
-  }
-
-  .base-includes-summary {
-    padding: 18px 18px 16px;
-    border: 1px solid rgba(16, 24, 32, 0.12);
-    border-left: 4px solid var(--red);
+  .info-card,
+  .include-card,
+  .fit-card,
+  .spec-card,
+  .download-card,
+  .store-card {
+    border: 1px solid rgba(174, 188, 204, 0.75);
     border-radius: 8px;
     background: #ffffff;
     box-shadow: 0 14px 34px rgba(8, 17, 28, 0.06);
   }
 
-  .base-includes-summary strong {
-    display: block;
-    margin-bottom: 10px;
-    color: var(--ink);
-    font-size: 1.06rem;
-  }
-
-  .base-includes-summary ul {
+  .info-card {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .base-includes-summary li {
-    display: grid;
-    gap: 4px;
+    gap: 8px;
     align-content: start;
-    min-height: 82px;
-    padding: 12px 12px 12px;
-    border-radius: 8px;
-    background: #f4f7fb;
+    min-height: 150px;
+    padding: 16px;
   }
 
-  .base-includes-summary li strong {
-    color: var(--ink);
-    font-size: 1rem;
-    font-weight: 950;
-    line-height: 1.1;
-  }
-
-  .base-includes-summary li span {
-    color: #5a6a7b;
-    font-size: 0.76rem;
-    font-weight: 850;
-    line-height: 1.2;
-    text-transform: uppercase;
-  }
-
-  .base-includes-visual-stack {
-    display: block;
-  }
-
-  .base-includes-visual-frame {
-    display: grid;
-    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-    gap: 18px;
-    align-items: stretch;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
+  .support-grid .info-card {
+    min-height: 0;
+    padding: 16px;
+    background:
+      linear-gradient(180deg, #ffffff, #f8fafc),
+      #ffffff;
     box-shadow: none;
   }
 
-  .base-includes-platform,
-  .base-includes-indicator {
-    display: grid;
-    grid-template-rows: minmax(0, 1fr) auto;
-    gap: 12px;
-    align-content: stretch;
-    height: 100%;
-    padding: 14px;
-    border: 1px solid rgba(174, 188, 204, 0.66);
-    border-radius: 8px;
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98)),
-      #ffffff;
-    box-shadow: 0 18px 44px rgba(8, 17, 28, 0.08);
-  }
-
-  .base-includes-platform {
-    align-self: start;
-  }
-
-  .base-image-slot {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 6px;
-    border: 1px solid rgba(174, 188, 204, 0.72);
-    object-fit: cover;
-    background:
-      linear-gradient(135deg, rgba(47, 125, 246, 0.08), rgba(16, 24, 32, 0.05)),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(244, 247, 251, 0.95));
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65);
-  }
-
-  .base-image-slot--platform {
-    min-height: 0;
-  }
-
-  .base-includes-indicator {
-    align-self: start;
-  }
-
-  .base-image-slot--indicator {
-    aspect-ratio: 3 / 2;
-    min-height: 0;
-  }
-
-  .base-includes-visual-copy strong {
-    display: block;
-    color: var(--ink);
-    font-size: 1.02rem;
-  }
-
-  .base-includes-visual-copy span {
-    color: var(--muted);
-    font-size: 0.84rem;
-    font-weight: 850;
-  }
-
-  .base-includes-summary-wrap .button-row {
-    margin-top: 0;
-  }
-
-  .base-includes-tech {
-    margin-top: 28px;
-  }
-
-  .base-includes-tech__heading {
-    margin-bottom: 18px;
-  }
-
-  .base-includes-tech__heading h3 {
+  .info-card h3,
+  .include-card h3,
+  .fit-card h3,
+  .spec-card h3 {
     margin: 0;
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
-    line-height: 1.02;
+    font-size: 1.08rem;
   }
 
-  .base-spec-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+  .info-card p {
+    margin: 0;
+    color: #546172;
   }
 
-  .base-spec-card {
-    padding: clamp(18px, 3vw, 26px);
-    border: 1px solid rgba(174, 188, 204, 0.74);
-    border-radius: 8px;
-    background: #ffffff;
-    box-shadow: 0 18px 42px rgba(8, 17, 28, 0.07);
+  .card-icon svg {
+    width: 17px;
+    height: 17px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
-  .base-spec-card summary {
-    display: grid;
+  .benefit-card {
+    position: relative;
+    overflow: hidden;
     gap: 14px;
-    list-style: none;
-    cursor: pointer;
+    padding: 17px;
+    border-color: rgba(130, 148, 172, 0.58);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.96)),
+      #ffffff;
+    box-shadow:
+      0 16px 34px rgba(8, 17, 28, 0.07),
+      inset 0 1px 0 rgba(255, 255, 255, 0.92);
   }
 
-  .base-spec-card summary::-webkit-details-marker {
+  .benefit-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: linear-gradient(90deg, #d4212e, #2f7df6);
+    opacity: 0.9;
+  }
+
+  .benefit-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .benefit-card__icon {
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(47, 125, 246, 0.2);
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.12), rgba(255, 255, 255, 0.82)),
+      #eef4ff;
+    color: #173e79;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  }
+
+  .benefit-card__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .benefit-card__label {
+    max-width: 132px;
+    padding: 6px 9px;
+    border: 1px solid rgba(174, 188, 204, 0.58);
+    border-radius: 999px;
+    background: rgba(244, 247, 251, 0.88);
+    color: #435063;
+    font-size: 0.72rem;
+    font-weight: 950;
+    line-height: 1;
+    text-align: right;
+  }
+
+  .benefit-card__body {
+    display: grid;
+    gap: 8px;
+  }
+
+  .benefit-card__body h3 {
+    color: #08111c;
+    font-size: 1.1rem;
+    line-height: 1.08;
+  }
+
+  .benefit-card__body p {
+    color: #4b5a6d;
+    line-height: 1.44;
+  }
+
+  .benefit-card__accent {
+    display: block;
+    width: 48px;
+    height: 4px;
+    margin-top: auto;
+    border-radius: 999px;
+    background: #d4212e;
+  }
+
+  .benefits-layout {
+    display: grid;
+    gap: 18px;
+  }
+
+  .benefits-media,
+  .use-media,
+  .delivery-media {
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid rgba(174, 188, 204, 0.75);
+    background: #ffffff;
+  }
+
+  .benefits-media img,
+  .use-media img,
+  .delivery-media img {
+    aspect-ratio: 4 / 3;
+  }
+
+  :global(.benefits-media__desktop-picture),
+  :global(.benefits-media__desktop) {
     display: none;
   }
 
-  .base-spec-card[open] summary {
-    margin-bottom: 18px;
+  :global(.benefits-media__mobile-picture),
+  :global(.benefits-media__mobile) {
+    display: block;
   }
 
-  .base-spec-card__heading {
+  .use-shell {
+    display: grid;
+    gap: 18px;
+    align-items: start;
+  }
+
+  .use-copy {
+    display: grid;
+    gap: 16px;
+    align-content: start;
+  }
+
+  .use-copy .baper-section-head {
+    margin-bottom: 0;
+  }
+
+  .use-copy .baper-section-head h2 {
+    max-width: 620px;
+    font-size: clamp(2rem, 7vw, 2.65rem);
+    line-height: 1.08;
+  }
+
+  .use-copy .baper-section-head p:not(.eyebrow) {
+    max-width: 620px;
+  }
+
+  .use-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .use-grid article {
+    position: relative;
+    overflow: hidden;
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 12px;
-    align-items: start;
-    padding-bottom: 16px;
-    border-bottom: 1px solid rgba(174, 188, 204, 0.54);
+    align-items: center;
+    min-height: 56px;
+    padding: 13px 14px;
+    font-size: 0.94rem;
+    border-color: rgba(130, 148, 172, 0.58);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.96)),
+      #ffffff;
+    box-shadow:
+      0 12px 26px rgba(8, 17, 28, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.92);
   }
 
-  .base-spec-card__heading > span {
+  .use-grid article::after {
+    content: "";
+    position: absolute;
+    inset: auto 12px 0;
+    height: 3px;
+    border-radius: 999px 999px 0 0;
+    background: linear-gradient(90deg, #d4212e, #2f7df6);
+    opacity: 0.72;
+  }
+
+  .use-grid span {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 999px;
-    background: #101820;
-    color: #ffffff;
-    font-weight: 950;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid rgba(47, 125, 246, 0.2);
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.12), rgba(255, 255, 255, 0.82)),
+      #eef4ff;
+    color: #173e79;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
   }
 
-  .base-spec-card h3 {
-    margin: 0 0 5px;
-    font-size: 1.18rem;
+  .use-grid span svg {
+    width: 21px;
+    height: 21px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
-  .base-spec-card p {
-    margin: 0;
-    color: var(--muted);
+  .use-grid strong {
+    color: #08111c;
+    font-size: 0.95rem;
+    line-height: 1.15;
   }
 
-  .base-spec-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  .use-link {
     width: fit-content;
-    min-height: 42px;
-    padding: 10px 14px;
-    border: 1px solid rgba(16, 24, 32, 0.18);
-    border-radius: 8px;
-    color: var(--blue-dark);
-    font-size: 0.86rem;
+    color: #173e79;
+    font-size: 0.92rem;
     font-weight: 950;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
   }
 
-  .base-spec-list {
+  .include-card {
+    overflow: hidden;
+  }
+
+  .include-card img {
+    aspect-ratio: 16 / 7;
+  }
+
+  .include-card > div {
+    padding: 12px 14px;
+  }
+
+  .include-card ul,
+  .fit-card ul {
     display: grid;
-    gap: 8px;
-    margin: 0;
-  }
-
-  .base-spec-list div {
-    display: grid;
-    grid-template-columns: minmax(130px, 0.5fr) minmax(0, 1fr);
-    gap: 12px;
-    align-items: start;
-    padding: 11px 12px;
-    border: 1px solid rgba(174, 188, 204, 0.42);
-    border-radius: 8px;
-    background: #f8fafc;
-  }
-
-  .base-spec-list dt {
-    color: var(--ink);
-    font-size: 0.8rem;
-    font-weight: 950;
-    line-height: 1.25;
-  }
-
-  .base-spec-list dd {
-    margin: 0;
-    color: #405063;
-    font-weight: 760;
-    line-height: 1.35;
-  }
-
-  .base-spec-cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 18px;
-  }
-
-  .base-check-list {
-    display: grid;
-    gap: 10px;
-    margin: 0;
+    gap: 6px;
+    margin: 10px 0 0;
     padding: 0;
     list-style: none;
   }
 
-  .base-check-list li {
+  .include-card li,
+  .fit-card li {
     position: relative;
-    padding-left: 22px;
-    color: #2f3d4c;
+    padding-left: 20px;
+    color: #344253;
     font-weight: 760;
   }
 
-  .base-check-list li::before {
+  .include-card li {
+    font-size: 0.92rem;
+    line-height: 1.28;
+  }
+
+  .include-card li::before,
+  .fit-card li::before {
     content: "";
     position: absolute;
-    top: 0.68em;
+    top: 0.66em;
     left: 0;
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     border-radius: 999px;
-    background: var(--red);
+    background: #d4212e;
   }
 
-  .base-guidance {
-    background:
-      linear-gradient(135deg, rgba(16, 24, 32, 0.96), rgba(27, 48, 69, 0.94)),
-      #101820;
-    color: #ffffff;
-  }
-
-  .base-guidance__heading {
-    max-width: 860px;
-    margin-bottom: 26px;
-  }
-
-  .base-guidance__heading > p {
-    color: #dfe6ed;
-  }
-
-  .base-choice-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-  }
-
-  .base-choice-grid article {
-    padding: clamp(18px, 3vw, 26px);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.08);
-  }
-
-  .base-choice-grid__yes {
-    background:
-      linear-gradient(135deg, rgba(34, 197, 94, 0.18), rgba(255, 255, 255, 0.07)),
-      rgba(255, 255, 255, 0.08);
-  }
-
-  .base-choice-grid__muted {
-    background:
-      linear-gradient(135deg, rgba(47, 125, 246, 0.12), rgba(255, 255, 255, 0.045)),
-      rgba(255, 255, 255, 0.045);
-  }
-
-  .base-choice-grid h3 {
-    color: #ffffff;
-  }
-
-  .base-choice-grid li {
-    color: #edf3f8;
-  }
-
-  .base-centered-action {
-    justify-content: center;
-  }
-
-  .base-delivery {
-    padding: clamp(18px, 2.4vw, 30px) clamp(18px, 4vw, 56px);
-    background:
-      linear-gradient(135deg, rgba(212, 33, 46, 0.12), transparent 44%),
-      #f4f7fb;
-  }
-
-  .base-delivery__inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(460px, 520px);
-    gap: 34px;
-    align-items: center;
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 26px 24px 26px 38px;
-    border: 1px solid rgba(174, 188, 204, 0.72);
-    border-radius: 8px;
-    background: #ffffff;
-    box-shadow: 0 16px 36px rgba(8, 17, 28, 0.07);
-  }
-
-  .base-delivery__copy {
-    min-width: 0;
-    max-width: 620px;
-  }
-
-  .base-delivery__icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 8px;
+  .fit-section {
     background: #101820;
     color: #ffffff;
   }
 
-  .base-delivery__icon svg {
-    width: 21px;
-    height: 21px;
+  .fit-section .eyebrow {
+    color: #ffb4ba;
   }
 
-  .base-delivery__visual {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    padding: 6px;
-    border: 1px solid rgba(174, 188, 204, 0.66);
-    border-radius: 8px;
-    background:
-      linear-gradient(135deg, rgba(47, 125, 246, 0.08), transparent 48%),
-      #f8fafc;
-    max-width: 520px;
-    justify-self: end;
-    overflow: hidden;
+  .fit-section .baper-section-head p:not(.eyebrow),
+  .fit-links {
+    color: #dfe6ed;
   }
 
-  :global(.base-delivery__picture),
-  :global(.base-delivery__image),
-  .base-delivery__visual :global(picture),
-  .base-delivery__visual :global(img) {
-    display: block;
-    width: 100% !important;
-    height: 100% !important;
+  .fit-card {
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow: none;
   }
 
-  :global(.base-delivery__image),
-  .base-delivery__visual :global(img) {
-    border-radius: 6px;
-    object-fit: cover;
-    object-position: center;
+  .fit-card--yes {
+    background: linear-gradient(135deg, rgba(18, 140, 90, 0.24), rgba(255, 255, 255, 0.08));
   }
 
-  .base-delivery h2,
-  .base-final h2 {
-    max-width: 860px;
+  .fit-card--other {
+    background: linear-gradient(135deg, rgba(47, 125, 246, 0.18), rgba(255, 255, 255, 0.07));
   }
 
-  .base-delivery h2 {
-    font-size: clamp(1.45rem, 2.35vw, 2.35rem);
-    line-height: 1.02;
-    max-width: 500px;
-    margin-bottom: 8px;
+  .fit-card li {
+    color: #edf3f8;
   }
 
-  .base-delivery p {
-    max-width: 540px;
-    margin-bottom: 8px;
-    font-size: 0.95rem;
+  .fit-card li::before {
+    background: #ffb4ba;
   }
 
-  .base-download {
-    background: #ffffff;
+  .fit-links,
+  .spec-links {
+    margin-top: 18px;
   }
 
-  .base-download__box {
+  .fit-links a,
+  .spec-links a {
+    color: inherit;
+    font-weight: 900;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  .delivery-layout {
     display: grid;
-    grid-template-columns: minmax(0, 0.86fr) minmax(280px, 0.4fr);
-    gap: 22px;
-    align-items: center;
-    padding: clamp(22px, 4vw, 34px);
-    border: 1px solid rgba(174, 188, 204, 0.72);
-    border-radius: 8px;
+    gap: 18px;
+  }
+
+  .delivery-section h2 {
+    max-width: 720px;
+    margin-bottom: 12px;
+    font-size: clamp(1.8rem, 7vw, 3rem);
+  }
+
+  .zone-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin: 18px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .zone-list li {
+    padding: 9px 10px;
+    font-size: 0.85rem;
+  }
+
+  .store-card {
+    display: grid;
+    gap: 9px;
+    padding: 16px;
+  }
+
+  .store-card span {
+    color: #546172;
+  }
+
+  .store-card .button {
+    width: 100%;
+  }
+
+  .download-card {
+    display: grid;
+    gap: 16px;
+    padding: 20px;
     background:
       linear-gradient(135deg, rgba(47, 125, 246, 0.1), transparent 48%),
       #f8fafc;
   }
 
-  .base-download__actions {
+  .pdf-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 78px;
+    border: 1px solid rgba(16, 24, 32, 0.18);
+    border-radius: 8px;
+    background: #ffffff;
+    color: #d4212e;
+    font-weight: 950;
+    box-shadow: 0 12px 24px rgba(8, 17, 28, 0.08);
+  }
+
+  .download-card h2 {
+    margin-bottom: 10px;
+    font-size: clamp(1.75rem, 7vw, 2.65rem);
+  }
+
+  .download-actions {
     display: grid;
     gap: 10px;
   }
 
-  .base-line-list {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 10px;
+  .spec-card {
+    padding: 0;
+    overflow: hidden;
+    align-self: start;
   }
 
-  .base-line-list article {
+  .spec-card summary {
     display: grid;
     gap: 6px;
     padding: 16px;
+    cursor: pointer;
+    list-style: none;
   }
 
-  .base-line-list strong {
-    color: var(--ink);
+  .spec-card summary::-webkit-details-marker {
+    display: none;
   }
 
-  .base-faq {
-    background:
-      linear-gradient(180deg, #ffffff, #f4f7fb),
-      #f4f7fb;
+  .spec-card summary span {
+    width: fit-content;
+    color: #173e79;
+    font-size: 0.82rem;
+    font-weight: 950;
   }
 
-  .base-faq__list {
+  .spec-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .spec-toggle svg {
+    width: 17px;
+    height: 17px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .spec-card .spec-toggle--hide {
+    display: none;
+  }
+
+  .spec-card[open] .spec-toggle--show {
+    display: none;
+  }
+
+  .spec-card[open] .spec-toggle--hide {
+    display: inline-flex;
+  }
+
+  .spec-card dl {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0 16px 16px;
+  }
+
+  .spec-card dl div {
+    display: grid;
+    gap: 4px;
+    padding: 11px;
+    border: 1px solid rgba(174, 188, 204, 0.54);
+    border-radius: 8px;
+    background: #f8fafc;
+  }
+
+  .spec-card dt {
+    color: #08111c;
+    font-size: 0.8rem;
+    font-weight: 950;
+  }
+
+  .spec-card dd {
+    margin: 0;
+    color: #405063;
+    font-weight: 760;
+  }
+
+  .faq-list {
     display: grid;
     gap: 10px;
   }
 
-  .base-faq details {
-    border: 1px solid rgba(174, 188, 204, 0.78);
+  .faq-list details {
+    border: 1px solid rgba(174, 188, 204, 0.75);
     border-radius: 8px;
     background: #ffffff;
   }
 
-  .base-faq summary {
-    padding: 18px;
-    color: var(--ink);
+  .faq-list summary {
+    padding: 16px;
+    color: #08111c;
     font-weight: 900;
     cursor: pointer;
   }
 
-  .base-faq details p {
+  .faq-list p {
     margin: 0;
-    padding: 0 18px 18px;
-    color: var(--muted);
+    padding: 0 16px 16px;
+    color: #546172;
   }
 
-  .base-final {
-    padding: clamp(58px, 8vw, 108px) clamp(18px, 5vw, 72px);
+  .final-cta {
+    padding: 60px 0 86px;
     background:
-      linear-gradient(115deg, rgba(8, 17, 28, 0.98), rgba(26, 45, 66, 0.94)),
+      linear-gradient(120deg, rgba(8, 17, 28, 0.98), rgba(27, 48, 69, 0.95)),
       #101820;
     color: #ffffff;
   }
 
-  .base-final__inner {
+  .final-cta__inner {
     display: grid;
     justify-items: center;
-    max-width: 1080px;
+    gap: 14px;
     text-align: center;
   }
 
-  .base-final h2 {
-    max-width: 980px;
-    margin-right: auto;
-    margin-left: auto;
-    text-wrap: balance;
-  }
-
-  .base-final__inner p {
+  .final-cta p {
     max-width: 720px;
-    margin-right: auto;
-    margin-left: auto;
     color: #dfe6ed;
-    text-align: center;
   }
 
-  .base-final .button-row {
-    justify-content: center;
-    margin-top: 22px;
+  .mobile-sticky-cta {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 40;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(108px, 0.65fr);
+    gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(174, 188, 204, 0.8);
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 -14px 34px rgba(8, 17, 28, 0.13);
   }
 
-  .base-final .button-row .button:first-child {
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    border-radius: 10px;
-    background: #2f7df6;
-    box-shadow: 0 14px 30px rgba(47, 125, 246, 0.28);
-  }
-
-  @media (max-width: 980px) {
-    .base-hero__inner,
-    .base-benefits-layout,
-    .base-includes-shell,
-    .base-delivery__inner,
-    .base-split-heading,
-    .base-download__box {
-      grid-template-columns: 1fr;
-    }
-
-    .base-hero__visual {
-      min-height: 0;
-      transform: none;
-    }
-
-    .base-hero-product {
-      width: 100%;
-      margin-left: 0;
-    }
-
-    .base-trust__grid,
-    .base-spec-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+  .mobile-sticky-cta .button {
+    min-height: 46px;
+    padding: 0 10px;
+    font-size: 0.84rem;
+    white-space: normal;
   }
 
   @media (max-width: 760px) {
-    .base-hero {
-      padding-top: 32px;
-      overflow: hidden;
+    :global(body) {
+      padding-bottom: 76px;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .baper-actions,
+    .download-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
-    .base-hero__inner {
-      gap: 16px;
+    .baper-actions .button,
+    .download-actions .button,
+    .store-card .button {
+      width: auto;
     }
 
-    .base-hero__copy {
-      display: contents;
-    }
-
-    .base-hero__copy,
-    .base-hero__visual {
-      min-width: 0;
-    }
-
-    .base-hero .eyebrow {
-      order: 1;
-    }
-
-    .base-hero h1 {
-      order: 2;
-      font-size: clamp(2rem, 10vw, 2.8rem);
-      line-height: 1.04;
-      overflow-wrap: anywhere;
-    }
-
-    .base-hero__subheadline {
-      order: 3;
-      font-size: 1.06rem;
-    }
-
-    .base-hero .lead {
-      order: 4;
-    }
-
-    .base-hero__visual {
-      order: 6;
-      width: 100%;
-      margin-top: 4px;
-    }
-
-    .base-hero-product {
-      width: 100%;
-      margin-left: 0;
-      transform: none;
-    }
-
-    .base-hero-product img {
-      aspect-ratio: 16 / 10;
-      height: clamp(230px, 58vw, 360px);
-      object-position: center 52%;
-    }
-
-    .base-facts {
-      display: grid;
+    .support-grid,
+    .benefit-grid,
+    .include-grid,
+    .spec-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      order: 5;
-      margin-top: 6px;
     }
 
-    .base-facts article {
-      grid-template-columns: 34px minmax(0, 1fr);
-      gap: 8px;
-      min-height: 78px;
-      padding: 10px;
-    }
-
-    .base-fact-icon {
-      width: 34px;
-      height: 34px;
-      flex-basis: 34px;
-    }
-
-    .base-fact-icon svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    .base-facts strong {
-      display: block;
-      font-size: clamp(0.98rem, 4.4vw, 1.2rem);
-      overflow-wrap: anywhere;
-    }
-
-    .base-facts article div {
-      min-width: 0;
-    }
-
-    .base-facts article div span {
-      display: block;
-      font-size: 0.66rem;
-      overflow-wrap: anywhere;
-    }
-
-    .base-hero .button-row,
-    .base-benefits-media .button,
-    .base-includes-summary-wrap .button-row,
-    .base-download__actions,
-    .base-final .button-row {
-      display: grid;
+    .support-grid {
       grid-template-columns: 1fr;
     }
 
-    .base-hero .button-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      order: 7;
-      margin-top: 4px;
+    .zone-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 860px) {
+    .baper-hero {
+      padding: 58px 0 50px;
     }
 
-    .base-hero .button,
-    .base-benefits-media .button,
-    .base-includes-copy .button,
-    .base-download .button,
-    .base-final .button {
-      width: 100%;
+    .baper-hero__grid {
+      grid-template-columns: minmax(0, 0.92fr) minmax(420px, 0.78fr);
+      align-items: center;
+      gap: 34px;
     }
 
-    .base-hero .button {
-      width: 100%;
-      min-width: 0;
-      padding-right: 12px;
-      padding-left: 12px;
-      font-size: 0.9rem;
-      white-space: normal;
-    }
-
-    .base-microcopy {
-      order: 8;
-      margin-top: 0;
-    }
-
-    .base-trust__grid,
-    .base-use-grid,
-    .base-spec-grid,
-    .base-choice-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .base-trust article {
-      min-height: 0;
-    }
-
-    .base-trust h3 {
-      margin-top: 0;
-    }
-
-    .base-trust p {
-      grid-column: auto;
-    }
-
-    .base-media-card img {
+    .baper-hero__media img {
       aspect-ratio: 4 / 3;
-      height: auto;
-      object-position: center 58%;
     }
 
-    .base-application-media img {
-      height: clamp(280px, 64vw, 400px);
-      object-position: center 80%;
+    .baper-quick-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .base-includes-summary ul {
-      grid-template-columns: 1fr;
+    .trust-strip__scroller {
+      grid-auto-flow: initial;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      overflow: visible;
     }
 
-    .base-includes-shell {
-      gap: 16px;
+    .section {
+      padding: 82px 0;
     }
 
-    .base-includes-head {
-      max-width: 100%;
+    .support-section {
+      padding: 64px 0;
     }
 
-    .base-includes-visual-frame {
-      grid-template-columns: 1fr;
+    .support-shell {
+      grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+      align-items: center;
+      gap: 28px;
+      padding: 28px;
+    }
+
+    .support-copy h2 {
+      font-size: clamp(2.55rem, 4.4vw, 3.35rem);
+      max-width: 520px;
+    }
+
+    .support-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
     }
 
-    .base-image-slot--platform {
-      aspect-ratio: 4 / 3;
-      min-height: 0;
+    .support-grid .info-card {
+      min-height: 172px;
+      padding: 18px;
     }
 
-    .base-includes-indicator {
+    .includes-section {
+      padding-top: 54px;
+      padding-bottom: 22px;
+    }
+
+    .specs-section {
+      padding-top: 22px;
+    }
+
+    .includes-section .baper-section-head {
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .includes-section .baper-section-head h2 {
+      font-size: clamp(2.45rem, 4.6vw, 3.75rem);
+      line-height: 1.02;
+    }
+
+    .includes-section .baper-section-head p:not(.eyebrow) {
+      font-size: 0.96rem;
+      line-height: 1.38;
+    }
+
+    .benefits-layout {
+      width: min(1280px, calc(100% - 36px));
+      grid-template-columns: minmax(0, 0.56fr) minmax(340px, 0.44fr);
+      align-items: start;
+      gap: 24px;
+    }
+
+    .benefits-section {
+      padding-top: 58px;
+      padding-bottom: 58px;
+    }
+
+    .benefits-layout .baper-section-head {
+      grid-column: 1 / 2;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .benefits-layout .baper-section-head h2 {
+      max-width: 760px;
+      font-size: clamp(2.35rem, 4.2vw, 3.55rem);
+      line-height: 1.04;
+    }
+
+    .benefits-layout .baper-section-head p:not(.eyebrow) {
+      max-width: 760px;
+      font-size: 0.96rem;
+      line-height: 1.38;
+    }
+
+    .benefits-media {
+      grid-column: 2 / 3;
+      grid-row: 1 / 3;
+      position: sticky;
+      top: 88px;
+      height: clamp(520px, 48vw, 660px);
+    }
+
+    :global(.benefits-media__mobile-picture),
+    :global(.benefits-media__mobile) {
+      display: none;
+    }
+
+    :global(.benefits-media__desktop-picture),
+    :global(.benefits-media__desktop) {
+      display: block;
+    }
+
+    :global(.benefits-media__desktop-picture) {
       width: 100%;
-      justify-self: stretch;
+      height: 100%;
     }
 
-    .base-image-slot--indicator {
-      aspect-ratio: 1 / 1;
-      min-height: 0;
-    }
-
-    .base-includes-summary-wrap .button-row {
-      grid-template-columns: 1fr;
-    }
-
-    .base-spec-list div {
-      grid-template-columns: 1fr;
-      gap: 4px;
-      padding: 12px;
-    }
-
-    .base-spec-cta {
-      display: grid;
-      grid-template-columns: 1fr;
-    }
-
-    .base-spec-cta .button {
+    :global(.benefits-media__desktop) {
       width: 100%;
+      height: 100%;
+      aspect-ratio: auto;
+      object-fit: cover;
+      object-position: center top;
     }
 
-    .base-use-grid article {
-      min-height: 0;
+    .benefit-grid {
+      grid-column: 1 / 2;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
     }
 
-    .base-delivery__inner {
-      grid-template-columns: 1fr;
+    .benefit-grid .info-card {
+      min-height: 146px;
+      gap: 10px;
+      padding: 14px;
     }
 
-    .base-delivery__icon {
-      width: 54px;
-      height: 54px;
+    .benefit-grid .card-icon {
+      width: 38px;
+      height: 38px;
+    }
+
+    .benefit-grid .benefit-card__icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .benefit-grid .info-card h3 {
+      font-size: 1rem;
+      line-height: 1.08;
+    }
+
+    .benefit-grid .info-card p {
+      font-size: 0.92rem;
+      line-height: 1.35;
+    }
+
+    .benefit-card {
+      transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(47, 125, 246, 0.32);
+      box-shadow:
+        0 20px 42px rgba(8, 17, 28, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.94);
+    }
+
+    .use-shell,
+    .delivery-layout {
+      grid-template-columns: minmax(0, 0.52fr) minmax(380px, 0.48fr);
+      align-items: center;
+    }
+
+    .use-copy .baper-section-head h2 {
+      max-width: 560px;
+      font-size: clamp(2.45rem, 3.6vw, 3rem);
+    }
+
+    .use-copy {
+      gap: 18px;
+    }
+
+    .use-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .use-grid article {
+      min-height: 70px;
+      padding: 14px;
+    }
+
+    .use-grid article {
+      transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
+    }
+
+    .use-grid article:hover {
+      transform: translateY(-2px);
+      border-color: rgba(47, 125, 246, 0.32);
+      box-shadow:
+        0 16px 34px rgba(8, 17, 28, 0.09),
+        inset 0 1px 0 rgba(255, 255, 255, 0.94);
+    }
+
+    .use-media img {
+      aspect-ratio: 5 / 4;
+      object-position: center 58%;
+    }
+
+    .include-grid {
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    }
+
+    .fit-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .download-card {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      padding: 28px;
+    }
+
+    .download-actions {
+      justify-content: end;
+    }
+
+    .spec-card dl div {
+      grid-template-columns: minmax(150px, 0.44fr) minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    .mobile-sticky-cta {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1080px) {
+    .benefit-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 </style>
