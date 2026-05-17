@@ -894,7 +894,6 @@ const breadcrumbSchema = {
   <section class="section faq-section">
     <div class="baper-wrap">
       <div class="baper-section-head">
-        <p class="eyebrow">FAQ</p>
         <h2>Preguntas frecuentes</h2>
         <p>
           Respuestas rápidas para confirmar capacidad, dimensiones, usos recomendados, entrega y
@@ -902,10 +901,16 @@ const breadcrumbSchema = {
         </p>
       </div>
       <div class="faq-list">
-        {faqs.map((faq) => (
-          <details>
-            <summary>{faq.question}</summary>
-            <p>{faq.answer}</p>
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary>
+              <span class="faq-number">{String(index + 1).padStart(2, "0")}</span>
+              <span class="faq-question">{faq.question}</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
           </details>
         ))}
       </div>
@@ -936,6 +941,24 @@ const breadcrumbSchema = {
 </BaseLayout>
 
 <style>
+  :global(:root) {
+    --section-padding-y-mobile: 46px;
+    --section-padding-y-tablet: 56px;
+    --section-padding-y-desktop: 68px;
+    --section-padding-y-compact-mobile: 34px;
+    --section-padding-y-compact-tablet: 42px;
+    --section-padding-y-compact-desktop: 50px;
+    --section-gap-mobile: 16px;
+    --section-gap-desktop: 20px;
+    --section-padding-y: var(--section-padding-y-mobile);
+    --section-padding-y-compact: var(--section-padding-y-compact-mobile);
+    --section-heading-gap: var(--section-gap-mobile);
+    --hero-padding-top: 30px;
+    --hero-padding-bottom: 32px;
+    --final-cta-padding-top: 50px;
+    --final-cta-padding-bottom: 78px;
+  }
+
   :global(body) {
     background: #f4f7fb;
   }
@@ -946,7 +969,7 @@ const breadcrumbSchema = {
   }
 
   .baper-hero {
-    padding: 30px 0 34px;
+    padding: var(--hero-padding-top) 0 var(--hero-padding-bottom);
     background:
       linear-gradient(180deg, rgba(244, 247, 251, 0.96), rgba(255, 255, 255, 0.98)),
       #f4f7fb;
@@ -1106,7 +1129,7 @@ const breadcrumbSchema = {
   }
 
   .section {
-    padding: 54px 0;
+    padding: var(--section-padding-y) 0;
   }
 
   .download-section {
@@ -1114,7 +1137,7 @@ const breadcrumbSchema = {
   }
 
   .support-section {
-    padding: 46px 0;
+    padding: var(--section-padding-y-compact) 0;
     background:
       linear-gradient(135deg, rgba(47, 125, 246, 0.08), rgba(255, 255, 255, 0.78) 48%),
       #f4f7fb;
@@ -1133,18 +1156,19 @@ const breadcrumbSchema = {
   }
 
   .includes-section {
-    padding-bottom: 24px;
+    padding-top: var(--section-padding-y-compact);
+    padding-bottom: 18px;
   }
 
   .specs-section {
-    padding-top: 24px;
+    padding-top: 18px;
   }
 
   .baper-section-head {
     display: grid;
     gap: 8px;
     max-width: 790px;
-    margin-bottom: 20px;
+    margin-bottom: var(--section-heading-gap);
   }
 
   .baper-section-head h2,
@@ -1733,30 +1757,129 @@ const breadcrumbSchema = {
 
   .faq-list {
     display: grid;
-    gap: 10px;
+    gap: 12px;
   }
 
-  .faq-list details {
-    border: 1px solid rgba(174, 188, 204, 0.75);
+  .faq-item {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(174, 188, 204, 0.72);
     border-radius: 8px;
-    background: #ffffff;
+    background:
+      linear-gradient(90deg, rgba(13, 71, 130, 0.05), rgba(255, 255, 255, 0) 42%),
+      #ffffff;
+    box-shadow: 0 14px 34px rgba(8, 17, 28, 0.06);
+    transition:
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      transform 180ms ease;
+  }
+
+  .faq-item::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: #0f5c9e;
+    opacity: 0;
+    transition: opacity 180ms ease;
+  }
+
+  .faq-item[open] {
+    border-color: rgba(15, 92, 158, 0.38);
+    box-shadow: 0 18px 42px rgba(8, 17, 28, 0.09);
+  }
+
+  .faq-item[open]::before {
+    opacity: 1;
   }
 
   .faq-list summary {
-    padding: 16px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 16px;
     color: #08111c;
     font-weight: 900;
     cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-list summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-number {
+    display: inline-grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border: 1px solid rgba(15, 92, 158, 0.16);
+    border-radius: 8px;
+    background: #eef5ff;
+    color: #0b4b8f;
+    font-size: 0.78rem;
+    font-weight: 950;
+  }
+
+  .faq-question {
+    min-width: 0;
+    line-height: 1.24;
+  }
+
+  .faq-icon {
+    position: relative;
+    display: inline-grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border: 1px solid rgba(174, 188, 204, 0.72);
+    border-radius: 999px;
+    background: #ffffff;
+  }
+
+  .faq-icon::before,
+  .faq-icon::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    border-radius: 999px;
+    background: #0b4b8f;
+    transition: transform 180ms ease;
+  }
+
+  .faq-icon::after {
+    transform: rotate(90deg);
+  }
+
+  .faq-item[open] .faq-icon::after {
+    transform: rotate(0deg);
+  }
+
+  .faq-answer {
+    border-top: 1px solid rgba(174, 188, 204, 0.42);
+    margin: 0 16px 16px 66px;
+    padding-top: 12px;
   }
 
   .faq-list p {
     margin: 0;
-    padding: 0 16px 16px;
     color: #546172;
+    line-height: 1.65;
+  }
+
+  @media (hover: hover) {
+    .faq-item:hover {
+      border-color: rgba(15, 92, 158, 0.34);
+      box-shadow: 0 18px 42px rgba(8, 17, 28, 0.09);
+      transform: translateY(-2px);
+    }
   }
 
   .final-cta {
-    padding: 60px 0 86px;
+    padding: var(--final-cta-padding-top) 0 var(--final-cta-padding-bottom);
     background:
       linear-gradient(120deg, rgba(8, 17, 28, 0.98), rgba(27, 48, 69, 0.95)),
       #101820;
@@ -1804,6 +1927,14 @@ const breadcrumbSchema = {
   }
 
   @media (min-width: 640px) {
+    :global(:root) {
+      --section-padding-y: var(--section-padding-y-tablet);
+      --section-padding-y-compact: var(--section-padding-y-compact-tablet);
+      --section-heading-gap: 18px;
+      --hero-padding-top: 38px;
+      --hero-padding-bottom: 38px;
+    }
+
     .baper-actions,
     .download-actions {
       display: flex;
@@ -1828,14 +1959,29 @@ const breadcrumbSchema = {
       grid-template-columns: 1fr;
     }
 
+    .faq-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+    }
+
+    .faq-item:first-child {
+      grid-column: 1 / -1;
+    }
+
     .zone-list {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 
   @media (min-width: 860px) {
-    .baper-hero {
-      padding: 58px 0 50px;
+    :global(:root) {
+      --section-padding-y: var(--section-padding-y-desktop);
+      --section-padding-y-compact: var(--section-padding-y-compact-desktop);
+      --section-heading-gap: var(--section-gap-desktop);
+      --hero-padding-top: 50px;
+      --hero-padding-bottom: 44px;
+      --final-cta-padding-top: 56px;
+      --final-cta-padding-bottom: 74px;
     }
 
     .baper-hero__grid {
@@ -1856,14 +2002,6 @@ const breadcrumbSchema = {
       grid-auto-flow: initial;
       grid-template-columns: repeat(6, minmax(0, 1fr));
       overflow: visible;
-    }
-
-    .section {
-      padding: 82px 0;
-    }
-
-    .support-section {
-      padding: 64px 0;
     }
 
     .support-shell {
@@ -1889,17 +2027,17 @@ const breadcrumbSchema = {
     }
 
     .includes-section {
-      padding-top: 54px;
-      padding-bottom: 22px;
+      padding-top: var(--section-padding-y-compact);
+      padding-bottom: 18px;
     }
 
     .specs-section {
-      padding-top: 22px;
+      padding-top: 18px;
     }
 
     .includes-section .baper-section-head {
       gap: 6px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .includes-section .baper-section-head h2 {
@@ -1913,21 +2051,21 @@ const breadcrumbSchema = {
     }
 
     .benefits-layout {
-      width: min(1280px, calc(100% - 36px));
-      grid-template-columns: minmax(0, 0.56fr) minmax(340px, 0.44fr);
+      width: min(1180px, calc(100% - 36px));
+      grid-template-columns: minmax(0, 0.66fr) minmax(260px, 0.34fr);
       align-items: start;
       gap: 24px;
     }
 
     .benefits-section {
-      padding-top: 58px;
-      padding-bottom: 58px;
+      padding-top: var(--section-padding-y-compact);
+      padding-bottom: var(--section-padding-y-compact);
     }
 
     .benefits-layout .baper-section-head {
       grid-column: 1 / 2;
       gap: 6px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .benefits-layout .baper-section-head h2 {
@@ -2093,9 +2231,4 @@ const breadcrumbSchema = {
     }
   }
 
-  @media (min-width: 1080px) {
-    .benefit-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
 </style>
