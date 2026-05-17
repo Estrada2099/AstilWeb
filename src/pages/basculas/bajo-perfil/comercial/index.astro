@@ -1,43 +1,2161 @@
 ---
-import LowProfileContent from "../../../../components/basculas/LowProfileContent.astro";
-import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import SmartImage from "../../../../components/SmartImage.astro";
 import { contact } from "../../../../data/site";
-import { getLowProfileLine } from "../../../../data/lowProfileScales";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
 
-const line = getLowProfileLine("comercial");
-if (!line) throw new Error("No existe la línea Comercial");
-const pageUrl = new URL("/basculas/bajo-perfil/comercial/", Astro.site ?? Astro.url).toString();
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const withBase = (path: string) => `${base}${path.replace(/^\//, "")}`;
+
+const fichaHref = withBase("/downloads/FHT-BAPER-12.pdf");
+
+const modelosComerciales = [
+  {
+    id: "comercial-90",
+    medida: "90 x 90 cm",
+    capacidad: "1000 kg",
+    etiqueta: "Compacta",
+    uso: "Espacios reducidos, carga compacta y operacion comercial diaria.",
+    whatsapp:
+      "Hola, quiero cotizar la Bascula de Bajo Perfil Linea Comercial de 90 x 90 cm con capacidad de 1000 kg.",
+    detalle:
+      "La configuracion compacta para negocios, almacenes pequenos y zonas de recibo donde el espacio manda."
+  },
+  {
+    id: "comercial-120",
+    medida: "120 x 120 cm",
+    capacidad: "2000 kg",
+    etiqueta: "Equilibrada",
+    uso: "Almacenes, recibo de mercancia, tarimas y operacion de carga frecuente.",
+    whatsapp:
+      "Hola, quiero cotizar la Bascula de Bajo Perfil Linea Comercial de 120 x 120 cm con capacidad de 2000 kg.",
+    detalle:
+      "El punto medio para operacion diaria con tarimas, recibo de mercancia y flujo comercial constante."
+  },
+  {
+    id: "comercial-150",
+    medida: "150 x 150 cm",
+    capacidad: "3000 kg",
+    etiqueta: "Mayor capacidad",
+    uso: "Carga de mayor volumen, tarimas grandes y operacion comercial mas robusta.",
+    whatsapp:
+      "Hola, quiero cotizar la Bascula de Bajo Perfil Linea Comercial de 150 x 150 cm con capacidad de 3000 kg.",
+    detalle:
+      "La opcion mas amplia de la linea Comercial para tarimas grandes, mayor volumen y cargas mas pesadas."
+  }
+];
+
+const modeloInicial = modelosComerciales[1];
+const whatsappHref = `${contact.whatsapp[0].href}?text=${encodeURIComponent(modeloInicial.whatsapp)}`;
+const asesorMessage = encodeURIComponent(
+  "Hola, quiero saber que medida de Bascula de Bajo Perfil Linea Comercial me conviene para mi operacion."
+);
+const whatsappAsesorHref = `${contact.whatsapp[0].href}?text=${asesorMessage}`;
+
+const images = {
+  hero: "/Bajo-Perfil/comercial",
+  product: "/Bajo-Perfil/comercial",
+  benefits: "/Bajo-Perfil/base/base-beneficios2",
+  use: "/Bajo-Perfil/base/base-uso-ideal",
+  delivery: "/Bajo-Perfil/base/entrega2",
+  indicator: "/Bajo-Perfil/base/ipes-producto"
+};
+
+const seo = {
+  title: "Bascula de Bajo Perfil Comercial 1000 a 3000 kg | Astil Basculas",
+  description:
+    "Bascula de bajo perfil linea Comercial para almacen, recibo y carga diaria. Modelos 90 x 90, 120 x 120 y 150 x 150 cm con capacidades de 1000 a 3000 kg.",
+  keywords:
+    "bascula de bajo perfil comercial, bascula de piso comercial, bascula 1000 kg, bascula 2000 kg, bascula 3000 kg, bascula para almacen, bascula para recibo, bascula para tarimas, bascula en CDMX, bascula en Estado de Mexico"
+};
+
+const heroBullets = [
+  "3 medidas disponibles",
+  "Capacidades de 1000 kg a 3000 kg",
+  "Plataforma de acero al carbon",
+  "Superficie antiderrapante",
+  "Indicador digital incluido",
+  "Compatible con rampa",
+  "Entrega en CDMX y Estado de Mexico"
+];
+
+const trustBadges = [
+  "Entrega en CDMX y Estado de Mexico",
+  "Asesoria antes de comprar",
+  "Servicio tecnico disponible",
+  "Refacciones e instalacion",
+  "Atencion por WhatsApp",
+  "Tienda fisica en Texcoco"
+];
+
+const supportCards = [
+  {
+    title: "Seleccion de medida",
+    text: "Revisamos espacio, tipo de carga, tarima y capacidad antes de recomendar 90, 120 o 150 cm."
+  },
+  {
+    title: "Entrega local",
+    text: "Atendemos entregas programadas en CDMX, Estado de Mexico y zona metropolitana."
+  },
+  {
+    title: "Soporte tecnico",
+    text: "Contamos con experiencia en mantenimiento, reparacion y diagnostico de sistemas de pesaje."
+  },
+  {
+    title: "Solucion integral",
+    text: "Podemos apoyar con rampas, refacciones, instalacion y servicios posteriores."
+  }
+];
+
+const benefits = [
+  {
+    label: "Bajo perfil",
+    title: "Acceso practico para carga diaria",
+    text: "Facilita la entrada con tarimas, carros o patin hidraulico cuando se agrega rampa."
+  },
+  {
+    label: "3 modelos",
+    title: "Tres configuraciones en una misma linea",
+    text: "Elige 90 x 90, 120 x 120 o 150 x 150 cm sin cambiar de familia de producto."
+  },
+  {
+    label: "1 a 3 t",
+    title: "Capacidad escalable",
+    text: "Cubre desde carga compacta de 1000 kg hasta operaciones comerciales de 3000 kg."
+  },
+  {
+    label: "Acero",
+    title: "Plataforma de acero al carbon",
+    text: "Estructura preparada para uso comercial diario en interior o zona techada."
+  },
+  {
+    label: "Antiderrapante",
+    title: "Superficie segura para maniobras",
+    text: "Ayuda a mantener control durante carga y descarga de mercancia."
+  },
+  {
+    label: "Digital",
+    title: "Indicador incluido",
+    text: "Lectura clara para operadores que necesitan pesar sin configuraciones complicadas."
+  }
+];
+
+const idealUses = [
+  "Almacenes",
+  "Recibo de mercancia",
+  "Comercio mayorista",
+  "Centros de distribucion",
+  "Embarques",
+  "Carga en tarima",
+  "Inventario operativo",
+  "Operacion diaria controlada"
+];
+
+const includes = [
+  {
+    title: "Plataforma Comercial de bajo perfil",
+    image: images.product,
+    alt: "Bascula de bajo perfil comercial con plataforma de acero al carbon",
+    items: [
+      "Medidas disponibles: 90 x 90, 120 x 120 y 150 x 150 cm",
+      "Capacidades: 1000, 2000 y 3000 kg",
+      "Material: acero al carbon",
+      "Superficie antiderrapante",
+      "Altura aproximada: 11 cm"
+    ]
+  },
+  {
+    title: "Indicador digital incluido",
+    image: images.indicator,
+    alt: "Indicador digital incluido en bascula de bajo perfil comercial",
+    items: [
+      "Indicador de solo peso",
+      "Pila recargable",
+      "Hasta 100 horas de uso continuo",
+      "Operacion sencilla para pesaje diario"
+    ]
+  }
+];
+
+const goodFit = [
+  "Necesitas pesar todos los dias en almacen, recibo o embarques.",
+  "Quieres elegir entre tres medidas sin cambiar de linea.",
+  "Trabajas con carga comercial, tarimas o mercancia compacta.",
+  "Buscas una solucion robusta, practica y facil de operar.",
+  "Necesitas entrega y soporte local en CDMX o Estado de Mexico."
+];
+
+const otherLine = [
+  "Tu operacion trabaja turnos intensivos con golpes constantes.",
+  "Necesitas lavado frecuente, humedad agresiva o ambiente sanitario.",
+  "Requieres conectividad avanzada, tickets o integracion con software.",
+  "La carga se mueve con montacargas sobre la plataforma.",
+  "Necesitas una configuracion especial fuera de 90, 120 o 150 cm."
+];
+
+const zones = [
+  "Texcoco",
+  "Ecatepec",
+  "Nezahualcoyotl",
+  "Chimalhuacan",
+  "Iztapalapa",
+  "Gustavo A. Madero",
+  "Tlalnepantla",
+  "Naucalpan",
+  "Cuautitlan",
+  "Tultitlan",
+  "Coacalco",
+  "Los Reyes",
+  "Chalco",
+  "Zona metropolitana"
+];
+
+const platformSpecs = [
+  ["Tipo de producto", "Bascula de Bajo Perfil"],
+  ["Linea", "Comercial"],
+  ["Modelo seleccionado", modeloInicial.medida],
+  ["Capacidad maxima", modeloInicial.capacidad],
+  ["Altura aproximada", "11 cm"],
+  ["Material", "Acero al carbon"],
+  ["Superficie", "Antiderrapante"],
+  ["Diseno", "Bajo perfil"],
+  ["Cable de conexion", "5 metros"],
+  ["Compatible con rampa", "Si"],
+  ["Celdas de carga", "4 celdas tipo Shearbeam en acero al carbon"],
+  ["Uso recomendado", modeloInicial.uso]
+];
+
+const indicatorSpecs = [
+  ["Indicador de peso", "IPES"],
+  ["Linea del indicador", "Comercial"],
+  ["Tipo", "Solo peso"],
+  ["Estructura", "Plastico"],
+  ["Capacidad", "Programable"],
+  ["Clase", "MEDIA III"],
+  ["Alimentacion", "Cargador 6V"],
+  ["Pila", "Recargable, hasta 100 horas de uso continuo"],
+  ["Fijacion", "Sin soporte para mesa o pared"],
+  ["Conectividad", "N/A"]
+];
+
+const faqs = [
+  {
+    question: "Que modelos tiene la Linea Comercial?",
+    answer:
+      "La linea Comercial esta disponible en 90 x 90 cm con 1000 kg, 120 x 120 cm con 2000 kg y 150 x 150 cm con 3000 kg."
+  },
+  {
+    question: "Que cambia entre los tres modelos?",
+    answer:
+      "Cambia la medida de plataforma y la capacidad maxima. La linea, estructura general, indicador, celdas de carga y logica de uso se mantienen."
+  },
+  {
+    question: "Incluye indicador digital?",
+    answer: "Si, incluye indicador digital para operacion de solo peso."
+  },
+  {
+    question: "Se puede usar con rampa?",
+    answer: "Si, la Linea Comercial es compatible con rampa para facilitar el acceso a la plataforma."
+  },
+  {
+    question: "Sirve para tarimas?",
+    answer:
+      "Si, especialmente los modelos 120 x 120 y 150 x 150 cm. La recomendacion final depende de la medida de tarima, peso y espacio disponible."
+  },
+  {
+    question: "Que medida me conviene elegir?",
+    answer:
+      "90 x 90 cm funciona para carga compacta; 120 x 120 cm es el punto medio para almacen y recibo; 150 x 150 cm conviene para tarimas grandes o mayor volumen."
+  },
+  {
+    question: "Hacen entrega en CDMX y Estado de Mexico?",
+    answer:
+      "Si, atendemos entregas en CDMX, Estado de Mexico y zona metropolitana para empresas, almacenes, comercios y centros de distribucion."
+  },
+  {
+    question: "Puedo cotizar por WhatsApp?",
+    answer:
+      "Si. Selecciona el modelo en la pagina y el mensaje de WhatsApp se actualiza con la medida y capacidad elegida."
+  }
+];
+
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: line.name,
-  description: line.seoDescription,
-  brand: { "@type": "Brand", name: "Astil Básculas" },
-  category: "Básculas de bajo perfil",
-  image: new URL("/Pexisa/PlataformasPiso.png", Astro.site ?? Astro.url).toString(),
-  url: pageUrl,
-  offers: {
+  name: "Bascula de Bajo Perfil Linea Comercial",
+  brand: {
+    "@type": "Brand",
+    name: "Astil Basculas"
+  },
+  category: "Basculas de bajo perfil",
+  material: "Acero al carbon",
+  description: seo.description,
+  image: [new URL("/Bajo-Perfil/comercial.webp", Astro.site ?? Astro.url).toString()],
+  url: new URL("/basculas/bajo-perfil/comercial/", Astro.site ?? Astro.url).toString(),
+  offers: modelosComerciales.map((modelo) => ({
     "@type": "Offer",
-    priceCurrency: "MXN",
+    name: `Bascula de Bajo Perfil Comercial ${modelo.medida} ${modelo.capacidad}`,
     availability: "https://schema.org/InStock",
+    priceCurrency: "MXN",
     seller: {
       "@type": "LocalBusiness",
-      name: "Astil Básculas",
+      name: "Astil Basculas",
       telephone: "+52 56 1186 2291",
       email: contact.email
+    },
+    itemOffered: {
+      "@type": "Product",
+      name: `Bascula de Bajo Perfil Comercial ${modelo.medida}`,
+      additionalProperty: [
+        { "@type": "PropertyValue", name: "Capacidad maxima", value: modelo.capacidad },
+        { "@type": "PropertyValue", name: "Dimensiones de plataforma", value: modelo.medida },
+        { "@type": "PropertyValue", name: "Uso recomendado", value: modelo.uso }
+      ]
     }
-  }
+  }))
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer
+    }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Inicio",
+      item: new URL("/", Astro.site ?? Astro.url).toString()
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Basculas de bajo perfil",
+      item: new URL("/basculas/bajo-perfil/", Astro.site ?? Astro.url).toString()
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Linea Comercial",
+      item: new URL("/basculas/bajo-perfil/comercial/", Astro.site ?? Astro.url).toString()
+    }
+  ]
 };
 ---
 
 <BaseLayout
-  title={line.seoTitle}
-  description={line.seoDescription}
-  keywords="báscula de bajo perfil comercial, báscula de piso comercial, báscula para embarques"
-  image="/Pexisa/PlataformasPiso.png"
+  title={seo.title}
+  description={seo.description}
+  keywords={seo.keywords}
+  image="/Bajo-Perfil/comercial.webp"
   canonical="/basculas/bajo-perfil/comercial/"
-  footerContactHref="#cotizar-bajo-perfil"
+  footerContactHref="#cotizar-comercial"
 >
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <LowProfileContent view="product" productSlug="comercial" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <section class="baper-hero">
+    <div class="baper-wrap baper-hero__grid">
+      <div class="baper-hero__copy">
+        <p class="eyebrow">Bascula de Bajo Perfil · Linea Comercial</p>
+        <h1>Bascula de bajo perfil comercial para almacen, recibo y carga diaria</h1>
+        <p class="baper-lead">
+          Linea Comercial disponible en 90 x 90, 120 x 120 y 150 x 150 cm, con capacidades de
+          1000 kg, 2000 kg y 3000 kg. Ideal para operaciones que necesitan una bascula practica,
+          robusta y facil de operar.
+        </p>
+
+        <div class="hero-selector" aria-label="Selector rapido de modelo">
+          <p>Elige una configuracion</p>
+          <div class="model-picker model-picker--hero" role="tablist" aria-label="Modelos disponibles">
+            {
+              modelosComerciales.map((modelo, index) => (
+                <button
+                  class:list={["model-option", { "is-active": index === 1 }]}
+                  type="button"
+                  role="tab"
+                  aria-selected={index === 1 ? "true" : "false"}
+                  data-model-trigger={modelo.id}
+                >
+                  <span class="model-option__status">{index === 1 ? "Seleccionado" : modelo.etiqueta}</span>
+                  <strong>{modelo.medida}</strong>
+                  <span>{modelo.capacidad}</span>
+                </button>
+              ))
+            }
+          </div>
+        </div>
+
+        <ul class="baper-quick-list" aria-label="Datos principales de la Linea Comercial">
+          {heroBullets.map((item) => <li>{item}</li>)}
+        </ul>
+        <div class="baper-actions">
+          <a class="button baper-button--whatsapp" href={whatsappHref} data-dynamic-whatsapp>
+            Cotizar por WhatsApp
+          </a>
+          <a class="button secondary" href="#modelos-comerciales">Ver modelos disponibles</a>
+        </div>
+        <p class="baper-microcopy">
+          Te ayudamos a elegir la medida correcta segun tu tipo de carga y espacio disponible.
+        </p>
+      </div>
+      <div class="baper-hero__media" aria-label="Bascula de bajo perfil Linea Comercial">
+        <SmartImage
+          name={images.hero}
+          fallbackExt="webp"
+          alt="Bascula de bajo perfil comercial para almacen, recibo y carga diaria"
+          loading="eager"
+          width="1600"
+          height="1200"
+        />
+        <article class="selected-summary" aria-live="polite">
+          <span>Modelo seleccionado</span>
+          <strong data-model-medida>{modeloInicial.medida}</strong>
+          <p>
+            <b data-model-capacidad>{modeloInicial.capacidad}</b>
+            <span data-model-uso>{modeloInicial.uso}</span>
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-strip" aria-label="Compra con respaldo de especialistas en pesaje">
+    <div class="baper-wrap">
+      <p class="trust-strip__title">Compra con respaldo de especialistas en pesaje</p>
+      <div class="trust-strip__scroller">
+        {trustBadges.map((item) => (
+          <article>
+            <span aria-hidden="true">V</span>
+            <strong>{item}</strong>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section model-section" id="modelos-comerciales">
+    <div class="baper-wrap">
+      <div class="baper-section-head">
+        <p class="eyebrow">Selector comparativo de modelos</p>
+        <h2>Una misma linea Comercial, tres medidas disponibles</h2>
+        <p>
+          Selecciona la plataforma que mejor se ajusta a tu espacio, tarima y capacidad de carga.
+          La ficha visible y los enlaces de WhatsApp se actualizan con tu eleccion.
+        </p>
+      </div>
+
+      <div class="model-comparison">
+        <div class="model-picker model-picker--comparison" role="tablist" aria-label="Comparar modelos comerciales">
+          {
+            modelosComerciales.map((modelo, index) => (
+              <button
+                class:list={["model-card", { "is-active": index === 1 }]}
+                type="button"
+                role="tab"
+                aria-selected={index === 1 ? "true" : "false"}
+                data-model-trigger={modelo.id}
+              >
+                <span>{modelo.etiqueta}</span>
+                <strong>{modelo.medida}</strong>
+                <b>{modelo.capacidad}</b>
+                <small>{modelo.uso}</small>
+              </button>
+            ))
+          }
+        </div>
+
+        <article class="model-detail" aria-live="polite">
+          <p class="eyebrow">Resumen seleccionado</p>
+          <h3><span data-model-medida>{modeloInicial.medida}</span> / <span data-model-capacidad>{modeloInicial.capacidad}</span></h3>
+          <p data-model-detalle>{modeloInicial.detalle}</p>
+          <dl>
+            <div>
+              <dt>Medida</dt>
+              <dd data-model-medida>{modeloInicial.medida}</dd>
+            </div>
+            <div>
+              <dt>Capacidad</dt>
+              <dd data-model-capacidad>{modeloInicial.capacidad}</dd>
+            </div>
+            <div>
+              <dt>Uso recomendado</dt>
+              <dd data-model-uso>{modeloInicial.uso}</dd>
+            </div>
+          </dl>
+          <a class="button baper-button--whatsapp" href={whatsappHref} data-dynamic-whatsapp>
+            Cotizar este modelo
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section support-section">
+    <div class="baper-wrap support-shell">
+      <div class="support-copy">
+        <p class="eyebrow">Respaldo tecnico Astil Basculas</p>
+        <h2>Mas que una bascula: compra con respaldo tecnico</h2>
+        <p>
+          En Astil Basculas te orientamos para confirmar si la Linea Comercial cubre tu operacion,
+          resolvemos dudas tecnicas y contamos con servicio, mantenimiento, refacciones e
+          instalacion cuando tu empresa lo requiera.
+        </p>
+        <div class="baper-actions">
+          <a class="button baper-button--whatsapp" href={whatsappAsesorHref}>
+            Quiero asesoria por WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="support-grid">
+        {supportCards.map((card) => (
+          <article class="info-card">
+            <span class="card-icon" aria-hidden="true"></span>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section benefits-section">
+    <div class="baper-wrap benefits-layout">
+      <div class="baper-section-head">
+        <p class="eyebrow">Beneficios principales</p>
+        <h2>Beneficios de la Linea Comercial</h2>
+        <p>
+          Caracteristicas pensadas para operaciones comerciales que necesitan pesar carga de forma
+          practica, estable y repetible durante la jornada.
+        </p>
+      </div>
+      <div class="benefits-media">
+        <SmartImage
+          name={images.benefits}
+          fallbackExt="webp"
+          alt="Bascula de bajo perfil comercial con carga en plataforma"
+          width="1200"
+          height="800"
+        />
+      </div>
+      <div class="benefit-grid">
+        {benefits.map((card) => (
+          <article class="info-card benefit-card">
+            <div class="benefit-card__top">
+              <span class="card-icon benefit-card__icon" aria-hidden="true"></span>
+              <span class="benefit-card__label">{card.label}</span>
+            </div>
+            <div class="benefit-card__body">
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </div>
+            <span class="benefit-card__accent" aria-hidden="true"></span>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section use-section">
+    <div class="baper-wrap use-shell">
+      <div class="use-copy">
+        <div class="baper-section-head">
+          <p class="eyebrow">Uso recomendado</p>
+          <h2>Ideal para operaciones comerciales e industriales ligeras</h2>
+          <p>
+            La Linea Comercial funciona bien cuando el pesaje forma parte del flujo diario, pero no
+            requiere configuraciones especiales ni ambiente sanitario.
+          </p>
+        </div>
+        <div class="use-grid">
+          {idealUses.map((item) => (
+            <article>
+              <span aria-hidden="true"></span>
+              <strong>{item}</strong>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div class="use-media">
+        <SmartImage
+          name={images.use}
+          fallbackExt="webp"
+          alt="Operacion comercial con bascula de bajo perfil para almacen y recibo"
+          width="1200"
+          height="900"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section includes-section">
+    <div class="baper-wrap">
+      <div class="baper-section-head">
+        <p class="eyebrow">Que incluye la Linea Comercial</p>
+        <h2>Equipo completo para empezar a pesar</h2>
+        <p>
+          Los tres modelos comparten estructura general, indicador digital y componentes pensados
+          para uso comercial diario.
+        </p>
+      </div>
+      <div class="include-grid">
+        {includes.map((item) => (
+          <article class="info-card include-card">
+            <SmartImage name={item.image} fallbackExt="webp" alt={item.alt} width="1200" height="700" />
+            <div>
+              <h3>{item.title}</h3>
+              <ul>
+                {item.items.map((line) => <li>{line}</li>)}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section comparison-table-section">
+    <div class="baper-wrap">
+      <div class="baper-section-head">
+        <p class="eyebrow">Comparativa de modelos disponibles</p>
+        <h2>Elige por espacio, tarima y peso maximo</h2>
+      </div>
+      <div class="model-table" role="table" aria-label="Comparativa de modelos Linea Comercial">
+        <div role="row" class="model-table__head">
+          <span role="columnheader">Modelo</span>
+          <span role="columnheader">Medida</span>
+          <span role="columnheader">Capacidad</span>
+          <span role="columnheader">Mejor para</span>
+        </div>
+        {
+          modelosComerciales.map((modelo, index) => (
+            <button
+              type="button"
+              role="row"
+              class:list={["model-table__row", { "is-active": index === 1 }]}
+              data-model-trigger={modelo.id}
+            >
+              <span role="cell">{modelo.etiqueta}</span>
+              <strong role="cell">{modelo.medida}</strong>
+              <b role="cell">{modelo.capacidad}</b>
+              <small role="cell">{modelo.uso}</small>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section fit-section">
+    <div class="baper-wrap">
+      <div class="baper-section-head">
+        <p class="eyebrow">Decision de compra</p>
+        <h2>La Linea Comercial es la opcion correcta?</h2>
+        <p>
+          Esta seccion ayuda a decidir rapido si conviene cotizar Comercial o revisar una linea
+          superior, inoxidable o con mayor integracion.
+        </p>
+      </div>
+      <div class="fit-grid">
+        <article class="fit-card fit-card--yes">
+          <h3>Si te conviene si...</h3>
+          <ul>
+            {goodFit.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+        <article class="fit-card fit-card--other">
+          <h3>Revisa otra linea si...</h3>
+          <ul>
+            {otherLine.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      </div>
+      <p class="fit-links">
+        Si tienes duda, <a href={whatsappAsesorHref}>te orientamos por WhatsApp</a> antes de comprar.
+      </p>
+    </div>
+  </section>
+
+  <section class="section delivery-section">
+    <div class="baper-wrap delivery-layout">
+      <div>
+        <p class="eyebrow">Entrega local</p>
+        <h2>Entrega en CDMX y Estado de Mexico</h2>
+        <p>
+          Atendemos empresas, almacenes, comercios y centros de distribucion en Texcoco, CDMX,
+          Estado de Mexico y zona metropolitana.
+        </p>
+        <ul class="zone-list">
+          {zones.map((zone) => <li>{zone}</li>)}
+        </ul>
+        <article class="info-card store-card">
+          <strong>Astil Basculas</strong>
+          <span>{contact.address}</span>
+          <a class="button secondary" href={contact.mapsUrl} target="_blank" rel="noreferrer">
+            Ver ubicacion
+          </a>
+        </article>
+      </div>
+      <div class="delivery-media">
+        <SmartImage
+          name={images.delivery}
+          fallbackExt="webp"
+          alt="Entrega local de bascula de bajo perfil en CDMX y Estado de Mexico"
+          width="1200"
+          height="900"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section download-section">
+    <div class="baper-wrap download-card">
+      <span class="pdf-icon" aria-hidden="true">PDF</span>
+      <div>
+        <p class="eyebrow">Ficha tecnica descargable</p>
+        <h2>Descarga la ficha tecnica de referencia</h2>
+        <p>
+          Comparte la ficha con compras, mantenimiento o el area operativa. Tambien podemos
+          confirmar por WhatsApp la medida seleccionada antes de cotizar.
+        </p>
+      </div>
+      <div class="download-actions">
+        <a class="button" href={fichaHref} download data-dynamic-ficha>Descargar ficha tecnica</a>
+        <a class="button secondary" href={whatsappHref} data-dynamic-whatsapp>Solicitar ficha por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section specs-section" id="especificaciones">
+    <div class="baper-wrap">
+      <div class="baper-section-head">
+        <p class="eyebrow">Especificaciones tecnicas</p>
+        <h2>Datos principales del modelo seleccionado</h2>
+        <p>
+          Las especificaciones destacadas se actualizan de acuerdo con la medida seleccionada.
+        </p>
+      </div>
+      <div class="spec-grid">
+        <details class="spec-card" open>
+          <summary>
+            <span>Plataforma Comercial</span>
+            <h3>Bascula de bajo perfil</h3>
+            <b class="spec-toggle spec-toggle--show">Ver datos</b>
+            <b class="spec-toggle spec-toggle--hide">Ocultar datos</b>
+          </summary>
+          <dl>
+            {platformSpecs.map(([term, value]) => (
+              <div>
+                <dt>{term}</dt>
+                <dd
+                  data-spec-field={
+                    term === "Modelo seleccionado"
+                      ? "medida"
+                      : term === "Capacidad maxima"
+                        ? "capacidad"
+                        : term === "Uso recomendado"
+                          ? "uso"
+                          : undefined
+                  }
+                >
+                  {value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </details>
+        <details class="spec-card" open>
+          <summary>
+            <span>Indicador incluido</span>
+            <h3>Indicador digital IPES</h3>
+            <b class="spec-toggle spec-toggle--show">Ver datos</b>
+            <b class="spec-toggle spec-toggle--hide">Ocultar datos</b>
+          </summary>
+          <dl>
+            {indicatorSpecs.map(([term, value]) => (
+              <div>
+                <dt>{term}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section quote-section" id="cotizar-comercial">
+    <div class="baper-wrap quote-layout">
+      <div>
+        <p class="eyebrow">Formulario de cotizacion</p>
+        <h2>Cotiza la Linea Comercial</h2>
+        <p>
+          Deja tus datos clave o envia la solicitud directa por WhatsApp con el modelo seleccionado.
+        </p>
+        <article class="selected-quote">
+          <span>Estas cotizando</span>
+          <strong><span data-model-medida>{modeloInicial.medida}</span> / <span data-model-capacidad>{modeloInicial.capacidad}</span></strong>
+          <p data-model-uso>{modeloInicial.uso}</p>
+        </article>
+      </div>
+      <form class="quote-form" data-quote-form>
+        <label>
+          Nombre
+          <input name="nombre" autocomplete="name" placeholder="Tu nombre" />
+        </label>
+        <label>
+          Empresa
+          <input name="empresa" autocomplete="organization" placeholder="Nombre de la empresa" />
+        </label>
+        <label>
+          Telefono
+          <input name="telefono" autocomplete="tel" inputmode="tel" placeholder="Telefono de contacto" />
+        </label>
+        <label>
+          Ciudad o municipio
+          <input name="ubicacion" autocomplete="address-level2" placeholder="Ej. Iztapalapa, Texcoco" />
+        </label>
+        <label class="quote-form__full">
+          Comentarios
+          <textarea name="comentarios" rows="4" placeholder="Tipo de carga, espacio disponible o dudas"></textarea>
+        </label>
+        <button class="button baper-button--whatsapp quote-form__full" type="submit">
+          Enviar datos por WhatsApp
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="baper-wrap">
+      <div class="baper-section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>Preguntas frecuentes sobre la Linea Comercial</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item">
+            <summary>
+              <span class="faq-number">{String(index + 1).padStart(2, "0")}</span>
+              <span class="faq-question">{faq.question}</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="baper-wrap final-cta__inner">
+      <p class="eyebrow">Cotizacion rapida</p>
+      <h2>Selecciona tu medida y cotiza la Linea Comercial</h2>
+      <p>
+        Si no estas seguro entre 90, 120 o 150 cm, revisamos tu tipo de carga, espacio disponible
+        y capacidad necesaria antes de recomendar.
+      </p>
+      <div class="baper-actions">
+        <a class="button baper-button--whatsapp" href={whatsappHref} data-dynamic-whatsapp>
+          Cotizar por WhatsApp
+        </a>
+        <a class="button secondary" href="#modelos-comerciales">Cambiar modelo</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="mobile-sticky-cta" aria-label="Accesos rapidos">
+    <a class="button baper-button--whatsapp" href={whatsappHref} data-dynamic-whatsapp>
+      WhatsApp
+    </a>
+    <a class="button secondary" href="#modelos-comerciales">Modelos</a>
+  </div>
+
+  <script
+    is:inline
+    define:vars={{
+      modelosComerciales,
+      whatsappBase: contact.whatsapp[0].href
+    }}
+  >
+    const triggers = document.querySelectorAll("[data-model-trigger]");
+    const dynamicWhatsappLinks = document.querySelectorAll("[data-dynamic-whatsapp]");
+    const quoteForm = document.querySelector("[data-quote-form]");
+    const modelById = new Map(modelosComerciales.map((model) => [model.id, model]));
+    let selectedModel = modelosComerciales[1];
+
+    const setText = (selector, value) => {
+      document.querySelectorAll(selector).forEach((node) => {
+        node.textContent = value;
+      });
+    };
+
+    const buildWhatsappHref = (message) => `${whatsappBase}?text=${encodeURIComponent(message)}`;
+
+    const updateWhatsapp = () => {
+      dynamicWhatsappLinks.forEach((link) => {
+        link.setAttribute("href", buildWhatsappHref(selectedModel.whatsapp));
+      });
+    };
+
+    const selectModel = (id) => {
+      const nextModel = modelById.get(id);
+      if (!nextModel) return;
+      selectedModel = nextModel;
+
+      triggers.forEach((trigger) => {
+        const isActive = trigger.getAttribute("data-model-trigger") === id;
+        trigger.classList.toggle("is-active", isActive);
+        if (trigger.getAttribute("role") === "tab") {
+          trigger.setAttribute("aria-selected", String(isActive));
+        }
+        const status = trigger.querySelector(".model-option__status");
+        if (status) status.textContent = isActive ? "Seleccionado" : nextModel.etiqueta;
+      });
+
+      setText("[data-model-medida]", selectedModel.medida);
+      setText("[data-model-capacidad]", selectedModel.capacidad);
+      setText("[data-model-uso]", selectedModel.uso);
+      setText("[data-model-detalle]", selectedModel.detalle);
+      setText("[data-spec-field='medida']", selectedModel.medida);
+      setText("[data-spec-field='capacidad']", selectedModel.capacidad);
+      setText("[data-spec-field='uso']", selectedModel.uso);
+      updateWhatsapp();
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        selectModel(trigger.getAttribute("data-model-trigger"));
+      });
+    });
+
+    quoteForm?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(quoteForm);
+      const extras = ["nombre", "empresa", "telefono", "ubicacion", "comentarios"]
+        .map((key) => {
+          const value = String(formData.get(key) || "").trim();
+          return value ? `${key}: ${value}` : "";
+        })
+        .filter(Boolean)
+        .join(" | ");
+      const message = extras ? `${selectedModel.whatsapp} Datos: ${extras}` : selectedModel.whatsapp;
+      window.location.href = buildWhatsappHref(message);
+    });
+
+    updateWhatsapp();
+  </script>
 </BaseLayout>
+
+<style>
+  :global(:root) {
+    --section-padding-y: 52px;
+    --section-padding-y-compact: 42px;
+    --hero-padding-top: 28px;
+    --hero-padding-bottom: 32px;
+    --final-cta-padding-top: 50px;
+    --final-cta-padding-bottom: 78px;
+  }
+
+  .baper-wrap {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+  }
+
+  .baper-hero {
+    padding: var(--hero-padding-top) 0 var(--hero-padding-bottom);
+    background:
+      linear-gradient(135deg, rgba(8, 17, 28, 0.96), rgba(19, 37, 56, 0.9)),
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 72px),
+      #101820;
+    color: #ffffff;
+  }
+
+  .baper-hero__grid,
+  .support-shell,
+  .benefits-layout,
+  .use-shell,
+  .delivery-layout,
+  .quote-layout {
+    display: grid;
+    gap: 20px;
+  }
+
+  .baper-hero__copy {
+    display: grid;
+    gap: 16px;
+  }
+
+  .baper-hero h1 {
+    margin: 0;
+    max-width: 820px;
+    font-size: clamp(2.25rem, 11vw, 5.6rem);
+    line-height: 0.98;
+  }
+
+  .baper-lead {
+    margin: 0;
+    max-width: 760px;
+    color: #e7edf5;
+    font-size: clamp(1rem, 4.2vw, 1.25rem);
+    line-height: 1.55;
+  }
+
+  .baper-hero .eyebrow,
+  .final-cta .eyebrow,
+  .fit-section .eyebrow {
+    color: #ffb4ba;
+  }
+
+  .hero-selector {
+    display: grid;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .hero-selector p {
+    margin: 0;
+    color: #f4f7fb;
+    font-size: 0.82rem;
+    font-weight: 950;
+    text-transform: uppercase;
+  }
+
+  .model-picker {
+    display: grid;
+    gap: 10px;
+  }
+
+  .model-picker--hero {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(158px, 1fr);
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .model-option,
+  .model-card,
+  .model-table__row {
+    border: 1px solid rgba(174, 188, 204, 0.7);
+    border-radius: 8px;
+    background: #ffffff;
+    color: #08111c;
+    cursor: pointer;
+    text-align: left;
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      background 180ms ease;
+  }
+
+  .model-option {
+    display: grid;
+    gap: 7px;
+    min-height: 116px;
+    padding: 13px;
+    scroll-snap-align: start;
+  }
+
+  .model-option__status,
+  .model-card span {
+    width: fit-content;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background: #eef4ff;
+    color: #173e79;
+    font-size: 0.68rem;
+    font-weight: 950;
+    text-transform: uppercase;
+  }
+
+  .model-option strong,
+  .model-card strong {
+    font-size: 1.18rem;
+    line-height: 1;
+  }
+
+  .model-option > span:last-child,
+  .model-card b {
+    color: #d4212e;
+    font-weight: 950;
+  }
+
+  .model-option.is-active,
+  .model-card.is-active,
+  .model-table__row.is-active {
+    border-color: rgba(212, 33, 46, 0.72);
+    background:
+      linear-gradient(135deg, rgba(212, 33, 46, 0.08), rgba(47, 125, 246, 0.08)),
+      #ffffff;
+    box-shadow: 0 16px 36px rgba(8, 17, 28, 0.16);
+  }
+
+  .baper-quick-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .baper-quick-list li {
+    position: relative;
+    padding: 10px 12px 10px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #f4f7fb;
+    font-size: 0.88rem;
+    font-weight: 780;
+  }
+
+  .baper-quick-list li::before,
+  .include-card li::before,
+  .fit-card li::before {
+    content: "";
+    position: absolute;
+    left: 12px;
+    top: 1.05em;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: #d4212e;
+  }
+
+  .baper-actions,
+  .download-actions {
+    display: grid;
+    gap: 10px;
+  }
+
+  .baper-actions .button,
+  .download-actions .button {
+    width: 100%;
+  }
+
+  .baper-button--whatsapp {
+    border-color: #128c5a;
+    background: linear-gradient(135deg, #128c5a, #0b6a45);
+  }
+
+  .baper-microcopy {
+    margin: 0;
+    color: #cfdae7;
+    font-size: 0.92rem;
+  }
+
+  .baper-hero__media {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  }
+
+  .baper-hero__media img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .selected-summary {
+    display: grid;
+    gap: 6px;
+    padding: 14px;
+    background: #ffffff;
+    color: #08111c;
+  }
+
+  .selected-summary span,
+  .selected-quote span {
+    color: #546172;
+    font-size: 0.78rem;
+    font-weight: 950;
+    text-transform: uppercase;
+  }
+
+  .selected-summary strong {
+    font-size: 1.65rem;
+    line-height: 1;
+  }
+
+  .selected-summary p {
+    display: grid;
+    gap: 5px;
+    margin: 0;
+    color: #405063;
+  }
+
+  .selected-summary b {
+    color: #d4212e;
+    font-size: 1.08rem;
+  }
+
+  .trust-strip {
+    padding: 16px 0;
+    background: #f4f7fb;
+    border-bottom: 1px solid rgba(174, 188, 204, 0.58);
+  }
+
+  .trust-strip__title {
+    margin: 0 0 10px;
+    color: #435063;
+    font-size: 0.78rem;
+    font-weight: 950;
+    text-transform: uppercase;
+  }
+
+  .trust-strip__scroller {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(174px, 1fr);
+    gap: 8px;
+    overflow-x: auto;
+  }
+
+  .trust-strip article,
+  .info-card,
+  .model-detail,
+  .store-card,
+  .download-card,
+  .spec-card,
+  .selected-quote,
+  .quote-form {
+    border: 1px solid rgba(174, 188, 204, 0.72);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 14px 34px rgba(8, 17, 28, 0.06);
+  }
+
+  .trust-strip article {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    color: #08111c;
+    font-size: 0.82rem;
+  }
+
+  .trust-strip span {
+    display: inline-grid;
+    width: 22px;
+    height: 22px;
+    place-items: center;
+    border-radius: 999px;
+    background: #e9f8f1;
+    color: #128c5a;
+    font-size: 0.72rem;
+    font-weight: 950;
+  }
+
+  .section {
+    padding: var(--section-padding-y) 0;
+  }
+
+  .baper-section-head {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .baper-section-head h2 {
+    margin: 0;
+    max-width: 820px;
+    color: #08111c;
+    font-size: clamp(1.95rem, 8vw, 3.8rem);
+    line-height: 1.04;
+  }
+
+  .baper-section-head p:not(.eyebrow) {
+    margin: 0;
+    max-width: 760px;
+    color: #546172;
+  }
+
+  .model-comparison {
+    display: grid;
+    gap: 14px;
+  }
+
+  .model-card {
+    display: grid;
+    gap: 9px;
+    min-height: 164px;
+    padding: 16px;
+  }
+
+  .model-card small {
+    color: #546172;
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  .model-detail {
+    display: grid;
+    gap: 14px;
+    padding: 18px;
+    align-self: start;
+  }
+
+  .model-detail h3 {
+    margin: 0;
+    color: #08111c;
+    font-size: clamp(1.7rem, 8vw, 2.6rem);
+  }
+
+  .model-detail p {
+    margin: 0;
+    color: #4b5a6d;
+  }
+
+  .model-detail dl,
+  .spec-card dl {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .model-detail dl div,
+  .spec-card dl div {
+    display: grid;
+    gap: 4px;
+    padding: 11px;
+    border: 1px solid rgba(174, 188, 204, 0.54);
+    border-radius: 8px;
+    background: #f8fafc;
+  }
+
+  dt {
+    color: #08111c;
+    font-size: 0.8rem;
+    font-weight: 950;
+  }
+
+  dd {
+    margin: 0;
+    color: #405063;
+    font-weight: 760;
+  }
+
+  .support-section,
+  .use-section,
+  .specs-section {
+    background: #f4f7fb;
+  }
+
+  .support-shell {
+    padding: 18px;
+    border: 1px solid rgba(174, 188, 204, 0.68);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.09), rgba(255, 255, 255, 0)),
+      #ffffff;
+  }
+
+  .support-copy {
+    display: grid;
+    gap: 14px;
+  }
+
+  .support-copy h2 {
+    margin: 0;
+    font-size: clamp(2rem, 8vw, 3.25rem);
+  }
+
+  .support-copy p:not(.eyebrow) {
+    margin: 0;
+    color: #4b5a6d;
+  }
+
+  .support-grid,
+  .benefit-grid,
+  .include-grid,
+  .fit-grid,
+  .spec-grid {
+    display: grid;
+    gap: 12px;
+  }
+
+  .info-card {
+    display: grid;
+    gap: 10px;
+    padding: 16px;
+  }
+
+  .info-card h3 {
+    margin: 0;
+    color: #08111c;
+    font-size: 1.08rem;
+  }
+
+  .info-card p {
+    margin: 0;
+    color: #546172;
+  }
+
+  .card-icon {
+    display: inline-grid;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(47, 125, 246, 0.2);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.12), rgba(255, 255, 255, 0.82)),
+      #eef4ff;
+  }
+
+  .card-icon::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    margin: auto;
+    border: 3px solid #173e79;
+    border-top-color: #d4212e;
+    border-radius: 999px;
+  }
+
+  .benefits-layout {
+    align-items: start;
+  }
+
+  .benefits-media,
+  .use-media,
+  .delivery-media {
+    overflow: hidden;
+    border: 1px solid rgba(174, 188, 204, 0.75);
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  .benefits-media img,
+  .use-media img,
+  .delivery-media img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .benefit-card {
+    position: relative;
+    overflow: hidden;
+    gap: 14px;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.96)),
+      #ffffff;
+  }
+
+  .benefit-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: linear-gradient(90deg, #d4212e, #2f7df6);
+  }
+
+  .benefit-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .benefit-card__label {
+    max-width: 132px;
+    padding: 6px 9px;
+    border: 1px solid rgba(174, 188, 204, 0.58);
+    border-radius: 999px;
+    background: rgba(244, 247, 251, 0.88);
+    color: #435063;
+    font-size: 0.72rem;
+    font-weight: 950;
+    line-height: 1;
+    text-align: right;
+  }
+
+  .benefit-card__body {
+    display: grid;
+    gap: 8px;
+  }
+
+  .benefit-card__accent {
+    display: block;
+    width: 48px;
+    height: 4px;
+    margin-top: auto;
+    border-radius: 999px;
+    background: #d4212e;
+  }
+
+  .use-copy {
+    display: grid;
+    gap: 16px;
+  }
+
+  .use-grid {
+    display: grid;
+    gap: 10px;
+  }
+
+  .use-grid article {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    align-items: center;
+    min-height: 56px;
+    padding: 13px 14px;
+    border: 1px solid rgba(130, 148, 172, 0.58);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 12px 26px rgba(8, 17, 28, 0.06);
+  }
+
+  .use-grid span {
+    display: inline-grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border-radius: 8px;
+    background: #eef4ff;
+  }
+
+  .use-grid span::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    border: 3px solid #173e79;
+    border-radius: 3px;
+  }
+
+  .use-grid strong {
+    color: #08111c;
+    font-size: 0.95rem;
+    line-height: 1.15;
+  }
+
+  .include-card {
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .include-card img {
+    width: 100%;
+    aspect-ratio: 16 / 8;
+    object-fit: cover;
+  }
+
+  .include-card > div {
+    padding: 14px;
+  }
+
+  .include-card ul,
+  .fit-card ul {
+    display: grid;
+    gap: 7px;
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .include-card li,
+  .fit-card li {
+    position: relative;
+    padding-left: 20px;
+    color: #344253;
+    font-size: 0.92rem;
+    font-weight: 760;
+    line-height: 1.32;
+  }
+
+  .comparison-table-section {
+    background: #ffffff;
+  }
+
+  .model-table {
+    display: grid;
+    gap: 8px;
+  }
+
+  .model-table__head {
+    display: none;
+  }
+
+  .model-table__row {
+    display: grid;
+    gap: 6px;
+    width: 100%;
+    padding: 14px;
+  }
+
+  .model-table__row span,
+  .model-table__row b {
+    font-size: 0.92rem;
+  }
+
+  .model-table__row strong {
+    font-size: 1.15rem;
+  }
+
+  .model-table__row small {
+    color: #546172;
+    font-size: 0.88rem;
+  }
+
+  .fit-section {
+    background: #101820;
+    color: #ffffff;
+  }
+
+  .fit-section .baper-section-head h2,
+  .fit-card h3 {
+    color: #ffffff;
+  }
+
+  .fit-section .baper-section-head p:not(.eyebrow),
+  .fit-links {
+    color: #dfe6ed;
+  }
+
+  .fit-card {
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .fit-card--yes {
+    background: linear-gradient(135deg, rgba(18, 140, 90, 0.24), rgba(255, 255, 255, 0.08));
+  }
+
+  .fit-card--other {
+    background: linear-gradient(135deg, rgba(47, 125, 246, 0.18), rgba(255, 255, 255, 0.07));
+  }
+
+  .fit-card li {
+    color: #edf3f8;
+  }
+
+  .fit-card li::before {
+    background: #ffb4ba;
+  }
+
+  .fit-links {
+    margin-top: 18px;
+  }
+
+  .fit-links a {
+    font-weight: 900;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  .delivery-section h2 {
+    max-width: 720px;
+    margin-bottom: 12px;
+    font-size: clamp(1.9rem, 8vw, 3rem);
+  }
+
+  .delivery-section p {
+    color: #546172;
+  }
+
+  .zone-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin: 18px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .zone-list li {
+    padding: 9px 10px;
+    border: 1px solid rgba(174, 188, 204, 0.72);
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #344253;
+    font-size: 0.85rem;
+    font-weight: 800;
+  }
+
+  .store-card {
+    display: grid;
+    gap: 9px;
+  }
+
+  .store-card span {
+    color: #546172;
+  }
+
+  .download-section {
+    background: #ffffff;
+  }
+
+  .download-card {
+    display: grid;
+    gap: 16px;
+    padding: 20px;
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.1), transparent 48%),
+      #f8fafc;
+  }
+
+  .pdf-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 78px;
+    border: 1px solid rgba(16, 24, 32, 0.18);
+    border-radius: 8px;
+    background: #ffffff;
+    color: #d4212e;
+    font-weight: 950;
+    box-shadow: 0 12px 24px rgba(8, 17, 28, 0.08);
+  }
+
+  .download-card h2 {
+    margin-bottom: 10px;
+    font-size: clamp(1.75rem, 7vw, 2.65rem);
+  }
+
+  .download-card p {
+    color: #546172;
+  }
+
+  .spec-card {
+    padding: 0;
+    overflow: hidden;
+    align-self: start;
+  }
+
+  .spec-card summary {
+    display: grid;
+    gap: 6px;
+    padding: 16px;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .spec-card summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .spec-card summary span {
+    width: fit-content;
+    color: #173e79;
+    font-size: 0.82rem;
+    font-weight: 950;
+  }
+
+  .spec-card h3 {
+    margin: 0;
+  }
+
+  .spec-toggle {
+    color: #546172;
+    font-size: 0.82rem;
+  }
+
+  .spec-card .spec-toggle--hide {
+    display: none;
+  }
+
+  .spec-card[open] .spec-toggle--show {
+    display: none;
+  }
+
+  .spec-card[open] .spec-toggle--hide {
+    display: inline-flex;
+  }
+
+  .spec-card dl {
+    padding: 0 16px 16px;
+  }
+
+  .quote-layout {
+    align-items: start;
+  }
+
+  .quote-section {
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.08), rgba(212, 33, 46, 0.04)),
+      #ffffff;
+  }
+
+  .quote-section h2 {
+    margin-bottom: 12px;
+    font-size: clamp(2rem, 8vw, 3.4rem);
+  }
+
+  .quote-section p {
+    color: #546172;
+  }
+
+  .selected-quote {
+    display: grid;
+    gap: 6px;
+    margin-top: 18px;
+    padding: 16px;
+  }
+
+  .selected-quote strong {
+    color: #08111c;
+    font-size: 1.35rem;
+  }
+
+  .selected-quote p {
+    margin: 0;
+  }
+
+  .quote-form {
+    display: grid;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .quote-form label {
+    display: grid;
+    gap: 7px;
+    color: #08111c;
+    font-size: 0.82rem;
+    font-weight: 950;
+  }
+
+  .quote-form input,
+  .quote-form textarea {
+    width: 100%;
+    border: 1px solid rgba(130, 148, 172, 0.72);
+    border-radius: 8px;
+    padding: 12px;
+    color: #08111c;
+    font: inherit;
+    font-weight: 600;
+  }
+
+  .quote-form textarea {
+    resize: vertical;
+  }
+
+  .faq-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .faq-item {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(174, 188, 204, 0.72);
+    border-radius: 8px;
+    background:
+      linear-gradient(90deg, rgba(13, 71, 130, 0.05), rgba(255, 255, 255, 0) 42%),
+      #ffffff;
+    box-shadow: 0 14px 34px rgba(8, 17, 28, 0.06);
+  }
+
+  .faq-list summary {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 16px;
+    color: #08111c;
+    font-weight: 900;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-list summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-number {
+    display: inline-grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border: 1px solid rgba(15, 92, 158, 0.16);
+    border-radius: 8px;
+    background: #eef5ff;
+    color: #0b4b8f;
+    font-size: 0.78rem;
+    font-weight: 950;
+  }
+
+  .faq-icon {
+    position: relative;
+    display: inline-grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border: 1px solid rgba(174, 188, 204, 0.72);
+    border-radius: 999px;
+    background: #ffffff;
+  }
+
+  .faq-icon::before,
+  .faq-icon::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    border-radius: 999px;
+    background: #0b4b8f;
+  }
+
+  .faq-icon::after {
+    transform: rotate(90deg);
+  }
+
+  .faq-item[open] .faq-icon::after {
+    transform: rotate(0deg);
+  }
+
+  .faq-answer {
+    border-top: 1px solid rgba(174, 188, 204, 0.42);
+    margin: 0 16px 16px 66px;
+    padding-top: 12px;
+  }
+
+  .faq-answer p {
+    margin: 0;
+    color: #546172;
+    line-height: 1.65;
+  }
+
+  .final-cta {
+    padding: var(--final-cta-padding-top) 0 var(--final-cta-padding-bottom);
+    background:
+      linear-gradient(120deg, rgba(8, 17, 28, 0.98), rgba(27, 48, 69, 0.95)),
+      #101820;
+    color: #ffffff;
+  }
+
+  .final-cta__inner {
+    display: grid;
+    justify-items: center;
+    gap: 14px;
+    text-align: center;
+  }
+
+  .final-cta h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(2rem, 8vw, 3.6rem);
+  }
+
+  .final-cta p {
+    max-width: 720px;
+    color: #dfe6ed;
+  }
+
+  .mobile-sticky-cta {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 40;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(108px, 0.65fr);
+    gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(174, 188, 204, 0.8);
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 -14px 34px rgba(8, 17, 28, 0.13);
+  }
+
+  .mobile-sticky-cta .button {
+    min-height: 46px;
+    padding: 0 10px;
+    font-size: 0.84rem;
+    white-space: normal;
+  }
+
+  @media (max-width: 760px) {
+    :global(body) {
+      padding-bottom: 76px;
+    }
+  }
+
+  @media (min-width: 640px) {
+    :global(:root) {
+      --section-padding-y: 68px;
+      --section-padding-y-compact: 56px;
+      --hero-padding-top: 38px;
+      --hero-padding-bottom: 38px;
+    }
+
+    .baper-actions,
+    .download-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .baper-actions .button,
+    .download-actions .button {
+      width: auto;
+    }
+
+    .baper-quick-list,
+    .support-grid,
+    .benefit-grid,
+    .include-grid,
+    .spec-grid,
+    .faq-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .zone-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .quote-form {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .quote-form__full {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (min-width: 860px) {
+    :global(:root) {
+      --section-padding-y: 84px;
+      --section-padding-y-compact: 66px;
+      --hero-padding-top: 50px;
+      --hero-padding-bottom: 44px;
+      --final-cta-padding-top: 56px;
+      --final-cta-padding-bottom: 74px;
+    }
+
+    .baper-hero__grid {
+      grid-template-columns: minmax(0, 0.92fr) minmax(420px, 0.78fr);
+      align-items: center;
+      gap: 34px;
+    }
+
+    .baper-quick-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .trust-strip__scroller {
+      grid-auto-flow: initial;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      overflow: visible;
+    }
+
+    .model-comparison {
+      grid-template-columns: minmax(0, 0.62fr) minmax(340px, 0.38fr);
+      gap: 18px;
+    }
+
+    .model-picker--comparison {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .support-shell {
+      grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+      align-items: center;
+      gap: 28px;
+      padding: 28px;
+    }
+
+    .benefits-layout {
+      grid-template-columns: minmax(0, 0.66fr) minmax(280px, 0.34fr);
+      gap: 24px;
+    }
+
+    .benefits-layout .baper-section-head,
+    .benefit-grid {
+      grid-column: 1 / 2;
+    }
+
+    .benefits-media {
+      grid-column: 2 / 3;
+      grid-row: 1 / 3;
+      position: sticky;
+      top: 88px;
+      height: clamp(520px, 48vw, 660px);
+    }
+
+    .benefits-media img {
+      height: 100%;
+      aspect-ratio: auto;
+    }
+
+    .use-shell,
+    .delivery-layout,
+    .quote-layout {
+      grid-template-columns: minmax(0, 0.52fr) minmax(380px, 0.48fr);
+      align-items: center;
+    }
+
+    .use-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .include-grid {
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    }
+
+    .model-table__head,
+    .model-table__row {
+      display: grid;
+      grid-template-columns: 0.7fr 0.8fr 0.7fr minmax(0, 1.8fr);
+      align-items: center;
+      gap: 14px;
+    }
+
+    .model-table__head {
+      padding: 0 14px;
+      color: #546172;
+      font-size: 0.78rem;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .download-card {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      padding: 28px;
+    }
+
+    .download-actions {
+      justify-content: end;
+    }
+
+    .spec-card dl div,
+    .model-detail dl div {
+      grid-template-columns: minmax(150px, 0.44fr) minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    .mobile-sticky-cta {
+      display: none;
+    }
+  }
+</style>
