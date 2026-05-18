@@ -13,70 +13,651 @@ const fichaHref = withBase("/downloads/FHT-BAPER-12.pdf");
 const modelosComerciales = [
   {
     id: "comercial-90",
+    nombre: "Comercial 90 x 90 cm",
+    modelo: "Plaba-9",
     medida: "90 x 90 cm",
     capacidad: "1000 kg",
     etiqueta: "Compacta",
-    uso: "Espacios reducidos, carga compacta y operacion comercial diaria.",
-    whatsapp:
-      "Hola, quiero cotizar la Bascula de Bajo Perfil Linea Comercial de 90 x 90 cm con capacidad de 1000 kg.",
-    detalle:
-      "La configuracion compacta para negocios, almacenes pequenos y zonas de recibo donde el espacio manda."
+    usoCorto: "Espacios reducidos y carga compacta",
+    descripcion:
+      "Recomendada para negocios que necesitan una plataforma compacta para operacion comercial diaria sin ocupar demasiado espacio.",
+    idealPara: [
+      "Espacios reducidos",
+      "Carga compacta",
+      "Almacenes pequenos",
+      "Comercio mayorista ligero",
+      "Recibo de mercancia moderado"
+    ],
+    beneficios: [
+      "Buena opcion cuando necesitas pesar carga diaria sin ocupar mucho piso operativo.",
+      "Funciona para cajas, bultos y producto compacto que no necesita una plataforma grande.",
+      "Te permite mantener una bascula comercial practica cerca del punto de recibo."
+    ],
+    benefitsIntro:
+      "La plataforma de 90 x 90 cm es una opcion compacta para negocios que necesitan pesar carga diaria sin ocupar demasiado espacio. Es util cuando la operacion requiere control de peso en areas reducidas o con carga moderada.",
+    benefitCards: [
+      {
+        icon: "profile",
+        label: "Acceso practico",
+        title: "Diseno de bajo perfil",
+        text: "Facilita la carga y descarga sin requerir instalacion compleja."
+      },
+      {
+        icon: "platform",
+        label: "90 x 90 cm",
+        title: "Plataforma 90 x 90 cm",
+        text: "Medida compacta para espacios reducidos, cajas, bultos y carga comercial diaria."
+      },
+      {
+        icon: "capacity",
+        label: "1000 kg",
+        title: "Capacidad de 1000 kg",
+        text: "Adecuada para carga compacta, productos y mercancia de uso comercial diario."
+      },
+      {
+        icon: "surface",
+        label: "Antiderrapante",
+        title: "Superficie antiderrapante",
+        text: "Ayuda a mantener mayor control durante maniobras de carga y descarga."
+      },
+      {
+        icon: "indicator",
+        label: "IPES",
+        title: "Indicador IPES incluido",
+        text: "Lectura clara y operacion sencilla para pesaje basico."
+      },
+      {
+        icon: "ramp",
+        label: "Adaptable",
+        title: "Compatible con rampa",
+        text: "Permite adaptar el acceso de acuerdo con el flujo de operacion."
+      }
+    ],
+    ayuda:
+      "Elige 90 x 90 cm si tu prioridad es ahorrar espacio y tu carga cabe comoda sobre una plataforma compacta.",
+    faq:
+      "La configuracion 90 x 90 cm conviene cuando el espacio es reducido y la operacion no rebasa 1000 kg.",
+    faqs: [
+      {
+        question: "Que capacidad tiene la Bascula Comercial 90 x 90 cm?",
+        answer:
+          "La Bascula Comercial 90 x 90 cm tiene capacidad maxima de 1000 kg para operacion comercial diaria con carga compacta."
+      },
+      {
+        question: "Que medida tiene la plataforma Comercial 90 x 90 cm?",
+        answer:
+          "La plataforma mide 90 x 90 cm. Es una medida compacta para espacios reducidos, cajas, bultos y carga comercial diaria."
+      },
+      {
+        question: "Que altura tiene la Bascula Comercial 90 x 90 cm?",
+        answer:
+          "La altura aproximada de la plataforma es de 11 cm, por eso facilita la carga y descarga en operacion diaria."
+      },
+      {
+        question: "De que material esta fabricada la Comercial 90 x 90 cm?",
+        answer:
+          "La plataforma esta fabricada en acero al carbon con superficie antiderrapante para uso comercial."
+      },
+      {
+        question: "Incluye indicador de peso?",
+        answer:
+          "Si. Incluye indicador digital IPES de linea comercial para lectura clara y pesaje sencillo."
+      },
+      {
+        question: "Tiene pila recargable?",
+        answer:
+          "Si. El indicador incluido cuenta con pila recargable y hasta 100 horas de uso continuo, segun condiciones de operacion."
+      },
+      {
+        question: "Se le puede colocar rampa?",
+        answer:
+          "Si, es compatible con rampa para facilitar el acceso cuando la operacion lo requiere."
+      },
+      {
+        question: "Sirve para instalacion en fosa?",
+        answer:
+          "Si. La plataforma Comercial 90 x 90 cm puede considerarse para instalacion en fosa si el espacio y la operacion lo requieren."
+      },
+      {
+        question: "Tiene conexion a PC o impresora?",
+        answer:
+          "La configuracion Comercial con indicador IPES es de solo peso y no incluye conectividad a PC o impresora."
+      },
+      {
+        question: "Hacen entrega en CDMX y Estado de Mexico?",
+        answer:
+          "Si. Atendemos entregas en CDMX, Estado de Mexico y zona metropolitana. Tambien puedes consultar entrega a otras zonas."
+      },
+      {
+        question: "Esta bascula sirve para recicladoras?",
+        answer:
+          "Puede funcionar para recicladoras con carga compacta y operacion moderada, siempre que la carga no exceda 1000 kg."
+      },
+      {
+        question: "Sirve para pesar tarimas?",
+        answer:
+          "Puede servir para tarimas pequenas o carga compacta bien apoyada. Si usas tarimas comunes, conviene revisar 120 x 120 cm."
+      },
+      {
+        question: "Puedo pedir asesoria antes de comprar?",
+        answer:
+          "Si. Te ayudamos a confirmar si 90 x 90 cm es suficiente o si necesitas una plataforma de mayor superficie."
+      },
+      {
+        question: "La entrega incluye instalacion?",
+        answer:
+          "La entrega e instalacion se revisan segun zona, acceso y condiciones del lugar. Podemos cotizar apoyo de instalacion si lo necesitas."
+      },
+      {
+        question: "Que pasa si necesito conexion a PC o impresora?",
+        answer:
+          "Si necesitas conexion a PC, impresora u otra integracion, podemos orientarte hacia una linea con conectividad o una configuracion especial."
+      }
+    ]
   },
   {
     id: "comercial-120",
+    nombre: "Comercial 120 x 120 cm",
+    modelo: "Plaba-12",
     medida: "120 x 120 cm",
     capacidad: "2000 kg",
     etiqueta: "Equilibrada",
-    uso: "Almacenes, recibo de mercancia, tarimas y operacion de carga frecuente.",
-    whatsapp:
-      "Hola, quiero cotizar la Bascula de Bajo Perfil Linea Comercial de 120 x 120 cm con capacidad de 2000 kg.",
-    detalle:
-      "El punto medio para operacion diaria con tarimas, recibo de mercancia y flujo comercial constante."
+    usoCorto: "Almacen, recibo y tarimas",
+    descripcion:
+      "La opcion equilibrada para almacenes, recibo de mercancia, tarimas y operacion comercial frecuente.",
+    idealPara: [
+      "Almacenes",
+      "Recibo de mercancia",
+      "Tarimas",
+      "Centros de distribucion",
+      "Carga diaria"
+    ],
+    useCases: {
+      eyebrow: "APLICACIONES RECOMENDADAS",
+      title: "Ideal para operaciones comerciales con tarimas y carga frecuente",
+      description:
+        "La plataforma de 120 × 120 cm es una de las opciones más solicitadas por empresas porque ofrece una buena relación entre capacidad, tamaño útil y facilidad de operación. Es una báscula para hasta 2000 kg, práctica para almacén, recibo de mercancía, tarimas, centros de distribución, productos en contenedores y uso continuo comercial.",
+      cards: [
+        {
+          icon: "warehouse",
+          title: "Almacenes",
+          text: "Para control de peso en entradas, salidas y movimiento interno de mercancía."
+        },
+        {
+          icon: "package-check",
+          title: "Recibo de mercancía",
+          text: "Útil para verificar carga recibida, productos, cajas o materiales antes de ingresarlos a operación."
+        },
+        {
+          icon: "boxes",
+          title: "Centros de distribución",
+          text: "Adecuada para procesos de carga frecuente, clasificación y flujo operativo diario."
+        },
+        {
+          icon: "package",
+          title: "Materiales en tarima",
+          text: "La medida 120 × 120 cm ofrece una superficie práctica para trabajar con tarimas y carga paletizada."
+        },
+        {
+          icon: "box",
+          title: "Productos en contenedores",
+          text: "Para pesar contenedores, cajas plásticas, recipientes o carga agrupada en operación comercial."
+        },
+        {
+          icon: "truck",
+          title: "Embarques medios",
+          text: "Recomendada para preparar salidas, validar peso y controlar mercancía antes de despacho."
+        },
+        {
+          icon: "clock",
+          title: "Uso comercial continuo",
+          text: "Para jornadas donde el pesaje de mercancía o materiales forma parte constante del flujo diario."
+        },
+        {
+          icon: "scale",
+          title: "Hasta 2000 kg",
+          text: "Capacidad adecuada para carga comercial frecuente, tarimas y productos en operación de almacén o recibo."
+        }
+      ]
+    },
+    beneficios: [
+      "Es la opcion mas equilibrada si trabajas con tarimas, almacen y recibo frecuente.",
+      "Da mas area de apoyo que la compacta sin volverse una plataforma demasiado grande.",
+      "Facilita pesar entradas y salidas diarias con una configuracion clara para el operador."
+    ],
+    benefitsIntro:
+      "La plataforma de 120 x 120 cm es una de las configuraciones mas solicitadas porque ofrece un equilibrio practico entre superficie de carga, capacidad y facilidad de operacion. Es una bascula de bajo perfil 120x120 muy utilizada en almacenes, recibo de mercancia y manejo de tarimas.",
+    benefitCards: [
+      {
+        icon: "profile",
+        label: "Acceso practico",
+        title: "Diseno de bajo perfil",
+        text: "Facilita la carga y descarga en almacen o recibo sin requerir instalacion compleja."
+      },
+      {
+        icon: "platform",
+        label: "120 x 120 cm",
+        title: "Plataforma 120 x 120 cm",
+        text: "Medida practica para tarimas, mercancia, tambos, cajas y carga diaria controlada."
+      },
+      {
+        icon: "capacity",
+        label: "2000 kg",
+        title: "Capacidad de 2000 kg",
+        text: "Adecuada para almacenes y recibo de mercancia con pesaje frecuente durante la jornada."
+      },
+      {
+        icon: "surface",
+        label: "Antiderrapante",
+        title: "Superficie antiderrapante",
+        text: "Ayuda a mantener mayor control durante maniobras de carga y descarga."
+      },
+      {
+        icon: "indicator",
+        label: "IPES",
+        title: "Indicador IPES incluido",
+        text: "Lectura clara y operacion sencilla para pesaje basico."
+      },
+      {
+        icon: "ramp",
+        label: "Adaptable",
+        title: "Compatible con rampa",
+        text: "Permite adaptar el acceso de acuerdo con el flujo de operacion."
+      }
+    ],
+    ayuda:
+      "Elige 120 x 120 cm si necesitas una medida versatil para tarimas, almacen y recibo diario.",
+    faq:
+      "La configuracion 120 x 120 cm suele ser la opcion mas equilibrada para almacen, recibo y tarimas de uso frecuente.",
+    faqs: [
+      {
+        question: "Que capacidad tiene la Bascula Comercial 120 x 120 cm?",
+        answer:
+          "La Bascula Comercial 120 x 120 cm tiene capacidad maxima de 2000 kg para almacen, recibo de mercancia y pesaje con tarimas."
+      },
+      {
+        question: "Que medida tiene la plataforma Comercial 120 x 120 cm?",
+        answer:
+          "La plataforma mide 120 x 120 cm. Es una medida equilibrada para almacen, recibo de mercancia, tarimas y carga frecuente."
+      },
+      {
+        question: "Que altura tiene la Bascula Comercial 120 x 120 cm?",
+        answer:
+          "La altura aproximada de la plataforma es de 11 cm, adecuada para una bascula de bajo perfil de uso comercial."
+      },
+      {
+        question: "De que material esta fabricada la Comercial 120 x 120 cm?",
+        answer:
+          "Esta fabricada en acero al carbon con superficie antiderrapante para ayudar al manejo de carga en almacen y recibo."
+      },
+      {
+        question: "Incluye indicador de peso?",
+        answer:
+          "Si. Incluye indicador digital IPES de linea comercial, tipo solo peso, para lectura clara en operacion diaria."
+      },
+      {
+        question: "Tiene pila recargable?",
+        answer:
+          "Si. El indicador IPES tiene pila recargable y hasta 100 horas de uso continuo, de acuerdo con condiciones de uso."
+      },
+      {
+        question: "Se le puede colocar rampa?",
+        answer:
+          "Si, es compatible con rampa para facilitar el acceso con carga y mejorar el flujo de recibo o embarque."
+      },
+      {
+        question: "Sirve para instalacion en fosa?",
+        answer:
+          "Si. La Comercial 120 x 120 cm es compatible con instalacion en fosa cuando el proyecto lo requiere."
+      },
+      {
+        question: "Tiene conexion a PC o impresora?",
+        answer:
+          "La configuracion Comercial con indicador IPES es de solo peso y no incluye conexion a PC o impresora."
+      },
+      {
+        question: "Hacen entrega en CDMX y Estado de Mexico?",
+        answer:
+          "Si. Realizamos entrega en CDMX, Estado de Mexico y zona metropolitana, con asesoria para coordinar acceso y descarga."
+      },
+      {
+        question: "Esta bascula sirve para recicladoras?",
+        answer:
+          "Puede servir para recicladoras con uso comercial frecuente y cargas de hasta 2000 kg. Para uso intensivo conviene revisar una linea superior."
+      },
+      {
+        question: "Sirve para pesar tarimas?",
+        answer:
+          "Si. La plataforma 120 x 120 cm es una de las opciones mas practicas para tarimas comunes, recibo y control de mercancia."
+      },
+      {
+        question: "Puedo pedir asesoria antes de comprar?",
+        answer:
+          "Si. Te ayudamos a confirmar si 120 x 120 cm cubre tu operacion o si conviene elegir 90 x 90 cm o 150 x 150 cm."
+      },
+      {
+        question: "La entrega incluye instalacion?",
+        answer:
+          "La instalacion se revisa de acuerdo con la zona, acceso, uso de rampa o fosa y condiciones del lugar. Podemos incluirla en la cotizacion."
+      },
+      {
+        question: "Que pasa si necesito conexion a PC o impresora?",
+        answer:
+          "Si necesitas conexion a PC, impresora o integracion con sistemas, podemos recomendarte una configuracion con conectividad o una linea superior."
+      }
+    ]
   },
   {
     id: "comercial-150",
+    nombre: "Comercial 150 x 150 cm",
+    modelo: "Plaba-15",
     medida: "150 x 150 cm",
     capacidad: "3000 kg",
-    etiqueta: "Mayor capacidad",
-    uso: "Carga de mayor volumen, tarimas grandes y operacion comercial mas robusta.",
-    whatsapp:
-      "Hola, quiero cotizar la Bascula de Bajo Perfil Linea Comercial de 150 x 150 cm con capacidad de 3000 kg.",
-    detalle:
-      "La opcion mas amplia de la linea Comercial para tarimas grandes, mayor volumen y cargas mas pesadas."
+    etiqueta: "Mayor area",
+    usoCorto: "Carga de mayor volumen",
+    descripcion:
+      "Recomendada para operaciones que necesitan mayor area de plataforma, mas capacidad y manejo de carga voluminosa.",
+    idealPara: [
+      "Carga voluminosa",
+      "Tarimas grandes",
+      "Centros de distribucion",
+      "Embarques",
+      "Operacion comercial robusta"
+    ],
+    beneficios: [
+      "Conviene cuando la carga ocupa mas superficie o necesitas apoyar tarimas grandes.",
+      "La capacidad de 3000 kg da margen para operaciones comerciales mas robustas.",
+      "Ofrece mas area para maniobrar y acomodar carga voluminosa con mayor estabilidad."
+    ],
+    benefitsIntro:
+      "La plataforma de 150 x 150 cm esta pensada para operaciones que necesitan mayor superficie de carga, mas capacidad y mejor area de apoyo para productos voluminosos.",
+    benefitCards: [
+      {
+        icon: "profile",
+        label: "Acceso practico",
+        title: "Diseno de bajo perfil",
+        text: "Facilita la carga y descarga sin requerir instalacion compleja."
+      },
+      {
+        icon: "platform",
+        label: "150 x 150 cm",
+        title: "Plataforma 150 x 150 cm",
+        text: "Mayor superficie de carga para maniobrar productos voluminosos con mas area de apoyo."
+      },
+      {
+        icon: "capacity",
+        label: "3000 kg",
+        title: "Capacidad de 3000 kg",
+        text: "Mayor capacidad de carga dentro de la Linea Comercial para operaciones mas robustas."
+      },
+      {
+        icon: "surface",
+        label: "Antiderrapante",
+        title: "Superficie antiderrapante",
+        text: "Ayuda a mantener mayor control durante maniobras de carga y descarga."
+      },
+      {
+        icon: "indicator",
+        label: "IPES",
+        title: "Indicador IPES incluido",
+        text: "Lectura clara y operacion sencilla para pesaje basico."
+      },
+      {
+        icon: "ramp",
+        label: "Adaptable",
+        title: "Compatible con rampa",
+        text: "Permite adaptar el acceso de acuerdo con el flujo de operacion."
+      }
+    ],
+    ayuda:
+      "Elige 150 x 150 cm si tu carga es mas voluminosa, usas tarimas grandes o necesitas hasta 3000 kg.",
+    faq:
+      "La configuracion 150 x 150 cm es la ruta correcta cuando necesitas mayor area de plataforma y capacidad de 3000 kg.",
+    faqs: [
+      {
+        question: "Que capacidad tiene la Bascula Comercial 150 x 150 cm?",
+        answer:
+          "La Bascula Comercial 150 x 150 cm tiene capacidad maxima de 3000 kg para carga voluminosa y operacion comercial mas robusta."
+      },
+      {
+        question: "Que medida tiene la plataforma Comercial 150 x 150 cm?",
+        answer:
+          "La plataforma mide 150 x 150 cm. Ofrece mayor area de apoyo para tarimas grandes, carga voluminosa y maniobras comerciales."
+      },
+      {
+        question: "Que altura tiene la Bascula Comercial 150 x 150 cm?",
+        answer:
+          "La altura aproximada de la plataforma es de 11 cm, manteniendo un acceso practico para carga y descarga."
+      },
+      {
+        question: "De que material esta fabricada la Comercial 150 x 150 cm?",
+        answer:
+          "Esta fabricada en acero al carbon con superficie antiderrapante para operacion comercial con carga de mayor volumen."
+      },
+      {
+        question: "Incluye indicador de peso?",
+        answer:
+          "Si. Incluye indicador digital IPES de linea comercial para pesaje de solo peso y lectura sencilla."
+      },
+      {
+        question: "Tiene pila recargable?",
+        answer:
+          "Si. El indicador incluido tiene pila recargable y hasta 100 horas de uso continuo, segun condiciones de operacion."
+      },
+      {
+        question: "Se le puede colocar rampa?",
+        answer:
+          "Si, es compatible con rampa para facilitar el acceso de carga voluminosa a la plataforma."
+      },
+      {
+        question: "Sirve para instalacion en fosa?",
+        answer:
+          "Si. La plataforma Comercial 150 x 150 cm puede considerarse para instalacion en fosa si el proyecto lo requiere."
+      },
+      {
+        question: "Tiene conexion a PC o impresora?",
+        answer:
+          "La configuracion Comercial con indicador IPES es de solo peso y no incluye conectividad a PC o impresora."
+      },
+      {
+        question: "Hacen entrega en CDMX y Estado de Mexico?",
+        answer:
+          "Si. Atendemos entregas en CDMX, Estado de Mexico y zona metropolitana para empresas, almacenes y centros de operacion."
+      },
+      {
+        question: "Esta bascula sirve para recicladoras?",
+        answer:
+          "Puede servir para recicladoras con carga voluminosa de hasta 3000 kg. Si el uso es muy intensivo, conviene revisar una linea Industrial o Pro."
+      },
+      {
+        question: "Sirve para pesar tarimas grandes?",
+        answer:
+          "Si. La plataforma 150 x 150 cm esta pensada para dar mayor area de apoyo a tarimas grandes o productos voluminosos."
+      },
+      {
+        question: "Puedo pedir asesoria antes de comprar?",
+        answer:
+          "Si. Te ayudamos a revisar si necesitas 150 x 150 cm por area de apoyo, capacidad o tipo de carga."
+      },
+      {
+        question: "La entrega incluye instalacion?",
+        answer:
+          "La instalacion se cotiza segun zona, acceso, maniobra, rampa o preparacion en fosa. Podemos revisarlo antes de la compra."
+      },
+      {
+        question: "Que pasa si necesito conexion a PC o impresora?",
+        answer:
+          "Si necesitas conexion a PC, impresora o integracion, te orientamos hacia una configuracion con conectividad o una linea superior."
+      }
+    ]
   }
 ];
 
 const modeloInicial = modelosComerciales[1];
-const whatsappHref = `${contact.whatsapp[0].href}?text=${encodeURIComponent(modeloInicial.whatsapp)}`;
-const asesorMessage = encodeURIComponent(
+const benefitIconSvg = (icon: string) =>
+  ({
+    profile:
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 17h16"/><path d="M6 17v-5h12v5"/><path d="M8 12V9h8v3"/><path d="M4 20h16"/></svg>',
+    platform:
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="1.5"/><path d="M9 3h6"/><path d="M9 21h6"/><path d="M3 9v6"/><path d="M21 9v6"/></svg>',
+    capacity:
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v3"/><path d="M7 7h10"/><path d="M8 7l-3 6h6L8 7Z"/><path d="M16 7l-3 6h6l-3-6Z"/><path d="M12 7v12"/><path d="M8 20h8"/></svg>',
+    surface:
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 18h16"/><path d="M7 15h2"/><path d="M11 15h2"/><path d="M15 15h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h1"/></svg>',
+    indicator:
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="12" rx="2"/><path d="M7 9h10"/><path d="M8 13h2"/><path d="M12 13h2"/><path d="M16 13h1"/><path d="M10 20h4"/></svg>',
+    ramp:
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 18h16"/><path d="M5 18 17 8h2v10"/><path d="M8 18v-3"/><path d="M12 18v-6"/></svg>'
+  })[icon] ?? "";
+const applicationIconSvg = (icon: string) =>
+  ({
+    warehouse:
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20V9l7-4 7 4v11"/><path d="M8 20v-7h8v7"/><path d="M10 15h4"/></svg>',
+    "package-check":
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8l8-4 8 4-8 4-8-4Z"/><path d="M4 8v8l8 4 8-4V8"/><path d="M12 12v8"/><path d="m15 14 2 2 4-5"/></svg>',
+    boxes:
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="10" width="8" height="8" rx="1"/><rect x="13" y="10" width="8" height="8" rx="1"/><rect x="8" y="4" width="8" height="6" rx="1"/><path d="M7 10v3"/><path d="M17 10v3"/><path d="M12 4v3"/></svg>',
+    package:
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8l8-4 8 4-8 4-8-4Z"/><path d="M4 8v8l8 4 8-4V8"/><path d="M12 12v8"/></svg>',
+    box:
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 10h16"/><path d="M9 5v5"/><path d="M15 5v5"/></svg>',
+    truck:
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>',
+    clock:
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg>',
+    scale:
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="6" width="14" height="12" rx="2"/><path d="M9 11a3 3 0 0 1 6 0"/><path d="M12 11l2-2"/></svg>'
+  })[icon] ?? benefitIconSvg("platform");
+const getUseCases = (modelo: any) =>
+  modelo.useCases ?? {
+    eyebrow: "Aplicaciones recomendadas",
+    title: `Ideal para ${modelo.usoCorto}`,
+    description:
+      "Al seleccionar un modelo, esta lista se ajusta a las operaciones donde esa medida tiene mas sentido.",
+    cards: modelo.idealPara.map((item: string) => ({
+      icon: "package",
+      title: item,
+      text: ""
+    }))
+  };
+const useCasesInicial = getUseCases(modeloInicial);
+const displayMeasure = (medida: string) => medida.replace(/ x /g, " × ");
+const displayCapacity = (capacidad: string) =>
+  capacidad.replace("1000", "1,000").replace("2000", "2,000").replace("3000", "3,000");
+const platformTitle = (modelo: typeof modeloInicial) =>
+  `Plataforma Comercial ${displayMeasure(modelo.medida)}`;
+const specUse = (modelo: typeof modeloInicial) =>
+  modelo.id === "comercial-120" ? "Almacén, recibo, uso frecuente" : modelo.usoCorto;
+const buildWhatsapp = (message: string) =>
+  `${contact.whatsapp[0].href}?text=${encodeURIComponent(message)}`;
+const whatsappMessage = (modelo: typeof modeloInicial) =>
+  `Hola, quiero cotizar la Bascula de Bajo Perfil Linea Comercial de ${modelo.medida} con capacidad de ${modelo.capacidad}.`;
+const whatsappHref = buildWhatsapp(whatsappMessage(modeloInicial));
+const asesorHref = buildWhatsapp(
   "Hola, quiero saber que medida de Bascula de Bajo Perfil Linea Comercial me conviene para mi operacion."
 );
-const whatsappAsesorHref = `${contact.whatsapp[0].href}?text=${asesorMessage}`;
+const choiceWhatsappMessage = (modelo: typeof modeloInicial) =>
+  `Hola, necesito ayuda para confirmar si la Bascula Comercial ${modelo.medida} es la medida correcta para mi operacion.`;
+const choiceWhatsappHref = buildWhatsapp(choiceWhatsappMessage(modeloInicial));
 
 const images = {
-  hero: "/Bajo-Perfil/comercial",
-  product: "/Bajo-Perfil/comercial",
-  benefits: "/Bajo-Perfil/base/base-beneficios2",
-  use: "/Bajo-Perfil/base/base-uso-ideal",
+  hero: "/Bajo-Perfil/Comercial/hero-comercial",
+  product: "/Bajo-Perfil/Comercial/comercial-modelo-120",
+  configPlatform: "/Bajo-Perfil/Comercial/comercial-configuracion-120",
+  benefits: "/Bajo-Perfil/Comercial/comercial-media",
+  use: "/Bajo-Perfil/Comercial/comercial-aplicaciones",
   delivery: "/Bajo-Perfil/base/entrega2",
   indicator: "/Bajo-Perfil/base/ipes-producto"
 };
 
+const choiceGuides = {
+  "comercial-90": {
+    eyebrow: "Ayuda para elegir modelo",
+    title: "¿La Comercial 90 × 90 cm es la medida correcta para tu operación?",
+    intro:
+      "Esta medida es recomendable cuando necesitas una plataforma compacta para espacios reducidos, carga controlada y operación diaria sin ocupar demasiado espacio en almacén o área de trabajo.",
+    yes: [
+      "Tienes poco espacio disponible.",
+      "Necesitas una báscula comercial compacta.",
+      "Tu carga no requiere una plataforma amplia.",
+      "Buscas una solución para recibo, almacén o control interno.",
+      "Necesitas capacidad de hasta 1,000 kg.",
+      "Quieres una plataforma compatible con rampa.",
+      "Tu operación es diaria, pero con carga compacta."
+    ],
+    other: [
+      "Trabajas con tarimas grandes.",
+      "Necesitas mayor superficie de apoyo.",
+      "Pesas producto voluminoso.",
+      "Tu operación requiere mayor capacidad.",
+      "El producto sobresale fácilmente de una plataforma compacta.",
+      "Buscas una medida más versátil para almacén y recibo."
+    ],
+    seoHtml: `También puedes revisar otras opciones de <a href="${withBase("/basculas/bajo-perfil/")}">básculas de bajo perfil</a>, comparar la medida <a href="${withBase("/basculas/bajo-perfil/comercial/#modelos-comerciales")}">Comercial 120 × 120 cm</a> para operación con tarimas o revisar la <a href="${withBase("/basculas/bajo-perfil/comercial/#modelos-comerciales")}">Comercial 150 × 150 cm</a> si necesitas mayor área de pesaje. Si tu operación requiere mayor resistencia o condiciones especiales, revisa nuestras líneas <a href="${withBase("/basculas/bajo-perfil/industrial/")}">Industrial</a>, Pro o Inoxidable.`
+  },
+  "comercial-120": {
+    eyebrow: "Ayuda para elegir modelo",
+    title: "¿La Comercial 120 × 120 cm es la medida correcta para tu operación?",
+    intro:
+      "Esta medida es una opción versátil para almacén, recibo, embarques y operación diaria con tarimas o carga de tamaño medio.",
+    yes: [
+      "Trabajas con tarimas o carga de tamaño medio.",
+      "Necesitas una medida equilibrada para almacén y recibo.",
+      "Buscas capacidad de hasta 2,000 kg.",
+      "Tu operación requiere pesaje diario.",
+      "Necesitas una plataforma más versátil que 90 × 90 cm.",
+      "Quieres compatibilidad con rampas.",
+      "Buscas una opción comercial práctica para operación frecuente."
+    ],
+    other: [
+      "Tienes muy poco espacio disponible.",
+      "Tu carga es compacta y no requiere 120 × 120 cm.",
+      "Necesitas pesar productos de mayor volumen.",
+      "Requieres capacidad de hasta 3,000 kg.",
+      "Buscas una plataforma más amplia para maniobras o carga grande.",
+      "Tu operación exige una configuración industrial más robusta."
+    ],
+    seoHtml: `También puedes revisar la página principal de <a href="${withBase("/basculas/bajo-perfil/")}">básculas de bajo perfil</a>, comparar esta medida con la <a href="${withBase("/basculas/bajo-perfil/comercial/#modelos-comerciales")}">Comercial 90 × 90 cm</a> si necesitas una opción más compacta o con la <a href="${withBase("/basculas/bajo-perfil/comercial/#modelos-comerciales")}">Comercial 150 × 150 cm</a> si buscas mayor área de pesaje. Para operaciones más exigentes, revisa las líneas <a href="${withBase("/basculas/bajo-perfil/industrial/")}">Industrial</a>, Pro o Inoxidable.`
+  },
+  "comercial-150": {
+    eyebrow: "Ayuda para elegir modelo",
+    title: "¿La Comercial 150 × 150 cm es la medida correcta para tu operación?",
+    intro:
+      "Esta medida es recomendable cuando necesitas mayor área de pesaje, mejor apoyo para carga grande o capacidad de hasta 3,000 kg en operación comercial diaria.",
+    yes: [
+      "Necesitas mayor superficie de plataforma.",
+      "Trabajas con carga voluminosa.",
+      "Buscas capacidad de hasta 3,000 kg.",
+      "Manejas tarimas grandes o productos de mayor tamaño.",
+      "Tu operación requiere más espacio para maniobra.",
+      "Necesitas una plataforma comercial para uso diario.",
+      "Quieres compatibilidad con rampas."
+    ],
+    other: [
+      "Tu espacio de trabajo es reducido.",
+      "No necesitas tanta superficie de plataforma.",
+      "Tu carga es compacta.",
+      "Buscas una opción más práctica para recibo ligero.",
+      "Una plataforma de 120 × 120 cm cubre tu operación.",
+      "Necesitas una solución más económica o compacta.",
+      "Tu operación requiere una línea industrial o sanitaria."
+    ],
+    seoHtml: `También puedes revisar nuestras <a href="${withBase("/basculas/bajo-perfil/")}">básculas de bajo perfil</a>, comparar esta opción con la <a href="${withBase("/basculas/bajo-perfil/comercial/#modelos-comerciales")}">Comercial 120 × 120 cm</a> si buscas equilibrio entre tamaño y capacidad, o revisar la <a href="${withBase("/basculas/bajo-perfil/comercial/#modelos-comerciales")}">Comercial 90 × 90 cm</a> si necesitas una plataforma compacta. Para uso intensivo, ambientes húmedos o requerimientos especiales, considera las líneas Industrial, Pro o <a href="${withBase("/basculas/bajo-perfil/inoxidable/")}">Inoxidable</a>.`
+  }
+};
+const choiceGuideInicial = choiceGuides[modeloInicial.id as keyof typeof choiceGuides];
+
 const seo = {
   title: "Bascula de Bajo Perfil Comercial 1000 a 3000 kg | Astil Basculas",
   description:
-    "Bascula de bajo perfil linea Comercial para almacen, recibo y carga diaria. Modelos 90 x 90, 120 x 120 y 150 x 150 cm con capacidades de 1000 a 3000 kg.",
+    "Bascula de bajo perfil Linea Comercial para almacen, recibo y carga diaria. Modelos 90 x 90, 120 x 120 y 150 x 150 cm con capacidades de 1000 a 3000 kg.",
   keywords:
     "bascula de bajo perfil comercial, bascula de piso comercial, bascula 1000 kg, bascula 2000 kg, bascula 3000 kg, bascula para almacen, bascula para recibo, bascula para tarimas, bascula en CDMX, bascula en Estado de Mexico"
 };
 
 const heroBullets = [
   "3 medidas disponibles",
-  "Capacidades de 1000 kg a 3000 kg",
-  "Plataforma de acero al carbon",
-  "Superficie antiderrapante",
-  "Indicador digital incluido",
-  "Compatible con rampa",
+  "Capacidades de 1000 a 3000 kg",
   "Entrega en CDMX y Estado de Mexico"
 ];
 
@@ -87,69 +668,6 @@ const trustBadges = [
   "Refacciones e instalacion",
   "Atencion por WhatsApp",
   "Tienda fisica en Texcoco"
-];
-
-const supportCards = [
-  {
-    title: "Seleccion de medida",
-    text: "Revisamos espacio, tipo de carga, tarima y capacidad antes de recomendar 90, 120 o 150 cm."
-  },
-  {
-    title: "Entrega local",
-    text: "Atendemos entregas programadas en CDMX, Estado de Mexico y zona metropolitana."
-  },
-  {
-    title: "Soporte tecnico",
-    text: "Contamos con experiencia en mantenimiento, reparacion y diagnostico de sistemas de pesaje."
-  },
-  {
-    title: "Solucion integral",
-    text: "Podemos apoyar con rampas, refacciones, instalacion y servicios posteriores."
-  }
-];
-
-const benefits = [
-  {
-    label: "Bajo perfil",
-    title: "Acceso practico para carga diaria",
-    text: "Facilita la entrada con tarimas, carros o patin hidraulico cuando se agrega rampa."
-  },
-  {
-    label: "3 modelos",
-    title: "Tres configuraciones en una misma linea",
-    text: "Elige 90 x 90, 120 x 120 o 150 x 150 cm sin cambiar de familia de producto."
-  },
-  {
-    label: "1 a 3 t",
-    title: "Capacidad escalable",
-    text: "Cubre desde carga compacta de 1000 kg hasta operaciones comerciales de 3000 kg."
-  },
-  {
-    label: "Acero",
-    title: "Plataforma de acero al carbon",
-    text: "Estructura preparada para uso comercial diario en interior o zona techada."
-  },
-  {
-    label: "Antiderrapante",
-    title: "Superficie segura para maniobras",
-    text: "Ayuda a mantener control durante carga y descarga de mercancia."
-  },
-  {
-    label: "Digital",
-    title: "Indicador incluido",
-    text: "Lectura clara para operadores que necesitan pesar sin configuraciones complicadas."
-  }
-];
-
-const idealUses = [
-  "Almacenes",
-  "Recibo de mercancia",
-  "Comercio mayorista",
-  "Centros de distribucion",
-  "Embarques",
-  "Carga en tarima",
-  "Inventario operativo",
-  "Operacion diaria controlada"
 ];
 
 const includes = [
@@ -178,20 +696,27 @@ const includes = [
   }
 ];
 
-const goodFit = [
-  "Necesitas pesar todos los dias en almacen, recibo o embarques.",
-  "Quieres elegir entre tres medidas sin cambiar de linea.",
-  "Trabajas con carga comercial, tarimas o mercancia compacta.",
-  "Buscas una solucion robusta, practica y facil de operar.",
-  "Necesitas entrega y soporte local en CDMX o Estado de Mexico."
-];
-
-const otherLine = [
-  "Tu operacion trabaja turnos intensivos con golpes constantes.",
-  "Necesitas lavado frecuente, humedad agresiva o ambiente sanitario.",
-  "Requieres conectividad avanzada, tickets o integracion con software.",
-  "La carga se mueve con montacargas sobre la plataforma.",
-  "Necesitas una configuracion especial fuera de 90, 120 o 150 cm."
+const supportCards = [
+  {
+    icon: "guide",
+    title: "Asesoría para elegir correctamente",
+    text: "Te ayudamos a confirmar si esta configuración cubre tu operación o si necesitas una línea superior."
+  },
+  {
+    icon: "delivery",
+    title: "Entrega local",
+    text: "Atendemos entregas en CDMX, Estado de México y zona metropolitana."
+  },
+  {
+    icon: "support",
+    title: "Soporte técnico",
+    text: "Contamos con experiencia en mantenimiento, reparación y diagnóstico de sistemas de pesaje."
+  },
+  {
+    icon: "solution",
+    title: "Solución integral",
+    text: "Podemos apoyar con rampas, refacciones, instalación y servicios posteriores."
+  }
 ];
 
 const zones = [
@@ -212,82 +737,42 @@ const zones = [
 ];
 
 const platformSpecs = [
-  ["Tipo de producto", "Bascula de Bajo Perfil"],
-  ["Linea", "Comercial"],
-  ["Modelo seleccionado", modeloInicial.medida],
-  ["Capacidad maxima", modeloInicial.capacidad],
-  ["Altura aproximada", "11 cm"],
-  ["Material", "Acero al carbon"],
+  ["Tipo de producto", "Báscula de Bajo Perfil"],
+  ["Línea", "Comercial"],
+  ["Modelo", modeloInicial.modelo],
+  ["Capacidad máxima", displayCapacity(modeloInicial.capacidad)],
+  ["Dimensiones de plataforma", displayMeasure(modeloInicial.medida)],
+  ["Altura", "11 cm"],
+  ["Material", "Acero al carbón"],
   ["Superficie", "Antiderrapante"],
-  ["Diseno", "Bajo perfil"],
-  ["Cable de conexion", "5 metros"],
-  ["Compatible con rampa", "Si"],
-  ["Celdas de carga", "4 celdas tipo Shearbeam en acero al carbon"],
-  ["Uso recomendado", modeloInicial.uso]
+  ["Diseño", "Bajo perfil"],
+  ["Cable de conexión", "5 metros blindado"],
+  ["Compatible con rampa", "Sí"],
+  ["Compatible con instalación en fosa", "Sí"],
+  ["Celdas de carga", "4 celdas tipo Shearbeam en acero al carbón"],
+  ["Uso recomendado", specUse(modeloInicial)]
 ];
 
 const indicatorSpecs = [
   ["Indicador de peso", "IPES"],
-  ["Linea del indicador", "Comercial"],
+  ["Línea del indicador", "Comercial"],
   ["Tipo", "Solo peso"],
-  ["Estructura", "Plastico"],
+  ["Estructura", "Plástico"],
   ["Capacidad", "Programable"],
   ["Clase", "MEDIA III"],
-  ["Alimentacion", "Cargador 6V"],
+  ["Alimentación", "Cargador 6V"],
   ["Pila", "Recargable, hasta 100 horas de uso continuo"],
-  ["Fijacion", "Sin soporte para mesa o pared"],
+  ["Fijación", "Sin soporte para mesa o pared"],
   ["Conectividad", "N/A"]
 ];
 
-const faqs = [
-  {
-    question: "Que modelos tiene la Linea Comercial?",
-    answer:
-      "La linea Comercial esta disponible en 90 x 90 cm con 1000 kg, 120 x 120 cm con 2000 kg y 150 x 150 cm con 3000 kg."
-  },
-  {
-    question: "Que cambia entre los tres modelos?",
-    answer:
-      "Cambia la medida de plataforma y la capacidad maxima. La linea, estructura general, indicador, celdas de carga y logica de uso se mantienen."
-  },
-  {
-    question: "Incluye indicador digital?",
-    answer: "Si, incluye indicador digital para operacion de solo peso."
-  },
-  {
-    question: "Se puede usar con rampa?",
-    answer: "Si, la Linea Comercial es compatible con rampa para facilitar el acceso a la plataforma."
-  },
-  {
-    question: "Sirve para tarimas?",
-    answer:
-      "Si, especialmente los modelos 120 x 120 y 150 x 150 cm. La recomendacion final depende de la medida de tarima, peso y espacio disponible."
-  },
-  {
-    question: "Que medida me conviene elegir?",
-    answer:
-      "90 x 90 cm funciona para carga compacta; 120 x 120 cm es el punto medio para almacen y recibo; 150 x 150 cm conviene para tarimas grandes o mayor volumen."
-  },
-  {
-    question: "Hacen entrega en CDMX y Estado de Mexico?",
-    answer:
-      "Si, atendemos entregas en CDMX, Estado de Mexico y zona metropolitana para empresas, almacenes, comercios y centros de distribucion."
-  },
-  {
-    question: "Puedo cotizar por WhatsApp?",
-    answer:
-      "Si. Selecciona el modelo en la pagina y el mensaje de WhatsApp se actualiza con la medida y capacidad elegida."
-  }
-];
+const faqs = modeloInicial.faqs;
 
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   name: "Bascula de Bajo Perfil Linea Comercial",
-  brand: {
-    "@type": "Brand",
-    name: "Astil Basculas"
-  },
+  brand: { "@type": "Brand", name: "Astil Basculas" },
   category: "Basculas de bajo perfil",
   material: "Acero al carbon",
   description: seo.description,
@@ -295,7 +780,7 @@ const productSchema = {
   url: new URL("/basculas/bajo-perfil/comercial/", Astro.site ?? Astro.url).toString(),
   offers: modelosComerciales.map((modelo) => ({
     "@type": "Offer",
-    name: `Bascula de Bajo Perfil Comercial ${modelo.medida} ${modelo.capacidad}`,
+    name: `Bascula de Bajo Perfil ${modelo.nombre}`,
     availability: "https://schema.org/InStock",
     priceCurrency: "MXN",
     seller: {
@@ -306,11 +791,11 @@ const productSchema = {
     },
     itemOffered: {
       "@type": "Product",
-      name: `Bascula de Bajo Perfil Comercial ${modelo.medida}`,
+      name: `Bascula de Bajo Perfil ${modelo.nombre}`,
       additionalProperty: [
         { "@type": "PropertyValue", name: "Capacidad maxima", value: modelo.capacidad },
         { "@type": "PropertyValue", name: "Dimensiones de plataforma", value: modelo.medida },
-        { "@type": "PropertyValue", name: "Uso recomendado", value: modelo.uso }
+        { "@type": "PropertyValue", name: "Uso recomendado", value: modelo.usoCorto }
       ]
     }
   }))
@@ -322,10 +807,7 @@ const faqSchema = {
   mainEntity: faqs.map((faq) => ({
     "@type": "Question",
     name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer
-    }
+    acceptedAnswer: { "@type": "Answer", text: faq.answer }
   }))
 };
 
@@ -364,41 +846,18 @@ const breadcrumbSchema = {
   footerContactHref="#cotizar-comercial"
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script id="faq-schema" is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <section class="baper-hero">
     <div class="baper-wrap baper-hero__grid">
       <div class="baper-hero__copy">
-        <p class="eyebrow">Bascula de Bajo Perfil · Linea Comercial</p>
+        <p class="eyebrow">Bascula de Bajo Perfil - Linea Comercial</p>
         <h1>Bascula de bajo perfil comercial para almacen, recibo y carga diaria</h1>
         <p class="baper-lead">
-          Linea Comercial disponible en 90 x 90, 120 x 120 y 150 x 150 cm, con capacidades de
-          1000 kg, 2000 kg y 3000 kg. Ideal para operaciones que necesitan una bascula practica,
-          robusta y facil de operar.
+          Solucion comercial para pesar carga diaria en almacen, recibo y operacion. Elige la
+          medida adecuada segun tu espacio, tarima y capacidad requerida.
         </p>
-
-        <div class="hero-selector" aria-label="Selector rapido de modelo">
-          <p>Elige una configuracion</p>
-          <div class="model-picker model-picker--hero" role="tablist" aria-label="Modelos disponibles">
-            {
-              modelosComerciales.map((modelo, index) => (
-                <button
-                  class:list={["model-option", { "is-active": index === 1 }]}
-                  type="button"
-                  role="tab"
-                  aria-selected={index === 1 ? "true" : "false"}
-                  data-model-trigger={modelo.id}
-                >
-                  <span class="model-option__status">{index === 1 ? "Seleccionado" : modelo.etiqueta}</span>
-                  <strong>{modelo.medida}</strong>
-                  <span>{modelo.capacidad}</span>
-                </button>
-              ))
-            }
-          </div>
-        </div>
-
         <ul class="baper-quick-list" aria-label="Datos principales de la Linea Comercial">
           {heroBullets.map((item) => <li>{item}</li>)}
         </ul>
@@ -409,7 +868,7 @@ const breadcrumbSchema = {
           <a class="button secondary" href="#modelos-comerciales">Ver modelos disponibles</a>
         </div>
         <p class="baper-microcopy">
-          Te ayudamos a elegir la medida correcta segun tu tipo de carga y espacio disponible.
+          Te ayudamos a elegir la medida correcta segun tu carga, espacio disponible y operacion.
         </p>
       </div>
       <div class="baper-hero__media" aria-label="Bascula de bajo perfil Linea Comercial">
@@ -421,15 +880,97 @@ const breadcrumbSchema = {
           width="1600"
           height="1200"
         />
-        <article class="selected-summary" aria-live="polite">
-          <span>Modelo seleccionado</span>
-          <strong data-model-medida>{modeloInicial.medida}</strong>
-          <p>
-            <b data-model-capacidad>{modeloInicial.capacidad}</b>
-            <span data-model-uso>{modeloInicial.uso}</span>
-          </p>
-        </article>
       </div>
+    </div>
+  </section>
+
+  <section class="section model-section" id="modelos-comerciales">
+    <div class="baper-wrap">
+      <div class="baper-section-head">
+        <p class="eyebrow">Selector de modelo</p>
+        <h2>Elige la medida que necesitas</h2>
+        <p>
+          Primero elige tu plataforma. Despues veras la ficha de esa bascula con capacidad,
+          aplicacion recomendada y cotizacion por WhatsApp.
+        </p>
+      </div>
+      <div class="model-picker" role="tablist" aria-label="Modelos comerciales disponibles">
+        {
+          modelosComerciales.map((modelo, index) => (
+            <button
+              class:list={["model-card", { "is-active": index === 1 }]}
+              type="button"
+              role="tab"
+              aria-selected={index === 1 ? "true" : "false"}
+              data-model-trigger={modelo.id}
+            >
+              <span class="model-card__badge">{index === 1 ? "Seleccionado" : modelo.etiqueta}</span>
+              <span class:list={["model-card__platform", `model-card__platform--${index + 1}`]} aria-hidden="true">
+                <svg viewBox="0 0 64 64" focusable="false">
+                  <rect class="platform-icon__plate" x="12" y="12" width="40" height="40" rx="4" />
+                  <path class="platform-icon__line" d="M18 14 50 46" />
+                  <path class="platform-icon__line" d="M30 12 52 34" />
+                  <path class="platform-icon__line" d="M12 30 34 52" />
+                  <path class="platform-icon__base" d="M15 54h34" />
+                  <path class="platform-icon__base" d="M20 58h24" />
+                </svg>
+              </span>
+              <span class="model-card__body">
+                <strong>{modelo.medida}</strong>
+                <small class="model-card__model">Modelo: {modelo.modelo}</small>
+                <b>{modelo.capacidad}</b>
+                <small>{modelo.usoCorto}</small>
+              </span>
+              <span class="model-card__cue">{index === 1 ? "Modelo seleccionado" : "Elegir esta medida"}</span>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section dynamic-summary-section">
+    <div class="baper-wrap summary-shell">
+      <article class="summary-card" aria-live="polite">
+        <p class="eyebrow">Modelo listo para cotizar</p>
+        <h2>Tu modelo seleccionado: <span data-model-platform-name>Plataforma {modeloInicial.medida}</span></h2>
+        <p data-model-description>{modeloInicial.descripcion}</p>
+        <div class="summary-stats">
+          <div>
+            <span>Medida</span>
+            <strong data-model-measure>{modeloInicial.medida}</strong>
+          </div>
+          <div>
+            <span>Capacidad</span>
+            <strong data-model-capacity>{modeloInicial.capacidad}</strong>
+          </div>
+          <div>
+            <span>Aplicacion</span>
+            <strong data-model-use-short>{modeloInicial.usoCorto}</strong>
+          </div>
+        </div>
+        <div class="summary-fit">
+          <h3>Por que esta opcion puede funcionarte</h3>
+          <ul data-summary-benefits>
+            {modeloInicial.beneficios.map((benefit) => <li>{benefit}</li>)}
+          </ul>
+        </div>
+        <div class="baper-actions">
+          <a class="button baper-button--whatsapp" href={whatsappHref} data-dynamic-whatsapp>
+            Solicita cotizacion por WhatsApp
+          </a>
+          <a class="button secondary" href="#especificaciones">Ver especificaciones</a>
+        </div>
+      </article>
+      <aside class="summary-side" aria-label="Configuracion seleccionada">
+        <SmartImage
+          name={images.product}
+          fallbackExt="webp"
+          alt="Bascula de bajo perfil comercial seleccionada"
+          width="1200"
+          height="900"
+        />
+      </aside>
     </div>
   </section>
 
@@ -447,100 +988,12 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <section class="section model-section" id="modelos-comerciales">
-    <div class="baper-wrap">
-      <div class="baper-section-head">
-        <p class="eyebrow">Selector comparativo de modelos</p>
-        <h2>Una misma linea Comercial, tres medidas disponibles</h2>
-        <p>
-          Selecciona la plataforma que mejor se ajusta a tu espacio, tarima y capacidad de carga.
-          La ficha visible y los enlaces de WhatsApp se actualizan con tu eleccion.
-        </p>
-      </div>
-
-      <div class="model-comparison">
-        <div class="model-picker model-picker--comparison" role="tablist" aria-label="Comparar modelos comerciales">
-          {
-            modelosComerciales.map((modelo, index) => (
-              <button
-                class:list={["model-card", { "is-active": index === 1 }]}
-                type="button"
-                role="tab"
-                aria-selected={index === 1 ? "true" : "false"}
-                data-model-trigger={modelo.id}
-              >
-                <span>{modelo.etiqueta}</span>
-                <strong>{modelo.medida}</strong>
-                <b>{modelo.capacidad}</b>
-                <small>{modelo.uso}</small>
-              </button>
-            ))
-          }
-        </div>
-
-        <article class="model-detail" aria-live="polite">
-          <p class="eyebrow">Resumen seleccionado</p>
-          <h3><span data-model-medida>{modeloInicial.medida}</span> / <span data-model-capacidad>{modeloInicial.capacidad}</span></h3>
-          <p data-model-detalle>{modeloInicial.detalle}</p>
-          <dl>
-            <div>
-              <dt>Medida</dt>
-              <dd data-model-medida>{modeloInicial.medida}</dd>
-            </div>
-            <div>
-              <dt>Capacidad</dt>
-              <dd data-model-capacidad>{modeloInicial.capacidad}</dd>
-            </div>
-            <div>
-              <dt>Uso recomendado</dt>
-              <dd data-model-uso>{modeloInicial.uso}</dd>
-            </div>
-          </dl>
-          <a class="button baper-button--whatsapp" href={whatsappHref} data-dynamic-whatsapp>
-            Cotizar este modelo
-          </a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section support-section">
-    <div class="baper-wrap support-shell">
-      <div class="support-copy">
-        <p class="eyebrow">Respaldo tecnico Astil Basculas</p>
-        <h2>Mas que una bascula: compra con respaldo tecnico</h2>
-        <p>
-          En Astil Basculas te orientamos para confirmar si la Linea Comercial cubre tu operacion,
-          resolvemos dudas tecnicas y contamos con servicio, mantenimiento, refacciones e
-          instalacion cuando tu empresa lo requiera.
-        </p>
-        <div class="baper-actions">
-          <a class="button baper-button--whatsapp" href={whatsappAsesorHref}>
-            Quiero asesoria por WhatsApp
-          </a>
-        </div>
-      </div>
-      <div class="support-grid">
-        {supportCards.map((card) => (
-          <article class="info-card">
-            <span class="card-icon" aria-hidden="true"></span>
-            <h3>{card.title}</h3>
-            <p>{card.text}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <section class="section benefits-section">
     <div class="baper-wrap benefits-layout">
       <div class="baper-section-head">
-        <p class="eyebrow">Beneficios principales</p>
-        <h2>Beneficios de la Linea Comercial</h2>
-        <p>
-          Caracteristicas pensadas para operaciones comerciales que necesitan pesar carga de forma
-          practica, estable y repetible durante la jornada.
-        </p>
+        <p class="eyebrow">Por que elegir esta medida</p>
+        <h2>¿Por qué elegir una plataforma de <span data-model-measure>{modeloInicial.medida}</span>?</h2>
+        <p data-benefits-intro>{modeloInicial.benefitsIntro}</p>
       </div>
       <div class="benefits-media">
         <SmartImage
@@ -551,11 +1004,11 @@ const breadcrumbSchema = {
           height="800"
         />
       </div>
-      <div class="benefit-grid">
-        {benefits.map((card) => (
+      <div class="benefit-grid" data-benefits-list>
+        {modeloInicial.benefitCards.map((card) => (
           <article class="info-card benefit-card">
             <div class="benefit-card__top">
-              <span class="card-icon benefit-card__icon" aria-hidden="true"></span>
+              <span class="card-icon benefit-card__icon" aria-hidden="true" set:html={benefitIconSvg(card.icon)} />
               <span class="benefit-card__label">{card.label}</span>
             </div>
             <div class="benefit-card__body">
@@ -569,22 +1022,22 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <section class="section use-section">
+  <section class="section applications-section">
     <div class="baper-wrap use-shell">
       <div class="use-copy">
         <div class="baper-section-head">
-          <p class="eyebrow">Uso recomendado</p>
-          <h2>Ideal para operaciones comerciales e industriales ligeras</h2>
-          <p>
-            La Linea Comercial funciona bien cuando el pesaje forma parte del flujo diario, pero no
-            requiere configuraciones especiales ni ambiente sanitario.
-          </p>
+          <p class="eyebrow" data-use-eyebrow>{useCasesInicial.eyebrow}</p>
+          <h2 data-use-title>{useCasesInicial.title}</h2>
+          <p data-use-description>{useCasesInicial.description}</p>
         </div>
-        <div class="use-grid">
-          {idealUses.map((item) => (
-            <article>
-              <span aria-hidden="true"></span>
-              <strong>{item}</strong>
+        <div class="use-grid" data-use-cards>
+          {useCasesInicial.cards.map((card) => (
+            <article class="use-card">
+              <span class="use-card__icon" aria-hidden="true" set:html={applicationIconSvg(card.icon)}></span>
+              <div class="use-card__content">
+                <strong class="use-card__title">{card.title}</strong>
+                {card.text && <p class="use-card__description">{card.text}</p>}
+              </div>
             </article>
           ))}
         </div>
@@ -601,91 +1054,215 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <section class="section includes-section">
+  <section class="section includes-section selected-config-section">
     <div class="baper-wrap">
       <div class="baper-section-head">
-        <p class="eyebrow">Que incluye la Linea Comercial</p>
-        <h2>Equipo completo para empezar a pesar</h2>
+        <p class="eyebrow">Configuracion seleccionada</p>
+        <h2>&iquest;Qu&eacute; incluye la Bascula <span data-model-code>{modeloInicial.modelo}</span>?</h2>
         <p>
-          Los tres modelos comparten estructura general, indicador digital y componentes pensados
-          para uso comercial diario.
+          Esta configuracion integra una plataforma Linea Comercial y un indicador digital de peso
+          Linea Comercial modelo IPES, ideal para operacion diaria en almacen, area de recibo,
+          embarques ligeros y empaques.
         </p>
       </div>
-      <div class="include-grid">
-        {includes.map((item) => (
-          <article class="info-card include-card">
-            <SmartImage name={item.image} fallbackExt="webp" alt={item.alt} width="1200" height="700" />
-            <div>
-              <h3>{item.title}</h3>
-              <ul>
-                {item.items.map((line) => <li>{line}</li>)}
-              </ul>
-            </div>
+      <div class="selected-config-layout">
+        <div class="selected-config-media-grid">
+          <article class="selected-config-visual selected-config-visual--platform">
+            <SmartImage
+              name={images.configPlatform}
+              fallbackExt="webp"
+              alt={`Plataforma comercial de bajo perfil ${displayMeasure(modeloInicial.medida)}`}
+              width="1600"
+              height="1000"
+            />
+          </article>
+          <article class="selected-config-visual selected-config-visual--indicator">
+            <SmartImage
+              name={images.indicator}
+              fallbackExt="webp"
+              alt="Indicador digital IPES incluido"
+              width="900"
+              height="700"
+            />
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section specs-section" id="especificaciones">
+    <div class="baper-wrap">
+      <div class="baper-section-head">
+        <h2>Datos tecnicos de <span data-platform-title>{platformTitle(modeloInicial)}</span></h2>
+        <p>
+          Consulta las caracteristicas de la plataforma comercial y del indicador digital incluidos
+          en esta configuracion.
+        </p>
+      </div>
+      <div class="spec-grid">
+        <details class="spec-card" open>
+          <summary>
+            <span class="spec-toggle spec-toggle--show">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Ver especificaciones
+            </span>
+            <span class="spec-toggle spec-toggle--hide">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 3l18 18" />
+                <path d="M10.6 10.6A3 3 0 0 0 13.4 13.4" />
+                <path d="M9.9 5.2A10.7 10.7 0 0 1 12 5c6.5 0 10 7 10 7a17.2 17.2 0 0 1-3.2 4.2" />
+                <path d="M6.6 6.6C3.7 8.5 2 12 2 12s3.5 7 10 7a10 10 0 0 0 4.4-1" />
+              </svg>
+              Ocultar especificaciones
+            </span>
+            <h3>Plataforma / Equipo</h3>
+          </summary>
+          <dl>
+            {platformSpecs.map(([term, value]) => (
+              <div>
+                <dt>{term}</dt>
+                <dd
+                  data-spec-field={
+                    term === "Modelo"
+                      ? "modelCode"
+                      : term === "Dimensiones de plataforma"
+                        ? "measure"
+                        : term === "Capacidad máxima"
+                          ? "capacity"
+                          : term === "Uso recomendado"
+                            ? "useShort"
+                            : undefined
+                  }
+                >
+                  {value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </details>
+        <details class="spec-card" open>
+          <summary>
+            <span class="spec-toggle spec-toggle--show">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Ver especificaciones
+            </span>
+            <span class="spec-toggle spec-toggle--hide">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 3l18 18" />
+                <path d="M10.6 10.6A3 3 0 0 0 13.4 13.4" />
+                <path d="M9.9 5.2A10.7 10.7 0 0 1 12 5c6.5 0 10 7 10 7a17.2 17.2 0 0 1-3.2 4.2" />
+                <path d="M6.6 6.6C3.7 8.5 2 12 2 12s3.5 7 10 7a10 10 0 0 0 4.4-1" />
+              </svg>
+              Ocultar especificaciones
+            </span>
+            <h3>Indicador digital</h3>
+          </summary>
+          <dl>
+            {indicatorSpecs.map(([term, value]) => (
+              <div>
+                <dt>{term}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section choice-section">
+    <div class="baper-wrap choice-shell">
+      <div class="choice-head">
+        <p class="eyebrow" data-choice-eyebrow>{choiceGuideInicial.eyebrow}</p>
+        <h2 data-choice-title>{choiceGuideInicial.title}</h2>
+        <p data-choice-intro>{choiceGuideInicial.intro}</p>
+      </div>
+      <div class="choice-decision-grid">
+        <article class="choice-card choice-card--yes">
+          <h3>Sí te conviene si</h3>
+          <ul data-choice-yes-list>
+            {choiceGuideInicial.yes.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+        <article class="choice-card choice-card--other">
+          <h3>Considera otra medida si</h3>
+          <ul data-choice-other-list>
+            {choiceGuideInicial.other.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      </div>
+      <div class="choice-seo-panel">
+        <p data-choice-seo set:html={choiceGuideInicial.seoHtml}></p>
+        <a class="button baper-button--whatsapp" href={choiceWhatsappHref} data-choice-whatsapp>
+          Ayúdame a elegir la medida correcta
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section support-section">
+    <div class="baper-wrap support-shell">
+      <div class="support-copy">
+        <p class="eyebrow">Respaldo técnico Astil Básculas</p>
+        <h2>Más que una báscula: compra con respaldo técnico</h2>
+        <p>
+          En Astil Básculas no solo vendemos el equipo. Te orientamos para confirmar si la línea
+          Comercial es adecuada para tu operación, resolvemos dudas técnicas y contamos con servicio,
+          mantenimiento, refacciones e instalación cuando tu empresa lo requiera.
+        </p>
+        <div class="baper-actions">
+          <a class="button baper-button--whatsapp" href={asesorHref}>Quiero asesoría por WhatsApp</a>
+        </div>
+        <p class="baper-microcopy">
+          Te ayudamos a confirmar si esta línea es adecuada para tu operación antes de cotizar.
+        </p>
+      </div>
+      <div class="support-grid">
+        {supportCards.map((card) => (
+          <article class="info-card">
+            <span class="card-icon" aria-hidden="true">
+              {card.icon === "guide" && (
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M8 6h13" />
+                  <path d="M8 12h13" />
+                  <path d="M8 18h13" />
+                  <path d="m3 6 1.3 1.3L6.8 4.8" />
+                  <path d="m3 12 1.3 1.3 2.5-2.5" />
+                  <path d="m3 18 1.3 1.3 2.5-2.5" />
+                </svg>
+              )}
+              {card.icon === "delivery" && (
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M3 7h11v10H3z" />
+                  <path d="M14 10h4l3 3v4h-7z" />
+                  <path d="M7 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                  <path d="M18 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                </svg>
+              )}
+              {card.icon === "support" && (
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M14.7 6.3a4 4 0 0 0-5.1 5.1l-5.4 5.4a2 2 0 0 0 2.8 2.8l5.4-5.4a4 4 0 0 0 5.1-5.1l-2.9 2.9-2.6-2.6z" />
+                </svg>
+              )}
+              {card.icon === "solution" && (
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3 4 7l8 4 8-4z" />
+                  <path d="m4 12 8 4 8-4" />
+                  <path d="m4 17 8 4 8-4" />
+                </svg>
+              )}
+            </span>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
           </article>
         ))}
       </div>
-    </div>
-  </section>
-
-  <section class="section comparison-table-section">
-    <div class="baper-wrap">
-      <div class="baper-section-head">
-        <p class="eyebrow">Comparativa de modelos disponibles</p>
-        <h2>Elige por espacio, tarima y peso maximo</h2>
-      </div>
-      <div class="model-table" role="table" aria-label="Comparativa de modelos Linea Comercial">
-        <div role="row" class="model-table__head">
-          <span role="columnheader">Modelo</span>
-          <span role="columnheader">Medida</span>
-          <span role="columnheader">Capacidad</span>
-          <span role="columnheader">Mejor para</span>
-        </div>
-        {
-          modelosComerciales.map((modelo, index) => (
-            <button
-              type="button"
-              role="row"
-              class:list={["model-table__row", { "is-active": index === 1 }]}
-              data-model-trigger={modelo.id}
-            >
-              <span role="cell">{modelo.etiqueta}</span>
-              <strong role="cell">{modelo.medida}</strong>
-              <b role="cell">{modelo.capacidad}</b>
-              <small role="cell">{modelo.uso}</small>
-            </button>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <section class="section fit-section">
-    <div class="baper-wrap">
-      <div class="baper-section-head">
-        <p class="eyebrow">Decision de compra</p>
-        <h2>La Linea Comercial es la opcion correcta?</h2>
-        <p>
-          Esta seccion ayuda a decidir rapido si conviene cotizar Comercial o revisar una linea
-          superior, inoxidable o con mayor integracion.
-        </p>
-      </div>
-      <div class="fit-grid">
-        <article class="fit-card fit-card--yes">
-          <h3>Si te conviene si...</h3>
-          <ul>
-            {goodFit.map((item) => <li>{item}</li>)}
-          </ul>
-        </article>
-        <article class="fit-card fit-card--other">
-          <h3>Revisa otra linea si...</h3>
-          <ul>
-            {otherLine.map((item) => <li>{item}</li>)}
-          </ul>
-        </article>
-      </div>
-      <p class="fit-links">
-        Si tienes duda, <a href={whatsappAsesorHref}>te orientamos por WhatsApp</a> antes de comprar.
-      </p>
     </div>
   </section>
 
@@ -725,7 +1302,7 @@ const breadcrumbSchema = {
     <div class="baper-wrap download-card">
       <span class="pdf-icon" aria-hidden="true">PDF</span>
       <div>
-        <p class="eyebrow">Ficha tecnica descargable</p>
+        <p class="eyebrow">Ficha tecnica</p>
         <h2>Descarga la ficha tecnica de referencia</h2>
         <p>
           Comparte la ficha con compras, mantenimiento o el area operativa. Tambien podemos
@@ -733,66 +1310,8 @@ const breadcrumbSchema = {
         </p>
       </div>
       <div class="download-actions">
-        <a class="button" href={fichaHref} download data-dynamic-ficha>Descargar ficha tecnica</a>
+        <a class="button" href={fichaHref} download>Descargar ficha tecnica</a>
         <a class="button secondary" href={whatsappHref} data-dynamic-whatsapp>Solicitar ficha por WhatsApp</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section specs-section" id="especificaciones">
-    <div class="baper-wrap">
-      <div class="baper-section-head">
-        <p class="eyebrow">Especificaciones tecnicas</p>
-        <h2>Datos principales del modelo seleccionado</h2>
-        <p>
-          Las especificaciones destacadas se actualizan de acuerdo con la medida seleccionada.
-        </p>
-      </div>
-      <div class="spec-grid">
-        <details class="spec-card" open>
-          <summary>
-            <span>Plataforma Comercial</span>
-            <h3>Bascula de bajo perfil</h3>
-            <b class="spec-toggle spec-toggle--show">Ver datos</b>
-            <b class="spec-toggle spec-toggle--hide">Ocultar datos</b>
-          </summary>
-          <dl>
-            {platformSpecs.map(([term, value]) => (
-              <div>
-                <dt>{term}</dt>
-                <dd
-                  data-spec-field={
-                    term === "Modelo seleccionado"
-                      ? "medida"
-                      : term === "Capacidad maxima"
-                        ? "capacidad"
-                        : term === "Uso recomendado"
-                          ? "uso"
-                          : undefined
-                  }
-                >
-                  {value}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </details>
-        <details class="spec-card" open>
-          <summary>
-            <span>Indicador incluido</span>
-            <h3>Indicador digital IPES</h3>
-            <b class="spec-toggle spec-toggle--show">Ver datos</b>
-            <b class="spec-toggle spec-toggle--hide">Ocultar datos</b>
-          </summary>
-          <dl>
-            {indicatorSpecs.map(([term, value]) => (
-              <div>
-                <dt>{term}</dt>
-                <dd>{value}</dd>
-              </div>
-            ))}
-          </dl>
-        </details>
       </div>
     </div>
   </section>
@@ -801,14 +1320,14 @@ const breadcrumbSchema = {
     <div class="baper-wrap quote-layout">
       <div>
         <p class="eyebrow">Formulario de cotizacion</p>
-        <h2>Cotiza la Linea Comercial</h2>
+        <h2>Cotiza <span data-model-name>{modeloInicial.nombre}</span></h2>
         <p>
           Deja tus datos clave o envia la solicitud directa por WhatsApp con el modelo seleccionado.
         </p>
         <article class="selected-quote">
           <span>Estas cotizando</span>
-          <strong><span data-model-medida>{modeloInicial.medida}</span> / <span data-model-capacidad>{modeloInicial.capacidad}</span></strong>
-          <p data-model-uso>{modeloInicial.uso}</p>
+          <strong data-model-name>{modeloInicial.nombre}</strong>
+          <p><span data-model-capacity>{modeloInicial.capacidad}</span> - <span data-model-use-short>{modeloInicial.usoCorto}</span></p>
         </article>
       </div>
       <form class="quote-form" data-quote-form>
@@ -842,19 +1361,19 @@ const breadcrumbSchema = {
   <section class="section faq-section">
     <div class="baper-wrap">
       <div class="baper-section-head">
-        <p class="eyebrow">FAQ</p>
-        <h2>Preguntas frecuentes sobre la Linea Comercial</h2>
+        <p class="eyebrow">Preguntas frecuentes</p>
+        <h2>Preguntas frecuentes sobre <span data-model-name>{modeloInicial.nombre}</span></h2>
       </div>
       <div class="faq-list">
         {faqs.map((faq, index) => (
           <details class="faq-item">
             <summary>
               <span class="faq-number">{String(index + 1).padStart(2, "0")}</span>
-              <span class="faq-question">{faq.question}</span>
+              <span class="faq-question" data-faq-question={index}>{faq.question}</span>
               <span class="faq-icon" aria-hidden="true"></span>
             </summary>
             <div class="faq-answer">
-              <p>{faq.answer}</p>
+              <p data-faq-answer={index}>{faq.answer}</p>
             </div>
           </details>
         ))}
@@ -865,14 +1384,14 @@ const breadcrumbSchema = {
   <section class="final-cta">
     <div class="baper-wrap final-cta__inner">
       <p class="eyebrow">Cotizacion rapida</p>
-      <h2>Selecciona tu medida y cotiza la Linea Comercial</h2>
+      <h2>Cotiza <span data-model-name>{modeloInicial.nombre}</span></h2>
       <p>
-        Si no estas seguro entre 90, 120 o 150 cm, revisamos tu tipo de carga, espacio disponible
-        y capacidad necesaria antes de recomendar.
+        <span data-model-help>{modeloInicial.ayuda}</span> Si no estas seguro, revisamos tu tipo
+        de carga, espacio disponible y capacidad necesaria antes de recomendar.
       </p>
       <div class="baper-actions">
         <a class="button baper-button--whatsapp" href={whatsappHref} data-dynamic-whatsapp>
-          Cotizar por WhatsApp
+          Solicita cotizacion por WhatsApp
         </a>
         <a class="button secondary" href="#modelos-comerciales">Cambiar modelo</a>
       </div>
@@ -890,29 +1409,175 @@ const breadcrumbSchema = {
     is:inline
     define:vars={{
       modelosComerciales,
+      choiceGuides,
       whatsappBase: contact.whatsapp[0].href
     }}
   >
-    const triggers = document.querySelectorAll("[data-model-trigger]");
-    const dynamicWhatsappLinks = document.querySelectorAll("[data-dynamic-whatsapp]");
-    const quoteForm = document.querySelector("[data-quote-form]");
     const modelById = new Map(modelosComerciales.map((model) => [model.id, model]));
+    const triggers = document.querySelectorAll("[data-model-trigger]");
+    const whatsappLinks = document.querySelectorAll("[data-dynamic-whatsapp]");
+    const choiceWhatsappLink = document.querySelector("[data-choice-whatsapp]");
+    const quoteForm = document.querySelector("[data-quote-form]");
     let selectedModel = modelosComerciales[1];
 
+    const quoteMessage = (model) =>
+      `Hola, quiero cotizar la Bascula de Bajo Perfil Linea Comercial de ${model.medida} con capacidad de ${model.capacidad}.`;
+    const choiceMessage = (model) =>
+      `Hola, necesito ayuda para confirmar si la Bascula Comercial ${model.medida} es la medida correcta para mi operacion.`;
+    const whatsappHrefFor = (message) => `${whatsappBase}?text=${encodeURIComponent(message)}`;
     const setText = (selector, value) => {
       document.querySelectorAll(selector).forEach((node) => {
         node.textContent = value;
       });
     };
+    const benefitIconSvg = (icon) =>
+      ({
+        profile:
+          '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 17h16"/><path d="M6 17v-5h12v5"/><path d="M8 12V9h8v3"/><path d="M4 20h16"/></svg>',
+        platform:
+          '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="1.5"/><path d="M9 3h6"/><path d="M9 21h6"/><path d="M3 9v6"/><path d="M21 9v6"/></svg>',
+        capacity:
+          '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v3"/><path d="M7 7h10"/><path d="M8 7l-3 6h6L8 7Z"/><path d="M16 7l-3 6h6l-3-6Z"/><path d="M12 7v12"/><path d="M8 20h8"/></svg>',
+        surface:
+          '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 18h16"/><path d="M7 15h2"/><path d="M11 15h2"/><path d="M15 15h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h1"/></svg>',
+        indicator:
+          '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="12" rx="2"/><path d="M7 9h10"/><path d="M8 13h2"/><path d="M12 13h2"/><path d="M16 13h1"/><path d="M10 20h4"/></svg>',
+        ramp:
+          '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 18h16"/><path d="M5 18 17 8h2v10"/><path d="M8 18v-3"/><path d="M12 18v-6"/></svg>'
+      })[icon] ?? "";
+    const applicationIconSvg = (icon) =>
+      ({
+        warehouse:
+          '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20V9l7-4 7 4v11"/><path d="M8 20v-7h8v7"/><path d="M10 15h4"/></svg>',
+        "package-check":
+          '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8l8-4 8 4-8 4-8-4Z"/><path d="M4 8v8l8 4 8-4V8"/><path d="M12 12v8"/><path d="m15 14 2 2 4-5"/></svg>',
+        boxes:
+          '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="10" width="8" height="8" rx="1"/><rect x="13" y="10" width="8" height="8" rx="1"/><rect x="8" y="4" width="8" height="6" rx="1"/><path d="M7 10v3"/><path d="M17 10v3"/><path d="M12 4v3"/></svg>',
+        package:
+          '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8l8-4 8 4-8 4-8-4Z"/><path d="M4 8v8l8 4 8-4V8"/><path d="M12 12v8"/></svg>',
+        box:
+          '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 10h16"/><path d="M9 5v5"/><path d="M15 5v5"/></svg>',
+        truck:
+          '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>',
+        clock:
+          '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg>',
+        scale:
+          '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="6" width="14" height="12" rx="2"/><path d="M9 11a3 3 0 0 1 6 0"/><path d="M12 11l2-2"/></svg>'
+      })[icon] ?? benefitIconSvg("platform");
+    const getUseCases = (model) =>
+      model.useCases ?? {
+        eyebrow: "Aplicaciones recomendadas",
+        title: `Ideal para ${model.usoCorto}`,
+        description:
+          "Al seleccionar un modelo, esta lista se ajusta a las operaciones donde esa medida tiene mas sentido.",
+        cards: model.idealPara.map((item) => ({
+          icon: "package",
+          title: item,
+          text: ""
+        }))
+      };
+    const displayMeasure = (measure) => measure.replace(/ x /g, " × ");
+    const displayCapacity = (capacity) =>
+      capacity.replace("1000", "1,000").replace("2000", "2,000").replace("3000", "3,000");
+    const platformTitle = (model) => `Plataforma Comercial ${displayMeasure(model.medida)}`;
+    const specUse = (model) =>
+      model.id === "comercial-120" ? "Almacén, recibo, uso frecuente" : model.usoCorto;
+    const renderUseCases = (model) => {
+      const useCases = getUseCases(model);
+      setText("[data-use-eyebrow]", useCases.eyebrow);
+      setText("[data-use-title]", useCases.title);
+      setText("[data-use-description]", useCases.description);
 
-    const buildWhatsappHref = (message) => `${whatsappBase}?text=${encodeURIComponent(message)}`;
+      const list = document.querySelector("[data-use-cards]");
+      if (!list) return;
+      list.innerHTML = useCases.cards
+        .map(
+          (card) =>
+            `<article class="use-card">
+              <span class="use-card__icon" aria-hidden="true">${applicationIconSvg(card.icon)}</span>
+              <div class="use-card__content">
+                <strong class="use-card__title">${card.title}</strong>
+                ${card.text ? `<p class="use-card__description">${card.text}</p>` : ""}
+              </div>
+            </article>`
+        )
+        .join("");
+    };
+    const renderBenefits = (model) => {
+      const list = document.querySelector("[data-benefits-list]");
+      if (!list) return;
+      list.innerHTML = model.benefitCards
+        .map(
+          (card) =>
+            `<article class="info-card benefit-card">
+              <div class="benefit-card__top">
+                <span class="card-icon benefit-card__icon" aria-hidden="true">${benefitIconSvg(card.icon)}</span>
+                <span class="benefit-card__label">${card.label}</span>
+              </div>
+              <div class="benefit-card__body">
+                <h3>${card.title}</h3>
+                <p>${card.text}</p>
+              </div>
+              <span class="benefit-card__accent" aria-hidden="true"></span>
+            </article>`
+        )
+        .join("");
+    };
+    const syncSummaryBenefits = (model) => {
+      const list = document.querySelector("[data-summary-benefits]");
+      if (!list) return;
+      list.innerHTML = model.beneficios.map((benefit) => `<li>${benefit}</li>`).join("");
+    };
+    const renderDecisionList = (selector, items) => {
+      const list = document.querySelector(selector);
+      if (!list) return;
+      list.innerHTML = items.map((item) => `<li>${item}</li>`).join("");
+    };
+    const renderChoiceGuide = (model) => {
+      const guide = choiceGuides[model.id];
+      if (!guide) return;
+      setText("[data-choice-eyebrow]", guide.eyebrow);
+      setText("[data-choice-title]", guide.title);
+      setText("[data-choice-intro]", guide.intro);
+      renderDecisionList("[data-choice-yes-list]", guide.yes);
+      renderDecisionList("[data-choice-other-list]", guide.other);
 
-    const updateWhatsapp = () => {
-      dynamicWhatsappLinks.forEach((link) => {
-        link.setAttribute("href", buildWhatsappHref(selectedModel.whatsapp));
+      document.querySelectorAll("[data-choice-seo]").forEach((node) => {
+        node.innerHTML = guide.seoHtml;
       });
     };
+    const syncFaqs = (model) => {
+      model.faqs.forEach((faq, index) => {
+        setText(`[data-faq-question="${index}"]`, faq.question);
+        setText(`[data-faq-answer="${index}"]`, faq.answer);
+      });
 
+      const schema = document.querySelector("#faq-schema");
+      if (schema) {
+        schema.textContent = JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: model.faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer
+            }
+          }))
+        });
+      }
+    };
+    const syncWhatsapp = () => {
+      const href = whatsappHrefFor(quoteMessage(selectedModel));
+      whatsappLinks.forEach((link) => link.setAttribute("href", href));
+      choiceWhatsappLink?.setAttribute("href", whatsappHrefFor(choiceMessage(selectedModel)));
+    };
+    const syncSelectedImages = (model) => {
+      document.querySelectorAll(".selected-config-visual--platform img").forEach((img) => {
+        img.setAttribute("alt", `Plataforma comercial de bajo perfil ${displayMeasure(model.medida)}`);
+      });
+    };
     const selectModel = (id) => {
       const nextModel = modelById.get(id);
       if (!nextModel) return;
@@ -924,18 +1589,38 @@ const breadcrumbSchema = {
         if (trigger.getAttribute("role") === "tab") {
           trigger.setAttribute("aria-selected", String(isActive));
         }
-        const status = trigger.querySelector(".model-option__status");
-        if (status) status.textContent = isActive ? "Seleccionado" : nextModel.etiqueta;
+        const triggerModel = modelById.get(trigger.getAttribute("data-model-trigger"));
+        const badge = trigger.querySelector(".model-card__badge");
+        if (badge && triggerModel) {
+          badge.textContent = isActive ? "Seleccionado" : triggerModel.etiqueta;
+        }
+        const cue = trigger.querySelector(".model-card__cue");
+        if (cue) {
+          cue.textContent = isActive ? "Modelo seleccionado" : "Elegir esta medida";
+        }
       });
 
-      setText("[data-model-medida]", selectedModel.medida);
-      setText("[data-model-capacidad]", selectedModel.capacidad);
-      setText("[data-model-uso]", selectedModel.uso);
-      setText("[data-model-detalle]", selectedModel.detalle);
-      setText("[data-spec-field='medida']", selectedModel.medida);
-      setText("[data-spec-field='capacidad']", selectedModel.capacidad);
-      setText("[data-spec-field='uso']", selectedModel.uso);
-      updateWhatsapp();
+      setText("[data-model-name]", selectedModel.nombre);
+      setText("[data-model-platform-name]", `Plataforma ${selectedModel.medida}`);
+      setText("[data-model-measure]", selectedModel.medida);
+      setText("[data-model-capacity]", selectedModel.capacidad);
+      setText("[data-model-use-short]", selectedModel.usoCorto);
+      setText("[data-model-description]", selectedModel.descripcion);
+      setText("[data-model-help]", selectedModel.ayuda);
+      setText("[data-benefits-intro]", selectedModel.benefitsIntro);
+      setText("[data-platform-title]", platformTitle(selectedModel));
+      setText("[data-model-code]", selectedModel.modelo);
+      setText("[data-spec-field='modelCode']", selectedModel.modelo);
+      setText("[data-spec-field='measure']", displayMeasure(selectedModel.medida));
+      setText("[data-spec-field='capacity']", displayCapacity(selectedModel.capacidad));
+      setText("[data-spec-field='useShort']", specUse(selectedModel));
+      renderUseCases(selectedModel);
+      renderBenefits(selectedModel);
+      syncSummaryBenefits(selectedModel);
+      renderChoiceGuide(selectedModel);
+      syncFaqs(selectedModel);
+      syncSelectedImages(selectedModel);
+      syncWhatsapp();
     };
 
     triggers.forEach((trigger) => {
@@ -954,11 +1639,59 @@ const breadcrumbSchema = {
         })
         .filter(Boolean)
         .join(" | ");
-      const message = extras ? `${selectedModel.whatsapp} Datos: ${extras}` : selectedModel.whatsapp;
-      window.location.href = buildWhatsappHref(message);
+      const message = extras
+        ? `${quoteMessage(selectedModel)} Datos: ${extras}`
+        : quoteMessage(selectedModel);
+      window.location.href = whatsappHrefFor(message);
     });
 
-    updateWhatsapp();
+    const useSection = document.querySelector(".applications-section");
+    const useMediaImage = document.querySelector(".applications-section .use-media img");
+    const deliverySection = document.querySelector(".delivery-section");
+    const deliveryMediaImage = document.querySelector(".delivery-section .delivery-media img");
+    const desktopMedia = window.matchMedia("(min-width: 1024px)");
+    const syncUseMediaScroll = () => {
+      if (!useSection || !useMediaImage) return;
+      if (!desktopMedia.matches) {
+        useMediaImage.style.removeProperty("--use-media-y");
+        return;
+      }
+
+      const rect = useSection.getBoundingClientRect();
+      const progress = Math.min(
+        1,
+        Math.max(0, (window.innerHeight - rect.top) / (rect.height + window.innerHeight))
+      );
+      useMediaImage.style.setProperty("--use-media-y", `${18 + progress * 64}%`);
+    };
+    const syncDeliveryMediaScroll = () => {
+      if (!deliverySection || !deliveryMediaImage) return;
+      if (!desktopMedia.matches) {
+        deliveryMediaImage.style.removeProperty("--delivery-media-shift");
+        return;
+      }
+
+      const mediaBox = deliveryMediaImage.closest(".delivery-media");
+      const rect = deliverySection.getBoundingClientRect();
+      const mediaRect = mediaBox?.getBoundingClientRect();
+      const progress = Math.min(
+        1,
+        Math.max(0, (window.innerHeight - rect.top) / (rect.height + window.innerHeight))
+      );
+      const overflow = Math.max(0, deliveryMediaImage.offsetHeight - (mediaRect?.height ?? 0));
+      deliveryMediaImage.style.setProperty("--delivery-media-shift", `${-(overflow * progress)}px`);
+    };
+    const syncScrollMedia = () => {
+      syncUseMediaScroll();
+      syncDeliveryMediaScroll();
+    };
+
+    window.addEventListener("scroll", syncScrollMedia, { passive: true });
+    window.addEventListener("resize", syncScrollMedia);
+    desktopMedia.addEventListener?.("change", syncScrollMedia);
+
+    syncWhatsapp();
+    syncScrollMedia();
   </script>
 </BaseLayout>
 
@@ -966,8 +1699,8 @@ const breadcrumbSchema = {
   :global(:root) {
     --section-padding-y: 52px;
     --section-padding-y-compact: 42px;
-    --hero-padding-top: 28px;
-    --hero-padding-bottom: 32px;
+    --hero-padding-top: 24px;
+    --hero-padding-bottom: 22px;
     --final-cta-padding-top: 50px;
     --final-cta-padding-bottom: 78px;
   }
@@ -980,16 +1713,19 @@ const breadcrumbSchema = {
   .baper-hero {
     padding: var(--hero-padding-top) 0 var(--hero-padding-bottom);
     background:
-      linear-gradient(135deg, rgba(8, 17, 28, 0.96), rgba(19, 37, 56, 0.9)),
-      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 72px),
-      #101820;
-    color: #ffffff;
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(244, 247, 251, 0.96) 58%),
+      repeating-linear-gradient(90deg, rgba(16, 24, 32, 0.035) 0 1px, transparent 1px 82px),
+      #f4f7fb;
+    border-bottom: 1px solid rgba(174, 188, 204, 0.68);
+    color: #08111c;
   }
 
   .baper-hero__grid,
-  .support-shell,
+  .summary-shell,
   .benefits-layout,
   .use-shell,
+  .choice-shell,
+  .support-shell,
   .delivery-layout,
   .quote-layout {
     display: grid;
@@ -998,122 +1734,38 @@ const breadcrumbSchema = {
 
   .baper-hero__copy {
     display: grid;
-    gap: 16px;
+    gap: 12px;
+    align-content: center;
   }
 
   .baper-hero h1 {
     margin: 0;
-    max-width: 820px;
-    font-size: clamp(2.25rem, 11vw, 5.6rem);
-    line-height: 0.98;
+    max-width: 680px;
+    font-size: clamp(2.15rem, 5.6vw, 3.65rem);
+    line-height: 1.04;
   }
 
   .baper-lead {
     margin: 0;
-    max-width: 760px;
-    color: #e7edf5;
-    font-size: clamp(1rem, 4.2vw, 1.25rem);
-    line-height: 1.55;
+    max-width: 650px;
+    color: #384553;
+    font-size: clamp(0.98rem, 3.6vw, 1.13rem);
+    line-height: 1.45;
   }
 
-  .baper-hero .eyebrow,
-  .final-cta .eyebrow,
-  .fit-section .eyebrow {
+  .final-cta .eyebrow {
     color: #ffb4ba;
   }
 
-  .hero-selector {
-    display: grid;
-    gap: 10px;
-    padding: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.08);
-  }
-
-  .hero-selector p {
-    margin: 0;
-    color: #f4f7fb;
-    font-size: 0.82rem;
-    font-weight: 950;
-    text-transform: uppercase;
-  }
-
-  .model-picker {
-    display: grid;
-    gap: 10px;
-  }
-
-  .model-picker--hero {
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(158px, 1fr);
-    overflow-x: auto;
-    padding-bottom: 2px;
-    scroll-snap-type: x mandatory;
-  }
-
-  .model-option,
-  .model-card,
-  .model-table__row {
-    border: 1px solid rgba(174, 188, 204, 0.7);
-    border-radius: 8px;
-    background: #ffffff;
-    color: #08111c;
-    cursor: pointer;
-    text-align: left;
-    transition:
-      transform 180ms ease,
-      border-color 180ms ease,
-      box-shadow 180ms ease,
-      background 180ms ease;
-  }
-
-  .model-option {
-    display: grid;
-    gap: 7px;
-    min-height: 116px;
-    padding: 13px;
-    scroll-snap-align: start;
-  }
-
-  .model-option__status,
-  .model-card span {
-    width: fit-content;
-    padding: 5px 8px;
-    border-radius: 999px;
-    background: #eef4ff;
-    color: #173e79;
-    font-size: 0.68rem;
-    font-weight: 950;
-    text-transform: uppercase;
-  }
-
-  .model-option strong,
-  .model-card strong {
-    font-size: 1.18rem;
-    line-height: 1;
-  }
-
-  .model-option > span:last-child,
-  .model-card b {
+  .baper-hero .eyebrow {
+    margin-bottom: 0;
     color: #d4212e;
-    font-weight: 950;
-  }
-
-  .model-option.is-active,
-  .model-card.is-active,
-  .model-table__row.is-active {
-    border-color: rgba(212, 33, 46, 0.72);
-    background:
-      linear-gradient(135deg, rgba(212, 33, 46, 0.08), rgba(47, 125, 246, 0.08)),
-      #ffffff;
-    box-shadow: 0 16px 36px rgba(8, 17, 28, 0.16);
   }
 
   .baper-quick-list {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 7px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -1121,18 +1773,19 @@ const breadcrumbSchema = {
 
   .baper-quick-list li {
     position: relative;
-    padding: 10px 12px 10px 30px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 9px 12px 9px 29px;
+    border: 1px solid rgba(174, 188, 204, 0.7);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.08);
-    color: #f4f7fb;
-    font-size: 0.88rem;
+    background: rgba(255, 255, 255, 0.82);
+    color: #223247;
+    font-size: 0.84rem;
     font-weight: 780;
+    box-shadow: 0 10px 22px rgba(8, 17, 28, 0.04);
   }
 
   .baper-quick-list li::before,
   .include-card li::before,
-  .fit-card li::before {
+  .choice-card li::before {
     content: "";
     position: absolute;
     left: 12px;
@@ -1161,117 +1814,60 @@ const breadcrumbSchema = {
 
   .baper-microcopy {
     margin: 0;
-    color: #cfdae7;
-    font-size: 0.92rem;
+    color: #546172;
+    font-size: 0.88rem;
+  }
+
+  .baper-hero__media,
+  .summary-side,
+  .benefits-media,
+  .use-media,
+  .delivery-media {
+    overflow: hidden;
+    border: 1px solid rgba(174, 188, 204, 0.75);
+    border-radius: 8px;
+    background: #ffffff;
   }
 
   .baper-hero__media {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 8px;
-    background: #ffffff;
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+    align-self: center;
+    max-height: 460px;
+    border-color: rgba(174, 188, 204, 0.78);
+    box-shadow: 0 18px 44px rgba(8, 17, 28, 0.12);
   }
 
   .baper-hero__media img {
+    width: 100%;
+    height: 100%;
+    max-height: 460px;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: center 54%;
+    display: block;
+  }
+
+  .summary-side img,
+  .benefits-media img,
+  .use-media img,
+  .delivery-media img {
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
   }
 
-  .selected-summary {
-    display: grid;
-    gap: 6px;
-    padding: 14px;
-    background: #ffffff;
-    color: #08111c;
-  }
-
-  .selected-summary span,
-  .selected-quote span {
-    color: #546172;
-    font-size: 0.78rem;
-    font-weight: 950;
-    text-transform: uppercase;
-  }
-
-  .selected-summary strong {
-    font-size: 1.65rem;
-    line-height: 1;
-  }
-
-  .selected-summary p {
-    display: grid;
-    gap: 5px;
-    margin: 0;
-    color: #405063;
-  }
-
-  .selected-summary b {
-    color: #d4212e;
-    font-size: 1.08rem;
-  }
-
-  .trust-strip {
-    padding: 16px 0;
-    background: #f4f7fb;
-    border-bottom: 1px solid rgba(174, 188, 204, 0.58);
-  }
-
-  .trust-strip__title {
-    margin: 0 0 10px;
-    color: #435063;
-    font-size: 0.78rem;
-    font-weight: 950;
-    text-transform: uppercase;
-  }
-
-  .trust-strip__scroller {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(174px, 1fr);
-    gap: 8px;
-    overflow-x: auto;
-  }
-
-  .trust-strip article,
-  .info-card,
-  .model-detail,
-  .store-card,
-  .download-card,
-  .spec-card,
-  .selected-quote,
-  .quote-form {
-    border: 1px solid rgba(174, 188, 204, 0.72);
-    border-radius: 8px;
-    background: #ffffff;
-    box-shadow: 0 14px 34px rgba(8, 17, 28, 0.06);
-  }
-
-  .trust-strip article {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 12px;
-    color: #08111c;
-    font-size: 0.82rem;
-  }
-
-  .trust-strip span {
-    display: inline-grid;
-    width: 22px;
-    height: 22px;
-    place-items: center;
-    border-radius: 999px;
-    background: #e9f8f1;
-    color: #128c5a;
-    font-size: 0.72rem;
-    font-weight: 950;
-  }
-
   .section {
     padding: var(--section-padding-y) 0;
+  }
+
+  .model-section,
+  .applications-section,
+  .specs-section {
+    background: #f4f7fb;
+  }
+
+  .dynamic-summary-section {
+    padding-top: 28px;
+    background: #ffffff;
   }
 
   .baper-section-head {
@@ -1294,106 +1890,349 @@ const breadcrumbSchema = {
     color: #546172;
   }
 
-  .model-comparison {
+  .model-picker {
     display: grid;
-    gap: 14px;
+    gap: 12px;
+  }
+
+  .model-card,
+  .model-table__row,
+  .summary-card,
+  .info-card,
+  .selected-config-visual,
+  .choice-card,
+  .download-card,
+  .spec-card,
+  .selected-quote,
+  .quote-form,
+  .store-card {
+    border: 1px solid rgba(174, 188, 204, 0.72);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 14px 34px rgba(8, 17, 28, 0.06);
+  }
+
+  .model-card,
+  .model-table__row {
+    cursor: pointer;
+    text-align: left;
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      background 180ms ease;
   }
 
   .model-card {
+    position: relative;
+    overflow: hidden;
     display: grid;
-    gap: 9px;
-    min-height: 164px;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 10px 13px;
+    min-height: 176px;
     padding: 16px;
   }
 
-  .model-card small {
+  .model-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 4px;
+    background: linear-gradient(90deg, #d4212e, #2f7df6);
+    opacity: 0;
+  }
+
+  .model-card__platform {
+    grid-column: 1;
+    grid-row: 1 / span 4;
+    display: inline-grid;
+    width: 58px;
+    height: 58px;
+    place-items: center;
+    border: 1px solid rgba(47, 125, 246, 0.22);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.1), rgba(255, 255, 255, 0.9)),
+      #eef4ff;
+  }
+
+  .model-card__platform svg {
+    display: block;
+    color: #173e79;
+    filter: drop-shadow(0 6px 12px rgba(8, 17, 28, 0.08));
+  }
+
+  .model-card__platform--1 svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  .model-card__platform--2 svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .model-card__platform--3 svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .platform-icon__plate {
+    fill: #ffffff;
+    stroke: #173e79;
+    stroke-width: 3;
+  }
+
+  .platform-icon__line {
+    fill: none;
+    stroke: rgba(23, 62, 121, 0.28);
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+
+  .platform-icon__base {
+    fill: none;
+    stroke: #d4212e;
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+
+  .model-card__badge {
+    grid-column: 2;
+    width: fit-content;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background: #eef4ff;
+    color: #173e79;
+    font-size: 0.68rem;
+    font-weight: 950;
+    text-transform: uppercase;
+  }
+
+  .model-card__body {
+    grid-column: 2;
+    display: grid;
+    gap: 6px;
+  }
+
+  .model-card strong {
+    color: #08111c;
+    font-size: 1.38rem;
+    line-height: 1;
+  }
+
+  .model-card b,
+  .model-table__row b {
+    color: #d4212e;
+    font-size: 1rem;
+    font-weight: 950;
+  }
+
+  .model-card__model {
+    color: #173e79;
+    font-size: 0.78rem;
+    font-weight: 950;
+    line-height: 1.15;
+  }
+
+  .model-card small,
+  .model-table__row small {
     color: #546172;
     font-size: 0.9rem;
     line-height: 1.35;
   }
 
-  .model-detail {
+  .model-card__cue {
+    grid-column: 2;
+    align-self: end;
+    width: fit-content;
+    padding-top: 2px;
+    color: #546172;
+    font-size: 0.78rem;
+    font-weight: 950;
+  }
+
+  .model-card.is-active,
+  .model-table__row.is-active {
+    border-color: rgba(212, 33, 46, 0.72);
+    background:
+      linear-gradient(135deg, rgba(212, 33, 46, 0.08), rgba(47, 125, 246, 0.08)),
+      #ffffff;
+    box-shadow: 0 18px 42px rgba(8, 17, 28, 0.13);
+  }
+
+  .model-card.is-active::before {
+    opacity: 1;
+  }
+
+  .model-card.is-active .model-card__cue {
+    color: #d4212e;
+  }
+
+  .summary-card {
+    position: relative;
+    overflow: hidden;
     display: grid;
-    gap: 14px;
-    padding: 18px;
-    align-self: start;
+    gap: 16px;
+    padding: 20px;
   }
 
-  .model-detail h3 {
+  .summary-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: linear-gradient(180deg, #d4212e, #2f7df6);
+  }
+
+  .summary-card h2 {
     margin: 0;
-    color: #08111c;
-    font-size: clamp(1.7rem, 8vw, 2.6rem);
+    max-width: 760px;
+    font-size: clamp(1.85rem, 7vw, 3rem);
+    line-height: 1.05;
   }
 
-  .model-detail p {
+  .summary-card p {
     margin: 0;
-    color: #4b5a6d;
+    color: #546172;
   }
 
-  .model-detail dl,
-  .spec-card dl {
+  .summary-stats {
     display: grid;
-    gap: 8px;
-    margin: 0;
+    gap: 10px;
   }
 
-  .model-detail dl div,
-  .spec-card dl div {
+  .summary-stats div {
     display: grid;
-    gap: 4px;
-    padding: 11px;
+    gap: 5px;
+    padding: 13px;
     border: 1px solid rgba(174, 188, 204, 0.54);
     border-radius: 8px;
     background: #f8fafc;
   }
 
-  dt {
-    color: #08111c;
-    font-size: 0.8rem;
+  .summary-stats span,
+  .selected-quote span {
+    color: #546172;
+    font-size: 0.78rem;
     font-weight: 950;
+    text-transform: uppercase;
   }
 
-  dd {
-    margin: 0;
-    color: #405063;
-    font-weight: 760;
+  .summary-stats strong {
+    color: #08111c;
+    font-size: 1.2rem;
   }
 
-  .support-section,
-  .use-section,
-  .specs-section {
-    background: #f4f7fb;
-  }
-
-  .support-shell {
-    padding: 18px;
-    border: 1px solid rgba(174, 188, 204, 0.68);
-    border-radius: 8px;
-    background:
-      linear-gradient(135deg, rgba(47, 125, 246, 0.09), rgba(255, 255, 255, 0)),
-      #ffffff;
-  }
-
-  .support-copy {
+  .summary-fit {
     display: grid;
-    gap: 14px;
+    gap: 10px;
+    padding: 14px;
+    border: 1px solid rgba(174, 188, 204, 0.54);
+    border-radius: 8px;
+    background: #f8fafc;
   }
 
-  .support-copy h2 {
+  .summary-fit h3 {
     margin: 0;
-    font-size: clamp(2rem, 8vw, 3.25rem);
+    font-size: 1.02rem;
   }
 
-  .support-copy p:not(.eyebrow) {
+  .summary-fit ul {
+    display: grid;
+    gap: 7px;
     margin: 0;
-    color: #4b5a6d;
+    padding: 0;
+    list-style: none;
+  }
+
+  .summary-fit li {
+    position: relative;
+    padding-left: 20px;
+    color: #344253;
+    font-size: 0.92rem;
+    font-weight: 760;
+    line-height: 1.35;
+  }
+
+  .summary-fit li::before {
+    content: "";
+    position: absolute;
+    top: 0.7em;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: #d4212e;
+  }
+
+  .summary-side {
+    align-self: stretch;
+    display: grid;
+    min-height: 240px;
+  }
+
+  .summary-side img {
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .trust-strip {
+    padding: 16px 0;
+    background: #ffffff;
+    border-top: 1px solid rgba(174, 188, 204, 0.58);
+    border-bottom: 1px solid rgba(174, 188, 204, 0.58);
+  }
+
+  .trust-strip__title {
+    margin: 0 0 10px;
+    color: #435063;
+    font-size: 0.78rem;
+    font-weight: 950;
+    text-transform: uppercase;
+  }
+
+  .trust-strip__scroller {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(174px, 1fr);
+    gap: 8px;
+    overflow-x: auto;
+  }
+
+  .trust-strip article {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border: 1px solid rgba(174, 188, 204, 0.72);
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #08111c;
+    font-size: 0.82rem;
+  }
+
+  .trust-strip span {
+    display: inline-grid;
+    width: 22px;
+    height: 22px;
+    place-items: center;
+    border-radius: 999px;
+    background: #e9f8f1;
+    color: #128c5a;
+    font-size: 0.72rem;
+    font-weight: 950;
   }
 
   .support-grid,
   .benefit-grid,
   .include-grid,
-  .fit-grid,
-  .spec-grid {
+  .spec-grid,
+  .faq-list,
+  .use-grid {
     display: grid;
     gap: 12px;
   }
@@ -1417,44 +2256,22 @@ const breadcrumbSchema = {
 
   .card-icon {
     display: inline-grid;
+    place-items: center;
     width: 40px;
     height: 40px;
     border: 1px solid rgba(47, 125, 246, 0.2);
     border-radius: 8px;
-    background:
-      linear-gradient(135deg, rgba(47, 125, 246, 0.12), rgba(255, 255, 255, 0.82)),
-      #eef4ff;
+    background: #eef4ff;
+    color: #173e79;
   }
 
-  .card-icon::before {
-    content: "";
-    width: 16px;
-    height: 16px;
-    margin: auto;
-    border: 3px solid #173e79;
-    border-top-color: #d4212e;
-    border-radius: 999px;
-  }
-
-  .benefits-layout {
-    align-items: start;
-  }
-
-  .benefits-media,
-  .use-media,
-  .delivery-media {
-    overflow: hidden;
-    border: 1px solid rgba(174, 188, 204, 0.75);
-    border-radius: 8px;
-    background: #ffffff;
-  }
-
-  .benefits-media img,
-  .use-media img,
-  .delivery-media img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
+  .card-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
   .benefit-card {
@@ -1481,12 +2298,44 @@ const breadcrumbSchema = {
     gap: 12px;
   }
 
+  .benefit-card__icon {
+    place-items: center;
+    color: #173e79;
+  }
+
+  .benefit-card__icon svg {
+    display: block;
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  :global(.benefit-card__icon svg) {
+    display: block;
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  :global(.benefit-card__icon svg *) {
+    fill: none;
+    stroke: currentColor;
+  }
+
   .benefit-card__label {
-    max-width: 132px;
-    padding: 6px 9px;
+    max-width: 148px;
+    padding: 6px 10px;
     border: 1px solid rgba(174, 188, 204, 0.58);
     border-radius: 999px;
-    background: rgba(244, 247, 251, 0.88);
+    background: rgba(244, 247, 251, 0.92);
     color: #435063;
     font-size: 0.72rem;
     font-weight: 950;
@@ -1513,26 +2362,97 @@ const breadcrumbSchema = {
     gap: 16px;
   }
 
-  .use-grid {
-    display: grid;
-    gap: 10px;
+  .applications-section {
+    background: #f7faff;
   }
 
-  .use-grid article {
+  .use-card {
     position: relative;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 12px;
+    display: flex;
     align-items: center;
-    min-height: 56px;
-    padding: 13px 14px;
-    border: 1px solid rgba(130, 148, 172, 0.58);
+    gap: 16px;
+    min-height: 92px;
+    padding: 18px 20px;
+    overflow: hidden;
+    border: 1px solid rgba(11, 58, 120, 0.14);
     border-radius: 8px;
-    background: #ffffff;
-    box-shadow: 0 12px 26px rgba(8, 17, 28, 0.06);
+    background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    box-shadow: 0 14px 34px rgba(15, 35, 70, 0.045);
+    transition:
+      transform 0.22s ease,
+      box-shadow 0.22s ease,
+      border-color 0.22s ease;
   }
 
-  .use-grid span {
+  .use-card::after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 0;
+    height: 4px;
+    border-radius: 999px 999px 0 0;
+    background: linear-gradient(90deg, #d4212e 0%, #2f7df6 100%);
+  }
+
+  .use-card__icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(11, 58, 120, 0.12);
+    border-radius: 8px;
+    background: #eef5ff;
+    color: #173e79;
+  }
+
+  :global(.use-card__icon svg) {
+    display: block;
+    width: 23px;
+    height: 23px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  :global(.use-card__icon svg *) {
+    fill: none;
+    stroke: currentColor;
+  }
+
+  .use-card__content {
+    display: grid;
+    min-width: 0;
+    gap: 5px;
+  }
+
+  .use-card__title {
+    color: #07111f;
+    font-size: 1.05rem;
+    font-weight: 950;
+    line-height: 1.25;
+  }
+
+  .use-card__description {
+    margin: 0;
+    color: #40516d;
+    font-size: 0.92rem;
+    line-height: 1.42;
+  }
+
+  @media (hover: hover) {
+    .use-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(11, 58, 120, 0.24);
+      box-shadow: 0 18px 42px rgba(15, 35, 70, 0.08);
+    }
+  }
+
+  .use-grid span:not(.use-card__icon) {
     display: inline-grid;
     width: 38px;
     height: 38px;
@@ -1541,18 +2461,12 @@ const breadcrumbSchema = {
     background: #eef4ff;
   }
 
-  .use-grid span::before {
+  .use-grid span:not(.use-card__icon)::before {
     content: "";
     width: 14px;
     height: 14px;
     border: 3px solid #173e79;
     border-radius: 3px;
-  }
-
-  .use-grid strong {
-    color: #08111c;
-    font-size: 0.95rem;
-    line-height: 1.15;
   }
 
   .include-card {
@@ -1570,8 +2484,64 @@ const breadcrumbSchema = {
     padding: 14px;
   }
 
+  .selected-config-section {
+    padding-bottom: 18px;
+    background: #f4f7fb;
+  }
+
+  .specs-section {
+    padding-top: 10px;
+  }
+
+  .selected-config-section .baper-section-head,
+  .specs-section .baper-section-head {
+    max-width: none;
+  }
+
+  .selected-config-section .baper-section-head h2 {
+    max-width: 100%;
+  }
+
+  .specs-section .baper-section-head h2 {
+    max-width: 100%;
+  }
+
+  .model-section .baper-section-head h2 {
+    max-width: 100%;
+  }
+
+  .selected-config-layout {
+    display: grid;
+    gap: 18px;
+  }
+
+  .selected-config-media-grid {
+    display: grid;
+    gap: 12px;
+  }
+
+  .selected-config-visual {
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .selected-config-visual img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .selected-config-visual--platform img {
+    aspect-ratio: 16 / 6.5;
+  }
+
+  .selected-config-visual--indicator img {
+    aspect-ratio: 16 / 6.5;
+    object-position: center;
+  }
+
   .include-card ul,
-  .fit-card ul {
+  .choice-card ul {
     display: grid;
     gap: 7px;
     margin: 10px 0 0;
@@ -1580,17 +2550,13 @@ const breadcrumbSchema = {
   }
 
   .include-card li,
-  .fit-card li {
+  .choice-card li {
     position: relative;
     padding-left: 20px;
     color: #344253;
     font-size: 0.92rem;
     font-weight: 760;
     line-height: 1.32;
-  }
-
-  .comparison-table-section {
-    background: #ffffff;
   }
 
   .model-table {
@@ -1609,66 +2575,209 @@ const breadcrumbSchema = {
     padding: 14px;
   }
 
-  .model-table__row span,
-  .model-table__row b {
-    font-size: 0.92rem;
+  .choice-section {
+    background:
+      radial-gradient(circle at 18% 12%, rgba(47, 125, 246, 0.18), transparent 32%),
+      linear-gradient(135deg, #091321 0%, #101c2c 58%, #13243a 100%);
+    color: #ffffff;
   }
 
-  .model-table__row strong {
-    font-size: 1.15rem;
+  .quote-section {
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.08), rgba(212, 33, 46, 0.04)),
+      #ffffff;
   }
 
-  .model-table__row small {
+  .quote-section h2 {
+    margin-bottom: 12px;
+    font-size: clamp(2rem, 8vw, 3.4rem);
+  }
+
+  .quote-section p {
     color: #546172;
-    font-size: 0.88rem;
   }
 
-  .fit-section {
-    background: #101820;
+  .choice-shell {
+    gap: 22px;
+  }
+
+  .choice-head {
+    display: grid;
+    gap: 12px;
+    max-width: 980px;
+  }
+
+  .choice-section .eyebrow {
+    color: #ffb4ba;
+  }
+
+  .choice-section h2 {
+    margin: 0;
+    max-width: 1100px;
     color: #ffffff;
+    font-size: clamp(2rem, 8vw, 4.4rem);
+    line-height: 1.02;
   }
 
-  .fit-section .baper-section-head h2,
-  .fit-card h3 {
-    color: #ffffff;
+  .choice-section p {
+    color: rgba(235, 242, 255, 0.82);
   }
 
-  .fit-section .baper-section-head p:not(.eyebrow),
-  .fit-links {
-    color: #dfe6ed;
+  .choice-head > p:not(.eyebrow) {
+    max-width: 850px;
+    margin: 0;
+    font-size: clamp(1rem, 2.7vw, 1.16rem);
+    line-height: 1.62;
   }
 
-  .fit-card {
-    padding: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 8px;
+  .choice-decision-grid {
+    display: grid;
+    gap: 14px;
+  }
+
+  .choice-card {
+    display: grid;
+    gap: 16px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
     background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.16);
   }
 
-  .fit-card--yes {
-    background: linear-gradient(135deg, rgba(18, 140, 90, 0.24), rgba(255, 255, 255, 0.08));
+  .choice-card--yes {
+    background:
+      linear-gradient(135deg, rgba(18, 140, 90, 0.26), rgba(255, 255, 255, 0.07)),
+      rgba(255, 255, 255, 0.08);
   }
 
-  .fit-card--other {
-    background: linear-gradient(135deg, rgba(47, 125, 246, 0.18), rgba(255, 255, 255, 0.07));
+  .choice-card--other {
+    background:
+      linear-gradient(135deg, rgba(47, 111, 214, 0.24), rgba(255, 255, 255, 0.07)),
+      rgba(255, 255, 255, 0.08);
   }
 
-  .fit-card li {
-    color: #edf3f8;
+  .choice-card h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.35rem, 4vw, 2rem);
+    line-height: 1.12;
   }
 
-  .fit-card li::before {
-    background: #ffb4ba;
+  .choice-card ul {
+    gap: 9px;
+    margin: 0;
   }
 
-  .fit-links {
-    margin-top: 18px;
+  .choice-card li {
+    display: grid;
+    grid-template-columns: 10px minmax(0, 1fr);
+    align-items: start;
+    gap: 10px;
+    padding-left: 0;
+    color: rgba(245, 248, 255, 0.9);
+    font-size: 0.96rem;
+    font-weight: 760;
+    line-height: 1.42;
   }
 
-  .fit-links a {
+  .choice-card li::before {
+    position: static;
+    display: block;
+    align-self: start;
+    margin-top: 0.58em;
+    width: 8px;
+    height: 8px;
+    background: #38d28c;
+  }
+
+  .choice-card--other li::before {
+    background: #78a7ff;
+  }
+
+  .choice-seo-panel {
+    display: grid;
+    gap: 16px;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  .choice-seo-panel p {
+    margin: 0;
+    max-width: 1040px;
+    line-height: 1.62;
+  }
+
+  .choice-seo-panel a:not(.button) {
+    color: #ffffff;
     font-weight: 900;
-    text-decoration-thickness: 2px;
+    text-decoration-color: rgba(255, 255, 255, 0.45);
     text-underline-offset: 3px;
+  }
+
+  .choice-seo-panel .button {
+    width: 100%;
+  }
+
+  .support-section {
+    padding: var(--section-padding-y-compact) 0;
+    background:
+      linear-gradient(135deg, rgba(47, 125, 246, 0.08), rgba(255, 255, 255, 0.78) 48%),
+      #f4f7fb;
+    color: #08111c;
+  }
+
+  .support-shell {
+    padding: 20px;
+    border: 1px solid rgba(174, 188, 204, 0.72);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 18px 44px rgba(8, 17, 28, 0.08);
+  }
+
+  .support-section .eyebrow {
+    color: #d4212e;
+  }
+
+  .support-copy {
+    display: grid;
+    gap: 14px;
+  }
+
+  .support-copy h2 {
+    max-width: 540px;
+    margin: 0;
+    color: #08111c;
+    font-size: clamp(2.1rem, 8vw, 2.65rem);
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+
+  .support-copy p:not(.eyebrow) {
+    max-width: 570px;
+    margin: 0;
+    color: #4c5b6c;
+    font-size: 0.98rem;
+  }
+
+  .support-copy .baper-actions {
+    margin-top: 4px;
+  }
+
+  .support-copy .baper-microcopy {
+    max-width: 420px;
+    color: #657386;
+  }
+
+  .support-grid .info-card {
+    min-height: 0;
+    padding: 16px;
+    background:
+      linear-gradient(180deg, #ffffff, #f8fafc),
+      #ffffff;
+    box-shadow: none;
   }
 
   .delivery-section h2 {
@@ -1679,6 +2788,12 @@ const breadcrumbSchema = {
 
   .delivery-section p {
     color: #546172;
+  }
+
+  .delivery-media img {
+    aspect-ratio: 16 / 10;
+    object-position: center center;
+    transition: transform 0.12s linear;
   }
 
   .zone-list {
@@ -1703,14 +2818,11 @@ const breadcrumbSchema = {
   .store-card {
     display: grid;
     gap: 9px;
+    padding: 16px;
   }
 
   .store-card span {
     color: #546172;
-  }
-
-  .download-section {
-    background: #ffffff;
   }
 
   .download-card {
@@ -1775,8 +2887,21 @@ const breadcrumbSchema = {
   }
 
   .spec-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     color: #546172;
     font-size: 0.82rem;
+    font-weight: 950;
+  }
+
+  .spec-toggle svg {
+    width: 20px;
+    height: 20px;
+    stroke: #173e79;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
   .spec-card .spec-toggle--hide {
@@ -1792,26 +2917,35 @@ const breadcrumbSchema = {
   }
 
   .spec-card dl {
+    display: grid;
+    gap: 8px;
+    margin: 0;
     padding: 0 16px 16px;
+  }
+
+  .spec-card dl div {
+    display: grid;
+    gap: 4px;
+    padding: 11px;
+    border: 1px solid rgba(174, 188, 204, 0.54);
+    border-radius: 8px;
+    background: #f8fafc;
+  }
+
+  dt {
+    color: #08111c;
+    font-size: 0.8rem;
+    font-weight: 950;
+  }
+
+  dd {
+    margin: 0;
+    color: #405063;
+    font-weight: 760;
   }
 
   .quote-layout {
     align-items: start;
-  }
-
-  .quote-section {
-    background:
-      linear-gradient(135deg, rgba(47, 125, 246, 0.08), rgba(212, 33, 46, 0.04)),
-      #ffffff;
-  }
-
-  .quote-section h2 {
-    margin-bottom: 12px;
-    font-size: clamp(2rem, 8vw, 3.4rem);
-  }
-
-  .quote-section p {
-    color: #546172;
   }
 
   .selected-quote {
@@ -1857,11 +2991,6 @@ const breadcrumbSchema = {
 
   .quote-form textarea {
     resize: vertical;
-  }
-
-  .faq-list {
-    display: grid;
-    gap: 12px;
   }
 
   .faq-item {
@@ -1967,7 +3096,7 @@ const breadcrumbSchema = {
   }
 
   .final-cta p {
-    max-width: 720px;
+    max-width: 760px;
     color: #dfe6ed;
   }
 
@@ -1999,12 +3128,68 @@ const breadcrumbSchema = {
     }
   }
 
+  @media (hover: hover) {
+    .model-card:hover,
+    .model-table__row:hover {
+      transform: translateY(-2px);
+      border-color: rgba(47, 125, 246, 0.32);
+      box-shadow: 0 18px 42px rgba(8, 17, 28, 0.09);
+    }
+  }
+
+  @media (min-width: 760px) {
+    .baper-hero__grid {
+      grid-template-columns: minmax(0, 0.54fr) minmax(320px, 0.46fr);
+      align-items: center;
+      gap: 24px;
+    }
+
+    .baper-hero__copy {
+      grid-column: 1;
+      grid-row: 1;
+      min-width: 0;
+    }
+
+    .baper-hero__media {
+      grid-column: 2;
+      grid-row: 1;
+      width: 100%;
+      min-width: 0;
+      transform: translateX(60px);
+    }
+
+    .baper-hero h1 {
+      max-width: 560px;
+      font-size: clamp(2.05rem, 4.6vw, 2.85rem);
+      line-height: 1.05;
+    }
+
+    .baper-lead {
+      max-width: 560px;
+      font-size: 1rem;
+    }
+
+    .baper-hero__media,
+    .baper-hero__media img {
+      max-height: none;
+    }
+
+    .baper-hero__media {
+      height: clamp(360px, 36vw, 460px);
+    }
+
+    .baper-hero__media img {
+      height: 100%;
+      aspect-ratio: auto;
+    }
+  }
+
   @media (min-width: 640px) {
     :global(:root) {
       --section-padding-y: 68px;
       --section-padding-y-compact: 56px;
-      --hero-padding-top: 38px;
-      --hero-padding-bottom: 38px;
+      --hero-padding-top: 30px;
+      --hero-padding-bottom: 28px;
     }
 
     .baper-actions,
@@ -2028,6 +3213,15 @@ const breadcrumbSchema = {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .baper-quick-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .summary-stats,
+    .model-picker {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
     .zone-list {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -2041,39 +3235,31 @@ const breadcrumbSchema = {
     }
   }
 
-  @media (min-width: 860px) {
+  @media (min-width: 1024px) {
     :global(:root) {
       --section-padding-y: 84px;
       --section-padding-y-compact: 66px;
-      --hero-padding-top: 50px;
-      --hero-padding-bottom: 44px;
+      --hero-padding-top: 34px;
+      --hero-padding-bottom: 30px;
       --final-cta-padding-top: 56px;
       --final-cta-padding-bottom: 74px;
     }
 
-    .baper-hero__grid {
-      grid-template-columns: minmax(0, 0.92fr) minmax(420px, 0.78fr);
+    .baper-hero__grid,
+    .summary-shell,
+    .use-shell,
+    .choice-shell,
+    .support-shell,
+    .delivery-layout,
+    .quote-layout {
+      grid-template-columns: minmax(0, 0.52fr) minmax(380px, 0.48fr);
       align-items: center;
-      gap: 34px;
     }
 
-    .baper-quick-list {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .trust-strip__scroller {
-      grid-auto-flow: initial;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      overflow: visible;
-    }
-
-    .model-comparison {
-      grid-template-columns: minmax(0, 0.62fr) minmax(340px, 0.38fr);
-      gap: 18px;
-    }
-
-    .model-picker--comparison {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+    .choice-shell {
+      grid-template-columns: 1fr;
+      align-items: stretch;
+      gap: 28px;
     }
 
     .support-shell {
@@ -2083,8 +3269,89 @@ const breadcrumbSchema = {
       padding: 28px;
     }
 
+    .support-copy h2 {
+      max-width: 520px;
+      font-size: clamp(2.55rem, 4.4vw, 3.35rem);
+    }
+
+    .support-grid {
+      gap: 14px;
+    }
+
+    .support-grid .info-card {
+      min-height: 172px;
+      padding: 18px;
+    }
+
+    .choice-decision-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .choice-card {
+      padding: 26px;
+    }
+
+    .choice-seo-panel {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 24px;
+      padding: 24px 26px;
+    }
+
+    .choice-seo-panel .button {
+      width: auto;
+      white-space: nowrap;
+    }
+
+    .baper-hero__grid {
+      grid-template-columns: minmax(0, 0.5fr) minmax(440px, 0.5fr);
+      gap: 34px;
+    }
+
+    .baper-hero h1 {
+      font-size: clamp(2.35rem, 3.4vw, 3.1rem);
+      max-width: 600px;
+    }
+
+    .baper-hero__media,
+    .baper-hero__media img {
+      max-height: none;
+    }
+
+    .baper-hero__media {
+      height: clamp(470px, 40vw, 400px);
+    }
+
+    .delivery-layout {
+      align-items: start;
+    }
+
+    .delivery-media {
+      align-self: start;
+      position: sticky;
+      top: 92px;
+      height: clamp(360px, 42vw, 520px);
+    }
+
+    .delivery-media img {
+      height: 100%;
+      max-height: none;
+      aspect-ratio: auto;
+      display: block;
+      object-position: center center;
+      transform: none;
+    }
+
+    .trust-strip__scroller {
+      grid-auto-flow: initial;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      overflow: visible;
+    }
+
     .benefits-layout {
       grid-template-columns: minmax(0, 0.66fr) minmax(280px, 0.34fr);
+      align-items: start;
       gap: 24px;
     }
 
@@ -2106,16 +3373,150 @@ const breadcrumbSchema = {
       aspect-ratio: auto;
     }
 
-    .use-shell,
-    .delivery-layout,
-    .quote-layout {
-      grid-template-columns: minmax(0, 0.52fr) minmax(380px, 0.48fr);
-      align-items: center;
+    .applications-section {
+      padding-block: 48px;
+    }
+
+    .applications-section .use-shell {
+      grid-template-columns: minmax(0, 0.56fr) minmax(380px, 0.44fr);
+      align-items: start;
+      gap: 28px;
+    }
+
+    .applications-section .use-copy {
+      gap: 12px;
+    }
+
+    .applications-section .baper-section-head {
+      margin-bottom: 8px;
+    }
+
+    .applications-section .baper-section-head h2 {
+      max-width: 640px;
+      font-size: clamp(2.25rem, 3.25vw, 3.25rem);
+      line-height: 1.02;
+    }
+
+    .applications-section .baper-section-head p:not(.eyebrow) {
+      max-width: 710px;
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    .applications-section .use-grid {
+      gap: 10px;
     }
 
     .use-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
+    }
+
+    .applications-section .use-card {
+      min-height: 74px;
+      padding: 12px 14px 14px;
+      gap: 12px;
+    }
+
+    .applications-section .use-card::after {
+      left: 14px;
+      right: 14px;
+      height: 3px;
+    }
+
+    .applications-section .use-card__icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    :global(.applications-section .use-card__icon svg) {
+      width: 20px;
+      height: 20px;
+    }
+
+    .applications-section .use-card__title {
+      font-size: 0.96rem;
+      line-height: 1.16;
+    }
+
+    .applications-section .use-card__description {
+      font-size: 0.82rem;
+      line-height: 1.32;
+    }
+
+    .applications-section .use-media {
+      position: sticky;
+      top: 86px;
+      align-self: start;
+      height: min(620px, calc(100vh - 116px));
+      box-shadow: 0 18px 46px rgba(15, 35, 70, 0.09);
+    }
+
+    .applications-section .use-media img {
+      height: 100%;
+      aspect-ratio: auto;
+      object-position: center var(--use-media-y, 50%);
+      transition: object-position 0.12s linear;
+    }
+
+    .selected-config-section .baper-section-head h2 {
+      max-width: none;
+      font-size: clamp(2.7rem, 4.7vw, 4.7rem);
+      line-height: 1.02;
+      text-wrap: normal;
+    }
+
+    .specs-section {
+      padding-top: 12px;
+    }
+
+    .specs-section .baper-section-head {
+      margin-bottom: 24px;
+    }
+
+    .specs-section .baper-section-head h2 {
+      max-width: none;
+      font-size: clamp(2.7rem, 4.7vw, 4.7rem);
+      line-height: 1.02;
+      text-wrap: normal;
+    }
+
+    .specs-section .baper-section-head p:not(.eyebrow) {
+      max-width: 960px;
+    }
+
+    .selected-config-media-grid {
+      grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
+      align-items: stretch;
+    }
+
+    .selected-config-visual {
+      height: clamp(250px, 24vw, 360px);
+      min-height: 0;
+    }
+
+    .selected-config-visual img {
+      height: 100%;
+    }
+
+    .selected-config-visual--platform img,
+    .selected-config-visual--indicator img {
+      aspect-ratio: auto;
+    }
+
+    .model-section .baper-section-head {
+      max-width: 980px;
+    }
+
+    .model-section .baper-section-head h2 {
+      max-width: none;
+      font-size: clamp(2.6rem, 4.8vw, 4.7rem);
+      line-height: 1.02;
+      white-space: nowrap;
+    }
+
+    .model-section .baper-section-head p:not(.eyebrow) {
+      max-width: 920px;
     }
 
     .include-grid {
@@ -2148,8 +3549,7 @@ const breadcrumbSchema = {
       justify-content: end;
     }
 
-    .spec-card dl div,
-    .model-detail dl div {
+    .spec-card dl div {
       grid-template-columns: minmax(150px, 0.44fr) minmax(0, 1fr);
       gap: 14px;
     }
