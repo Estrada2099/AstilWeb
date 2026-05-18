@@ -18,7 +18,7 @@ const modelosComerciales = [
     medida: "90 x 90 cm",
     capacidad: "1000 kg",
     etiqueta: "Compacta",
-    usoCorto: "Espacios reducidos y carga compacta",
+    usoCorto: "Almacen, recibo y produccion",
     descripcion:
       "Recomendada para negocios que necesitan una plataforma compacta para operacion comercial diaria sin ocupar demasiado espacio.",
     idealPara: [
@@ -28,6 +28,54 @@ const modelosComerciales = [
       "Comercio mayorista ligero",
       "Recibo de mercancia moderado"
     ],
+    useCases: {
+      eyebrow: "APLICACIONES RECOMENDADAS",
+      title: "Ideal para espacios reducidos, almacen y produccion ligera",
+      description:
+        "La plataforma de 90 x 90 cm es una opcion compacta para empresas que necesitan una bascula comercial de hasta 1000 kg sin ocupar demasiado espacio. Es practica para almacen, recibo, produccion ligera, control interno y carga compacta.",
+      cards: [
+        {
+          icon: "warehouse",
+          title: "Almacenes pequenos",
+          text: "Para control de peso en entradas, salidas y movimiento interno cuando el espacio es limitado."
+        },
+        {
+          icon: "package-check",
+          title: "Area de recibo",
+          text: "Util para verificar cajas, productos y materiales antes de ingresarlos a operacion."
+        },
+        {
+          icon: "boxes",
+          title: "Produccion ligera",
+          text: "Adecuada para estaciones de trabajo donde se pesa producto compacto durante la jornada."
+        },
+        {
+          icon: "package",
+          title: "Cajas y bultos",
+          text: "La medida 90 x 90 cm funciona bien para mercancia compacta y carga comercial diaria."
+        },
+        {
+          icon: "box",
+          title: "Productos compactos",
+          text: "Para pesar recipientes, cajas plasticas, paquetes o carga agrupada de tamano moderado."
+        },
+        {
+          icon: "truck",
+          title: "Embarques ligeros",
+          text: "Recomendada para validar peso antes de salida cuando no se requiere una plataforma amplia."
+        },
+        {
+          icon: "clock",
+          title: "Uso comercial diario",
+          text: "Para operaciones donde el pesaje se repite durante el dia con carga controlada."
+        },
+        {
+          icon: "scale",
+          title: "Hasta 1000 kg",
+          text: "Capacidad adecuada para carga compacta, productos y mercancia de uso comercial diario."
+        }
+      ]
+    },
     beneficios: [
       "Buena opcion cuando necesitas pesar carga diaria sin ocupar mucho piso operativo.",
       "Funciona para cajas, bultos y producto compacto que no necesita una plataforma grande.",
@@ -364,6 +412,54 @@ const modelosComerciales = [
       "Embarques",
       "Operacion comercial robusta"
     ],
+    useCases: {
+      eyebrow: "APLICACIONES RECOMENDADAS",
+      title: "Ideal para carga voluminosa, tarimas grandes y operacion robusta",
+      description:
+        "La plataforma de 150 x 150 cm esta pensada para empresas que necesitan mayor area de apoyo y una bascula comercial de hasta 3000 kg. Es practica para almacen, recibo de carga voluminosa, tarimas grandes, embarques y operaciones comerciales mas robustas.",
+      cards: [
+        {
+          icon: "warehouse",
+          title: "Almacenes con carga grande",
+          text: "Para operaciones donde la mercancia requiere mayor superficie de apoyo y maniobra."
+        },
+        {
+          icon: "package-check",
+          title: "Recibo de volumen",
+          text: "Util para verificar productos grandes, materiales agrupados o carga que ocupa mas area."
+        },
+        {
+          icon: "boxes",
+          title: "Centros de distribucion",
+          text: "Adecuada para procesos de flujo constante con carga de mayor tamano y peso."
+        },
+        {
+          icon: "package",
+          title: "Tarimas grandes",
+          text: "La medida 150 x 150 cm ofrece mas superficie para trabajar con tarimas grandes o carga paletizada."
+        },
+        {
+          icon: "box",
+          title: "Productos voluminosos",
+          text: "Para pesar contenedores, recipientes, cajas grandes o productos que necesitan mas area de apoyo."
+        },
+        {
+          icon: "truck",
+          title: "Embarques grandes",
+          text: "Recomendada para preparar salidas, validar peso y controlar mercancia antes de despacho."
+        },
+        {
+          icon: "clock",
+          title: "Uso comercial continuo",
+          text: "Para jornadas donde el pesaje de carga grande forma parte del flujo diario de trabajo."
+        },
+        {
+          icon: "scale",
+          title: "Hasta 3000 kg",
+          text: "Mayor capacidad dentro de la Linea Comercial para operaciones con carga mas robusta."
+        }
+      ]
+    },
     beneficios: [
       "Conviene cuando la carga ocupa mas superficie o necesitas apoyar tarimas grandes.",
       "La capacidad de 3000 kg da margen para operaciones comerciales mas robustas.",
@@ -1482,6 +1578,11 @@ const breadcrumbSchema = {
     const platformTitle = (model) => `Plataforma Comercial ${displayMeasure(model.medida)}`;
     const specUse = (model) =>
       model.id === "comercial-120" ? "Almacén, recibo, uso frecuente" : model.usoCorto;
+    const astroScope = (node) =>
+      Array.from(node?.attributes ?? [])
+        .filter((attribute) => attribute.name.startsWith("data-astro-cid"))
+        .map((attribute) => `${attribute.name}=""`)
+        .join(" ");
     const renderUseCases = (model) => {
       const useCases = getUseCases(model);
       setText("[data-use-eyebrow]", useCases.eyebrow);
@@ -1490,14 +1591,15 @@ const breadcrumbSchema = {
 
       const list = document.querySelector("[data-use-cards]");
       if (!list) return;
+      const scope = astroScope(list);
       list.innerHTML = useCases.cards
         .map(
           (card) =>
-            `<article class="use-card">
-              <span class="use-card__icon" aria-hidden="true">${applicationIconSvg(card.icon)}</span>
-              <div class="use-card__content">
-                <strong class="use-card__title">${card.title}</strong>
-                ${card.text ? `<p class="use-card__description">${card.text}</p>` : ""}
+            `<article class="use-card" ${scope}>
+              <span class="use-card__icon" aria-hidden="true" ${scope}>${applicationIconSvg(card.icon)}</span>
+              <div class="use-card__content" ${scope}>
+                <strong class="use-card__title" ${scope}>${card.title}</strong>
+                ${card.text ? `<p class="use-card__description" ${scope}>${card.text}</p>` : ""}
               </div>
             </article>`
         )
@@ -1506,19 +1608,20 @@ const breadcrumbSchema = {
     const renderBenefits = (model) => {
       const list = document.querySelector("[data-benefits-list]");
       if (!list) return;
+      const scope = astroScope(list);
       list.innerHTML = model.benefitCards
         .map(
           (card) =>
-            `<article class="info-card benefit-card">
-              <div class="benefit-card__top">
-                <span class="card-icon benefit-card__icon" aria-hidden="true">${benefitIconSvg(card.icon)}</span>
-                <span class="benefit-card__label">${card.label}</span>
+            `<article class="info-card benefit-card" ${scope}>
+              <div class="benefit-card__top" ${scope}>
+                <span class="card-icon benefit-card__icon" aria-hidden="true" ${scope}>${benefitIconSvg(card.icon)}</span>
+                <span class="benefit-card__label" ${scope}>${card.label}</span>
               </div>
-              <div class="benefit-card__body">
-                <h3>${card.title}</h3>
-                <p>${card.text}</p>
+              <div class="benefit-card__body" ${scope}>
+                <h3 ${scope}>${card.title}</h3>
+                <p ${scope}>${card.text}</p>
               </div>
-              <span class="benefit-card__accent" aria-hidden="true"></span>
+              <span class="benefit-card__accent" aria-hidden="true" ${scope}></span>
             </article>`
         )
         .join("");
